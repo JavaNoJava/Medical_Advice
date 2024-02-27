@@ -5,813 +5,64 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Cookies } from "react-cookie";
 
 export default function ChangeConsultativeInfopage(){
-    const location = useLocation()
-    const myInfo = location.state.myInfo
+    const [cId, setCId] = useState('')
+    const [cPw, setCPw] = useState('')
+    const [department, setDepartment] = useState([
+        "내과", "신경과", "정신건강의학과", "외과", "정형외과", "신경외과", "흉부외과", "성형외과", "마취통증의학과",
+        "산부인과", "소아청소년과", "안과", "이비인후과", "피부과", "비뇨의학과", "영상의학과", "방사선종양학과",
+        "병리과", "진단검사의학과", "결핵과", "재활의학과", "예방의학과", "가정의학과", "응급의학과", "핵의학과",
+        "직업환경의학과"
+      ])
+    const [cName, setCName] = useState('')
+    const [cEmail, setCEmail] = useState('')
+    const [cTel, setCTel] = useState('')
+    const [cPhone, setCPhone] = useState('')
+    const [zipcodeNum, setZipcodeNum] = useState('')
+    const [zipcode, setZipcode] = useState('')
+    const [detailAddress, setDetailAddress] = useState('')
+    const [cAddress, setCAddress] = useState('')
+    const [cRole, setCRole] = useState('')
 
-    const [cId, setCId] = useState(myInfo.cId)
-    const [cRole, setCRole] = useState(myInfo.cRole)
-    const [cPw, setCPw] = useState(myInfo.cPw)
-    const [department, setDepartment] = useState(myInfo.department)
-    const [cName, setCName] = useState(myInfo.cName)
-    const [cEmail, setCEmail] = useState(myInfo.cEmail)
-    const [cTel, setCTel] = useState(myInfo.cTel)
-    const [cPhone, setCPhone] = useState(myInfo.cPhone)
-    const [zipcodeNum, setZipcodeNum] = useState(myInfo.cZipcodeNum)
-    const [zipcode, setZipcode] = useState(myInfo.cZipCode)
-    const [detailAddress, setDetailAddress] = useState(myInfo.cDetailAddress)
-    const [cAddress, setCAddress] = useState(myInfo.cAddress)
-
-    const [hospName, setHospName] = useState(myInfo.hospName)
-    const [hospTel, setHospTel] = useState(myInfo.hospTel)
-    const [hospFx, setHospFx] = useState(myInfo.hospFx)
-    const [hospNum, setHospNum] = useState(myInfo.hospNum)
-    const [detailHpAddress, setDetailHpAddress] = useState(myInfo.detailHpAddress)
-    const [hospAddress, setHospAddress] = useState(myInfo.hospAddress)
-    const [hpZipcodeNum, setHpZipcodeNum] = useState(myInfo.hpZipcodeNum)
-    const [hpZipcode, setHpZipcode] = useState(myInfo.hpZipcode)
+    const [hospName, setHospName] = useState('')
+    const [hospTel, setHospTel] = useState('')
+    const [hospFx, setHospFx] = useState('')
+    const [hospNum, setHospNum] = useState('')
+    const [detailHpAddress, setDetailHpAddress] = useState('')
+    const [hospAddress, setHospAddress] = useState('')
+    const [hpZipcodeNum, setHpZipcodeNum] = useState('')
+    const [hpZipcode, setHpZipcode] = useState('')
 
     const [infoEmpty, setInfoEmpty] = useState(false)
 
     const navigate = useNavigate()
     const cookie = new Cookies()
 
-    const [consultative, setConsultative] = useState(true)
-
-    const [medicine, setMedicine] = useState(false)
-    const [neurology, setNeurology] = useState(false)
-    const [psychiatry, setPsychiatry] = useState(false)
-    const [surgery, setSurgery] = useState(false)
-    const [orthopedics, setOrthopedics] = useState(false)
-    const [neurosurgery, setNeurosurgery] = useState(false)
-    const [thoracicsurgery, setThoracicsurgery] = useState(false)
-    const [plasticsurgery, setPlasticsurgery] = useState(false)
-    const [anesthesiology, setAnesthesiology] = useState(false)
-    const [obstetrics, setObstetrics] = useState(false)
-    const [pediatrics, setPediatrics] = useState(false)
-    const [ophthalmology, setOphthalmology] = useState(false)
-    const [dermatology, setDermatology] = useState(false)
-    const [otorhinolaryngology, setOtorhinolaryngology] = useState(false)
-    const [urology, setUrology] = useState(false)
-    const [radiology, setRadiology] = useState(false)
-    const [radiation, setRadiation] = useState(false)
-    const [pathology, setPathology] = useState(false)
-    const [laboratory, setLaboratory] = useState(false)
-    const [tuberculosis, setTuberculosis] = useState(false)
-    const [rehabilitation, setRehabilitation] = useState(false)
-    const [preventive, setPreventive] = useState(false)
-    const [familymedicine, setFamilymedicine] = useState(false)
-    const [emergency, setEmergency] = useState(false)
-    const [nuclear, setNuclear] = useState(false)
-    const [occupational, setOccupational] = useState(false)
-
-    useEffect(() => {
-        console.log(myInfo);
-    }, [myInfo]);
-
-    const selectCRole = (c_role) => {
-        switch (c_role) {
-            case 'consultative':
-                setConsultative(true)
-                break;
-            default:
-                break;
+    const setC_Role = (c_role) => {
+        if (c_role === 'consultative') {
+            setCRole('전문의');
         }
     }
 
-    const selectDepartment = (department) => {
-        switch (department) {
-            case 'medicine':
-                setMedicine(true)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'neurology':
-                setMedicine(false)
-                setNeurology(true)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'psychiatry':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(true)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'surgery':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(true)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'orthopedics':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(true)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'neurosurgery':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(true)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'thoracicsurgery':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(true)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'plasticsurgery':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(true)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'anesthesiology':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(true)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'obstetrics':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(true)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'pediatrics':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(true)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'ophthalmology':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(true)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'otorhinolaryngology':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(true)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'dermatology':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(true)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'urology':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(true)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'radiology':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(true)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'radiation':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(true)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'pathology':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(true)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'laboratory':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(true)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'tuberculosis':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(true)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'rehabilitation':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(true)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'preventive':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(true)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'familymedicine':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(true)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'emergency':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(true)
-                setNuclear(false)
-                setOccupational(false)
-                break;
-            case 'nuclear':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(true)
-                setOccupational(false)
-                break;
-            case 'occupational':
-                setMedicine(false)
-                setNeurology(false)
-                setPsychiatry(false)
-                setSurgery(false)
-                setOrthopedics(false)
-                setNeurosurgery(false)
-                setThoracicsurgery(false)
-                setPlasticsurgery(false)
-                setAnesthesiology(false)
-                setObstetrics(false)
-                setPediatrics(false)
-                setOphthalmology(false)
-                setDermatology(false)
-                setOtorhinolaryngology(false)
-                setUrology(false)
-                setRadiology(false)
-                setRadiation(false)
-                setPathology(false)
-                setLaboratory(false)
-                setTuberculosis(false)
-                setRehabilitation(false)
-                setPreventive(false)
-                setFamilymedicine(false)
-                setEmergency(false)
-                setNuclear(false)
-                setOccupational(true)
-                break;
-            default:
-                break;
+    const setPrevCAddress = doc_address => {
+        if (doc_address) {
+            const cadd = doc_address.split(' ');
+            setCAddress(doc_address);
+            setZipcodeNum(cadd[0]);
+            setZipcode(cadd[1]);
+            setDetailAddress(cadd[2]);
         }
-    }
+    };
+    
+    const setPrevHpAddress = hosp_address => {
+        if (hosp_address) {
+            const hpadd = hosp_address.split(' ');
+            setHospAddress(hosp_address);
+            setHpZipcodeNum(hpadd[0]);
+            setHpZipcode(hpadd[1]);
+            setDetailHpAddress(hpadd[2]);
+        }
+    };
+    
 
     const getMyInfo = async () => {
         try {
@@ -828,6 +79,10 @@ export default function ChangeConsultativeInfopage(){
             setHospTel(myInfo.hospTel);
             setHospFx(myInfo.hospFx);
             setHospNum(myInfo.hospNum);
+            setC_Role(myInfo.crole)
+            setDepartment(myInfo.department);
+            setPrevCAddress(myInfo.caddress)
+            setPrevHpAddress(myInfo.hospAddress)
         } catch (err) {
             console.log(err);
         }
@@ -835,27 +90,15 @@ export default function ChangeConsultativeInfopage(){
 
     useEffect(()=> {
         getMyInfo();
-        selectCRole(myInfo.crole);
-        selectDepartment(myInfo.department);
     }, [])
 
     useEffect(()=>{
-        if(cRole && department && cPw && cName && cEmail && cTel && cPhone && cAddress && hospName && hospTel && hospFx && hospNum && hospAddress){
+        if(cEmail && cTel && cPhone && zipcodeNum && zipcode && detailAddress && hospName && hospTel && hospFx && hospNum && hpZipcodeNum && hpZipcode && detailHpAddress){
             setInfoEmpty(true);
         } else{
             setInfoEmpty(false)
         }
-    }, [cRole, department, cPw,  cName,  cEmail,  cTel,  cPhone,  cAddress,  hospName,  hospTel,  hospFx,  hospNum,  hospAddress])
-
-    const radio_select_cRole = e => {
-        selectCRole(e.target.value)
-        setCRole(e.target.value)
-    }
-
-    const radio_select_department = e => {
-        selectDepartment(e.target.value)
-        setDepartment(e.target.value)
-    }
+    }, [cEmail,  cTel,  cPhone,  zipcodeNum, zipcode, detailAddress, hospName,  hospTel,  hospFx,  hospNum,  hpZipcodeNum, hpZipcode, detailHpAddress])
 
     const changeMyPw = e => {
         navigate('/medic/mypage/ChangeConsultativeInfo/ChangeMyPw', {state:{cpw : cPw}})
@@ -907,7 +150,7 @@ export default function ChangeConsultativeInfopage(){
         console.log(2)
         const response = await axios.put('/consultative/modifyConsultativeInfo', consultativeInfo)
         console.log(response)
-        if(response.data === '정보수정 완료!'){
+        if(response.data === '정보 수정 완료!'){
             alert('정보수정이 완료되었습니다.')
             navigate('/medic/consultativeMypage')
         }
@@ -917,29 +160,28 @@ export default function ChangeConsultativeInfopage(){
         if(window.confirm("수정하시겠습니까?")){
         e.preventDefault()
         const consultativeInfo = {
-            'cRole' : cRole,
-            'department' : department,
-            'cPw' : cPw,
             'cName' : cName,
+            'department' : department,
             'cEmail' : cEmail,
             'cTel' : cTel,
             'cPhone' : cPhone,
-            'cAddress' : cAddress,
+            'cAddress' : zipcodeNum && zipcode && detailAddress ? `${zipcodeNum} ${zipcode} ${detailAddress}` : cAddress ,
             'hospName' : hospName,
             'hospTel' : hospTel,
             'hospFx' : hospFx,
             'hospNum' : hospNum,
-            'hospAddress' : hospAddress,
+            'hospAddress' : hpZipcodeNum && hpZipcode && detailHpAddress ? `${hpZipcodeNum} ${hpZipcode} ${detailHpAddress} `: hospAddress
         } 
         consultative_modify(consultativeInfo)
+        }
     }
-}
     const btn_progrm_deleteConsultative = async() => {
         try{
+            cookie.remove('uId')
+            cookie.remove('uRole')
             const response = await axios.delete('/consultative/deleteConsultative')
             if(response.data === '탈퇴 완료'){
                 alert('탈퇴가 정상적으로 이루어졌습니다.')
-                cookie.remove("cId")
                 navigate('/')
             }
         } catch(err){
@@ -972,7 +214,7 @@ export default function ChangeConsultativeInfopage(){
                             회원구분
                         </td>
                         <td colSpan="3" className={ChangeConsultativeInfo.joinpage_td}>
-                            <input type="radio" name="user_role" value="consultative" checked={consultative} onChange={radio_select_cRole}/>전문의
+                            {cRole}
                         </td>
                     </tr>
 
@@ -981,32 +223,7 @@ export default function ChangeConsultativeInfopage(){
                             진료과목
                         </td>
                         <td colSpan="3" className={ChangeConsultativeInfo.joinpage_td}>
-                            <input type="radio" name="department" value="medicine" checked={medicine} onChange={radio_select_department}/>내과
-                            <input type="radio" name="department" value="neurology" checked={neurology} onChange={radio_select_department}/>신경과
-                            <input type="radio" name="department" value="psychiatry" checked={psychiatry} onChange={radio_select_department}/>정신건강의학과
-                            <input type="radio" name="department" value="surgery" checked={surgery} onChange={radio_select_department}/>외과
-                            <input type="radio" name="department" value="orthopedics" checked={orthopedics} onChange={radio_select_department}/>정형외과
-                            <input type="radio" name="department" value="neurosurgery" checked={neurosurgery} onChange={radio_select_department}/>신경외과
-                            <input type="radio" name="department" value="thoracicsurgery" checked={thoracicsurgery} onChange={radio_select_department}/>흉부외과
-                            <input type="radio" name="department" value="plasticsurgery" checked={plasticsurgery} onChange={radio_select_department}/>성형외과
-                            <input type="radio" name="department" value="anesthesiology" checked={anesthesiology} onChange={radio_select_department}/>마취통증의학과
-                            <input type="radio" name="department" value="obstetrics" checked={obstetrics} onChange={radio_select_department}/>산부인과
-                            <input type="radio" name="department" value="pediatrics" checked={pediatrics} onChange={radio_select_department}/>소아청소년과
-                            <input type="radio" name="department" value="ophthalmology" checked={ophthalmology} onChange={radio_select_department}/>안과
-                            <input type="radio" name="department" value="otorhinolaryngology" checked={otorhinolaryngology} onChange={radio_select_department}/>이비인후과
-                            <input type="radio" name="department" value="dermatology" checked={dermatology} onChange={radio_select_department}/>피부과
-                            <input type="radio" name="department" value="urology" checked={urology} onChange={radio_select_department}/>비뇨의학과
-                            <input type="radio" name="department" value="radiology" checked={radiology} onChange={radio_select_department}/>영상의학과
-                            <input type="radio" name="department" value="radiation" checked={radiation} onChange={radio_select_department}/>방사선종양학과
-                            <input type="radio" name="department" value="pathology" checked={pathology} onChange={radio_select_department}/>병리과
-                            <input type="radio" name="department" value="laboratory" checked={laboratory} onChange={radio_select_department}/>진단검사의학과
-                            <input type="radio" name="department" value="tuberculosis" checked={tuberculosis} onChange={radio_select_department}/>결핵과
-                            <input type="radio" name="department" value="rehabilitation " checked={rehabilitation} onChange={radio_select_department}/>재활의학과
-                            <input type="radio" name="department" value="preventive" checked={preventive} onChange={radio_select_department}/>예방의학과
-                            <input type="radio" name="department" value="familymedicine" checked={familymedicine} onChange={radio_select_department}/>가정의학과
-                            <input type="radio" name="department" value="emergency" checked={emergency} onChange={radio_select_department}/>응급의학과
-                            <input type="radio" name="department" value="nuclear" checked={nuclear} onChange={radio_select_department}/>핵의학과
-                            <input type="radio" name="department" value="occupational" checked={occupational} onChange={radio_select_department}/>직업환경의학과
+                            <input type="text" value={department} disabled />
                         </td>
                     </tr>
 
@@ -1088,14 +305,8 @@ export default function ChangeConsultativeInfopage(){
                     <td className={ChangeConsultativeInfo.joinpage_th}>
                         소속 병원명
                     </td>
-                    <td className={ChangeConsultativeInfo.joinpage_td}>
+                    <td colSpan="3" className={ChangeConsultativeInfo.joinpage_td}>
                         <input type="text" name="hosp_name" value={hospName} onChange={input_hosp_name} maxLength={20}/>
-                    </td>
-                    <td className={ChangeConsultativeInfo.joinpage_th}>
-                        대표자명
-                    </td>
-                    <td className={ChangeConsultativeInfo.joinpage_td}>
-                        대표자명
                     </td>
                 </tr>
                 <tr>
@@ -1138,7 +349,7 @@ export default function ChangeConsultativeInfopage(){
         </div>
         <div className={ChangeConsultativeInfo.complete} style={{width: '550px'}}>
             <button type = "button" onClick={btn_progrm_modify} disabled={!infoEmpty} className={ChangeConsultativeInfo.btt_complete}>정보 수정 완료</button>
-            <button type = "button" onClick={btn_goto_mypage} className={ChangeConsultativeInfo.btt_complete}>목록</button>
+            <button type = "button" onClick={btn_goto_mypage} className={ChangeConsultativeInfo.btt_complete}>마이페이지</button>
             <button type = "button" onClick={btn_progrm_deleteConsultative} className={ChangeConsultativeInfo.btt_complete}>회원탈퇴</button>
         </div>
         </div>

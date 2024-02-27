@@ -38,6 +38,9 @@ export default function Mypage(){
     const btn_show_conTranslaion = e => {
         navigate('/medic/consultative/assignmentTranslateList')
     }
+    const btn_show_conInfo = e => {
+        navigate('/medic/mypage/ChangeConsultativeInfo')
+    }
     return(
         <div className={consultativeMypage.consultativeMypage_box}>
             <div className={consultativeMypage.consultativeMypage_assignmentCount_box}>
@@ -62,11 +65,8 @@ export default function Mypage(){
                             <h3>전체 {conTranslation}건</h3>
                         </div>
                     </div>
-                    <div className={consultativeMypage.consultativeMypage_countbox}>
-                        <h2 className={consultativeMypage.con_counttitle}>나의 문의 현황</h2>                     
-                        <div className={consultativeMypage.con_count}>
-                            <h3>전체 0건</h3>
-                        </div>
+                    <div className={consultativeMypage.consultativeMypage_countbox} onClick={btn_show_conInfo}>
+                        <h2 className={consultativeMypage.con_counttitle}>내 정보 수정</h2>                     
                     </div>
                 </div>
             </div>
