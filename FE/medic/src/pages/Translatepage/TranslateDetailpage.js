@@ -204,13 +204,13 @@ export default function TranslateDetailpage(){
                         }
                     </div>
                 </div>
+                {translateDetails.trProgressStatus === '번역완료' && (
+                <div>
                 <div className={translaterequest.row_box} style={{height : 'auto'}}>
                     <div className={translaterequest.title_box}>
                         번역 자료
                     </div>
                     <div className={translaterequest.input_box}>
-                        {
-                            trAnswer ?
                             <button>
                                 <a
                                     href={`http://localhost:8080/assignedTranslate/findFile/${index}`}
@@ -219,11 +219,10 @@ export default function TranslateDetailpage(){
                                     다운로드
                                 </a>
                             </button>
-                            :
-                            "해당 파일이 존재하지 않습니다."
-                        }
                     </div>
                 </div>
+                </div>
+                )}
                 <div className={translaterequest.complete}>
                     <button type="button" onClick={btn_goto_list} className={translaterequest.btt_complete}>목록</button>
                     <button type="button" onClick={btn_edit} className={translaterequest.btt_complete}>수정</button>
