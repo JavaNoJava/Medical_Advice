@@ -1,6 +1,7 @@
 package com.example.medic.consultative.controller;
 
 import com.example.medic.client.controller.ClientController;
+import com.example.medic.consultative.dto.Consultative2Dto;
 import com.example.medic.consultative.dto.ConsultativeDto;
 import com.example.medic.consultative.dto.ConsultativeInfoDto;
 import com.example.medic.consultative.dto.ModifyConsultativeDto;
@@ -29,15 +30,15 @@ public class ConsultativeInfoController {
     private final ModifyConsultativeService modifyConsultativeService;
 
     @GetMapping("/consultative/consultativeInfoAll")
-    public ResponseEntity<ConsultativeDto> findConsultativeInfoAll(HttpServletRequest request) {
+    public ResponseEntity<Consultative2Dto> findConsultativeInfoAll(HttpServletRequest request) {
         HttpSession session = request.getSession();
         String cId = (String) session.getAttribute("uId");
 
-        ConsultativeDto consultativeDto = ConsultativeDto.builder()
+        Consultative2Dto consultative2Dto = Consultative2Dto.builder()
                 .cId(cId)
                 .build();
 
-        ConsultativeDto response = consultativeService.findConsultativeInfoAll(consultativeDto);
+        Consultative2Dto response = consultativeService.findConsultativeInfoAll(consultative2Dto);
         return ResponseEntity.ok().body(response);
     }
 
