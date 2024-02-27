@@ -181,6 +181,7 @@ public class TranslationServiceImpl implements TranslationService {
                 .trMtl(translationRequestFile.getTrMtl())
                 .trAnswer(translationAnswerFile == null ? "empty_file" : translationAnswerFile.getTrAnswer())
                 .tamDate(translationAssignment.getTamDate())
+                .trProgressStatus(translationAssignment.getTrProgressStatus())
                 .build();
 
         return translationResponseDto;
