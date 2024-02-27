@@ -1,0 +1,63 @@
+.answerwrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+  
+  .inquiry_title{
+    width: 950px;
+    display: flex;
+    justify-content: start;
+  }
+  .answerContainer {
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    height: auto;
+    border: 1px solid black;
+    padding: 3px;
+  }
+  
+  .answerInput {
+    width: 830px;
+    height: 150px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .answertext{
+    padding: 20px;
+  }
+  .answerButton_wrap{
+    display: flex;
+    justify-content: center;
+    width: 850px;
+  }
+  .answerButtonbox{
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .useranswerButtonbox{
+    display: flex;
+    width: 400px;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .answerButton {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    width: 100px;
+    &:hover {
+      background-color: #0056b3;
+    }
+  }

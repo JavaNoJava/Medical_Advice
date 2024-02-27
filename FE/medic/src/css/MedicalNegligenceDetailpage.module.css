@@ -1,0 +1,53 @@
+.detailform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .detail_title {
+    width: 1048px;
+    display: flex;
+    justify-content: start;
+  }
+  
+  .complete {
+    text-align: right;
+    margin-top: 50px;
+  }
+
+  h2 {
+    font-size: 24px; 
+  }
+  
+  .medicalNegligencedetail_table {
+    width: 850px;
+    border-collapse: collapse;
+    position: relative;
+  }
+  
+  .medicalNegligencedetail_th, .medicalNegligencedetail_td {
+    height: 40px;
+    font-size: 14px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+  }
+  
+
+  .btt_write {
+    display: inline-block;
+    font-size: 0.8rem;
+    background-color: #3cb371;
+    height: 50px;
+    width: 180px;
+    border: none;
+    border-radius: 20px;
+  }
+
+  textarea {
+    height: 113px;
+    width: 703px;
+    resize: vertical;
+  }
+  

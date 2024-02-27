@@ -1,0 +1,104 @@
+.analyzeDetail_wrap {
+    height: 1700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center; /* 추가: 화면 가운데 정렬 */
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.request_usertable{
+    width: 850px;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+}
+.row_box{
+    display: flex;
+    align-items: center;
+    height: 128px;
+    border: 1px solid black;
+}
+.title_box{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-right: 1px solid black;
+    height: 42px;
+    width: 128px;
+    padding-left: 20px;
+}
+.input_box{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 42px;
+    padding-left: 20px;
+    width: 250px;
+}
+.input_ptssnumbox{
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : start;
+}
+.request_patienttable{
+    width: 850px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.patient_box{
+    height: 80px;
+}
+.row_contentbox{
+    height: 129px;
+}
+.count_box{
+    height : 118px;
+    display : flex;
+    flex-direction : column;
+    justify-content : end;
+}
+.request_othertable{
+    height: 80px;
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+}
+.request_questiontable{
+    height: auto;
+    width: 850px;
+}
+.file_table{
+    height: auto;
+    width: 850px;
+}
+.iconbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    width: 880px;
+}
+div.complete {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btt_complete {
+    display: inline-block;
+    font-size: 1.2rem;
+    background-color: #3cb371;
+    height: 50px;
+    width: 180px;
+    border: none;
+    border-radius: 20px;
+}
+.tb{
+    max-width: 850px;
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scroll if content overflows */
+}

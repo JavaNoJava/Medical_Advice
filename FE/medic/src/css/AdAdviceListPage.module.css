@@ -1,0 +1,80 @@
+.ad_contents {
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center; 
+    text-align: center;
+  }
+  
+  .ad_table {
+    width: 900px;
+    text-align: center;
+  }
+  
+  .ad_th, .ad_td {
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+  
+  .ad_th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .ad_doc{
+    width: 1px;
+    border: 1px solid #ddd;
+    padding: 1px;
+  }
+  
+  .ad_th:first-child,
+  .adviceList_td:first-child {
+    width: 100px;
+  }
+  
+  .statusCell_select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+  
+  .ad_pagination {
+    margin-top: 10px; /* Adjust as needed */
+  }
+  
+  .ad_paginationButton {
+    font-size: 16px; /* Adjust the font size as needed */
+    margin: 0 5px; /* Adjust the spacing as needed */
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .ad_iconbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    width: 950px;
+  }
+
+  div.ad_complete {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.ad_complete {
+    display: inline-block;
+    font-size: 1.2rem;
+    background-color: #3cb371;
+    height: 50px;
+    width: 180px;
+    border: none;
+    border-radius: 20px;
+}

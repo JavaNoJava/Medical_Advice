@@ -1,0 +1,77 @@
+.wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cusinquiry_title{
+    width: 900px;
+    display: flex;
+    justify-content: start;
+}
+.cusinquiry_quirytable{
+    width: 850px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.cusinquiry_quirylist_titlebox{
+    width: 850px;
+    height: 40px;
+    display: flex;
+}
+.list_content, .list_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+}
+.list_title{   
+    font-size: 1.3rem;
+    height: 40px;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+.list_content{
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+.cusinquiry_quirylist_content{
+    width: 850px;
+    height: 40px;
+    display: flex;
+}
+.list_no, .quirylist_no{
+    width: 150px;
+}
+.list_question, .quirylist_question{
+    width: 500px;
+}
+.list_writedate, .quirylist_writedate{
+    width: 200px;
+}
+.btn_write_inquiry{  
+    font-size: 0.8rem;
+    background-color: #3cb371;
+    height: 50px;
+    width: 180px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.pagination {
+    margin-top: 30px; /* Adjust as needed */
+    text-align: center;
+  }
+  
+  .paginationButton {
+    font-size: 16px; /* Adjust the font size as needed */
+    margin: 0 5px; /* Adjust the spacing as needed */
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }

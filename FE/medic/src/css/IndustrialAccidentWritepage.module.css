@@ -1,0 +1,86 @@
+.writeform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.industrial_title {
+    width: 950px;
+    display: flex;
+    justify-content: start;
+}
+.write_table{
+    width: 850px;
+    height: 350px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.write_rowbox{
+    width: 850px;
+    height: 40px;
+    display: flex;
+    border: 1px solid #ddd;
+}
+.write_titleinputbox{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 750px;
+}
+.write_writerinputbox{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 280px;
+    height: 30px;
+}
+.write_titleinput{
+    width: 700px;
+    height: 30px;
+    margin-left: 10px;
+}
+.write_writerinfo{
+    display: flex;
+    align-items: center;
+}
+.write_title{
+    width: 100px;
+    height: 40px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.write_writerinfocontent{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.write_contentrowbox{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    border: none;
+}
+.write_contenttitle{
+    border-bottom: 1px solid #ddd;
+    width: 850px;
+    justify-content: start;
+}
+.write_content{
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.contentcount{
+    width: 780px;
+    display: flex;
+    justify-content: end;
+}
+.btn_writequestionbox{
+    width: 850px;
+    display: flex;
+    justify-content: end;
+}

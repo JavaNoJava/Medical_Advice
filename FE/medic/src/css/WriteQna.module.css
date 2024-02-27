@@ -1,0 +1,108 @@
+.writeform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.inquiry_title {
+    width: 950px;
+    display: flex;
+    justify-content: start;
+}
+.write_table{
+    width: 850px;
+    height: 350px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.write_rowbox{
+    width: 850px;
+    height: 40px;
+    display: flex;
+    border: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+}
+.write_titleinputbox{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 750px;
+    padding-left: 20px;
+}
+.write_titleinput{
+    width: 700px;
+    height: 30px;
+    margin-left: 10px;
+}
+.write_writerinfo{
+    display: flex;
+    align-items: center;
+    width: 283px;
+}
+.write_title{
+    width: 100px;
+    height: 40px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.write_writerinfocontent{
+    width: 175px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 20px;
+}
+.write_contentrowbox{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    border: none;
+}
+.write_contenttitle{
+    border-bottom: 1px solid #ddd;
+    width: 850px;
+    justify-content: start;
+}
+.write_contentbox{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.write_content{
+    padding: 20px 20px 20px 20px;
+}
+.contentcount{
+    width: 780px;
+    display: flex;
+    justify-content: end;
+}
+.btn_writequestionbox{
+    width: 850px;
+    display: flex;
+    justify-content: end;
+}
+.btn_writequestionbox{
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .btn_writequestion {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    width: 100px;
+    &:hover {
+      background-color: #0056b3;
+    }
+  }

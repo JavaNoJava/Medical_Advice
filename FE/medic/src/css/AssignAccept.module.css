@@ -1,0 +1,96 @@
+.assignform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+i{
+    color : #f4a460;
+}
+
+div.terms { 
+    border : 1px solid black;
+    height : 200px; 
+    width : 1000px;
+    text-align : center;
+    overflow-y: scroll;
+    
+}
+.agree_title{
+    width: 1048px;
+    display: flex;
+    justify-content: start;
+}
+.ch_terms, .ch_policy{
+    font-size: 1.2rem;
+    display: flex;
+    width: 1000px;
+    justify-content: end;
+}
+
+div.policy { 
+    border : 1px solid black;
+    height : 200px; 
+    width : 1000px; 
+    text-align : center;
+    overflow-y: scroll;
+    
+}
+
+div.certification1{
+    width : 200px;
+    font-size: 1.2rem;
+}
+
+div.certification2{
+    width : 350px;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+input.certification{
+    width : 200px;
+    height : 35px;
+}
+.ph_certification{
+    display: flex;
+    width: 700px;
+    justify-content: space-between;
+}
+
+.certifi_text{
+    font-size : 0.8rem;
+    color : #b22222;
+    width: 350px;
+    margin-left: 30px;
+}
+
+button.btt_certifi{
+    height : 30px;
+    width : 130px;
+    font-size : 1.1rem;
+    background-color : #dda0dd;
+    border-radius: 20px;
+    border: none;
+}
+
+div.next{
+    text-align : center;
+    margin-top : 50px;
+
+}
+.btt_next{
+    display : inline-block;
+    font-size: 1.2rem;
+    background-color : #3cb371;
+    height: 50px;
+    width: 180px;
+    border: none;
+    border-radius: 20px;
+}
+.text_num{
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+}

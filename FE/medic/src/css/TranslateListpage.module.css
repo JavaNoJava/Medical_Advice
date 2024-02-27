@@ -1,0 +1,59 @@
+.contents {
+  height: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center; /* 추가: 화면 가운데 정렬 */
+  text-align: center;
+}
+
+.translateList_table {
+  width: 900px;
+  text-align: center;
+}
+
+.translateList_th, .translateList_td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.translateList_th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.translateList_th:first-child,
+.translateList_td:first-child {
+  width: 100px;
+}
+
+.statusCell select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+.pagination {
+  margin-top: 10px; /* Adjust as needed */
+}
+
+.paginationButton {
+  font-size: 16px; /* Adjust the font size as needed */
+  margin: 0 5px; /* Adjust the spacing as needed */
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.iconbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  text-align: center;
+  width: 950px;
+}

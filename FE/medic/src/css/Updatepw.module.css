@@ -1,0 +1,11 @@
+.updatepw_wrap{
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 15px;
+}

@@ -1,0 +1,164 @@
+.menu {
+    width: 100vw;
+    overflow: hidden;
+    margin: 50px auto;
+    margin-top: 20px;
+    
+}
+
+ul {
+    padding: 0;
+    
+}
+.menu > li {
+    width: 16.6%; /*20*5=100%*/
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: (180deg, #B4B4B4 0%, rgba(217, 217, 217, 0.00) 100%);
+    list-style: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: (180deg, #B4B4B4 0%, rgba(217, 217, 217, 0.00) 100%);
+    padding: 20px 0 20px 0;
+    &:hover{
+        border-bottom: none;
+    }
+}
+
+.menu button {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    background-color: white;
+}
+.submenu{
+    background-color: #EBEBEB;
+}
+.submenu span {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+.submenu > li {
+    line-height: 50px;
+    background-color: #EBEBEB;
+}
+
+.submenu {
+    height: 0; 
+    overflow: hidden;
+}
+
+.menu > li:hover .submenu {
+    height: 250px;
+    transition-duration: 1s;
+    margin-top: 20px;
+ }
+
+.main_header{
+    display :flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 10;
+    margin-top: -8px;
+    background-color: white;
+}
+.top_header{
+    width : 1680px;
+    margin-left:10px;
+    margin-right:10px;
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mainlogo {
+    background-image : url('../img/LogoImg.png');
+    width : 655px;
+    height : 78px;
+    background-repeat : no-repeat;
+    background-size : contain;
+    cursor:pointer;
+}
+.sign_text{
+    font-size : 1.8rem;
+}
+.navigator{
+    width : 1720px;
+    height : 73px;
+    border-top : 1px solid rgba(0,0,0,0.3);
+}
+.user_sign{
+    width : 250px;
+    margin-right : 10px;
+    display : flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.sign_text{
+    text-decoration:none;
+    color : black;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.sign_text:visited {
+    color: black;
+}
+.menu {
+    width: 1680px;
+    overflow: hidden;
+    margin: 50px auto;
+    margin-top: 20px;
+}
+
+.menu > li {
+    width: 16.6%; /*20*5=100%*/
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: (180deg, #B4B4B4 0%, rgba(217, 217, 217, 0.00) 100%);
+    list-style: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: (180deg, #B4B4B4 0%, rgba(217, 217, 217, 0.00) 100%);
+    padding: 20px 0 20px 0;
+    background-color: white;
+    &:hover{
+        border-bottom: none;
+    }
+}
+
+.menu button {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    background-color: white;
+}
+
+.submenu span {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.menu > li:hover .submenu {
+    height: 250px;
+    transition-duration: 1s;
+    margin-top: 20px;
+    background-color: #EBEBEB;
+ }

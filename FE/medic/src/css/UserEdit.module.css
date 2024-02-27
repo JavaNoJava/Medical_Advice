@@ -1,0 +1,67 @@
+.useredit_wrap {
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.useredit_icon {
+    color: #f4a460;
+}
+
+div.tb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+div.tb .useredit_table {
+    border-collapse: collapse;
+    width: 850px;
+    max-width: 100%;
+    margin: 10px;
+}
+
+div.tb .useredit_table .useredit_td,
+div.tb .useredit_table .useredit_th {
+    border: 1px solid black; /* Keep border for td and th */
+    text-align: left;
+    padding: 10px;
+}
+
+div.tb .useredit_table tr {
+    border: none; /* Remove border for tr */
+}
+
+tr.useredit_zipcode_tb {
+    height: 100px;
+}
+
+div.useredit_complete {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.useredit_btt_complete {
+    display: inline-block;
+    font-size: 1.2rem;
+    background-color: #3cb371;
+    height: 50px;
+    width: 180px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.useredit_iconbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    width: 880px;
+    margin: 0 auto 20px;
+}

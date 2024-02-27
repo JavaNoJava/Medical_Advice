@@ -1,0 +1,152 @@
+.detailform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.inquiry_title {
+  width: 950px;
+  display: flex;
+  justify-content: start;
+}
+.detail_table{
+  width: 850px;
+  height: 350px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.detail_rowbox{
+  width: 850px;
+  height: 40px;
+  display: flex;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+}
+.detail_titleinputbox{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 750px;
+  padding-left: 20px;
+}
+.detail_titleinput{
+  width: 700px;
+  height: 30px;
+  margin-left: 10px;
+}
+.detail_writerinfo{
+  display: flex;
+  align-items: center;
+  width: 283px;
+}
+.detail_title{
+  width: 100px;
+  height: 40px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.detail_writerinfocontent{
+  width: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-left: 20px;
+}
+.detail_contentrowbox{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  border: none;
+}
+.detail_contenttitle{
+  border-bottom: 1px solid #ddd;
+  width: 850px;
+  justify-content: start;
+}
+.detail_contentbox{
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.detail_content{
+  padding: 20px 20px 20px 20px;
+}
+.contentcount{
+  width: 780px;
+  display: flex;
+  justify-content: end;
+}
+.btn_writequestionbox{
+  width: 850px;
+  display: flex;
+  justify-content: end;
+}
+.btn_writequestionbox{
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
+  align-items: center;
+}
+.btn_writequestion {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  width: 100px;
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+.detailButtonbox{
+  display: flex;
+  width: 400px;
+  justify-content: space-around;
+  align-items: center;
+}
+.detailButton {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  width: 100px;
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+div.complete {
+  text-align: right;
+  margin-top: 50px;
+}
+
+.btt_write {
+  display: inline-block;
+  font-size: 0.8rem;
+  background-color: #3cb371;
+  height: 50px;
+  width: 180px;
+  border: none;
+  border-radius: 20px;
+}
+
+.inputWithoutBorder {
+  border: none;
+  outline: none;
+}
+
+.textareaWithoutBorder {
+  border: none;
+  outline: none;
+  resize: none;
+}
