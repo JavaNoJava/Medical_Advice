@@ -30,7 +30,7 @@ public class ModifyConsultativeService {
                 .cId(consultative.getCId())
                 .cName(consultative.getCName())
                 .cPw(consultative.getCPw())
-                .cRole(modifyConsultativeDto.getCRole())
+                .cRole(consultative.getCRole())
                 .department(modifyConsultativeDto.getDepartment())
                 .cEmail(modifyConsultativeDto.getCEmail())
                 .cTel(modifyConsultativeDto.getCTel())

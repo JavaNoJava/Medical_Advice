@@ -1,6 +1,7 @@
 package com.example.medic.consultative.service;
 
 import com.example.medic.consultative.domain.Consultative;
+import com.example.medic.consultative.dto.Consultative2Dto;
 import com.example.medic.consultative.dto.ConsultativeDto;
 import com.example.medic.consultative.dto.ConsultativeInfoDto;
 import com.example.medic.consultative.repository.ConsultativeRepository;
@@ -25,11 +26,11 @@ public class ConsultativeService {
         return consultative.orElseThrow(() -> new NoSuchElementException());
     }
 
-    public ConsultativeDto findConsultativeInfoAll(ConsultativeDto consultativeDto) {
+    public Consultative2Dto findConsultativeInfoAll(Consultative2Dto consultative2Dto) {
         try {
-            String cId = consultativeDto.getCId();
+            String cId = consultative2Dto.getCId();
             Consultative consultative = findConsultative(cId);
-            ConsultativeDto respConsultativeInfoAll = ConsultativeDto.builder()
+            Consultative2Dto respConsultativeInfoAll = Consultative2Dto.builder()
                     .cId(consultative.getCId())
                     .cName(consultative.getCName())
                     .cPw(consultative.getCPw())
@@ -48,7 +49,7 @@ public class ConsultativeService {
             return respConsultativeInfoAll;
         } catch (NoSuchElementException n) {
             logger.info("해당 전문의를 찾을 수 없습니다.");
-            return consultativeDto;
+            return consultative2Dto;
         }
     }
 
