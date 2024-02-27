@@ -409,7 +409,7 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
             TranslationAnswerFile translationAnswerFile = TranslationAnswerFile.builder()
                     .trAnswerId(traId)
                     .trAnswer(newtranslationAnswerFileRequestDto.getTrAnswer())
-                    .trAnswerDate(translationAnswerFileRequestDto.getTrAnswerDate())
+                    .trAnswerDate(LocalDate.now())
                     .translationRequestList(translationRequestList)
                     .consultative(consultative)
                     .build();
@@ -433,7 +433,7 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
             translationAnswerFile = TranslationAnswerFile.builder()
                     .trAnswerId(traId)
                     .trAnswer(updatetranslationAnswerFileRequestDto.getTrAnswer())
-                    .trAnswerDate(translationAnswerFileRequestDto.getTrAnswerDate())
+                    .trAnswerDate(LocalDate.now())
                     .translationRequestList(translationRequestList)
                     .consultative(consultative)
                     .build();
