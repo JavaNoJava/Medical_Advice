@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import changePw from '../css/ChangeConsultativePw.module.css'
+import { Cookies } from "react-cookie";
 
 export default function ChangeInputConsultativePw(){
     const [newPw, setNewPw] = useState('')
@@ -13,7 +14,8 @@ export default function ChangeInputConsultativePw(){
 
     const navigate = useNavigate();
     const location = useLocation();
-    const cPw = location.state.cPw
+    const cookie = new Cookies()
+    const cPw = location.state.cpw
 
 
     const input_currentpw = e => {
@@ -33,7 +35,7 @@ export default function ChangeInputConsultativePw(){
     }, [newPw, pwChk])
 
     const input_newpw = e => {
-        setNewPw(e.target.value)
+        setNewPw(e.target.value.trim());
     }
 
     const input_newpwcheck = e => {
@@ -41,11 +43,10 @@ export default function ChangeInputConsultativePw(){
     }
     const chkPw = e => {
         if(newPw === pwChk){
-            alert('설정한 비밀번호와 같습니다.')
-            setComplete(false)
+            return false;
         } else{
             alert('설정한 비밀번호와 다릅니다.')
-            setComplete(true)
+            return true;
         }
     }
     const btn_checkCurrentPw = e => {
@@ -57,12 +58,22 @@ export default function ChangeInputConsultativePw(){
         }
     }
     const btn_modifyPw = async()=>{
+        if (!newPw || !pwChk || newPw.trim() === '' || pwChk.trim() === '') {
+            alert('입력값을 확인해주세요');
+            return;
+        }    
+        if(chkPw()){
+            return;
+        }
         const consultativePw = {
-            'cPw' : consultativePw,
+            'cPw' : newPw,
         }
         try{
             const response = await axios.post('/consultative/modifyConsultativePw', consultativePw)
             alert(response.data)
+            cookie.remove('uId')
+            cookie.remove('uRole')
+            alert('다시 로그인해 주세요.')
             navigate('/')
         } catch(err){
             console.log(err)
@@ -82,10 +93,10 @@ export default function ChangeInputConsultativePw(){
                         </div>
                         <div className={changePw.input_pwbox}>
                             <div className={changePw.input_newpwbox}>
-                                <input type="text" className={changePw.input_currentpw} onChange={input_newpw}/>
+                                <input type="password" className={changePw.input_currentpw} onChange={input_newpw}/>
                             </div>
                             <div className={changePw.input_newpwchkbox}>
-                                <input type="text" className={changePw.input_currentpw} onChange={input_newpwcheck} onBlur={chkPw}/>
+                                <input type="password" className={changePw.input_currentpw} onChange={input_newpwcheck} onBlur={chkPw}/>
                             </div>
                         </div>  
                         <button className={changePw.checkCurrentPw} disabled={complete} onClick={btn_modifyPw}>비밀번호 재설정</button>
@@ -99,7 +110,7 @@ export default function ChangeInputConsultativePw(){
                             </h3>
                         </div>
                         <div className={changePw.input_pwbox}>
-                            <input type="text" className={changePw.input_currentpw} onChange={input_currentpw}/>
+                            <input type="password" className={changePw.input_currentpw} onChange={input_currentpw}/>
                             <button className={changePw.checkCurrentPw} disabled={checkCurrentPw} onClick={btn_checkCurrentPw}>비밀번호 확인</button>
                         </div> 
                     </>
