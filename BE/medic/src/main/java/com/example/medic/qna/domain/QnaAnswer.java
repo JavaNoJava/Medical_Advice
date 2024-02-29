@@ -7,9 +7,11 @@ import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import net.bytebuddy.asm.Advice;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -27,7 +29,7 @@ public class QnaAnswer {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull
-    private Date qaAnswerDate;
+    private LocalDate qaAnswerDate;
 
     @OneToOne
     @JoinColumn(name = "qa_Id")
@@ -40,7 +42,7 @@ public class QnaAnswer {
     private Manager manager;
 
     @Builder
-    private QnaAnswer(Long qaAnswerId, String qaAnswer, Date qaAnswerDate, Qna qna, Manager manager){
+    private QnaAnswer(Long qaAnswerId, String qaAnswer, LocalDate qaAnswerDate, Qna qna, Manager manager){
         this.qaAnswerId = qaAnswerId;
         this.qaAnswer = qaAnswer;
         this.qaAnswerDate = qaAnswerDate;

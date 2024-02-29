@@ -56,7 +56,7 @@ public class QnaAnswerController {
     }
 
     //문의 답변 삭제
-    @DeleteMapping("/qna/deleteAnswer/{qaAsId}")
+    @PostMapping("/qna/deleteAnswer/{qaAsId}")
     public ResponseEntity<String> deleteQAnswer(@PathVariable Long qaAsId){
         qnaAnswerService.deleteQAnswer(qaAsId);
         try{

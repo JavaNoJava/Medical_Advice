@@ -36,7 +36,7 @@ export default function AdminQnaAnswer({qaId}) {
     const btn_delete_answer = async() => {
       try{
         if(window.confirm('답변을 삭제하시겠습니까?')){
-          const response = await axios.delete(`/qna/deleteAnswer/${qaAnswerId}`)
+          const response = await axios.post(`/qna/deleteAnswer/${qaAnswerId}`)
           setAnswer('')
           getAnswer()
           alert('삭제되었습니다.')
