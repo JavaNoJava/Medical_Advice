@@ -190,7 +190,35 @@ export default function TranslateRequestpage(){
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>진단과목</div>
                     <div className={translaterequest.input_box}>
-                        <input type="text" name="tr_ptsub" onChange={input_tr_ptsub}/>
+                    <select value={tr_ptsub} onChange={e => setTrptsub(e.target.value)}>
+                        <option value="">부서 선택</option>
+                        <option value="내과">내과</option>
+                        <option value="신경과">신경과</option>
+                        <option value="정신건강의학과">정신건강의학과</option>
+                        <option value="외과">외과</option>
+                        <option value="정형외과">정형외과</option>
+                        <option value="신경외과">신경외과</option>
+                        <option value="흉부외과">흉부외과</option>
+                        <option value="성형외과">성형외과</option>
+                        <option value="마취통증의학과">마취통증의학과</option>
+                        <option value="산부인과">산부인과</option>
+                        <option value="소아청소년과">소아청소년과</option>
+                        <option value="안과">안과</option>
+                        <option value="이비인후과">이비인후과</option>
+                        <option value="피부과">피부과</option>
+                        <option value="비뇨의학과">비뇨의학과</option>
+                        <option value="영상의학과">영상의학과</option>
+                        <option value="방사선종양학과">방사선종양학과</option>
+                        <option value="병리과">병리과</option>
+                        <option value="진단검사의학과">진단검사의학과</option>
+                        <option value="결핵과">결핵과</option>
+                        <option value="재활의학과">재활의학과</option>
+                        <option value="예방의학과">예방의학과</option>
+                        <option value="가정의학과">가정의학과</option>
+                        <option value="응급의학과">응급의학과</option>
+                        <option value="핵의학과">핵의학과</option>
+                        <option value="직업환경의학과">직업환경의학과</option>
+                    </select>
                     </div>
                     <div className={translaterequest.title_box} style={{borderLeft : '1px solid black'}}>진단명</div>
                     <div className={translaterequest.input_box}>
