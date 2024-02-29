@@ -36,6 +36,7 @@ public class TrAllListService {
     private final ConsultativeRepository consultativeRepository;
     private final TranslationAnswerFileRepository translationAnswerFileRepository;
 
+
     /*
     번역 목록 조회
      */
@@ -83,16 +84,19 @@ public class TrAllListService {
         if (consultative != null){
             cName= consultative.getCName();
         }
+        TranslationAnswerFile translationAnswerFile = translationRequestList.getTranslationAnswerFile();
+        logger.info("transwerdate:{}",translationAnswerFile.getTrAnswerDate());
+
         return new TranslateListDto(
 
                translationRequestList.getTrId(),
                 translationRequestList.getTrPtDiagnosis(),
                 translationRequestList.getTrRegDate(),
                 clientName,
-//                (translationRequestList.getTranslationAssignment() != null && translationRequestList.getTranslationAssignment().getTamDate() != null) ? translationRequestList.getTranslationAssignment().getTamDate() : null,
                 translationAssignment.getTamDate()
                 ,admProgressStatus
-                ,cName
+                ,cName,
+                translationAnswerFile.getTrAnswerDate()
         );
     }
 

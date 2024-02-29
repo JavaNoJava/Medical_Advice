@@ -16,11 +16,12 @@ public class TranslateListDto {
     private LocalDate tamDate;
     private String trProgressStatus;
     private String cName;
+    private LocalDate trAnswerDate;
 
     @Builder
     public TranslateListDto(Long trId,  String trPtDiagnosis,
                           LocalDate trRegDate, String uName, LocalDate tamDate,
-                          String trProgressStatus, String cName) {
+                          String trProgressStatus, String cName, LocalDate trAnswerDate) {
         this.trId = trId;
         this.trPtDiagnosis = trPtDiagnosis;
         this.trRegDate = trRegDate;
@@ -28,5 +29,6 @@ public class TranslateListDto {
         this.tamDate = tamDate;
         this.trProgressStatus = trProgressStatus;
         this.cName = cName;
+        this.trAnswerDate = trAnswerDate;
     }
 }
