@@ -14,6 +14,7 @@ import com.example.medic.qna.repository.QnaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.NoSuchElementException;
 
 @Service
@@ -47,7 +48,7 @@ public class QnaAnswerService {
         Qna qna = qnaRepository.findById(qaId).get();
 
         QnaAnswer qnaAnswer = QnaAnswer.builder()
-                .qaAnswerDate(qnaAnswerRequestDto.getQaAnswerDate())
+                .qaAnswerDate(LocalDate.now())
                 .qaAnswer(qnaAnswerRequestDto.getQaAnswer())
                 .qna(qna)
                 .manager(manager)
@@ -65,7 +66,7 @@ public class QnaAnswerService {
         }
         QnaAnswer updateQnaAnswer = qnaAnswer.builder()
                 .qaAnswerId(qaAsId)
-                .qaAnswerDate(qnaAnswerRequestDto.getQaAnswerDate())
+                .qaAnswerDate(LocalDate.now())
                 .qaAnswer(qnaAnswerRequestDto.getQaAnswer())
                 .qna(qna)
                 .manager(manager)

@@ -108,7 +108,7 @@ public class QnaController {
     }
 
     //Qna 게시글 삭제
-    @DeleteMapping("/qna/delete/{qaid}")
+    @PostMapping("/qna/delete/{qaid}")
     public ResponseEntity<String> deleteQpost(@PathVariable Long qaid){
         qnaService.deleteQpost(qaid);
         try{
