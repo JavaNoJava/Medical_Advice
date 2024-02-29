@@ -6,13 +6,14 @@ import com.example.medic.qna.domain.QnaAnswer;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 @Data
 @Builder
 
 public class QnaAnswerRequestDto {
     private String qaAnswer;    // Qna 답변글
-    private Date qaAnswerDate;
+    private LocalDate qaAnswerDate;
 
     public static QnaAnswerRequestDto form(QnaAnswer qnaAnswer){
         return QnaAnswerRequestDto.builder()
