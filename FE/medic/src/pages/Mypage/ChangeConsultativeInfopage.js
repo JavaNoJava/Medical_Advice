@@ -176,16 +176,19 @@ export default function ChangeConsultativeInfopage(){
         }
     }
     const btn_progrm_deleteConsultative = async() => {
-        try{
-            cookie.remove('uId')
-            cookie.remove('uRole')
-            const response = await axios.delete('/consultative/deleteConsultative')
-            if(response.data === '탈퇴 완료'){
-                alert('탈퇴가 정상적으로 이루어졌습니다.')
-                navigate('/')
+        try {
+            const confirmed = window.confirm('탈퇴하시겠습니까?');
+            if (confirmed) {
+              const response = await axios.post(`/consultative/deleteConsultative/`);
+              if(response.data === '탈퇴 완료') {
+              alert('탈퇴가 정상적으로 이루어졌습니다.');
+              cookie.remove('uId')
+              cookie.remove('uRole')
+              navigate('/')
+              }
             }
         } catch(err){
-            console.log("오류")
+            console.log('오류', err)
         }
     }
     
