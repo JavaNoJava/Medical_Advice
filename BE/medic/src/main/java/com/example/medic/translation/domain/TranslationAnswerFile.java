@@ -51,5 +51,9 @@ public class TranslationAnswerFile {
         this.trAnswerDate = trAnswerDate;
         this.translationRequestList = translationRequestList;
     }
+
+    public void setConsultativeToNull() {
+        this.consultative = null;
+    }
 }
 
