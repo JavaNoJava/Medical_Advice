@@ -11,7 +11,9 @@ import com.example.medic.client.domain.Client;
 import com.example.medic.consultative.domain.Consultative;
 import com.example.medic.consultative.repository.ConsultativeRepository;
 import com.example.medic.manager.dto.ManagedConsultativeInfoDto;
+import com.example.medic.translation.domain.TranslationAnswerFile;
 import com.example.medic.translation.domain.TranslationAssignment;
+import com.example.medic.translation.repository.TranslationAnswerFileRepository;
 import com.example.medic.translation.repository.TranslationAssignmentRepository;
 import com.example.medic.translation.repository.TranslationRequestListRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +35,7 @@ public class ConsultativeManagementServiceImpl implements ConsultativeManagement
     private final AdviceAssignmentRepository adviceAssignmentRepository;
     private final AnalyzeAssignmentRepository analyzeAssignmentRepository;
     private final TranslationAssignmentRepository translationAssignmentRepository;
+    private final TranslationAnswerFileRepository translationAnswerFileRepository;
     private final ConsultativeRepository consultativeRepository;
     private final Logger LOGGER = LoggerFactory.getLogger(ConsultativeManagementServiceImpl.class);
     @PersistenceContext
@@ -135,6 +138,12 @@ public class ConsultativeManagementServiceImpl implements ConsultativeManagement
             for(TranslationAssignment translationAssignment : translationAssignments){
                 translationAssignment.setConsultativeToNull();
                 translationAssignmentRepository.save(translationAssignment);
+            }
+
+            List<TranslationAnswerFile> translationAnswerFiles = consultative.getTranslationAnswerFiles();
+            for (TranslationAnswerFile translationAnswerFile : translationAnswerFiles) {
+                translationAnswerFile.setConsultativeToNull();
+                translationAnswerFileRepository.save(translationAnswerFile);
             }
             consultativeRepository.delete(consultative);
             return true;
