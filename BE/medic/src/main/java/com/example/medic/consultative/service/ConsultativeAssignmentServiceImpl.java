@@ -514,7 +514,7 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
             AnalyzeRequestList analyzeRequestList = analyzeRequestListRepository.findById(anId)
                     .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 분석의뢰 ID입니다."));
 
-            LocalDate anAnswerDate = responseDto.getAnAnswerDate();
+            LocalDate anAnswerDate = LocalDate.now();
 
             AnalyzeQuestionDto analyzeQuestionDtoList = splitResponseToQuestionDto(responseDto);
 
@@ -585,7 +585,7 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
             AdviceRequestList adviceRequestList = adviceRequestListRepository.findById(adId)
                     .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 자문의뢰 ID입니다."));
 
-            LocalDate adAnswerDate = responseDto.getAdAnswerDate();
+            LocalDate adAnswerDate = LocalDate.now();
 
             AdviceQuestionRequestDto adviceQuestionRequestDtoList = splitResponseToQuestionDto(responseDto);
 

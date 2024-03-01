@@ -76,7 +76,7 @@ public class ConsultativeInfoController {
         }
     }
 
-    @DeleteMapping("/consultative/deleteConsultative")
+    @PostMapping("/consultative/deleteConsultative")
     public ResponseEntity<String> deleteConsultativeInfo(HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
@@ -85,7 +85,7 @@ public class ConsultativeInfoController {
             ConsultativeInfoDto consultativeInfoDto = ConsultativeInfoDto.builder()
                     .cId(cId)
                     .build();
-            consultativeService.deleteConsultative(consultativeInfoDto);
+            modifyConsultativeService.deleteConsultative(consultativeInfoDto);
             return ResponseEntity.ok("탈퇴 완료");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("오류");

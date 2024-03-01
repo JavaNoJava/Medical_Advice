@@ -52,9 +52,4 @@ public class ConsultativeService {
             return consultative2Dto;
         }
     }
-
-    public void deleteConsultative(ConsultativeInfoDto consultativeInfoDto) {
-        String cId = consultativeInfoDto.getCId();
-        consultativeRepository.deleteById(cId);
-    }
 }
