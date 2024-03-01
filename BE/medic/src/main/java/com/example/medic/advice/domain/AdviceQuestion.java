@@ -47,7 +47,7 @@ public class AdviceQuestion {
     }
 
     public void updateAdAnswerDate(LocalDate adAnswerDate) {
-        this.adAnswerDate = adAnswerDate;
+        this.adAnswerDate = LocalDate.now();
     }
 
     public void updateAdAnswerContent(String adAnswerContent) {
