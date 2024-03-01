@@ -51,7 +51,7 @@ public class AnalyzeRequest {
     }
 
     public void updateAnAnswerDate(LocalDate anAnswerDate) {
-        this.anAnswerDate = anAnswerDate;
+        this.anAnswerDate = LocalDate.now();
     }
 
     public Long getAnId() {
