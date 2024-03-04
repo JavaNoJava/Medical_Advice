@@ -59,7 +59,7 @@ public class Client {
 
     private String cpAddress;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Qna> qnas = new ArrayList<>();
     @OneToMany(mappedBy = "client" , cascade = CascadeType.ALL)
     private List<AdviceRequestList> adviceRequests = new ArrayList<>();

@@ -48,13 +48,13 @@ public class TranslationRequestList {
     @JsonIgnore
     private Client client;
 
-    @OneToOne(mappedBy = "translationRequestList")
+    @OneToOne(mappedBy = "translationRequestList", cascade = CascadeType.ALL)
     private TranslationRequestFile translationRequestFile;
 
-    @OneToOne(mappedBy = "translationRequestList")
+    @OneToOne(mappedBy = "translationRequestList", cascade = CascadeType.ALL)
     private TranslationAssignment translationAssignment;
 
-    @OneToOne(mappedBy = "translationRequestList")
+    @OneToOne(mappedBy = "translationRequestList", cascade = CascadeType.ALL)
     private TranslationAnswerFile translationAnswerFile;
 
     @Builder(toBuilder = true)

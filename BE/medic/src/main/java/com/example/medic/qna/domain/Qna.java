@@ -35,6 +35,9 @@ public class Qna {
 
     private String qaPw;
 
+    @OneToOne(mappedBy = "qna", cascade = CascadeType.REMOVE) // 변경된 부분
+    private QnaAnswer qnaAnswer;
+
     @ManyToOne
     @JoinColumn(name = "client_Id")
     @JsonIgnore

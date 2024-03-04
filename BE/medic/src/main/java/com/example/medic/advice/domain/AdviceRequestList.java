@@ -67,7 +67,7 @@ public class AdviceRequestList {
     private List<AdviceQuestion> AdviceQuestions = new ArrayList<>();
 
 
-    @OneToOne(mappedBy = "adviceRequestList")
+    @OneToOne(mappedBy = "adviceRequestList", cascade = CascadeType.ALL)
     @JsonIgnore
     private AdviceAssignment adviceAssignment;
 
