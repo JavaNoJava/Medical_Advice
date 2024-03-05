@@ -272,6 +272,15 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                     <div className={assignmenttranslatedetail.input_box}>
                         {
                             isAnswer ?
+                            trProgressStatus ? 
+                                <button>
+                                    <a
+                                        href={`http://localhost:8080/assignedTranslate/findFile/${index}`}
+                                    >
+                                        다운로드
+                                    </a>
+                                </button>
+                            :
                             <>
                                 <button>
                                     <a
