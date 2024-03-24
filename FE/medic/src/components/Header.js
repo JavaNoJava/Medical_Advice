@@ -44,21 +44,21 @@ export default function Header({}) {
 
     useEffect(() => {
         const href = window.location.href
-        if(href.includes('advice')){
+        if(href.includes('advice') || href.includes('Advice')){
             setAdviceStyle({color : '#2a2ac8'})
             setAnalyzeStyle({color : 'black'})
             setTranslateStyle({color : 'black'})
             setMedicKnowledgeStyle({color : 'black'})
             setQnaStyle({color : 'black'})
             setMypageStyle({color : 'black'})
-        } else if(href.includes('analyze')){
+        } else if(href.includes('analyze') || href.includes('Analyze')){
             setAdviceStyle({color : 'black'})
             setAnalyzeStyle({color : '#2a2ac8'})
             setTranslateStyle({color : 'black'})
             setMedicKnowledgeStyle({color : 'black'})
             setQnaStyle({color : 'black'})
             setMypageStyle({color : 'black'})
-        } else if(href.includes('translate')){
+        } else if(href.includes('translate') || href.includes('Translate')){
             setAdviceStyle({color : 'black'})
             setAnalyzeStyle({color : 'black'})
             setTranslateStyle({color : '#2a2ac8'})
@@ -276,7 +276,6 @@ export default function Header({}) {
             // myInfo['hpZipcodeNum'] = hpadd[0]
             // myInfo['hpZipcode'] = hpadd[1]
             // myInfo['detailHpAddress'] = hpadd[2]
-            
         }
     }
     const getMyInfo = async () => {
@@ -295,23 +294,7 @@ export default function Header({}) {
             return err;
         }
     };
-    const btn_program_changeMemberInfo_view = async (e) => {
-        if (isSession) {
-            // const myInfo = await getMyInfo();
-            let nextPage = '/medic/mypage/modifymyinfo';
-            if (uRole === 'docter') {
-                nextPage = '/medic/mypage/ChangeConsultativeInfo';
-            } else if(uRole === 'manager'){
-                nextPage = '/medic/adminstrator/administratormypage';
-            }
-            // navigate(nextPage, { state: { myInfo: myInfo } });
-            navigate(nextPage)
-        } else {
-            alert('로그인 후 이용해주세요!');
-            navigate('/mediclogin');
-        }
-    };
-    
+        
     const btn_program_mypage_view = e => {
     if (isSession) {
         const role = cookies.get('uRole');
@@ -329,58 +312,7 @@ export default function Header({}) {
         navigate('/mediclogin');
     }
 }
-const renderUserHeader = () => {
-    return (
-        <div className={navigator.main_header}>
-        <div className={navigator.top_header}>
-            <div className={navigator.top_header_box}>
-                <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
-                <div className={navigator.user_sign}>
-                    {isSession ? (
-                        <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signout_text}>로그아웃</button>
-                    ) : (
-                        <>
-                            <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signin_text}>로그인</button>
-                            <button className={`${navigator.signup_text} ${navigator.sign_text}`} name="signup_text" onClick={signup_text}>회원가입</button>
-                        </>
-                    )}
-                </div>
-            </div>
-        </div>
-            <div className={navigator.navigator}>
-            <ul className={navigator.menu} style={{marginLeft : 0}}>
-                <li>
-                    <button>의료법률지식</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_medicalNegligence_view}>의료과실 정보</span></li>
-                        <li><span onClick={btn_program_industrialAccidentInfo_view}>산업재해 정보</span></li>
-                        <li><span onClick={btn_program_trafficAccidentInfo_view}>교통사고 정보</span></li>
-                        <li><span onClick={btn_program_woundInfo_view}>상해 정보</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>고객지원</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_announcement_view}>공지사항</span></li>
-                        <li><span onClick={btn_program_customerInquiry_view}>고객문의</span></li>
-                        <li><span onClick={btn_program_FAQ_view}>자주 묻는 질문</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>마이페이지</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_mypage_view}>마이페이지</span></li>
-                        <li><span onClick={btn_program_myAdviceList_view}>나의 자문의뢰현황</span></li>
-                        <li><span onClick={btn_program_myAnalyzeList_view}>나의 분석의뢰현황</span></li>
-                        <li><span onClick={btn_program_myTranslateList_view}>나의 번역의뢰현황</span></li>
-                        <li><span onClick={btn_program_changeMemberInfo_view}>회원정보변경</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-);
-}
+
 
 const renderGuestHeader = () => {
     return (
@@ -417,7 +349,7 @@ const renderGuestHeader = () => {
                             <li><span onClick={btn_program_analyzeList_view}>의료분석현황</span></li>
                         </ul>
                     </li>
-                    <li>
+                    <li> 
                         <button className="menu_button" style={translateStyle}>의료번역</button>
                         <ul className={`${navigator.submenu}`}>
                             <li><span onClick={btn_program_translateRequest_view}>의료번역신청</span></li>
@@ -445,10 +377,6 @@ const renderGuestHeader = () => {
                         <button className="menu_button" style={mypageStyle}>마이페이지</button>
                         <ul className={`${navigator.submenu}`}>
                             <li><span onClick={btn_program_mypage_view}>마이페이지</span></li>
-                            <li><span onClick={btn_program_myAdviceList_view}>나의 자문의뢰현황</span></li>
-                            <li><span onClick={btn_program_myAnalyzeList_view}>나의 분석의뢰현황</span></li>
-                            <li><span onClick={btn_program_myTranslateList_view}>나의 번역의뢰현황</span></li>
-                            <li><span onClick={btn_program_changeMemberInfo_view}>회원정보변경</span></li>
                         </ul>
                     </li>
                 </ul>
@@ -536,21 +464,24 @@ const renderAdminHeader = () => {
     return (
         <div className={navigator.main_header}>
         <div className={navigator.top_header}>
-            <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
-            <div className={navigator.user_sign}>
-                {isSession ? (
-                    <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signout_text}>로그아웃</button>
-                ) : (
-                    <>
-                        <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signin_text}>로그인</button>
-                        <button className={`${navigator.signup_text} ${navigator.sign_text}`} name="signup_text" onClick={signup_text}>회원가입</button>
-                    </>
-                )}
+            <div className={navigator.top_header_box}>
+                <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
+                <div className={navigator.user_sign}>
+                    {isSession ? (
+                        <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signout_text}>로그아웃</button>
+                    ) : (
+                        <>
+                            <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signin_text}>로그인</button>
+                            <button className={`${navigator.signup_text} ${navigator.sign_text}`} name="signup_text" onClick={signup_text}>회원가입</button>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
             <div className={navigator.navigator}>
+                <div className={navigator.navigator_box}>
             <ul className={navigator.menu} style={{marginLeft : 0}}>
-            <li>
+                <li>
                     <button>현황관리</button>
                     <ul className={`${navigator.submenu}`}>
                         <li><span onClick={btn_program_manager_adviceList_view}>의료자문현황</span></li>
@@ -590,6 +521,7 @@ const renderAdminHeader = () => {
                     
                 </li>
             </ul>
+        </div>
         </div>
     </div>
 );
@@ -669,81 +601,73 @@ const renderConsultantHeader = () => {
    return (
         <div className={navigator.main_header}>
         <div className={navigator.top_header}>
-            <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
-            <div className={navigator.user_sign}>
-                {isSession ? (
-                    <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signout_text}>로그아웃</button>
-                ) : (
-                    <>
-                        <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signin_text}>로그인</button>
-                        <button className={`${navigator.signup_text} ${navigator.sign_text}`} name="signup_text" onClick={signup_text}>회원가입</button>
-                    </>
-                )}
+            <div className={navigator.top_header_box}>
+                <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
+                <div className={navigator.user_sign}>
+                    {isSession ? (
+                        <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signout_text}>로그아웃</button>
+                    ) : (
+                        <>
+                            <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signin_text}>로그인</button>
+                            <button className={`${navigator.signup_text} ${navigator.sign_text}`} name="signup_text" onClick={signup_text}>회원가입</button>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
             <div className={navigator.navigator}>
-            <ul className={navigator.menu} style={{marginLeft : 0}}>
-            <li>
-                    <button>의료자문</button>
-                    <ul className={`${navigator.submenu}`}>
+            <div className={navigator.navigator_box}>
+                <ul className={navigator.menu} style={{marginLeft : 0}}>
+                <li>
+                        <button className="menu_button" style={adviceStyle}>의료자문</button>
+                        <ul className={`${navigator.submenu}`}>
 
-                        <li><span onClick={btn_program_consultative_adviceList_view}>의료자문현황</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>의료분석</button>
-                    <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_consultative_adviceList_view}>의료자문현황</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={analyzeStyle}>의료분석</button>
+                        <ul className={`${navigator.submenu}`}>
 
-                        <li><span onClick={btn_program_consultative_analyzeList_view}>의료분석현황</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>의료번역</button>
-                    <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_consultative_analyzeList_view}>의료분석현황</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={translateStyle}>의료번역</button>
+                        <ul className={`${navigator.submenu}`}>
 
-                        <li><span onClick={btn_program_consultative_translateList_view}>의료번역현황</span></li>
-                    </ul>
-                </li>
-         
-                <li>
-                    <button>의료법률지식</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_medicalNegligence_view}>의료과실 정보</span></li>
-                        <li><span onClick={btn_program_industrialAccidentInfo_view}>산업재해 정보</span></li>
-                        <li><span onClick={btn_program_trafficAccidentInfo_view}>교통사고 정보</span></li>
-                        <li><span onClick={btn_program_woundInfo_view}>상해 정보</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>고객지원</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_announcement_view}>공지사항</span></li>
-                        <li><span onClick={btn_program_customerInquiry_view}>고객문의</span></li>
-                        <li><span onClick={btn_program_FAQ_view}>자주 묻는 질문</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>마이페이지</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_consultative_mypage_view}>마이페이지</span></li>
-                        <li><span onClick={btn_program_consultative_change_mypage_view}>내 정보 수정</span></li>
-                    </ul>
-                </li>
-            </ul>
+                            <li><span onClick={btn_program_consultative_translateList_view}>의료번역현황</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={medicalknowledgeStyle}>의료법률지식</button>
+                        <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_medicalNegligence_view}>의료과실 정보</span></li>
+                            <li><span onClick={btn_program_industrialAccidentInfo_view}>산업재해 정보</span></li>
+                            <li><span onClick={btn_program_trafficAccidentInfo_view}>교통사고 정보</span></li>
+                            <li><span onClick={btn_program_woundInfo_view}>상해 정보</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={qnaStyle}>고객지원</button>
+                        <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_announcement_view}>공지사항</span></li>
+                            <li><span onClick={btn_program_customerInquiry_view}>고객문의</span></li>
+                            <li><span onClick={btn_program_FAQ_view}>자주 묻는 질문</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={mypageStyle}>마이페이지</button>
+                        <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_consultative_mypage_view}>마이페이지</span></li>
+                            <li><span onClick={btn_program_consultative_change_mypage_view}>내 정보 수정</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 );
-}
-
-const renderMemberHeader = () => {
-    return (
-        <div className={navigator.top_header}>
-            <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
-            <div className={navigator.user_sign}>
-                <button className={`${navigator.signin_text} ${navigator.sign_text}`} onClick={signout_text}>로그아웃</button>
-            </div>
-        </div>
-    );
 }
 
 const renderHeader = () => {
