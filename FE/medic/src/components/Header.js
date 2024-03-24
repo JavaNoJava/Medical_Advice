@@ -9,7 +9,14 @@ export default function Header({}) {
     const cookies = new Cookies();
     const [isSession, setIsSession] = useState();
     const [uRole, setURole] = useState(cookies.get('uRole'));
+    const [adviceStyle, setAdviceStyle] = useState({color : 'black'})
+    const [analyzeStyle, setAnalyzeStyle] = useState({color : 'black'})
+    const [translateStyle, setTranslateStyle] = useState({color : 'black'})
+    const [medicalknowledgeStyle, setMedicKnowledgeStyle] = useState({color : 'black'})
+    const [qnaStyle, setQnaStyle] = useState({color : 'black'})
+    const [mypageStyle, setMypageStyle] = useState({color : 'black'})
     const uId = cookies.get('uId')
+
     useEffect(() => {
         if(cookies.get('uId')){
             setIsSession(true)
@@ -35,7 +42,60 @@ export default function Header({}) {
         navigate('/medicassign');
     }
 
-
+    useEffect(() => {
+        const href = window.location.href
+        if(href.includes('advice')){
+            setAdviceStyle({color : '#2a2ac8'})
+            setAnalyzeStyle({color : 'black'})
+            setTranslateStyle({color : 'black'})
+            setMedicKnowledgeStyle({color : 'black'})
+            setQnaStyle({color : 'black'})
+            setMypageStyle({color : 'black'})
+        } else if(href.includes('analyze')){
+            setAdviceStyle({color : 'black'})
+            setAnalyzeStyle({color : '#2a2ac8'})
+            setTranslateStyle({color : 'black'})
+            setMedicKnowledgeStyle({color : 'black'})
+            setQnaStyle({color : 'black'})
+            setMypageStyle({color : 'black'})
+        } else if(href.includes('translate')){
+            setAdviceStyle({color : 'black'})
+            setAnalyzeStyle({color : 'black'})
+            setTranslateStyle({color : '#2a2ac8'})
+            setMedicKnowledgeStyle({color : 'black'})
+            setQnaStyle({color : 'black'})
+            setMypageStyle({color : 'black'})
+        } else if(href.includes('medicalknowledge')){
+            setAdviceStyle({color : 'black'})
+            setAnalyzeStyle({color : 'black'})
+            setTranslateStyle({color : 'black'})
+            setMedicKnowledgeStyle({color : '#2a2ac8'})
+            setQnaStyle({color : 'black'})
+            setMypageStyle({color : 'black'})
+        }else if(href.includes('customer')){
+            setAdviceStyle({color : 'black'})
+            setAnalyzeStyle({color : 'black'})
+            setTranslateStyle({color : 'black'})
+            setMedicKnowledgeStyle({color : 'black'})
+            setQnaStyle({color : '#2a2ac8'})
+            setMypageStyle({color : 'black'})
+        } else if(href.includes('mypage')){
+            setAdviceStyle({color : 'black'})
+            setAnalyzeStyle({color : 'black'})
+            setTranslateStyle({color : 'black'})
+            setMedicKnowledgeStyle({color : 'black'})
+            setQnaStyle({color : 'black'})
+            setMypageStyle({color : '#2a2ac8'})
+        } else {
+            setAdviceStyle({color : 'black'})
+            setAnalyzeStyle({color : 'black'})
+            setTranslateStyle({color : 'black'})
+            setMedicKnowledgeStyle({color : 'black'})
+            setQnaStyle({color : 'black'})
+            setMypageStyle({color : 'black'})
+        }
+        
+    }, [window.location.href])
 
     const signout_text = async () => {
         try {
@@ -269,29 +329,26 @@ export default function Header({}) {
         navigate('/mediclogin');
     }
 }
-
-
 const renderUserHeader = () => {
     return (
         <div className={navigator.main_header}>
         <div className={navigator.top_header}>
-            <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
-            <div className={navigator.user_sign}>
-                {isSession ? (
-                    <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signout_text}>로그아웃</button>
-                ) : (
-                    <>
-                        <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signin_text}>로그인</button>
-                        <button className={`${navigator.signup_text} ${navigator.sign_text}`} name="signup_text" onClick={signup_text}>회원가입</button>
-                    </>
-                )}
+            <div className={navigator.top_header_box}>
+                <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
+                <div className={navigator.user_sign}>
+                    {isSession ? (
+                        <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signout_text}>로그아웃</button>
+                    ) : (
+                        <>
+                            <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signin_text}>로그인</button>
+                            <button className={`${navigator.signup_text} ${navigator.sign_text}`} name="signup_text" onClick={signup_text}>회원가입</button>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
             <div className={navigator.navigator}>
             <ul className={navigator.menu} style={{marginLeft : 0}}>
-
-
-    
                 <li>
                     <button>의료법률지식</button>
                     <ul className={`${navigator.submenu}`}>
@@ -329,69 +386,73 @@ const renderGuestHeader = () => {
     return (
         <div className={navigator.main_header}>
         <div className={navigator.top_header}>
-            <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
-            <div className={navigator.user_sign}>
-                {isSession ? (
-                    <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signout_text}>로그아웃</button>
-                ) : (
-                    <>
-                        <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signin_text}>로그인</button>
-                        <button className={`${navigator.signup_text} ${navigator.sign_text}`} name="signup_text" onClick={signup_text}>회원가입</button>
-                    </>
-                )}
+            <div className={navigator.top_header_box}>
+                <div className={navigator.mainlogo} onClick={btn_program_Mainpage_view}></div>
+                <div className={navigator.user_sign}>
+                    {isSession ? (
+                        <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signout_text}>로그아웃</button>
+                    ) : (
+                        <>
+                            <button className={`${navigator.signin_text} ${navigator.sign_text}`} name="signin_text" onClick={signin_text}>로그인</button>
+                            <button className={`${navigator.signup_text} ${navigator.sign_text}`} name="signup_text" onClick={signup_text}>회원가입</button>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
             <div className={navigator.navigator}>
-            <ul className={navigator.menu} style={{marginLeft : 0}}>
-                <li>
-                    <button>의료자문</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_adviceRequest_view}>의료자문신청</span></li>
-                        <li><span onClick={btn_program_adviceList_view}>의료자문현황</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>의료분석</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_analyzeRequest_view}>의료분석신청</span></li>
-                        <li><span onClick={btn_program_analyzeList_view}>의료분석현황</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>의료번역</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_translateRequest_view}>의료번역신청</span></li>
-                        <li><span onClick={btn_program_translateList_view}>의료번역현황</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>의료법률지식</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_medicalNegligence_view}>의료과실 정보</span></li>
-                        <li><span onClick={btn_program_industrialAccidentInfo_view}>산업재해 정보</span></li>
-                        <li><span onClick={btn_program_trafficAccidentInfo_view}>교통사고 정보</span></li>
-                        <li><span onClick={btn_program_woundInfo_view}>상해 정보</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>고객지원</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_announcement_view}>공지사항</span></li>
-                        <li><span onClick={btn_program_customerInquiry_view}>고객문의</span></li>
-                        <li><span onClick={btn_program_FAQ_view}>자주 묻는 질문</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <button>마이페이지</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_mypage_view}>마이페이지</span></li>
-                        <li><span onClick={btn_program_myAdviceList_view}>나의 자문의뢰현황</span></li>
-                        <li><span onClick={btn_program_myAnalyzeList_view}>나의 분석의뢰현황</span></li>
-                        <li><span onClick={btn_program_myTranslateList_view}>나의 번역의뢰현황</span></li>
-                        <li><span onClick={btn_program_changeMemberInfo_view}>회원정보변경</span></li>
-                    </ul>
-                </li>
-            </ul>
+                <div className={navigator.navigator_box}>
+                    <ul className={navigator.menu} style={{marginLeft : 0}}>
+                    <li>
+                        <button className="menu_button" style={adviceStyle}>의료자문</button>
+                        <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_adviceRequest_view}>의료자문신청</span></li>
+                            <li><span onClick={btn_program_adviceList_view}>의료자문현황</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={analyzeStyle}>의료분석</button>
+                        <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_analyzeRequest_view}>의료분석신청</span></li>
+                            <li><span onClick={btn_program_analyzeList_view}>의료분석현황</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={translateStyle}>의료번역</button>
+                        <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_translateRequest_view}>의료번역신청</span></li>
+                            <li><span onClick={btn_program_translateList_view}>의료번역현황</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={medicalknowledgeStyle}>의료법률지식</button>
+                        <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_medicalNegligence_view}>의료과실 정보</span></li>
+                            <li><span onClick={btn_program_industrialAccidentInfo_view}>산업재해 정보</span></li>
+                            <li><span onClick={btn_program_trafficAccidentInfo_view}>교통사고 정보</span></li>
+                            <li><span onClick={btn_program_woundInfo_view}>상해 정보</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={qnaStyle}>고객지원</button>
+                        <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_announcement_view}>공지사항</span></li>
+                            <li><span onClick={btn_program_customerInquiry_view}>고객문의</span></li>
+                            <li><span onClick={btn_program_FAQ_view}>자주 묻는 질문</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button className="menu_button" style={mypageStyle}>마이페이지</button>
+                        <ul className={`${navigator.submenu}`}>
+                            <li><span onClick={btn_program_mypage_view}>마이페이지</span></li>
+                            <li><span onClick={btn_program_myAdviceList_view}>나의 자문의뢰현황</span></li>
+                            <li><span onClick={btn_program_myAnalyzeList_view}>나의 분석의뢰현황</span></li>
+                            <li><span onClick={btn_program_myTranslateList_view}>나의 번역의뢰현황</span></li>
+                            <li><span onClick={btn_program_changeMemberInfo_view}>회원정보변경</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 );
@@ -706,9 +767,7 @@ const renderHeader = () => {
 return (
     <div className={navigator.main_header}>
         {renderHeader()}
-        <div className={navigator.navigator}>
             {/* 네비게이션 메뉴들 */}
-        </div>
     </div>
 );
 }
