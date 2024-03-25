@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
+    font-family: "돋움", Dotum, sans-serif;
 }
 
 .top_header{
@@ -40,9 +41,15 @@
 }
 .sign_text{
     background-color: white;
-    border: 1px solid black;
+    border: 1.3px solid rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.75rem;
+    width: 65px;
+    height: 30px;
+    border-radius: 2px;
+}
+.signup_text{
+    border-left: none;
 }
 .navigator{
     width: 100%;

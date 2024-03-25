@@ -20,7 +20,6 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 .footer_navigator{
     width: 100%;
