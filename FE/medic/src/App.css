@@ -1,5 +1,8 @@
-
+.App{
+    height: auto;
+}
 .App-body{
-    height: 100vh;
-    padding-top: 200px;
+    height: auto;
+    padding-top: 110px;
+    width: 100%;
 }
