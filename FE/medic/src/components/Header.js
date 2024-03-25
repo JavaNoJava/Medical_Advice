@@ -44,14 +44,14 @@ export default function Header({}) {
 
     useEffect(() => {
         const href = window.location.href
-        if(href.includes('advice') || href.includes('Advice')){
+        if(href.includes('advice') || href.includes('Advice') || href.includes('list')){
             setAdviceStyle({color : '#2a2ac8'})
             setAnalyzeStyle({color : 'black'})
             setTranslateStyle({color : 'black'})
             setMedicKnowledgeStyle({color : 'black'})
             setQnaStyle({color : 'black'})
             setMypageStyle({color : 'black'})
-        } else if(href.includes('analyze') || href.includes('Analyze')){
+        } else if(href.includes('analyze') || href.includes('Analyze') || href.includes('management')){
             setAdviceStyle({color : 'black'})
             setAnalyzeStyle({color : '#2a2ac8'})
             setTranslateStyle({color : 'black'})
@@ -65,7 +65,7 @@ export default function Header({}) {
             setMedicKnowledgeStyle({color : 'black'})
             setQnaStyle({color : 'black'})
             setMypageStyle({color : 'black'})
-        } else if(href.includes('medicalknowledge')){
+        } else if(href.includes('medicalknowledge') || href.includes('knowledge')){
             setAdviceStyle({color : 'black'})
             setAnalyzeStyle({color : 'black'})
             setTranslateStyle({color : 'black'})
@@ -225,33 +225,6 @@ export default function Header({}) {
     const btn_program_FAQ_view = (e) => {
         if (isSession) {
             navigate('/medic/customer/FAQ');
-        } else {
-            alert('로그인 후 이용해주세요!');
-            navigate('/mediclogin');
-        }
-    }
-    
-    const btn_program_myAdviceList_view = (e) => {
-        if (isSession) {
-            navigate('/medic/advice/adviceList');
-        } else {
-            alert('로그인 후 이용해주세요!');
-            navigate('/mediclogin');
-        }
-    }
-    
-    const btn_program_myAnalyzeList_view = (e) => {
-        if (isSession) {
-            navigate('/medic/analyze/analyzeList');
-        } else {
-            alert('로그인 후 이용해주세요!');
-            navigate('/mediclogin');
-        }
-    }
-    
-    const btn_program_myTranslateList_view = (e) => {
-        if (isSession) {
-            navigate('/medic/translate/translateList');
         } else {
             alert('로그인 후 이용해주세요!');
             navigate('/mediclogin');
@@ -482,7 +455,7 @@ const renderAdminHeader = () => {
                 <div className={navigator.navigator_box}>
             <ul className={navigator.menu} style={{marginLeft : 0}}>
                 <li>
-                    <button>현황관리</button>
+                    <button className="menu_button" style={adviceStyle}>현황관리</button>
                     <ul className={`${navigator.submenu}`}>
                         <li><span onClick={btn_program_manager_adviceList_view}>의료자문현황</span></li>
                         <li><span onClick={btn_program_manager_analyzeList_view}>의료분석현황</span></li>
@@ -490,14 +463,14 @@ const renderAdminHeader = () => {
                     </ul>
                 </li>
                 <li>
-                    <button>회원관리</button>
+                    <button className="menu_button" style={analyzeStyle}>회원관리</button>
                     <ul className={`${navigator.submenu}`}>
                     <li><span onClick={btn_program_manager_usermanagement_view}>회원관리</span></li>
                         <li><span onClick={btn_program_manager_docmanagement_view}>의사관리</span></li>
                     </ul>
                 </li>
                 <li>
-                    <button>의료법률지식</button>
+                    <button className="menu_button" style={medicalknowledgeStyle}>의료법률지식</button>
                     <ul className={`${navigator.submenu}`}>
                         <li><span onClick={btn_program_medicalNegligence_view}>의료과실 정보</span></li>
                         <li><span onClick={btn_program_industrialAccidentInfo_view}>산업재해 정보</span></li>
@@ -506,7 +479,7 @@ const renderAdminHeader = () => {
                     </ul>
                 </li>
                 <li>
-                    <button>고객지원</button>
+                    <button className="menu_button" style={qnaStyle}>고객지원</button>
                     <ul className={`${navigator.submenu}`}>
                         <li><span onClick={btn_program_announcement_view}>공지사항</span></li>
                         <li><span onClick={btn_program_customerInquiry_view}>고객문의</span></li>
@@ -514,7 +487,7 @@ const renderAdminHeader = () => {
                     </ul>
                 </li>
                 <li>
-                    <button>마이페이지</button>
+                    <button className="menu_button" style={mypageStyle}>마이페이지</button>
                     <ul className={`${navigator.submenu}`}>
                         <li><span onClick={btn_program_manager_mypage_view}>마이페이지</span></li>
                     </ul>
