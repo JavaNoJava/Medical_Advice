@@ -1,13 +1,117 @@
 .contents{
     display: flex;
     flex-direction : column;
+    justify-content:center;
+    align-items: center;
+    height: 700px;
+}
+.contents_box{
+    height: 465px;
+    width: 730px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.login_titlebox{
+    width: 730px;
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 56px;
+    color: #0F3A75;
+}
+.loginform{
+    width: 730px;
+    height: 360px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.login_box{
+    width: 550px;
+    height: 332px;
+}
+.rolebox{
+    display: flex;
+    justify-content: start;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+.input {
+    width: 549px;
+    height: 160px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    height : 100vh;
+    background-color: #e5e8f0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+    border-top: 2px solid #0F3A75;
 }
-.loginbox{
+.inputbox{
+    width: 280px;
+    height: 78px;
     display: flex;
-    border: 1px solid black;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.input_idpwbox{
+    width: 250px;
+    height: 39px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+.input_title{
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.input_background{
+    width: 180px;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loginbutton{
+    width: 78px;
+    height: 72px;
+    color: white;
+    background-color: #0F3A75;
+    border: none;
+}
+.input_idpw{
+    border: none;
+    &:focus{
+        outline: none;
+    }
+}
+.errmsgbox{
+    position : relative;
+    width : 400px;
+    height : 30px;
+    bottom: 30px;
+    left: -110px;
+}
+.errmsg{
+    color : red;
+    width : 400px;
+    height : 30px;
+    display : flex;
+    justify-content : flex-end;
+    align-items:center;
+    font-size: 0.8rem;
+ }
+ .etcbox{
+    width: 549px;
+    height: 160px;
+    border: 1px solid;
+ }
+/* .loginbox{
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -35,12 +139,7 @@
 .logintext{
     font-size: 5rem;
 }
-.loginform{
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
+
 .inputbox{
     height: 170px;
     width: 400px;
@@ -111,4 +210,4 @@
     &:hover{
       text-decoration : underline;
    }
-}
+} */
