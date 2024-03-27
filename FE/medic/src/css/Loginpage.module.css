@@ -1,68 +1,88 @@
 .contents{
     display: flex;
     flex-direction : column;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
-    height : 100vh;
+    height: 700px;
 }
-.loginbox{
+.contents_box{
+    height: 480px;
+    width: 730px;
     display: flex;
-    border: 1px solid black;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 550px;
-    width: 700px;
 }
-.loginbox_box{
-    display: flex;
-    height: 550px;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-.loginimg{
-    height: 350px;
-    width: 670px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('../img/LogoImg.png');
-    background-position: contain;
-    background-repeat: no-repeat;
-}
-.logintext{
-    font-size: 5rem;
+.login_titlebox{
+    width: 730px;
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 56px;
+    color: #0F3A75;
 }
 .loginform{
-    height: 300px;
+    width: 730px;
+    height: 375px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: flex-end;
+}
+.login_box{
+    width: 550px;
+    height: 332px;
+}
+.rolebox{
+    display: flex;
+    justify-content: start;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+.input {
+    width: 549px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e8f0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+    border-top: 2px solid #0F3A75;
 }
 .inputbox{
-    height: 170px;
-    width: 400px;
+    width: 320px;
+    height: 78px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-.textbox{
-    display: flex;
-    width: 300px;
-    border: 1px solid black;
-    height: 35px;
     align-items: center;
 }
-.input{
+.input_idpwbox{
+    width: 270px;
+    height: 39px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
 }
-.uid, .upw{
-    margin-left: 10px;
-    width: 300px;
+.input_title{
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.input_background{
+    width: 190px;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loginbutton{
+    width: 78px;
+    height: 72px;
+    color: white;
+    background-color: #0F3A75;
+    border: none;
+    cursor: pointer;
+}
+.input_idpw{
     border: none;
     &:focus{
         outline: none;
@@ -72,43 +92,52 @@
     position : relative;
     width : 400px;
     height : 30px;
-    display : flex;
-    justify-content : end;
-    align-items: center;
-    bottom: 20px;
+    bottom: 30px;
+    left: -110px;
 }
 .errmsg{
-   color : red;
-   width : 400px;
-   height : 30px;
-   display : flex;
-   justify-content : flex-end;
-   align-items:center;
-   font-size: 12.8px
-}
-.signbtnbox{
-    position : relative;
-    height: 70px;
+    color : red;
+    width : 400px;
+    height : 30px;
+    display : flex;
+    justify-content : flex-end;
+    align-items:center;
+    font-size: 0.8rem;
+ }
+ .etcwrap{
+    position: relative;
+    width: 549px;
+    height: 160px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    bottom: 30px;
+    border-top: none;
     display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .etcbox{
+    width: 470px;
+    height: 160px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+ .etc_innerbox{
+    display: flex;
+    width: 220px;
+    height: 160px;
     flex-direction: column;
     justify-content: space-around;
-    align-items: start;
-    left : 50px;
-}
-.signbtn{
-    height: 40px;
-    width: 130px;
-    background-color:  #3cb371;
-    border-radius: 10px;
+    align-items: center;
+ }
+ .btn_movepage{
+    width: 150px;
+    height: 50px;
+    background-color: white;
+    font-size: 0.9rem;
+    border: 1px solid rgba( 0, 0, 0, 0.3);
+    color: rgba( 0, 0, 0, 0.5);
+    font-weight: bold;
     cursor: pointer;
-    font-size:1.2rem;
-}
-.gotosignup, .findidpw{
-       border : none;
-       background-color : white;
-       font-size : 10px;
-       cursor: pointer;
-    &:hover{
-      text-decoration : underline;
-   }
-}
+ }
