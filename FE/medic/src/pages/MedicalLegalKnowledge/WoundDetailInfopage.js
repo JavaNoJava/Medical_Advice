@@ -96,44 +96,36 @@ export default function WoundAccidentDetailInfopage(){
   return (
     <div className={woundAccidentDetail.detailform}>
       <div className={woundAccidentDetail.detail_title}>
-        <h2>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={woundAccidentDetail.title}>
           상해정보 상세보기
         </h2>
       </div>
-      <br />
-      <form>
-        <table className={woundAccidentDetail.wounddetail_table}>
-          <tr>
-            <th className={woundAccidentDetail.wounddetail_th}>제목</th>
-            <td className={woundAccidentDetail.wounddetail_td}>{woundInfoDetail.woName}</td>
-            <th className={woundAccidentDetail.wounddetail_th}>등록일</th>
-            <td className={woundAccidentDetail.wounddetail_td}>{formatDateString(woundInfoDetail.woRegDate)}</td>
-          </tr>
-          <th className={woundAccidentDetail.wounddetail_th}>내용</th>
-          <td colSpan="3" className={woundAccidentDetail.wounddetail_td}>
-            <div className={woundAccidentDetail.content}>{woundInfoDetail.woContent}</div>
-          </td>
-          <tr></tr>
-        </table>
-        <br />
-        <div className={woundAccidentDetail.secondTable}>
-          <table className={woundAccidentDetail.wounddetail_table}>
-            <tr onClick={() => goToDetailPage(prevNum)}>
-              <th className={woundAccidentDetail.wounddetail_th}>이전글</th>
-              <td className={woundAccidentDetail.wounddetail_td}>{prevTitle}</td>
-              <td className={woundAccidentDetail.wounddetail_td}>{prevWriter}</td>
-              <td className={woundAccidentDetail.wounddetail_td}>{formatDateString(prevDate)}</td>
-            </tr>
-            <tr onClick={() => goToDetailPage(nextNum)}>
-              <th className={woundAccidentDetail.wounddetail_th}>다음글</th>
-              <td className={woundAccidentDetail.wounddetail_td}>{nextTitle}</td>
-              <td className={woundAccidentDetail.wounddetail_td}>{nextWriter}</td>
-              <td className={woundAccidentDetail.wounddetail_td}>{formatDateString(nextDate)}</td>
-            </tr>
-          </table>
+
+      {/* 게시글 */}
+      <div className={woundAccidentDetail.write_table}>
+        <div className={woundAccidentDetail.row_box}>
+          <div className={woundAccidentDetail.title_box}>
+            기관명
+          </div>
+          <div className={woundAccidentDetail.input_box} style={{width:'300px'}}>
+            <span>{woundInfoDetail.woName}</span>
+          </div>
+          <div className={woundAccidentDetail.title_box} style={{borderLeft: '1px solid black'}}>
+            작성일
+          </div>
+          <div className={woundAccidentDetail.input_box}  style={{width:'100px'}}>
+            <span>{formatDateString(woundInfoDetail.woRegDate)}</span>
+          </div>
         </div>
-        <div className={woundAccidentDetail.complete}>
+        <div className={`${woundAccidentDetail.row_box} ${woundAccidentDetail.row_contentbox}`}>
+                <div className={`${woundAccidentDetail.title_box} ${woundAccidentDetail.row_contentbox}`}>내용</div>
+                <div className={woundAccidentDetail.content_box} style={{width:'730px', height : '330px', justifyContent: 'start'}}>
+                  {woundInfoDetail.woContent}
+                </div>
+            </div>
+      </div>
+
+      <div className={woundAccidentDetail.complete}>
           <button type="button" onClick={btn_wound_list} className={woundAccidentDetail.btt_write}>
             목록
           </button>
@@ -147,8 +139,27 @@ export default function WoundAccidentDetailInfopage(){
               삭제
             </button>
           )}
+      </div>
+
+      {/* 이전/다음 게시글 */}
+      <div className={woundAccidentDetail.preAndNext_table}>
+        <div className={woundAccidentDetail.preAndNext_row_box}>
+          <div className={woundAccidentDetail.preAndNext_title_box}>
+            이전글
+          </div>
+          <div className={woundAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(prevNum)}>
+            <span>{prevTitle}</span>
+          </div>
         </div>
-      </form>
+        <div className={woundAccidentDetail.preAndNext_row_box}>
+          <div className={woundAccidentDetail.preAndNext_title_box}>
+            다음글
+          </div>
+          <div className={woundAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(nextNum)}>
+            <span>{nextTitle}</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

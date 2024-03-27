@@ -18,6 +18,12 @@ export default function MedicalNegligenceWritepage() {
     const cookie = new Cookies()
     const location = new useLocation()
 
+    const handleMedicalNegligenceWriteChange = (e) => {
+        const content = e.target.value;
+        setMedicalNegligenceWrite(content);
+        setQuestionCount(content.length);
+    }
+
     useEffect(()=>{
         currentTimer();
     }, [])
@@ -97,73 +103,59 @@ export default function MedicalNegligenceWritepage() {
   return (
     <div className={MedicalNegligenceWrite.writeform}>
       <div className={MedicalNegligenceWrite.medicalNegligence_title}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={MedicalNegligenceWrite.title}>
           의료과실 정보 작성
-        </h1>
+        </h2>
       </div>
-      <div className={MedicalNegligenceWrite.write_table}>
-        <div className={MedicalNegligenceWrite.write_rowbox}>
-            <div className={MedicalNegligenceWrite.write_title}>
-                제목
+        <div className={MedicalNegligenceWrite.write_table}>
+            <div className={MedicalNegligenceWrite.row_box}>
+                <div className={MedicalNegligenceWrite.title_box}>
+                    제목
+                </div>
+                <div className={MedicalNegligenceWrite.input_box} style={{width:'600px'}}>
+                    <input value = {postTitle} className={MedicalNegligenceWrite.write_titleinput} onChange={input_postTitle}/>
+                </div>
             </div>
-            <div className={MedicalNegligenceWrite.write_titleinputbox}>
-                <input value = {postTitle} className={MedicalNegligenceWrite.write_titleinput} onChange={input_postTitle}/>
-            </div>
-        </div>
-        <div className={MedicalNegligenceWrite.write_rowbox}>
-            <div className={MedicalNegligenceWrite.write_writerinfo}>
-                <div className={MedicalNegligenceWrite.write_title}>
+
+            <div className={MedicalNegligenceWrite.row_box}>
+                <div className={MedicalNegligenceWrite.title_box}>
                     기관명
                 </div>
-                <div className={MedicalNegligenceWrite.write_writerinfocontent}>
-                <input value={writer} className={MedicalNegligenceWrite.write_writerinputbox} onChange={input_writer}/>
+                <div className={MedicalNegligenceWrite.input_box} style={{width:'300px'}}>
+                    <input value = {writer} className={MedicalNegligenceWrite.write_titleinput} onChange={input_writer} style={{width:'250px'}}/>
                 </div>
-            </div> 
-            <div className={MedicalNegligenceWrite.write_writerinfo}>
-                <div className={MedicalNegligenceWrite.write_title}>
+                <div className={MedicalNegligenceWrite.title_box} style={{borderLeft: '1px solid black'}}>
                     작성일
                 </div>
-                <div value={timer} className={MedicalNegligenceWrite.write_writerinfocontent}>
-                    {timer}
+                <div value={timer} className={MedicalNegligenceWrite.input_box}  style={{width:'150px'}}>
+                    <span>{timer}</span>
                 </div>
-            </div>    
-        </div>
-        <div className={`${MedicalNegligenceWrite.write_rowbox} ${MedicalNegligenceWrite.write_contentrowbox}`}>
-            <div className={`${MedicalNegligenceWrite.write_contenttitle} ${MedicalNegligenceWrite.write_title}`}>
-                <h3 style={{paddingLeft: '20px'}}>내용</h3>
             </div>
-            <textarea 
-            className={MedicalNegligenceWrite.write_content} 
-            cols={60} 
-            rows={50} 
-            value={medicalNegligenceWrite}
-            onChange={e => {
-                setMedicalNegligenceWrite(e.target.value)
-                setQuestionCount(e.target.value.length)
-                }} maxLength={300}></textarea>
-            <div className={MedicalNegligenceWrite.contentcount}>
-                {questionCount}/300
-            </div>         
+
+            <div className={`${MedicalNegligenceWrite.row_box} ${MedicalNegligenceWrite.row_contentbox}`}>
+                <div className={`${MedicalNegligenceWrite.title_box} ${MedicalNegligenceWrite.row_contentbox}`}>내용</div>
+                <div className={MedicalNegligenceWrite.input_box} style={{width:'670px', height : '340px'}}>
+                    <textarea cols="50" rows="10" maxLength={300} value={medicalNegligenceWrite} onChange={handleMedicalNegligenceWriteChange} style={{height: '300px'}}/>
+                        <div className={MedicalNegligenceWrite.contentcount}>
+                            <span>{questionCount}/300</span>
+                        </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div className={MedicalNegligenceWrite.btn_writequestionbox}>
-        {
-            isUpdate ? 
-            <>
-                <button className={MedicalNegligenceWrite.btn_writequestion} onClick={btn_updatePost}>수정</button>
-                <button className={MedicalNegligenceWrite.btn_writequestion} onClick={btn_postlist}>목록</button>
-            </>
-            
-            :
-            <>
-                <button className={MedicalNegligenceWrite.btn_writequestion} onClick={btn_writePost}>작성</button>
-                <button className={MedicalNegligenceWrite.btn_writequestion} onClick={btn_postlist}>목록</button>
-            </>
-            
-        }
-        
-      </div>
+        <div className={MedicalNegligenceWrite.btn_writequestionbox}>
+            {isUpdate ? 
+                <>
+                    <button className={MedicalNegligenceWrite.btn_writequestion} onClick={btn_updatePost}>수정</button>
+                    <button className={MedicalNegligenceWrite.btn_writequestion} onClick={btn_postlist}>목록</button>
+                </>
+                
+                :
+                <>
+                    <button className={MedicalNegligenceWrite.btn_writequestion} onClick={btn_writePost}>작성</button>
+                    <button className={MedicalNegligenceWrite.btn_writequestion} onClick={btn_postlist}>목록</button>
+                </>            
+            }
+        </div>
     </div>
   );
 };

@@ -96,44 +96,36 @@ export default function IndustrialAccidentDetailInfopage(){
   return (
     <div className={industrialAccidentDetail.detailform}>
       <div className={industrialAccidentDetail.detail_title}>
-        <h2>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={industrialAccidentDetail.title}>
           산업재해정보 상세 보기
         </h2>
       </div>
-      <br />
-      <form>
-        <table className={industrialAccidentDetail.industrialaccidentdetail_table}>
-          <tr>
-            <th className={industrialAccidentDetail.industrialaccidentdetail_th}>제목</th>
-            <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{industrialAccidentInfoDetail.iaName}</td>
-            <th className={industrialAccidentDetail.industrialaccidentdetail_th}>등록일</th>
-            <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{formatDateString(industrialAccidentInfoDetail.iaRegDate)}</td>
-          </tr>
-          <th className={industrialAccidentDetail.industrialaccidentdetail_th}>내용</th>
-          <td colSpan="3" className={industrialAccidentDetail.industrialaccidentdetail_td}>
-            <div className={industrialAccidentDetail.content}>{industrialAccidentInfoDetail.iaContent}</div>
-          </td>
-          <tr></tr>
-        </table>
-        <br />
-        <div className={industrialAccidentDetail.secondTable}>
-          <table className={industrialAccidentDetail.industrialaccidentdetail_table}>
-            <tr onClick={() => goToDetailPage(prevNum)}>
-              <th className={industrialAccidentDetail.industrialaccidentdetail_th}>이전글</th>
-              <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{prevTitle}</td>
-              <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{prevWriter}</td>
-              <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{formatDateString(prevDate)}</td>
-            </tr>
-            <tr onClick={() => goToDetailPage(nextNum)}>
-              <th className={industrialAccidentDetail.industrialaccidentdetail_th}>다음글</th>
-              <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{nextTitle}</td>
-              <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{nextWriter}</td>
-              <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{formatDateString(nextDate)}</td>
-            </tr>
-          </table>
+
+      {/* 게시글 */}
+      <div className={industrialAccidentDetail.write_table}>
+        <div className={industrialAccidentDetail.row_box}>
+          <div className={industrialAccidentDetail.title_box}>
+            기관명
+          </div>
+          <div className={industrialAccidentDetail.input_box} style={{width:'300px'}}>
+            <span>{industrialAccidentInfoDetail.iaName}</span>
+          </div>
+          <div className={industrialAccidentDetail.title_box} style={{borderLeft: '1px solid black'}}>
+            작성일
+          </div>
+          <div className={industrialAccidentDetail.input_box}  style={{width:'100px'}}>
+            <span>{formatDateString(industrialAccidentInfoDetail.iaRegDate)}</span>
+          </div>
         </div>
-        <div className={industrialAccidentDetail.complete}>
+        <div className={`${industrialAccidentDetail.row_box} ${industrialAccidentDetail.row_contentbox}`}>
+                <div className={`${industrialAccidentDetail.title_box} ${industrialAccidentDetail.row_contentbox}`}>내용</div>
+                <div className={industrialAccidentDetail.content_box} style={{width:'730px', height : '330px', justifyContent: 'start'}}>
+                  {industrialAccidentInfoDetail.iaContent}
+                </div>
+            </div>
+      </div>
+
+      <div className={industrialAccidentDetail.complete}>
           <button type="button" onClick={btn_industrialAccident_list} className={industrialAccidentDetail.btt_write}>
             목록
           </button>
@@ -147,8 +139,79 @@ export default function IndustrialAccidentDetailInfopage(){
               삭제
             </button>
           )}
+      </div>
+
+      {/* 이전/다음 게시글 */}
+      <div className={industrialAccidentDetail.preAndNext_table}>
+        <div className={industrialAccidentDetail.preAndNext_row_box}>
+          <div className={industrialAccidentDetail.preAndNext_title_box}>
+            이전글
+          </div>
+          <div className={industrialAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(prevNum)}>
+            <span>{prevTitle}</span>
+          </div>
         </div>
-      </form>
+        <div className={industrialAccidentDetail.preAndNext_row_box}>
+          <div className={industrialAccidentDetail.preAndNext_title_box}>
+            다음글
+          </div>
+          <div className={industrialAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(nextNum)}>
+            <span>{nextTitle}</span>
+          </div>
+        </div>
+      </div>
+
+      
     </div>
+
+
+    //   <form>
+    //     <table className={industrialAccidentDetail.industrialaccidentdetail_table}>
+    //       <tr>
+    //         <th className={industrialAccidentDetail.industrialaccidentdetail_th}>제목</th>
+    //         <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{industrialAccidentInfoDetail.iaName}</td>
+    //         <th className={industrialAccidentDetail.industrialaccidentdetail_th}>등록일</th>
+    //         <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{formatDateString(industrialAccidentInfoDetail.iaRegDate)}</td>
+    //       </tr>
+    //       <th className={industrialAccidentDetail.industrialaccidentdetail_th}>내용</th>
+    //       <td colSpan="3" className={industrialAccidentDetail.industrialaccidentdetail_td}>
+    //         <div className={industrialAccidentDetail.content}>{industrialAccidentInfoDetail.iaContent}</div>
+    //       </td>
+    //       <tr></tr>
+    //     </table>
+    //     <br />
+    //     <div className={industrialAccidentDetail.secondTable}>
+    //       <table className={industrialAccidentDetail.industrialaccidentdetail_table}>
+    //         <tr onClick={() => goToDetailPage(prevNum)}>
+    //           <th className={industrialAccidentDetail.industrialaccidentdetail_th}>이전글</th>
+    //           <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{prevTitle}</td>
+    //           <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{prevWriter}</td>
+    //           <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{formatDateString(prevDate)}</td>
+    //         </tr>
+    //         <tr onClick={() => goToDetailPage(nextNum)}>
+    //           <th className={industrialAccidentDetail.industrialaccidentdetail_th}>다음글</th>
+    //           <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{nextTitle}</td>
+    //           <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{nextWriter}</td>
+    //           <td className={industrialAccidentDetail.industrialaccidentdetail_td}>{formatDateString(nextDate)}</td>
+    //         </tr>
+    //       </table>
+    //     </div>
+    //     <div className={industrialAccidentDetail.complete}>
+    //       <button type="button" onClick={btn_industrialAccident_list} className={industrialAccidentDetail.btt_write}>
+    //         목록
+    //       </button>
+    //       {isAdmin && (
+    //         <button type="button" onClick={udpateIndustrialAccident} className={industrialAccidentDetail.btt_write}>
+    //           수정
+    //         </button>
+    //       )}
+    //       {isAdmin && (
+    //         <button type="button" onClick={() => deleteIndustrialAccident(industrialAccidentInfoId)} className={industrialAccidentDetail.btt_write}>
+    //           삭제
+    //         </button>
+    //       )}
+    //     </div>
+    //   </form>
+    // </div>
   );
 };

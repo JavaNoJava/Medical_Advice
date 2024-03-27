@@ -95,44 +95,36 @@ export default function MedicalNegligenceDetailpage(){
   return (
     <div className={medicalNegligencedetails.detailform}>
       <div className={medicalNegligencedetails.detail_title}>
-        <h2>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={medicalNegligencedetails.title}>
           의료과실정보 상세 보기
         </h2>
       </div>
-      <br />
-      <form>
-        <table className={medicalNegligencedetails.medicalNegligencedetail_table}>
-          <tr>
-            <th className={medicalNegligencedetails.medicalNegligencedetail_th}>제목</th>
-            <td className={medicalNegligencedetails.medicalNegligencedetail_td}>{medicalNegligenceDetail.mnName}</td>
-            <th className={medicalNegligencedetails.medicalNegligencedetail_th}>등록일</th>
-            <td className={medicalNegligencedetails.medicalNegligencedetail_td}>{formatDateString(medicalNegligenceDetail.mnRegDate)}</td>
-          </tr>
-          <th className={medicalNegligencedetails.medicalNegligencedetail_th}>내용</th>
-          <td colSpan="3" className={medicalNegligencedetails.medicalNegligencedetail_td}>
-            <div className={medicalNegligencedetails.content}>{medicalNegligenceDetail.mnContent}</div>
-          </td>
-          <tr></tr>
-        </table>
-        <br />
-        <div className={medicalNegligencedetails.secondTable}>
-          <table className={medicalNegligencedetails.medicalNegligencedetail_table}>
-            <tr onClick={() => goToDetailPage(prevNum)}>
-              <th className={medicalNegligencedetails.medicalNegligencedetail_th}>이전글</th>
-              <td className={medicalNegligencedetails.medicalNegligencedetail_td}>{prevTitle}</td>
-              <td className={medicalNegligencedetails.medicalNegligencedetail_td}>{prevWriter}</td>
-              <td className={medicalNegligencedetails.medicalNegligencedetail_td}>{formatDateString(prevDate)}</td>
-            </tr>
-            <tr onClick={() => goToDetailPage(nextNum)}>
-              <th className={medicalNegligencedetails.medicalNegligencedetail_th}>다음글</th>
-              <td className={medicalNegligencedetails.medicalNegligencedetail_td}>{nextTitle}</td>
-              <td className={medicalNegligencedetails.medicalNegligencedetail_td}>{nextWriter}</td>
-              <td className={medicalNegligencedetails.medicalNegligencedetail_td}>{formatDateString(nextDate)}</td>
-            </tr>
-          </table>
+
+      {/* 게시글 */}
+      <div className={medicalNegligencedetails.write_table}>
+        <div className={medicalNegligencedetails.row_box}>
+          <div className={medicalNegligencedetails.title_box}>
+            기관명
+          </div>
+          <div className={medicalNegligencedetails.input_box} style={{width:'300px'}}>
+            <span>{medicalNegligenceDetail.mnName}</span>
+          </div>
+          <div className={medicalNegligencedetails.title_box} style={{borderLeft: '1px solid black'}}>
+            작성일
+          </div>
+          <div className={medicalNegligencedetails.input_box}  style={{width:'100px'}}>
+            <span>{formatDateString(medicalNegligenceDetail.mnRegDate)}</span>
+          </div>
         </div>
-        <div className={medicalNegligencedetails.complete}>
+        <div className={`${medicalNegligencedetails.row_box} ${medicalNegligencedetails.row_contentbox}`}>
+                <div className={`${medicalNegligencedetails.title_box} ${medicalNegligencedetails.row_contentbox}`}>내용</div>
+                <div className={medicalNegligencedetails.content_box} style={{width:'730px', height : '330px', justifyContent: 'start'}}>
+                  {medicalNegligenceDetail.mnContent}
+                </div>
+            </div>
+      </div>
+
+      <div className={medicalNegligencedetails.complete}>
           <button type="button" onClick={btn_medicmedicalNegligence_list} className={medicalNegligencedetails.btt_write}>
             목록
           </button>
@@ -146,8 +138,29 @@ export default function MedicalNegligenceDetailpage(){
               삭제
             </button>
           )}
+      </div>
+
+      {/* 이전/다음 게시글 */}
+      <div className={medicalNegligencedetails.preAndNext_table}>
+        <div className={medicalNegligencedetails.preAndNext_row_box}>
+          <div className={medicalNegligencedetails.preAndNext_title_box}>
+            이전글
+          </div>
+          <div className={medicalNegligencedetails.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(prevNum)}>
+            <span>{prevTitle}</span>
+          </div>
         </div>
-      </form>
+        <div className={medicalNegligencedetails.preAndNext_row_box}>
+          <div className={medicalNegligencedetails.preAndNext_title_box}>
+            다음글
+          </div>
+          <div className={medicalNegligencedetails.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(nextNum)}>
+            <span>{nextTitle}</span>
+          </div>
+        </div>
+      </div>
+
+      
     </div>
   );
 };

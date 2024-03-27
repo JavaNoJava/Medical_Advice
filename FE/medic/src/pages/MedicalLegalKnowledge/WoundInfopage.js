@@ -5,6 +5,8 @@ import { Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
 
 export default function WoundInfopage(){
   const [woundInfos, setWoundInfos] = useState([]);
@@ -100,19 +102,21 @@ export default function WoundInfopage(){
   return (
     <div className={wound.assignform}>
       <div className={wound.wound_title}>
-        <h2>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={wound.title}>
           상해 정보
         </h2>
       </div>
-      <div>
-        <input
-          type="text"
-          placeholder="검색어를 입력하세요"
-          value={searchKeyword}
-          onChange={(e) => setSearchKeyword(e.target.value)}
-        />
-        <button onClick={searchWoundInfo}>검색</button>
+      <div className={wound.search_bar}>
+        <span>
+          <input
+            type="text"
+            placeholder="검색어를 입력하세요"
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+            style={{ width: '300px', height: '30px', fontSize: '1rem', fontFamily: '돋움, Dotum, Arial, sans-serif'}}
+          />
+        </span>
+        <button onClick={searchWoundInfo} className={wound.search_button}>검색</button>
       </div>
       <br />
       <div className={wound.tb}>
@@ -159,12 +163,12 @@ export default function WoundInfopage(){
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          ◀
+        <FaChevronLeft />
         </button>
         {[...Array(Math.ceil(woundInfos.length / itemsPerPage))].map((_, index) => (
           <button
             key={index}
-            className={wound.paginationButton}
+            className={wound.paginationNumber}
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
           >
@@ -175,7 +179,7 @@ export default function WoundInfopage(){
           className={wound.paginationButton}
           onClick={() => handlePageChange(currentPage + 1)}
         >
-          ▶
+        <FaChevronRight />
         </button>
       </div>
     </div>

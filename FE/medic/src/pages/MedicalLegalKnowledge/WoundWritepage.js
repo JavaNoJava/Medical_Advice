@@ -16,7 +16,14 @@ export default function WoundWritepage() {
 
     const navigate = useNavigate();
     const cookie = new Cookies()
-    const location = useLocation();
+    const location = new useLocation();
+
+    const handleWoundWriteChange = (e) => {
+        const content = e.target.value;
+        setWoundWrite(content);
+        setQuestionCount(content.length);
+    }
+
     useEffect(()=>{
         currentTimer();
     }, [])
@@ -95,55 +102,44 @@ export default function WoundWritepage() {
   return (
     <div className={woundwrite.writeform}>
       <div className={woundwrite.wound_title}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={woundwrite.title}>
           상해 정보 작성
-        </h1>
+        </h2>
       </div>
       <div className={woundwrite.write_table}>
-        <div className={woundwrite.write_rowbox}>
-            <div className={woundwrite.write_title}>
+        <div className={woundwrite.row_box}>
+            <div className={woundwrite.title_box}>
                 제목
             </div>
-            <div className={woundwrite.write_titleinputbox}>
-                <input value={postTitle} className={woundwrite.write_titleinput} onChange={input_postTitle}/>
+            <div className={woundwrite.input_box} style={{width:'600px'}}>
+            <input value = {postTitle} className={woundwrite.write_titleinput} onChange={input_postTitle}/>
             </div>
         </div>
-        <div className={woundwrite.write_rowbox}>
-            <div className={woundwrite.write_writerinfo}>
-                <div className={woundwrite.write_title}>
-                    기관명
-                </div>
-                <div className={woundwrite.write_writerinfocontent}>
-                <input value={writer} className={woundwrite.write_writerinputbox} onChange={input_writer}/>
-                </div>
-            </div> 
-            <div className={woundwrite.write_writerinfo}>
-                <div className={woundwrite.write_title}>
-                    작성일
-                </div>
-                <div className={woundwrite.write_writerinfocontent}>
-                    {timer}
-                </div>
-            </div>    
-        </div>
-        <div className={`${woundwrite.write_rowbox} ${woundwrite.write_contentrowbox}`}>
-            <div className={`${woundwrite.write_contenttitle} ${woundwrite.write_title}`}>
-                <h3 style={{paddingLeft: '20px'}}>내용</h3>
+
+        <div className={woundwrite.row_box}>
+            <div className={woundwrite.title_box}>
+                기관명
             </div>
-            <textarea 
-            className={woundwrite.write_content} 
-            cols={60} 
-            rows={50} 
-            value={woundWrite}
-            onChange={e => {
-                setWoundWrite(e.target.value)
-                setQuestionCount(e.target.value.length)
-                }} maxLength={300}></textarea>
-            <div className={woundwrite.contentcount}>
-                {questionCount}/300
-            </div>         
+            <div className={woundwrite.input_box} style={{width:'300px'}}>
+                <input value = {writer} className={woundwrite.write_titleinput} onChange={input_writer} style={{width:'250px'}}/>
+            </div>
+            <div className={woundwrite.title_box} style={{borderLeft: '1px solid black'}}>
+                작성일
+            </div>
+            <div value={timer} className={woundwrite.input_box}  style={{width:'150px'}}>
+                <span>{timer}</span>
+            </div>
         </div>
+
+        <div className={`${woundwrite.row_box} ${woundwrite.row_contentbox}`}>
+            <div className={`${woundwrite.title_box} ${woundwrite.row_contentbox}`}>내용</div>
+            <div className={woundwrite.input_box} style={{width:'670px', height : '340px'}}>
+                    <textarea cols="50" rows="10" maxLength={300} value={woundWrite} onChange={handleWoundWriteChange} style={{height: '300px'}}/>
+                        <div className={woundwrite.contentcount}>
+                            <span>{questionCount}/300</span>
+                        </div>
+                </div>
+            </div>
       </div>
       <div className={woundwrite.btn_writequestionbox}>
         {
