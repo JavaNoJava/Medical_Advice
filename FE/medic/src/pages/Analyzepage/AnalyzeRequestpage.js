@@ -177,121 +177,133 @@ export default function AnalyzeRequestpage(){
     return(
         <div className={analyzerequest.anvicerequest_wrap}>
             <div className={analyzerequest.iconbox}>
-                <h2>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h2 className={analyzerequest.title}>
                     분석의뢰 신청
                 </h2>
+                <h4 className={analyzerequest.title_bottom}>
                 - 의료 분석의뢰를 신청하고자 하는 의뢰자께서는 아래 모든 항목에 대해 모두 입력해주세요.
+                </h4>
              </div>
+
+            {/*신청자 정보 */}
+
              <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={analyzerequest.tit}>
                     신청자 정보
                 </h3>
              </div>
              <div className={analyzerequest.request_usertable}>
-                <div className={analyzerequest.row_box}>
+             <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>의뢰자명</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" disabled={true} value={uname}/>
+                        <span>{uname}</span>
                     </div>
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>일반전화</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" disabled={true} value={utel}/>
+                        <span>{utel}</span>
                     </div>
-                    <div className={analyzerequest.title_box} style={{borderLeft : '1px solid black'}}>휴대전화</div>
+                </div>
+                <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box}>휴대전화</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" disabled={true} value={uphone}/>
+                        <span>{uphone}</span>
                     </div>
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>주소</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" disabled={true} value={uaddress}/>
+                        <span>{uaddress}</span>
                     </div>
                 </div>
              </div>
+
+            {/* 환자의료 기록 사항 */}
+
              <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                 <h3 className={analyzerequest.tit}>
                     환자의료 기록 사항
                 </h3>
             </div>
             <div className={analyzerequest.request_patienttable}>
-                <div className={`${analyzerequest.row_box} ${analyzerequest.patient_box}`}>
-                    <div className={`${analyzerequest.title_box} ${analyzerequest.patient_box}`}>환자명</div>
-                    <div className={`${analyzerequest.input_box} ${analyzerequest.patient_box}`}>
+                <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box}>환자명</div>
+                    <div className={analyzerequest.input_box}>
                         <input type="text" name="an_ptname" onChange={input_an_ptname}></input>
                     </div>
-                    <div className={`${analyzerequest.title_box} ${analyzerequest.patient_box}`} style={{borderLeft : '1px solid black'}}>주민등록번호</div>
-                    <div className={`${analyzerequest.input_box} ${analyzerequest.input_ptssnumbox} ${analyzerequest.patient_box}`}>
+                </div>
+                <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box}>주민등록번호</div>
+                    <div className={analyzerequest.input_box}>
                         <input type="text" name="an_ptssnum1" maxLength={6} onChange={input_an_ptssnum1}></input>
                          -
-                        <input type="password" name="an_ptssnum2" maxLength={7} onChange={input_an_ptssnum2}></input>
-                    </div>
+                        <input type="password" name="an_ptssnum2" maxLength={7} onChange={input_an_ptssnum2}></input>                    </div>
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>진단과목</div>
                     <div className={analyzerequest.input_box}>
-                    <select value={an_ptsub} onChange={e => setAnptsub(e.target.value)}>
-                        <option value="">부서 선택</option>
-                        <option value="내과">내과</option>
-                        <option value="신경과">신경과</option>
-                        <option value="정신건강의학과">정신건강의학과</option>
-                        <option value="외과">외과</option>
-                        <option value="정형외과">정형외과</option>
-                        <option value="신경외과">신경외과</option>
-                        <option value="흉부외과">흉부외과</option>
-                        <option value="성형외과">성형외과</option>
-                        <option value="마취통증의학과">마취통증의학과</option>
-                        <option value="산부인과">산부인과</option>
-                        <option value="소아청소년과">소아청소년과</option>
-                        <option value="안과">안과</option>
-                        <option value="이비인후과">이비인후과</option>
-                        <option value="피부과">피부과</option>
-                        <option value="비뇨의학과">비뇨의학과</option>
-                        <option value="영상의학과">영상의학과</option>
-                        <option value="방사선종양학과">방사선종양학과</option>
-                        <option value="병리과">병리과</option>
-                        <option value="진단검사의학과">진단검사의학과</option>
-                        <option value="결핵과">결핵과</option>
-                        <option value="재활의학과">재활의학과</option>
-                        <option value="예방의학과">예방의학과</option>
-                        <option value="가정의학과">가정의학과</option>
-                        <option value="응급의학과">응급의학과</option>
-                        <option value="핵의학과">핵의학과</option>
-                        <option value="직업환경의학과">직업환경의학과</option>
-                    </select>
+                        <select value={an_ptsub} onChange={e => setAnptsub(e.target.value)}>
+                            <option value="">부서 선택</option>
+                            <option value="내과">내과</option>
+                            <option value="신경과">신경과</option>
+                            <option value="정신건강의학과">정신건강의학과</option>
+                            <option value="외과">외과</option>
+                            <option value="정형외과">정형외과</option>
+                            <option value="신경외과">신경외과</option>
+                            <option value="흉부외과">흉부외과</option>
+                            <option value="성형외과">성형외과</option>
+                            <option value="마취통증의학과">마취통증의학과</option>
+                            <option value="산부인과">산부인과</option>
+                            <option value="소아청소년과">소아청소년과</option>
+                            <option value="안과">안과</option>
+                            <option value="이비인후과">이비인후과</option>
+                            <option value="피부과">피부과</option>
+                            <option value="비뇨의학과">비뇨의학과</option>
+                            <option value="영상의학과">영상의학과</option>
+                            <option value="방사선종양학과">방사선종양학과</option>
+                            <option value="병리과">병리과</option>
+                            <option value="진단검사의학과">진단검사의학과</option>
+                            <option value="결핵과">결핵과</option>
+                            <option value="재활의학과">재활의학과</option>
+                            <option value="예방의학과">예방의학과</option>
+                            <option value="가정의학과">가정의학과</option>
+                            <option value="응급의학과">응급의학과</option>
+                            <option value="핵의학과">핵의학과</option>
+                            <option value="직업환경의학과">직업환경의학과</option>
+                        </select>
                     </div>
-                    <div className={analyzerequest.title_box} style={{borderLeft : '1px solid black'}}>진단명</div>
+                </div>
+                <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box}>진단명</div>
                     <div className={analyzerequest.input_box}>
                         <input type="text" name="an_ptdiagnosis" onChange={input_an_ptdiagnosis}/>
                     </div>
                 </div>
-                <div className={`${analyzerequest.row_box}`}>
+                <div className={analyzerequest.row_box}>
                     <div className ={`${analyzerequest.title_box} ${analyzerequest.row_contentbox}`}>
-                        진단 사항
+                        진단사항
                     </div>
-                    <div className={analyzerequest.input_box} style={{width : '400px', height : 'auto'}}>
+                    <div className={analyzerequest.input_box} style={{width : '600px', height : 'auto'}}>
                         <textarea cols="50" rows="10" onChange={input_an_ptdiagcontent} maxLength={500}/>
                         <div className={analyzerequest.count_box}>
-                            <span>{contents_count}/500</span>
+                                <span>{contents_count}/500</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* 기타사항 */}
+
             <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={analyzerequest.tit}>
                     기타사항
                 </h3>
             </div>
             <div className={analyzerequest.request_othertable}>
                 <div className={analyzerequest.row_box} >
-                    <div className={analyzerequest.title_box} style={{height : '130px'}}>기타사항</div>
-                    <div className={analyzerequest.input_box} style={{width : '400px'}}>
+                <div className ={`${analyzerequest.title_box} ${analyzerequest.row_contentbox}`}>기타사항</div>
+                    <div className={analyzerequest.input_box} style={{width : '600px'}}>
                         <textarea cols="50" rows="3" name="anEtc" value={anEtcValue} onChange={handleAnEtcChange} maxLength={300}></textarea>
                         <div className={analyzerequest.count_box}>
                             <span>{an_etc_count}/300</span>
@@ -299,9 +311,11 @@ export default function AnalyzeRequestpage(){
                     </div>
                 </div>
             </div>
-            <div className={analyzerequest.iconbox} style={{marginTop : '50px'}}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+
+            {/* 질문지 작성 */}
+            
+            <div className={analyzerequest.iconbox}>
+                <h3 className={analyzerequest.tit}>
                     질문지 작성
                 </h3>
             </div>
@@ -320,11 +334,13 @@ export default function AnalyzeRequestpage(){
                     </div>
                 </div>
                     {renderQuestionInputs()}
-                </div>
+            </div>
+
+            {/* 첨부자료 */}
+            
              <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
-                        첨부자료
+                <h3 className={analyzerequest.tit}>
+                    첨부자료
                 </h3>
             </div>
             <div className={analyzerequest.file_table}>
@@ -369,8 +385,8 @@ export default function AnalyzeRequestpage(){
                     </div>
                 </div>
                 <div className={analyzerequest.complete}>
-                    <button type = "button" className={analyzerequest.btt_complete} onClick={btn_analyze_request}>분석 의뢰신청</button>
-                    <button type = "button" className={analyzerequest.btt_complete} onClick={btn_analyze_cancle}>취소</button>
+                    <button type = "button" className={analyzerequest.complete_button} onClick={btn_analyze_request}>분석 의뢰신청</button>
+                    <button type = "button" className={analyzerequest.complete_button} onClick={btn_analyze_cancle}>취소</button>
                  </div>
             </div>
         </div>

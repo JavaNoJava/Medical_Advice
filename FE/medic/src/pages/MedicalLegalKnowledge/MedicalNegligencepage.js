@@ -5,6 +5,8 @@ import { Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
 
 export default function MedicalNegligencepage(){
     const [medicalNegligences, setMedicalNegligences] = useState([]);
@@ -91,19 +93,21 @@ export default function MedicalNegligencepage(){
     return(
     <div className={MedicalNegligence.assignform}>
         <div className={MedicalNegligence.medicalNegligence_title}>
-          <h2>
-            <i className="fa-solid fa-circle icon"></i>
+          <h2 className={MedicalNegligence.title}>
             의료과실정보
           </h2>
         </div>
-        <div>
-        <input
-          type="text"
-          placeholder="검색어를 입력하세요"
-          value={searchKeyword}
-          onChange={(e) => setSearchKeyword(e.target.value)}
-        />
-        <button onClick={searchMedicalNegligenceInfo}>검색</button>
+        <div className={MedicalNegligence.search_bar}>
+          <span>
+            <input
+              type="text"
+              placeholder="검색어를 입력하세요"
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+              style={{ width: '300px', height: '30px', fontSize: '1rem', fontFamily: '돋움, Dotum, Arial, sans-serif'}}
+              />
+          </span>
+        <button onClick={searchMedicalNegligenceInfo} className={MedicalNegligence.search_button}>검색</button>
       </div>
         <br />
         <div className={MedicalNegligence.tb}>
@@ -150,12 +154,12 @@ export default function MedicalNegligencepage(){
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
-          ◀
+          <FaChevronLeft />
           </button>
           {[...Array(Math.ceil(medicalNegligences.length / itemsPerPage))].map((_, index) => (
             <button
               key={index}
-              className={MedicalNegligence.paginationButton}
+              className={MedicalNegligence.paginationNumber}
               onClick={() => handlePageChange(index + 1)}
               disabled={currentPage === index + 1}
             >
@@ -166,7 +170,7 @@ export default function MedicalNegligencepage(){
             className={MedicalNegligence.paginationButton}
             onClick={() => handlePageChange(currentPage + 1)}
           >
-          ▶
+          <FaChevronRight />
           </button>
        </div>
       </div>

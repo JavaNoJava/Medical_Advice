@@ -5,6 +5,7 @@ import { Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 
 export default function IndustrialAccidentInfopage(){
@@ -102,19 +103,21 @@ export default function IndustrialAccidentInfopage(){
   return (
     <div className={industrialAccident.assignform}>
       <div className={industrialAccident.industrialAccident_title}>
-        <h2>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={industrialAccident.title}>
           산업재해정보
         </h2>
       </div>
-      <div>
-        <input
-          type="text"
-          placeholder="검색어를 입력하세요"
-          value={searchKeyword}
-          onChange={(e) => setSearchKeyword(e.target.value)}
-        />
-        <button onClick={searchIndustrialAccidentInfo}>검색</button>
+      <div className={industrialAccident.search_bar}>
+        <span>
+          <input
+            type="text"
+            placeholder="검색어를 입력하세요"
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+            style={{ width: '300px', height: '30px', fontSize: '1rem', fontFamily: '돋움, Dotum, Arial, sans-serif'}}
+          />
+        </span>
+        <button onClick={searchIndustrialAccidentInfo} className={industrialAccident.search_button}>검색</button>
       </div>
       <br />
       <div className={industrialAccident.tb}>
@@ -161,12 +164,12 @@ export default function IndustrialAccidentInfopage(){
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          ◀
+        <FaChevronLeft />
         </button>
         {[...Array(Math.ceil(industrialAccidentInfos.length / itemsPerPage))].map((_, index) => (
           <button
             key={index}
-            className={industrialAccident.paginationButton}
+            className={industrialAccident.paginationNumber}
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
           >
@@ -177,7 +180,7 @@ export default function IndustrialAccidentInfopage(){
           className={industrialAccident.paginationButton}
           onClick={() => handlePageChange(currentPage + 1)}
         >
-          ▶
+        <FaChevronRight />
         </button>
       </div>
 

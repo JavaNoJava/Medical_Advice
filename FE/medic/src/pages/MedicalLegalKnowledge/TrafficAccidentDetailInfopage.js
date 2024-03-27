@@ -95,44 +95,36 @@ export default function TrafficAccidentDetailInfopage(){
   return (
     <div className={trafficAccidentDetail.detailform}>
       <div className={trafficAccidentDetail.detail_title}>
-        <h2>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={trafficAccidentDetail.title}>
           교통사고정보 상세 보기
         </h2>
       </div>
-      <br />
-      <form>
-        <table className={trafficAccidentDetail.trafficaccidentdetail_table}>
-          <tr>
-            <th className={trafficAccidentDetail.trafficaccidentdetail_th}>제목</th>
-            <td className={trafficAccidentDetail.trafficaccidentdetail_td}>{trafficAccidentInfoDetail.taName}</td>
-            <th className={trafficAccidentDetail.trafficaccidentdetail_th}>등록일</th>
-            <td className={trafficAccidentDetail.trafficaccidentdetail_td}>{formatDateString(trafficAccidentInfoDetail.taRegDate)}</td>
-          </tr>
-          <th className={trafficAccidentDetail.trafficaccidentdetail_th}>내용</th>
-          <td colSpan="3" className={trafficAccidentDetail.trafficaccidentdetail_td}>
-            <div className={trafficAccidentDetail.content}>{trafficAccidentInfoDetail.taContent}</div>
-          </td>
-          <tr></tr>
-        </table>
-        <br />
-        <div className={trafficAccidentDetail.secondTable}>
-          <table className={trafficAccidentDetail.trafficaccidentdetail_table}>
-          <tr onClick={() => goToDetailPage(prevNum)}>
-              <th className={trafficAccidentDetail.trafficaccidentdetail_th}>이전글</th>
-              <td className={trafficAccidentDetail.trafficaccidentdetail_td}>{prevTitle}</td>
-              <td className={trafficAccidentDetail.trafficaccidentdetail_td}>{prevWriter}</td>
-              <td className={trafficAccidentDetail.trafficaccidentdetail_td}>{formatDateString(prevDate)}</td>
-            </tr>
-            <tr onClick={() => goToDetailPage(nextNum)}>
-              <th className={trafficAccidentDetail.trafficaccidentdetail_th}>다음글</th>
-              <td className={trafficAccidentDetail.trafficaccidentdetail_td}>{nextTitle}</td>
-              <td className={trafficAccidentDetail.trafficaccidentdetail_td}>{nextWriter}</td>
-              <td className={trafficAccidentDetail.trafficaccidentdetail_td}>{formatDateString(nextDate)}</td>
-            </tr>
-          </table>
+      
+      {/* 게시글 */}
+      <div className={trafficAccidentDetail.write_table}>
+        <div className={trafficAccidentDetail.row_box}>
+          <div className={trafficAccidentDetail.title_box}>
+            기관명
+          </div>
+          <div className={trafficAccidentDetail.input_box} style={{width:'300px'}}>
+            <span>{trafficAccidentInfoDetail.taName}</span>
+          </div>
+          <div className={trafficAccidentDetail.title_box} style={{borderLeft: '1px solid black'}}>
+            작성일
+          </div>
+          <div className={trafficAccidentDetail.input_box}  style={{width:'100px'}}>
+            <span>{formatDateString(trafficAccidentInfoDetail.taRegDate)}</span>
+          </div>
         </div>
-        <div className={trafficAccidentDetail.complete}>
+        <div className={`${trafficAccidentDetail.row_box} ${trafficAccidentDetail.row_contentbox}`}>
+                <div className={`${trafficAccidentDetail.title_box} ${trafficAccidentDetail.row_contentbox}`}>내용</div>
+                <div className={trafficAccidentDetail.content_box} style={{width:'730px', height : '330px', justifyContent: 'start'}}>
+                  {trafficAccidentInfoDetail.taContent}
+                </div>
+            </div>
+      </div>
+
+      <div className={trafficAccidentDetail.complete}>
           <button type="button" onClick={btn_trafficAccident_list} className={trafficAccidentDetail.btt_write}>
             목록
           </button>
@@ -146,8 +138,27 @@ export default function TrafficAccidentDetailInfopage(){
               삭제
             </button>
           )}
+      </div>
+
+      {/* 이전/다음 게시글 */}
+      <div className={trafficAccidentDetail.preAndNext_table}>
+        <div className={trafficAccidentDetail.preAndNext_row_box}>
+          <div className={trafficAccidentDetail.preAndNext_title_box}>
+            이전글
+          </div>
+          <div className={trafficAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(prevNum)}>
+            <span>{prevTitle}</span>
+          </div>
         </div>
-      </form>
+        <div className={trafficAccidentDetail.preAndNext_row_box}>
+          <div className={trafficAccidentDetail.preAndNext_title_box}>
+            다음글
+          </div>
+          <div className={trafficAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(nextNum)}>
+            <span>{nextTitle}</span>
+          </div>
+        </div>
+      </div> 
     </div>
   );
 };

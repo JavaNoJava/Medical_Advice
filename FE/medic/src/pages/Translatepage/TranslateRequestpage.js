@@ -132,15 +132,18 @@ export default function TranslateRequestpage(){
     return(
         <div className={translaterequest.translaterequest_wrap}>
             <div className={translaterequest.iconbox}>
-                <h2>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h2 className={translaterequest.title}>
                     번역의뢰 신청
                 </h2>
-                - 의료 번역의뢰를 신청하고자 하는 의뢰자께서는 아래 모든 항목에 대해 모두 입력해주세요.
+                <h4 className={translaterequest.title_bottom}>
+                    - 의료 번역의뢰를 신청하고자 하는 의뢰자께서는 아래 모든 항목에 대해 모두 입력해주세요.
+                </h4>
              </div>
+
+            {/* 신청자 정보 */}
+
              <div className={translaterequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={translaterequest.tit}>
                     신청자 정보
                 </h3>
              </div>
@@ -148,40 +151,46 @@ export default function TranslateRequestpage(){
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>의뢰자명</div>
                     <div className={translaterequest.input_box}>
-                        <input type="text" disabled={true} value={uname}/>
+                        <span>{uname}</span>
                     </div>
                 </div>
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>일반전화</div>
                     <div className={translaterequest.input_box}>
-                        <input type="text" disabled={true} value={utel}/>
+                        <span>{utel}</span>
                     </div>
-                    <div className={translaterequest.title_box} style={{borderLeft : '1px solid black'}}>휴대전화</div>
+                </div>
+                <div className={translaterequest.row_box}>
+                    <div className={translaterequest.title_box}>휴대전화</div>
                     <div className={translaterequest.input_box}>
-                        <input type="text" disabled={true} value={uphone}/>
+                        <span>{uphone}</span>
                     </div>
                 </div>
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>주소</div>
                     <div className={translaterequest.input_box}>
-                        <input type="text" disabled={true} value={uaddress}/>
+                        <span>{uaddress}</span>
                     </div>
                 </div>
              </div>
+
+            {/* 환자의료 기록 사항 */}
+
              <div className={translaterequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={translaterequest.tit}>
                     환자의료 기록 사항
                 </h3>
             </div>
             <div className={translaterequest.request_patienttable}>
-                <div className={`${translaterequest.row_box} ${translaterequest.patient_box}`}>
-                    <div className={`${translaterequest.title_box} ${translaterequest.patient_box}`}>환자명</div>
-                    <div className={`${translaterequest.input_box} ${translaterequest.patient_box}`}>
+                <div className={translaterequest.row_box}>
+                    <div className={translaterequest.title_box}>환자명</div>
+                    <div className={translaterequest.input_box}>
                         <input type="text" name="tr_ptname" onChange={input_tr_ptname}></input>
                     </div>
-                    <div className={`${translaterequest.title_box} ${translaterequest.patient_box}`} style={{borderLeft : '1px solid black'}}>주민등록번호</div>
-                    <div className={`${translaterequest.input_box} ${translaterequest.input_ptssnumbox} ${translaterequest.patient_box}`}>
+                </div>
+                <div className={translaterequest.row_box}>
+                    <div className={translaterequest.title_box}>주민등록번록</div>
+                    <div className={translaterequest.input_box}>
                         <input type="text" name="tr_ptssnum1" maxLength={6} onChange={input_tr_ptssnum1}></input>
                          -
                         <input type="password" name="tr_ptssnum2" maxLength={7} onChange={input_tr_ptssnum2}></input>
@@ -190,46 +199,48 @@ export default function TranslateRequestpage(){
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>진단과목</div>
                     <div className={translaterequest.input_box}>
-                    <select value={tr_ptsub} onChange={e => setTrptsub(e.target.value)}>
-                        <option value="">부서 선택</option>
-                        <option value="내과">내과</option>
-                        <option value="신경과">신경과</option>
-                        <option value="정신건강의학과">정신건강의학과</option>
-                        <option value="외과">외과</option>
-                        <option value="정형외과">정형외과</option>
-                        <option value="신경외과">신경외과</option>
-                        <option value="흉부외과">흉부외과</option>
-                        <option value="성형외과">성형외과</option>
-                        <option value="마취통증의학과">마취통증의학과</option>
-                        <option value="산부인과">산부인과</option>
-                        <option value="소아청소년과">소아청소년과</option>
-                        <option value="안과">안과</option>
-                        <option value="이비인후과">이비인후과</option>
-                        <option value="피부과">피부과</option>
-                        <option value="비뇨의학과">비뇨의학과</option>
-                        <option value="영상의학과">영상의학과</option>
-                        <option value="방사선종양학과">방사선종양학과</option>
-                        <option value="병리과">병리과</option>
-                        <option value="진단검사의학과">진단검사의학과</option>
-                        <option value="결핵과">결핵과</option>
-                        <option value="재활의학과">재활의학과</option>
-                        <option value="예방의학과">예방의학과</option>
-                        <option value="가정의학과">가정의학과</option>
-                        <option value="응급의학과">응급의학과</option>
-                        <option value="핵의학과">핵의학과</option>
-                        <option value="직업환경의학과">직업환경의학과</option>
-                    </select>
+                        <select value={tr_ptsub} onChange={e => setTrptsub(e.target.value)}>
+                            <option value="">부서 선택</option>
+                            <option value="내과">내과</option>
+                            <option value="신경과">신경과</option>
+                            <option value="정신건강의학과">정신건강의학과</option>
+                            <option value="외과">외과</option>
+                            <option value="정형외과">정형외과</option>
+                            <option value="신경외과">신경외과</option>
+                            <option value="흉부외과">흉부외과</option>
+                            <option value="성형외과">성형외과</option>
+                            <option value="마취통증의학과">마취통증의학과</option>
+                            <option value="산부인과">산부인과</option>
+                            <option value="소아청소년과">소아청소년과</option>
+                            <option value="안과">안과</option>
+                            <option value="이비인후과">이비인후과</option>
+                            <option value="피부과">피부과</option>
+                            <option value="비뇨의학과">비뇨의학과</option>
+                            <option value="영상의학과">영상의학과</option>
+                            <option value="방사선종양학과">방사선종양학과</option>
+                            <option value="병리과">병리과</option>
+                            <option value="진단검사의학과">진단검사의학과</option>
+                            <option value="결핵과">결핵과</option>
+                            <option value="재활의학과">재활의학과</option>
+                            <option value="예방의학과">예방의학과</option>
+                            <option value="가정의학과">가정의학과</option>
+                            <option value="응급의학과">응급의학과</option>
+                            <option value="핵의학과">핵의학과</option>
+                            <option value="직업환경의학과">직업환경의학과</option>
+                        </select>
                     </div>
-                    <div className={translaterequest.title_box} style={{borderLeft : '1px solid black'}}>진단명</div>
+                </div>
+                <div className={translaterequest.row_box}>
+                    <div className={translaterequest.title_box}>진단명</div>
                     <div className={translaterequest.input_box}>
                         <input type="text" name="tr_ptdiagnosis" onChange={input_tr_ptdiagnosis}/>
                     </div>
                 </div>
-                <div className={`${translaterequest.row_box}`}>
+                <div className={translaterequest.row_box}>
                     <div className ={`${translaterequest.title_box} ${translaterequest.row_contentbox}`}>
-                        진단 사항
+                        진단사항
                     </div>
-                    <div className={translaterequest.input_box} style={{width : '400px', height : 'auto'}}>
+                    <div className={translaterequest.input_box} style={{width : '600px', height : 'auto'}}>
                         <textarea cols="50" rows="10" onChange={input_tr_ptcmt} maxLength={500}/>   
                         <div className={translaterequest.count_box}>
                             <span>{contents_count}/500</span>
@@ -237,16 +248,18 @@ export default function TranslateRequestpage(){
                     </div>
                 </div>
             </div>
+
+            {/* 기타사항 */}
+
             <div className={translaterequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={translaterequest.tit}>
                     기타사항
                 </h3>
             </div>
             <div className={translaterequest.request_othertable}>
                 <div className={translaterequest.row_box} >
-                    <div className={translaterequest.title_box} style={{height : '130px'}}>기타사항</div>
-                    <div className={translaterequest.input_box} style={{width : '400px'}}>
+                    <div className ={`${translaterequest.title_box} ${translaterequest.row_contentbox}`}>기타사항</div>
+                    <div className={translaterequest.input_box} style={{width : '600px'}}>
                         <textarea cols="50" rows="3" name="trEtc" value={trEtcValue} onChange={handleTrEtcChange} maxLength={300}></textarea>
                         <div className={translaterequest.count_box}>
                             <span>{tr_etc_count}/300</span>
@@ -255,9 +268,10 @@ export default function TranslateRequestpage(){
                 </div>
             </div>
 
-             <div className={`${translaterequest.iconbox} ${translaterequest.file_box}`}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+            {/* 첨부자료 */}
+            
+            <div className={translaterequest.iconbox}>
+                <h3 className={translaterequest.tit}>
                         첨부자료
                         <span className={translaterequest.notice}>
                         ※ 번역자료는 압축파일(zip 파일형식) 으로 첨부해 주세요
@@ -274,8 +288,8 @@ export default function TranslateRequestpage(){
                     </div>
                 </div>
                 <div className={translaterequest.complete}>
-                    <button type = "button" className={translaterequest.btt_complete} onClick={btn_translate_request}>번역 의뢰신청</button>
-                    <button type = "button" className={translaterequest.btt_complete} onClick={btn_translate_cancle}>취소</button>
+                    <button type = "button" className={translaterequest.complete_button} onClick={btn_translate_request}>번역 의뢰신청</button>
+                    <button type = "button" className={translaterequest.complete_button} onClick={btn_translate_cancle}>취소</button>
                  </div>
             </div>
         </div>

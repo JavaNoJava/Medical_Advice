@@ -18,6 +18,12 @@ export default function TrafficAccidentWritepage() {
     const cookie = new Cookies()
     const location = useLocation();
 
+    const handleTrafficAccidentWriteChange = (e) => {
+        const content = e.target.value;
+        setTrafficWrite(content);
+        setQuestionCount(content.length);
+    }
+
     useEffect(()=>{
         currentTimer();
     }, [])
@@ -93,56 +99,45 @@ export default function TrafficAccidentWritepage() {
     }
   return (
     <div className={faultinfowrite.writeform}>
-      <div className={faultinfowrite.fault_title}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+      <div className={faultinfowrite.traffic_title}>
+        <h2 className={faultinfowrite.title}>
           교통사고 정보 작성
-        </h1>
+        </h2>
       </div>
       <div className={faultinfowrite.write_table}>
-        <div className={faultinfowrite.write_rowbox}>
-            <div className={faultinfowrite.write_title}>
+        <div className={faultinfowrite.row_box}>
+            <div className={faultinfowrite.title_box}>
                 제목
             </div>
-            <div className={faultinfowrite.write_titleinputbox}>
+            <div className={faultinfowrite.input_box} style={{width:'600px'}}>
                 <input value={postTitle} className={faultinfowrite.write_titleinput} onChange={input_postTitle}/>
             </div>
         </div>
-        <div className={faultinfowrite.write_rowbox}>
-            <div className={faultinfowrite.write_writerinfo}>
-                <div className={faultinfowrite.write_title}>
-                    기관명
-                </div>
-                <div className={faultinfowrite.write_writerinfocontent}>
-                <input value={writer} className={faultinfowrite.write_writerinputbox} onChange={input_writer}/>
-                </div>
+
+        <div className={faultinfowrite.row_box}>
+            <div className={faultinfowrite.title_box}>
+                기관명
             </div> 
-            <div className={faultinfowrite.write_writerinfo}>
-                <div className={faultinfowrite.write_title}>
-                    작성일
-                </div>
-                <div className={faultinfowrite.write_writerinfocontent}>
-                    {timer}
-                </div>
-            </div>    
-        </div>
-        <div className={`${faultinfowrite.write_rowbox} ${faultinfowrite.write_contentrowbox}`}>
-            <div className={`${faultinfowrite.write_contenttitle} ${faultinfowrite.write_title}`}>
-                <h3 style={{paddingLeft: '20px'}}>내용</h3>
+            <div className={faultinfowrite.input_box} style={{width:'300px'}}>
+                <input value = {writer} className={faultinfowrite.write_titleinput} onChange={input_writer} style={{width:'250px'}}/>
             </div>
-            <textarea 
-            className={faultinfowrite.write_content} 
-            cols={60} 
-            rows={50} 
-            value={trafficWrite}
-            onChange={e => {
-                setTrafficWrite(e.target.value)
-                setQuestionCount(e.target.value.length)
-                }} maxLength={300}></textarea>
-            <div className={faultinfowrite.contentcount}>
-                {questionCount}/300
-            </div>         
+            <div className={faultinfowrite.title_box} style={{borderLeft: '1px solid black'}}>
+                작성일
+            </div>
+            <div value={timer} className={faultinfowrite.input_box}  style={{width:'150px'}}>
+                <span>{timer}</span>
+            </div>
         </div>
+
+        <div className={`${faultinfowrite.row_box} ${faultinfowrite.row_contentbox}`}>
+            <div className={`${faultinfowrite.title_box} ${faultinfowrite.row_contentbox}`}>내용</div>
+            <div className={faultinfowrite.input_box} style={{width:'670px', height : '340px'}}>
+                    <textarea cols="50" rows="10" maxLength={300} value={trafficWrite} onChange={handleTrafficAccidentWriteChange} style={{height: '300px'}}/>
+                        <div className={faultinfowrite.contentcount}>
+                            <span>{questionCount}/300</span>
+                        </div>
+                </div>
+            </div>
       </div>
       <div className={faultinfowrite.btn_writequestionbox}>
         {

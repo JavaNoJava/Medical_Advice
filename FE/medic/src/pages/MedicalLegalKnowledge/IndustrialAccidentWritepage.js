@@ -18,6 +18,12 @@ export default function IndustrialAccidentWritepage() {
     const cookie = new Cookies()
     const location = new useLocation()
 
+    const handleIndustrialAccidentWriteChange = (e) => {
+        const content = e.target.value;
+        setIndustrialWrite(content);
+        setQuestionCount(content.length);
+    }
+
     useEffect(()=>{
         currentTimer();
     }, [])
@@ -95,54 +101,42 @@ export default function IndustrialAccidentWritepage() {
   return (
     <div className={industrialwrite.writeform}>
       <div className={industrialwrite.industrial_title}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={industrialwrite.title}>
           산업재해 정보 작성
-        </h1>
+        </h2>
       </div>
       <div className={industrialwrite.write_table}>
-        <div className={industrialwrite.write_rowbox}>
-            <div className={industrialwrite.write_title}>
+        <div className={industrialwrite.row_box}>
+            <div className={industrialwrite.title_box}>
                 제목
             </div>
-            <div className={industrialwrite.write_titleinputbox}>
+            <div className={industrialwrite.input_box} style={{width:'600px'}}>
                 <input value={postTitle} className={industrialwrite.write_titleinput} onChange={input_postTitle}/>
             </div>
         </div>
-        <div className={industrialwrite.write_rowbox}>
-            <div className={industrialwrite.write_writerinfo}>
-                <div  className={industrialwrite.write_title}>
+        <div className={industrialwrite.row_box}>
+            <div className={industrialwrite.title_box}>
                     기관명
-                </div>
-                <div className={industrialwrite.write_writerinfocontent}>
-                <input value= {writer} className={industrialwrite.write_writerinputbox} onChange={input_writer}/>
-                </div>
-            </div> 
-            <div className={industrialwrite.write_writerinfo}>
-                <div className={industrialwrite.write_title}>
-                    작성일
-                </div>
-                <div className={industrialwrite.write_writerinfocontent}>
-                    {timer}
-                </div>
-            </div>    
-        </div>
-        <div className={`${industrialwrite.write_rowbox} ${industrialwrite.write_contentrowbox}`}>
-            <div className={`${industrialwrite.write_contenttitle} ${industrialwrite.write_title}`}>
-                <h3 style={{paddingLeft: '20px'}}>내용</h3>
             </div>
-            <textarea 
-            className={industrialwrite.write_content} 
-            cols={60} 
-            rows={50} 
-            value={industrialWrite}
-            onChange={e => {
-                setIndustrialWrite(e.target.value)
-                setQuestionCount(e.target.value.length)
-                }} maxLength={300}></textarea>
-            <div className={industrialwrite.contentcount}>
-                {questionCount}/300
-            </div>         
+            <div className={industrialwrite.input_box} style={{width:'300px'}}>
+                <input value = {writer} className={industrialwrite.write_titleinput} onChange={input_writer} style={{width:'250px'}}/>
+            </div>
+            <div className={industrialwrite.title_box} style={{borderLeft: '1px solid black'}}>
+                작성일
+            </div>
+            <div value={timer} className={industrialwrite.input_box}  style={{width:'150px'}}>
+                <span>{timer}</span>
+            </div>
+        </div>
+
+        <div className={`${industrialwrite.row_box} ${industrialwrite.row_contentbox}`}>
+            <div className={`${industrialwrite.title_box} ${industrialwrite.row_contentbox}`}>내용</div>
+            <div className={industrialwrite.input_box} style={{width:'670px', height : '340px'}}>
+                <textarea cols="50" rows="10" maxLength={300} value={industrialWrite} onChange={handleIndustrialAccidentWriteChange} style={{height: '300px'}}/>
+                    <div className={industrialwrite.contentcount}>
+                        <span>{questionCount}/300</span>
+                    </div>         
+            </div>
         </div>
       </div>
       <div className={industrialwrite.btn_writequestionbox}>
