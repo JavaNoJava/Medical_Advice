@@ -1,86 +1,107 @@
 .writeform {
     display: flex;
     flex-direction: column;
+    justify-content: start;
     align-items: center;
+    text-align: center;
     position: relative;
+    font-family: "돋움", Dotum, Arial, sans-serif;
 }
+
 .medicalNegligence_title {
     width: 950px;
     display: flex;
     justify-content: start;
 }
-.write_table{
-    width: 850px;
-    height: 350px;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-.write_rowbox{
-    width: 850px;
-    height: 40px;
-    display: flex;
-    border: 1px solid #ddd;
-}
-.write_titleinputbox{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    width: 750px;
-}
-.write_writerinputbox{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    width: 280px;
-    height: 30px;
-}
+
 .write_titleinput{
     width: 700px;
     height: 30px;
     margin-left: 10px;
 }
-.write_writerinfo{
-    display: flex;
-    align-items: center;
+
+.title {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    color: #0f3a75;
 }
-.write_title{
-    width: 100px;
-    height: 40px;
-    border: 1px solid #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.write_writerinfocontent{
-    width: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.write_contentrowbox{
+
+.write_table{
+    width: 850px;
+    height: 400px;
     display: flex;
     flex-direction: column;
-    height: auto;
-    border: none;
+    border-top: 2px solid #10b3cc;
+    border-left: none; /* 왼쪽 테두리 없음 */
+    border-right: none; /* 오른쪽 테두리 없음 */
+    margin-bottom: 65px;
+    margin-right: 100px;
 }
-.write_contenttitle{
-    border-bottom: 1px solid #ddd;
-    width: 850px;
+
+.row_box{
+    display: flex;
+    align-items: center;
+    height: 80px;
+    border-collapse: collapse;
+    /* border: 1px solid black; */
+    border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
+}
+
+.title_box{
+    display: flex;
     justify-content: start;
+    align-items: center;
+    border-right: 1px solid black;
+    height: 80px;
+    width: 128px;
+    padding-left: 20px;
+    background: #f5f5f5;
 }
-.write_content{
-    margin: 0 auto;
-    margin-top: 40px;
-}
-.contentcount{
-    width: 780px;
+
+.input_box{
     display: flex;
-    justify-content: end;
+    justify-content: start;
+    align-items: center;
+    height: 52px;
+    padding-left: 20px;
+    width: 250px;
 }
+
+.row_contentbox{
+    height: 340px;
+}
+
+.contentcount{
+    height : 310px;
+    display : flex;
+    flex-direction : column;
+    justify-content : end;
+}
+
 .btn_writequestionbox{
+    margin-top: 50px;
     width: 850px;
     display: flex;
     justify-content: end;
+    margin-right: 90px;
+}
+
+.btn_writequestion {
+    display: inline-block;
+    font-size: 0.8rem;
+    background-color: #10b3cc; /* 배경색 설정 */
+    color: #fff; /* 텍스트 색상 설정 */
+    height: 35px;
+    width: 60px;
+    border: 2px solid #10b3cc; /* 테두리 설정 */
+    border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
+    margin: 0 5px;
+
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
+}
+
+.btn_writequestion:hover {
+    background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
+    border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
 }

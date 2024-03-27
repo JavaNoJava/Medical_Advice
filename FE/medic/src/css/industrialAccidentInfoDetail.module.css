@@ -1,41 +1,20 @@
 .detailform {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  font-family: "돋움", Dotum, Arial, sans-serif;
+}
   
-  .detail_title {
-    width: 1048px;
-    display: flex;
-    justify-content: start;
-  }
-  
-  .complete {
-    text-align: right;
-    margin-top: 50px;
-  }
+.detail_title {
+  width: 950px;
+  display: flex;
+  justify-content: start;
+  margin-bottom: 80px;
+}  
 
-  h2 {
-    font-size: 24px; 
-  }
-  
-  .industrialaccidentdetail_table {
-    width: 850px;
-    border-collapse: collapse;
-    position: relative;
-  }
-  
-  .industrialaccidentdetail_th, .industrialaccidentdetail_td {
-    height: 40px;
-    font-size: 14px;
-    border: 1px solid black;
-    text-align: center;
-    padding: 8px;
-  }
-  
-
-  .btt_write {
+.btt_write {
     display: inline-block;
     font-size: 0.8rem;
     background-color: #3cb371;
@@ -43,11 +22,131 @@
     width: 180px;
     border: none;
     border-radius: 20px;
-  }
+}
 
-  textarea {
-    height: 113px;
-    width: 703px;
-    resize: vertical;
-  }
-  
+.title {
+    margin-bottom: -20px;
+    font-size: 2.5rem;
+    color: #0f3a75;
+}
+
+.write_table{
+  width: 850px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #10b3cc;
+  border-left: none; /* 왼쪽 테두리 없음 */
+  border-right: none; /* 오른쪽 테두리 없음 */
+  margin-right: 100px;
+}
+
+.row_box{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-collapse: collapse;
+  /* border: 1px solid black; */
+  border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
+}
+
+.title_box{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-right: 1px solid black;
+  height: 50px;
+  width: 80px;
+  padding-left: 20px;
+  background: #f5f5f5;
+}
+
+.input_box{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 52px;
+  padding-left: 20px;
+  width: 250px;
+}
+
+.row_contentbox{
+  height: 350px;
+}
+
+.preAndNext_table{
+  width: 850px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid black;
+  border-left: none; /* 왼쪽 테두리 없음 */
+  border-right: none; /* 오른쪽 테두리 없음 */
+  margin-bottom: 65px;
+  margin-right: 100px;
+  margin-top: 80px;
+}
+
+.preAndNext_row_box{
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-collapse: collapse;
+  /* border: 1px solid black; */
+  border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
+}
+
+.preAndNext_title_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  height: 40px;
+  width: 128px;
+  background: #f5f5f5;
+}
+
+.preAndNext_input_box{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 50px;
+  padding-left: 20px;
+  width: 250px;
+}
+
+.btt_write {
+  display: inline-block;
+  font-size: 0.8rem;
+  background-color: #10b3cc; /* 배경색 설정 */
+  color: #fff; /* 텍스트 색상 설정 */
+  height: 35px;
+  width: 60px;
+  border: 2px solid #10b3cc; /* 테두리 설정 */
+  border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
+  margin: 0 5px;
+
+  cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
+  transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
+}
+
+.btt_write:hover {
+  background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
+  border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
+}
+.complete{
+  margin-top: 15px;
+  width: 850px;
+  display: flex;
+  justify-content: end;
+  margin-right: 85px;
+}
+
+.content_box{
+  display: flex;
+  justify-content: start;
+  height: 54px;
+  padding-left: 10px;
+  width: 250px;
+  padding-top: 10px;
+}
