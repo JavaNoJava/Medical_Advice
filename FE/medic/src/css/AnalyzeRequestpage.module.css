@@ -8,7 +8,6 @@
     margin-bottom: 50px;
     padding-bottom: 500px;
     font-family: "돋움", Dotum, Arial, sans-serif;
-
 }
 
 .request_usertable{
@@ -30,6 +29,7 @@
     /* border: 1px solid black; */
     border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
 }
+
 .title_box{
     display: flex;
     justify-content: start;
@@ -40,6 +40,7 @@
     padding-left: 20px;
     background: #f5f5f5; 
 }
+
 .input_box{
     display: flex;
     justify-content: start;
@@ -48,15 +49,18 @@
     padding-left: 20px;
     width: 250px;
 }
+
 .row_contentbox{
     height: 128px;
 }
+
 .count_box{
     height : 118px;
     display : flex;
     flex-direction : column;
     justify-content : end;
 }
+
 .request_othertable{
     width: 850px;
     height: 300px;
@@ -67,6 +71,7 @@
     border-right: none; /* 오른쪽 테두리 없음 */
     margin-bottom: 65px;
 }
+
 .request_questiontable{
     width: 850px;
     height: 300px;
@@ -77,6 +82,7 @@
     border-right: none; /* 오른쪽 테두리 없음 */
     margin-bottom: 65px;
 }
+
 .file_table{
     width: 850px;
     height: 400px;
@@ -87,7 +93,8 @@
     border-right: none; /* 오른쪽 테두리 없음 */
     margin-bottom: 65px;
 }
-.iconbox {
+
+.iconbox{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -95,19 +102,13 @@
     text-align: center;
     width: 880px;
 }
-div.complete {
+
+div.complete{
     margin-top: 50px;
     display: flex;
     align-items: center; /* 수직 정렬을 위해 사용 */
     justify-content: center;
 }
-
-.tb{
-    max-width: 850px;
-  width: 100%;
-  overflow-x: auto; /* Enable horizontal scroll if content overflows */
-}
-
 
 .title {
     margin-bottom: -20px;
@@ -131,7 +132,7 @@ div.complete {
 
 .request_patienttable{
     width: 850px;
-    height: 300px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
@@ -150,7 +151,6 @@ div.complete {
     border: 2px solid #10b3cc; /* 테두리 설정 */
     border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
     margin: 0 20px;
-    
     cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
     transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
 }

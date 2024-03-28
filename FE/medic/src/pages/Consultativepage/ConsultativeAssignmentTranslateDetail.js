@@ -147,96 +147,112 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
     return(
         <div className={assignmenttranslatedetail.translaterequest_wrap}>
             <div className={assignmenttranslatedetail.iconbox}>
-                <h2>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h2 className={assignmenttranslatedetail.title}>
                     번역의뢰 답변
                 </h2>
-                - 분석의뢰 질문에 대한 답변을 모두 입력해주세요.
-             </div>
-             <div className={assignmenttranslatedetail.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h4 className={assignmenttranslatedetail.title_bottom}>
+                    - 분석의뢰 질문에 대한 답변을 모두 입력해주세요.
+                </h4>
+            </div>
+
+            {/* 신청자 정보*/}
+
+            <div className={assignmenttranslatedetail.iconbox}>
+                <h3 className={assignmenttranslatedetail.tit}>
                     신청자 정보
                 </h3>
-             </div>
-             <div className={assignmenttranslatedetail.request_usertable}>
+            </div>
+            <div className={assignmenttranslatedetail.request_usertable}>
                 <div className={assignmenttranslatedetail.row_box}>
                     <div className={assignmenttranslatedetail.title_box}>의뢰자명</div>
                     <div className={assignmenttranslatedetail.input_box}>
-                        <input type="text" disabled={true} value={uname}/>
+                        <span>{uname}</span>
                     </div>
                 </div>
                 <div className={assignmenttranslatedetail.row_box}>
                     <div className={assignmenttranslatedetail.title_box}>일반전화</div>
                     <div className={assignmenttranslatedetail.input_box}>
-                        <input type="text" disabled={true} value={utel}/>
+                        <span>{utel}</span>
                     </div>
-                    <div className={assignmenttranslatedetail.title_box} style={{borderLeft : '1px solid black'}}>휴대전화</div>
+                </div>
+                <div className={assignmenttranslatedetail.row_box}>
+                    <div className={assignmenttranslatedetail.title_box}>휴대전화</div>
                     <div className={assignmenttranslatedetail.input_box}>
-                        <input type="text" disabled={true} value={uphone}/>
+                        <span>{uphone}</span>
                     </div>
                 </div>
                 <div className={assignmenttranslatedetail.row_box}>
                     <div className={assignmenttranslatedetail.title_box}>주소</div>
                     <div className={assignmenttranslatedetail.input_box}>
-                        <input type="text" disabled={true} value={uaddress}/>
+                        <span>{uaddress}</span>
                     </div>
                 </div>
-             </div>
-             <div className={assignmenttranslatedetail.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+            </div>
+
+            {/* 환자의료 기록 정보*/}
+
+            <div className={assignmenttranslatedetail.iconbox}>
+                <h3 className={assignmenttranslatedetail.tit}>
                     환자의료 기록 사항
                 </h3>
             </div>
             <div className={assignmenttranslatedetail.request_patienttable}>
-                <div className={`${assignmenttranslatedetail.row_box} ${assignmenttranslatedetail.patient_box}`}>
-                    <div className={`${assignmenttranslatedetail.title_box} ${assignmenttranslatedetail.patient_box}`}>환자명</div>
-                    <div className={`${assignmenttranslatedetail.input_box} ${assignmenttranslatedetail.patient_box}`}>
-                        <input type="text" disabled={true} value={tr_ptname}></input>
+                <div className={assignmenttranslatedetail.row_box}>
+                    <div className={assignmenttranslatedetail.title_box}>환자명</div>
+                    <div className={assignmenttranslatedetail.input_box}>
+                       <span>{tr_ptname}</span>
                     </div>
-                    <div className={`${assignmenttranslatedetail.title_box} ${assignmenttranslatedetail.patient_box}`} style={{borderLeft : '1px solid black'}}>주민등록번호</div>
-                    <div className={`${assignmenttranslatedetail.input_box} ${assignmenttranslatedetail.input_ptssnumbox} ${assignmenttranslatedetail.patient_box}`}>
-                        <input type="text" disabled={true} value={tr_ptssnum}></input>
+                </div>
+                <div className={assignmenttranslatedetail.row_box}>
+                    <div className={assignmenttranslatedetail.title_box}>주민등록번호</div>
+                    <div className={assignmenttranslatedetail.input_box}>
+                        <span>{tr_ptssnum}</span>
                     </div>
                 </div>
                 <div className={assignmenttranslatedetail.row_box}>
                     <div className={assignmenttranslatedetail.title_box}>진단과목</div>
                     <div className={assignmenttranslatedetail.input_box}>
-                        <input type="text" disabled={true} value={tr_ptsub}/>
-                    </div>
-                    <div className={assignmenttranslatedetail.title_box} style={{borderLeft : '1px solid black'}}>진단명</div>
-                    <div className={assignmenttranslatedetail.input_box}>
-                        <input type="text" disabled={true} value={tr_ptdiagnosis}/>
+                        <span>{tr_ptsub}</span>
                     </div>
                 </div>
-                <div className={`${assignmenttranslatedetail.row_box}`}>
-                    <div className ={`${assignmenttranslatedetail.title_box} ${assignmenttranslatedetail.row_contentbox}`}>
-                        진단 사항
+                <div className={assignmenttranslatedetail.row_box}>
+                    <div className={assignmenttranslatedetail.title_box}>진단명</div>
+                    <div className={assignmenttranslatedetail.input_box}>
+                        <span>{tr_ptdiagnosis}</span>
                     </div>
-                    <div className={assignmenttranslatedetail.input_box} style={{width : '400px', height : 'auto'}}>
+                </div>
+                <div className={assignmenttranslatedetail.row_box}>
+                    <div className ={`${assignmenttranslatedetail.title_box} ${assignmenttranslatedetail.row_contentbox}`}>
+                            진단사항
+                    </div>
+                    <div className={assignmenttranslatedetail.input_box} style={{width : '600px', height : 'auto'}}>
                         <textarea cols="50" rows="10" value={tr_ptdiagcontent} readOnly/>
                     </div>
                 </div>
-            </div>
+             </div>
+
+            {/* 기타 정보*/}
+            
             <div className={assignmenttranslatedetail.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={assignmenttranslatedetail.tit}>
                     기타사항
                 </h3>
             </div>
             <div className={assignmenttranslatedetail.request_othertable}>
                 <div className={assignmenttranslatedetail.row_box} >
-                    <div className={assignmenttranslatedetail.title_box} style={{height : '130px'}}>기타사항</div>
-                    <div className={assignmenttranslatedetail.input_box} style={{width : '400px'}}>
+                    <div className ={`${assignmenttranslatedetail.title_box} ${assignmenttranslatedetail.row_contentbox}`}>
+                        기타사항
+                    </div>
+                    <div className={assignmenttranslatedetail.input_box} style={{width : '600px', height : 'auto'}}>
                         <textarea cols="50" rows="10" value={trEtcValue} readOnly/>
                     </div>
                 </div>
             </div>
 
-             <div className={`${assignmenttranslatedetail.iconbox} ${assignmenttranslatedetail.file_box}`}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+            {/* 첨부자료 정보*/}
+
+            <div className={assignmenttranslatedetail.iconbox}>
+                <h3 className={assignmenttranslatedetail.tit}>
                         첨부자료
                         <span className={assignmenttranslatedetail.notice}>
                         ※ 번역자료는 압축파일(zip 파일형식) 으로 첨부해 주세요
@@ -298,18 +314,19 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                         }
                     </div>
                 </div>
-                <div className={assignmenttranslatedetail.complete}>
-                    {
+            </div>
+            
+            <div className={assignmenttranslatedetail.complete}>
+                {
                         isAnswer ? (trProgressStatus ? <></> : 
-                        <button type="button" className={assignmenttranslatedetail.btt_complete} onClick={btn_translate_update}>번역의뢰 답변 수정</button>) 
+                        <button type="button" className={assignmenttranslatedetail.complete_button} onClick={btn_translate_update}>번역의뢰 답변 수정</button>) 
                         :
                         isUpdate ? 
-                        <button type="button" className={assignmenttranslatedetail.btt_complete} onClick={btn_translate_update}>번역의뢰 답변 수정</button>
+                        <button type="button" className={assignmenttranslatedetail.complete_button} onClick={btn_translate_update}>번역의뢰 답변 수정</button>
                         :
-                        <button type="button" className={assignmenttranslatedetail.btt_complete} onClick={btn_translate_request}>번역의뢰 답변 저장</button>
-                    }
-                <button type="button" className={assignmenttranslatedetail.btt_complete} onClick={btn_translate_cancle}>취소</button>
-                </div>
+                        <button type="button" className={assignmenttranslatedetail.complete_button} onClick={btn_translate_request}>번역의뢰 답변 저장</button>
+                }
+                <button type="button" className={assignmenttranslatedetail.complete_button} onClick={btn_translate_cancle}>취소</button>
             </div>
         </div>
     )

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import assignmentAnalyze from '../../css/ConsultativeAnalyzeAssignment.module.css';
 import { useNavigate} from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 
 export default function ConsultativeAnalyzeAssignmentpage() {
-  const [selectedStatus, setSelectedStatus] = useState('분석의뢰중');
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태 추가
   const [analyzeList, setAnalyzeList] = useState([]);
   const navigate = useNavigate();
@@ -38,10 +38,6 @@ export default function ConsultativeAnalyzeAssignmentpage() {
   
     return `${year}-${month}-${day}`;
   };
-  
-  const handleStatusChange = (newStatus) => {
-    setSelectedStatus(newStatus);
-  };
 
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= totalPages) {
@@ -59,52 +55,63 @@ export default function ConsultativeAnalyzeAssignmentpage() {
 
   return (
     <div className={assignmentAnalyze.contents}>
-        <div className={assignmentAnalyze.iconbox}>
-                <h1>
-                    <i className="fa-solid fa-circle icon"></i>
-                   배정 분석의뢰 현황
-                </h1>
+      <div className={assignmentAnalyze.iconbox}>
+        <h2 className={assignmentAnalyze.title}>
+          배정 분석의뢰 현황
+        </h2>
+      </div>
+
+      {/* 배정 분석의뢰 테이블*/}
+      <div className={assignmentAnalyze.write_table}>
+        <div className={assignmentAnalyze.title_row_box}>
+          <div className={assignmentAnalyze.title_box}>
+            NO.
+          </div>
+          <div className={assignmentAnalyze.title_box}>
+            진단과목
+          </div>
+          <div className={assignmentAnalyze.title_box}>
+            진단명
+          </div>
+          <div className={assignmentAnalyze.title_box}>
+            의뢰신청일
+          </div>
+          <div className={assignmentAnalyze.title_box}>
+            의뢰배정일
+          </div>
+          <div className={assignmentAnalyze.title_box}>
+            의뢰분석일
+          </div>
+          <div className={assignmentAnalyze.title_box} style={{borderRight: 'none'}}>
+            진행상태
+          </div>
+        </div>
+        {visibleAnalyzeList.map((analyze, index) => (
+          <div className={assignmentAnalyze.data_row_box}>
+            <div className={assignmentAnalyze.input_box} onClick={() => handledetailClick(analyze.anId)} key={index}>
+              {analyzeList.length - startIndex - index}
             </div>
-      <table className={assignmentAnalyze.analyzeList_table}>
-        <thead>
-          <tr>
-            <th className={assignmentAnalyze.analyzeList_th}>NO.</th>
-            <th className={assignmentAnalyze.analyzeList_th}>진단과목</th>
-            <th className={assignmentAnalyze.analyzeList_th}>진단명</th>
-            <th className={assignmentAnalyze.analyzeList_th}>의뢰신청일</th>
-            <th className={assignmentAnalyze.analyzeList_th}>의뢰배정일</th>
-            <th className={assignmentAnalyze.analyzeList_th}>의뢰분석일</th>
-            <th className={assignmentAnalyze.analyzeList_th}>진행상태</th>
-          </tr>
-          </thead>
-          <tbody>
-          {visibleAnalyzeList.map((analyze, index) => (
-            <tr key={index}>
-              <td className={assignmentAnalyze.analyzeList_td} onClick={() => handledetailClick(analyze.anId)}>
-                  {analyzeList.length - startIndex - index}
-              </td>             
-              <td className={assignmentAnalyze.analyzeList_td}>{analyze.anPtSub}</td>
-              <td className={assignmentAnalyze.analyzeList_td}>{analyze.anPtDiagnosis}</td>
-              <td className={assignmentAnalyze.analyzeList_td}>{formatDate(analyze.anRegDate)}</td>
-              <td className={assignmentAnalyze.analyzeList_td}>{analyze.anMdDate}</td>
-              <td className={assignmentAnalyze.analyzeList_td}>{analyze.anAnswerDate === null ? '미답변' : analyze.anAnswerDate}</td>
-              <td className={assignmentAnalyze.analyzeList_td}>{analyze.anProgressStatus}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            <div className={assignmentAnalyze.input_box}>{analyze.anPtSub}</div>
+            <div className={assignmentAnalyze.input_box}>{analyze.anPtDiagnosis}</div>
+            <div className={assignmentAnalyze.input_box}>{analyze.anRegDate}</div>
+            <div className={assignmentAnalyze.input_box}>{analyze.anMdDate}</div>
+            <div className={assignmentAnalyze.input_box}>{analyze.anAnswerDate === null ? '미답변' : analyze.anAnswerDate}</div>
+            <div className={assignmentAnalyze.input_box} style={{borderRight: 'none'}}>{analyze.anProgressStatus}</div>
+          </div>
+        ))}
+      </div>
       <div className={assignmentAnalyze.pagination}>
         <button
           className={assignmentAnalyze.paginationButton}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          ◀
+        <FaChevronLeft />
         </button>
         {[...Array(Math.ceil(analyzeList.length / itemsPerPage))].map((_, index) => (
           <button
             key={index}
-            className={assignmentAnalyze.paginationButton}
+            className={assignmentAnalyze.paginationNumber}
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
           >
@@ -116,7 +123,7 @@ export default function ConsultativeAnalyzeAssignmentpage() {
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === Math.ceil(analyzeList.length / itemsPerPage)}
         >
-          ▶
+        <FaChevronRight />
         </button>
       </div>
     </div>

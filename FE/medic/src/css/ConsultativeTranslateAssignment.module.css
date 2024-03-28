@@ -1,59 +1,104 @@
 .contents {
-    height: 1080px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center; /* 추가: 화면 가운데 정렬 */
-    text-align: center;
-  }
-  
-  .translateList_table {
-    width: 900px;
-    text-align: center;
-  }
-  
-  .translateList_th, .translateList_td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .translateList_th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  
-  .translateList_th:first-child,
-  .translateList_td:first-child {
-    width: 100px;
-  }
-  
-  .statusCell select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
-    font-size: 20px;
-  }
-  
-  .pagination {
-    margin-top: 10px; /* Adjust as needed */
-  }
-  
-  .paginationButton {
-    font-size: 16px; /* Adjust the font size as needed */
-    margin: 0 5px; /* Adjust the spacing as needed */
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .iconbox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    text-align: center;
-    width: 950px;
-  }
+  height: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center; /* 추가: 화면 가운데 정렬 */
+  text-align: center;
+  font-family: "돋움", Dotum, Arial, sans-serif;
+}
+
+.iconbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  text-align: center;
+  width: 950px;
+}
+
+.write_table{
+  width: 850px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #10b3cc;
+  border-left: none; /* 왼쪽 테두리 없음 */
+  border-right: none; /* 오른쪽 테두리 없음 */
+  margin-right: 100px;
+}
+
+.title_row_box{
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-collapse: collapse;
+  border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
+}
+
+.data_row_box{
+display: flex;
+align-items: center;
+height: 30px;
+border-collapse: collapse;
+border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
+}
+
+.title_box{
+display: flex;
+justify-content: center;
+align-items: center;
+border-right: 1px solid black;
+height: 40px;
+width: 121px;
+background: #f5f5f5;
+align-items: center;
+font-weight: bold;
+font-size: 20px;
+}
+
+.input_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+  height: 30px;
+  width: 121px;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 60px;
+  font-size: 2.5rem;
+  color: #0f3a75;
+}
+
+.pagination {
+margin-top: 40px; /* Adjust as needed */
+text-align: center;
+margin-right: 100px;
+}
+
+.paginationNumber {
+font-size: 1.5rem; /* 필요에 따라 폰트 크기 조정 */
+margin: 0 5px; /* 필요에 따라 간격 조정 */
+background: none;
+border: none;
+cursor: pointer;
+outline: none;
+transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
+}
+
+.paginationButton {
+font-size: 1.2rem; /* 필요에 따라 폰트 크기 조정 */
+margin: 0 5px; /* 필요에 따라 간격 조정 */
+background: none;
+border: none;
+cursor: pointer;
+outline: none;
+transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
+}
+
+.paginationButton:hover {
+color: #10b3cc; /* 호버 시 텍스트 색상 변경 */
+}

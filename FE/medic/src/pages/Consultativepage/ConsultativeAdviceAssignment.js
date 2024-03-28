@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import assignmentAdvice from '../../css/ConsultativeAdviceAssignment.module.css';
 import { useNavigate } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
 
 export default function ConsultativeAdviceAssignmentpage() {
-  const [selectedStatus, setSelectedStatus] = useState('자문의뢰중');
   const [adviceList, setAdviceList] = useState([]);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,10 +39,6 @@ export default function ConsultativeAdviceAssignmentpage() {
     return `${year}-${month}-${day}`;
   };
 
-  const handleStatusChange = (newStatus) => {
-    setSelectedStatus(newStatus);
-  };
-
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= totalPages) {
       setCurrentPage(newPage);
@@ -58,53 +55,62 @@ export default function ConsultativeAdviceAssignmentpage() {
   return (
     <div className={assignmentAdvice.contents}>
       <div className={assignmentAdvice.iconbox}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={assignmentAdvice.title}>
           배정 자문의뢰 현황
-        </h1>
+        </h2>
       </div>
-      <table className={assignmentAdvice.adviceList_table}>
-        <thead>
-          <tr>
-            <th className={assignmentAdvice.adviceList_th}>NO.</th>
-            <th className={assignmentAdvice.adviceList_th}>진단과목</th>
-            <th className={assignmentAdvice.adviceList_th}>진단명</th>
-            <th className={assignmentAdvice.adviceList_th}>의뢰신청일</th>
-            <th className={assignmentAdvice.adviceList_th}>의뢰배정일</th>
-            <th className={assignmentAdvice.adviceList_th}>의뢰자문일</th>
-            <th className={assignmentAdvice.adviceList_th}>진행상태</th>
-          </tr>
-        </thead>
-        <tbody>
-          {visibleAdviceList.map((advice, index) => (
-            <tr key={index}>
-              <td className={assignmentAdvice.adviceList_td} onClick={() => handledetailClick(advice.adId)}>
-                  {adviceList.length - startIndex - index}
-              </td>
-              <td className={assignmentAdvice.adviceList_td}>{advice.adPtSub}</td>
-              <td className={assignmentAdvice.adviceList_td}>{advice.adPtDiagnosis}</td>
-              <td className={assignmentAdvice.adviceList_td}>{formatDate(advice.adRegDate)}</td>
-              <td className={assignmentAdvice.adviceList_td}>{advice.admDate}</td>
-              <td className={assignmentAdvice.adviceList_td}>
-                {advice.adAnswerDate === null ? '미답변' : advice.adAnswerDate}
-              </td>
-              <td className={assignmentAdvice.adviceList_td}>{advice.admProgressStatus}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      
+      {/* 배정 자문의뢰 테이블*/}
+      <div className={assignmentAdvice.write_table}>
+        <div className={assignmentAdvice.title_row_box}>
+          <div className={assignmentAdvice.title_box}>
+            NO.
+          </div>
+          <div className={assignmentAdvice.title_box}>
+            진단과목
+          </div>
+          <div className={assignmentAdvice.title_box}>
+            진단명
+          </div>
+          <div className={assignmentAdvice.title_box}>
+            의뢰신청일
+          </div>
+          <div className={assignmentAdvice.title_box}>
+            의뢰배정일
+          </div>
+          <div className={assignmentAdvice.title_box}>
+            의뢰자문일
+          </div>
+          <div className={assignmentAdvice.title_box} style={{borderRight: 'none'}}>
+            진행상태
+          </div>
+        </div>
+        {visibleAdviceList.map((advice, index) => (
+          <div className={assignmentAdvice.data_row_box}>
+            <div className={assignmentAdvice.input_box} onClick={() => handledetailClick(advice.adId)} key={index}>
+              {adviceList.length - startIndex - index}
+            </div>
+            <div className={assignmentAdvice.input_box}>{advice.adPtSub}</div>
+            <div className={assignmentAdvice.input_box}>{advice.adPtDiagnosis}</div>
+            <div className={assignmentAdvice.input_box}>{advice.adRegDate}</div>
+            <div className={assignmentAdvice.input_box}>{advice.admDate}</div>
+            <div className={assignmentAdvice.input_box}>{advice.adAnswerDate === null ? '미답변' : advice.adAnswerDate}</div>
+            <div className={assignmentAdvice.input_box} style={{borderRight: 'none'}}>{advice.admProgressStatus}</div>
+          </div>
+        ))}
+      </div>
       <div className={assignmentAdvice.pagination}>
         <button
           className={assignmentAdvice.paginationButton}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          ◀
+        <FaChevronLeft />
         </button>
         {[...Array(Math.ceil(adviceList.length / itemsPerPage))].map((_, index) => (
           <button
             key={index}
-            className={assignmentAdvice.paginationButton}
+            className={assignmentAdvice.paginationNumber}
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
           >
@@ -116,7 +122,7 @@ export default function ConsultativeAdviceAssignmentpage() {
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === Math.ceil(adviceList.length / itemsPerPage)}
         >
-          ▶
+        <FaChevronRight />
         </button>
       </div>
     </div>

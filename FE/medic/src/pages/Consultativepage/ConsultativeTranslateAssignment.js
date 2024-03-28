@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import assignmentTranslate from '../../css/ConsultativeTranslateAssignment.module.css';
 import { useNavigate} from 'react-router-dom';
-
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function ConsultativeTranslateAssignmentpage() {
-  const [selectedStatus, setSelectedStatus] = useState('번역의뢰중');
   const [currentPage, setCurrentPage] = useState(1);
   const [translateList, setTranslateList] = useState([]);
   const navigate = useNavigate();
@@ -37,10 +36,6 @@ export default function ConsultativeTranslateAssignmentpage() {
   
     return `${year}-${month}-${day}`;
   };
-  
-  const handleStatusChange = (newStatus) => {
-    setSelectedStatus(newStatus);
-  };
 
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= totalPages) {
@@ -56,52 +51,62 @@ export default function ConsultativeTranslateAssignmentpage() {
 
   return (
     <div className={assignmentTranslate.contents}>
-        <div className={assignmentTranslate.iconbox}>
-                <h1>
-                    <i className="fa-solid fa-circle icon"></i>
-                    배정 번역의뢰 현황
-                </h1>
+      <div className={assignmentTranslate.iconbox}>
+        <h2 className={assignmentTranslate.title}>
+          배정 번역의뢰 현황
+        </h2>
+      </div>
+      {/* 배정 번역의뢰 테이블*/}
+      <div className={assignmentTranslate.write_table}>
+        <div className={assignmentTranslate.title_row_box}>
+          <div className={assignmentTranslate.title_box}>
+            NO.
+          </div>
+          <div className={assignmentTranslate.title_box}>
+            진단과목
+          </div>
+          <div className={assignmentTranslate.title_box}>
+            진단명
+          </div>
+          <div className={assignmentTranslate.title_box}>
+            의뢰신청일
+          </div>
+          <div className={assignmentTranslate.title_box}>
+            의뢰배정일
+          </div>
+          <div className={assignmentTranslate.title_box}>
+            의료번역일
+          </div>
+          <div className={assignmentTranslate.title_box} style={{borderRight: 'none'}}>
+            진행상태
+          </div>
+        </div>
+        {visibleTranslateList.map((translation, index) => (
+          <div className={assignmentTranslate.data_row_box}>
+            <div className={assignmentTranslate.input_box} onClick={() => handledetailClick(translation.trId)} key={index}>
+              {translateList.length - startIndex - index}
             </div>
-      <table className={assignmentTranslate.translateList_table}>
-        <thead>
-          <tr>
-            <th className={assignmentTranslate.translateList_th}>NO.</th>
-            <th className={assignmentTranslate.translateList_th}>진단과목</th>
-            <th className={assignmentTranslate.translateList_th}>진단명</th>
-            <th className={assignmentTranslate.translateList_th}>의뢰신청일</th>
-            <th className={assignmentTranslate.translateList_th}>의뢰배정일</th>
-            <th className={assignmentTranslate.translateList_th}>의뢰번역일</th>
-            <th className={assignmentTranslate.translateList_th}>진행상태</th>
-          </tr>
-          </thead>
-          <tbody>
-          {visibleTranslateList.map((translation, index) => (
-            <tr key={index}>
-              <td className={assignmentTranslate.translateList_td} onClick={() => handledetailClick(translation.trId)}>
-                  {translateList.length - startIndex - index}
-              </td>              
-              <td className={assignmentTranslate.translateList_td}>{translation.trPtSub}</td>
-              <td className={assignmentTranslate.translateList_td}>{translation.trPtDiagnosis}</td>
-              <td className={assignmentTranslate.translateList_td}>{formatDate(translation.trRegDate)}</td>
-              <td className={assignmentTranslate.translateList_td}>{translation.tamDate}</td>
-              <td className={assignmentTranslate.translateList_td}>{translation.trAnswerDate === null ? '미답변' : translation.trAnswerDate}</td>
-              <td className={assignmentTranslate.translateList_td}>{translation.trProgressStatus}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            <div className={assignmentTranslate.input_box}>{translation.trPtSub}</div>
+            <div className={assignmentTranslate.input_box}>{translation.trPtDiagnosis}</div>
+            <div className={assignmentTranslate.input_box}>{translation.trRegDate}</div>
+            <div className={assignmentTranslate.input_box}>{translation.tamDate}</div>
+            <div className={assignmentTranslate.input_box}>{translation.trAnswerDate === null ? '미답변' : translation.trAnswerDate}</div>
+            <div className={assignmentTranslate.input_box} style={{borderRight: 'none'}}>{translation.trProgressStatus}</div>
+          </div>
+        ))}
+      </div>
       <div className={assignmentTranslate.pagination}>
         <button
           className={assignmentTranslate.paginationButton}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          ◀
+        <FaChevronLeft />
         </button>
         {[...Array(Math.ceil(translateList.length / itemsPerPage))].map((_, index) => (
           <button
             key={index}
-            className={assignmentTranslate.paginationButton}
+            className={assignmentTranslate.paginationNumber}
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
           >
@@ -113,7 +118,7 @@ export default function ConsultativeTranslateAssignmentpage() {
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === Math.ceil(translateList.length / itemsPerPage)}
         >
-          ▶
+        <FaChevronRight />
         </button>
       </div>
     </div>

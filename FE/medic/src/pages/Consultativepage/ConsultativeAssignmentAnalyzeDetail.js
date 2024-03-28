@@ -171,97 +171,114 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
         navigate('/')
     }
     return(
-        <div className={assignmentanalyzedetail.anvicerequest_wrap}>
+        <div className={assignmentanalyzedetail.analyzereequest_wrap}>
             <div className={assignmentanalyzedetail.iconbox}>
-                <h2>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h2 className={assignmentanalyzedetail.title}>
                     분석의뢰 답변
                 </h2>
-                - 분석의뢰 질문에 대한 답변을 모두 입력해주세요.
+                <h4 className={assignmentanalyzedetail.title_bottom}>
+                    - 분석의뢰 질문에 대한 답변을 모두 입력해주세요.
+                </h4>
              </div>
-             <div className={assignmentanalyzedetail.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+
+            {/* 신청자 정보*/}
+
+            <div className={assignmentanalyzedetail.iconbox}>
+                <h3 className={assignmentanalyzedetail.tit}>
                     신청자 정보
                 </h3>
-             </div>
-             <div className={assignmentanalyzedetail.request_usertable}>
+            </div>
+            <div className={assignmentanalyzedetail.request_usertable}>
                 <div className={assignmentanalyzedetail.row_box}>
                     <div className={assignmentanalyzedetail.title_box}>의뢰자명</div>
                     <div className={assignmentanalyzedetail.input_box}>
-                        <input type="text" disabled={true} value={uname}/>
+                        <span>{uname}</span>
                     </div>
                 </div>
                 <div className={assignmentanalyzedetail.row_box}>
                     <div className={assignmentanalyzedetail.title_box}>일반전화</div>
                     <div className={assignmentanalyzedetail.input_box}>
-                        <input type="text" disabled={true} value={utel}/>
+                        <span>{utel}</span>
                     </div>
-                    <div className={assignmentanalyzedetail.title_box} style={{borderLeft : '1px solid black'}}>휴대전화</div>
+                </div>
+                <div className={assignmentanalyzedetail.row_box}>
+                    <div className={assignmentanalyzedetail.title_box}>휴대전화</div>
                     <div className={assignmentanalyzedetail.input_box}>
-                        <input type="text" disabled={true} value={uphone}/>
+                        <span>{uphone}</span>
                     </div>
                 </div>
                 <div className={assignmentanalyzedetail.row_box}>
                     <div className={assignmentanalyzedetail.title_box}>주소</div>
                     <div className={assignmentanalyzedetail.input_box}>
-                        <input type="text" disabled={true} value={uaddress}/>
+                        <span>{uaddress}</span>
                     </div>
                 </div>
-             </div>
-             <div className={assignmentanalyzedetail.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+            </div>
+
+            {/* 환자의료 기록 정보*/}
+
+            <div className={assignmentanalyzedetail.iconbox}>
+                <h3 className={assignmentanalyzedetail.tit}>
                     환자의료 기록 사항
                 </h3>
             </div>
             <div className={assignmentanalyzedetail.request_patienttable}>
-                <div className={`${assignmentanalyzedetail.row_box} ${assignmentanalyzedetail.patient_box}`}>
-                    <div className={`${assignmentanalyzedetail.title_box} ${assignmentanalyzedetail.patient_box}`}>환자명</div>
-                    <div className={`${assignmentanalyzedetail.input_box} ${assignmentanalyzedetail.patient_box}`}>
-                        <input type="text" disabled={true} value={an_ptname}></input>
+                <div className={assignmentanalyzedetail.row_box}>
+                    <div className={assignmentanalyzedetail.title_box}>환자명</div>
+                    <div className={assignmentanalyzedetail.input_box}>
+                       <span>{an_ptname}</span>
                     </div>
-                    <div className={`${assignmentanalyzedetail.title_box} ${assignmentanalyzedetail.patient_box}`} style={{borderLeft : '1px solid black'}}>주민등록번호</div>
-                    <div className={`${assignmentanalyzedetail.input_box} ${assignmentanalyzedetail.input_ptssnumbox} ${assignmentanalyzedetail.patient_box}`}>
-                        <input type="text" disabled={true} value={an_ptssnum}></input>
+                </div>
+                <div className={assignmentanalyzedetail.row_box}>
+                    <div className={assignmentanalyzedetail.title_box}>주민등록번호</div>
+                    <div className={assignmentanalyzedetail.input_box}>
+                        <span>{an_ptssnum}</span>
                     </div>
                 </div>
                 <div className={assignmentanalyzedetail.row_box}>
                     <div className={assignmentanalyzedetail.title_box}>진단과목</div>
                     <div className={assignmentanalyzedetail.input_box}>
-                        <input type="text" disabled={true} value={an_ptsub}/>
-                    </div>
-                    <div className={assignmentanalyzedetail.title_box} style={{borderLeft : '1px solid black'}}>진단명</div>
-                    <div className={assignmentanalyzedetail.input_box}>
-                        <input type="text" disabled={true} value={an_ptdiagnosis}/>
+                        <span>{an_ptsub}</span>
                     </div>
                 </div>
-                <div className={`${assignmentanalyzedetail.row_box}`}>
-                    <div className ={`${assignmentanalyzedetail.title_box} ${assignmentanalyzedetail.row_contentbox}`}>
-                        진단 사항
+                <div className={assignmentanalyzedetail.row_box}>
+                    <div className={assignmentanalyzedetail.title_box}>진단명</div>
+                    <div className={assignmentanalyzedetail.input_box}>
+                        <span>{an_ptdiagnosis}</span>
                     </div>
-                    <div className={assignmentanalyzedetail.input_box} style={{width : '400px', height : 'auto'}}>
+                </div>
+                <div className={assignmentanalyzedetail.row_box}>
+                    <div className ={`${assignmentanalyzedetail.title_box} ${assignmentanalyzedetail.row_contentbox}`}>
+                            진단 사항
+                    </div>
+                    <div className={assignmentanalyzedetail.input_box} style={{width : '600px', height : 'auto'}}>
                         <textarea cols="50" rows="10" value={an_ptdiagcontent} readOnly/>
                     </div>
                 </div>
             </div>
+
+            {/* 기타사항 정보*/}
+
             <div className={assignmentanalyzedetail.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={assignmentanalyzedetail.tit}>
                     기타사항
                 </h3>
             </div>
             <div className={assignmentanalyzedetail.request_othertable}>
                 <div className={assignmentanalyzedetail.row_box} >
-                    <div className={assignmentanalyzedetail.title_box} style={{height : '130px'}}>기타사항</div>
-                    <div className={assignmentanalyzedetail.input_box} style={{width : '400px'}}>
+                    <div className ={`${assignmentanalyzedetail.title_box} ${assignmentanalyzedetail.row_contentbox}`}>
+                        기타사항
+                    </div>
+                    <div className={assignmentanalyzedetail.input_box} style={{width : '600px', height : 'auto'}}>
                         <textarea cols="50" rows="10" value={anEtcValue} readOnly/>
                     </div>
                 </div>
             </div>
-            <div className={assignmentanalyzedetail.iconbox} style={{marginTop : '50px'}}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+
+            {/* 질문지 정보*/}
+
+            <div className={assignmentanalyzedetail.iconbox}>
+                <h3 className={assignmentanalyzedetail.tit}>
                     질문지 작성
                 </h3>
             </div>
@@ -279,11 +296,13 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
                     </div>
                 </div>
                     {renderQuestionInputs()}
-                </div>
-             <div className={assignmentanalyzedetail.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
-                        첨부자료
+            </div>
+
+            {/* 첨부자료 정보*/}
+
+            <div className={assignmentanalyzedetail.iconbox}>
+                <h3 className={assignmentanalyzedetail.tit}>
+                    첨부자료
                 </h3>
             </div>
             <div className={assignmentanalyzedetail.file_table}>
@@ -387,10 +406,11 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
                         }
                     </div>
                 </div>
-                <div className={assignmentanalyzedetail.complete}>
-                    <button type = "button" className={assignmentanalyzedetail.btt_complete} onClick={btn_analyze_request}>분석의뢰 답변 저장</button>
-                    <button type = "button" className={assignmentanalyzedetail.btt_complete} onClick={btn_analyze_cancle}>취소</button>
-                 </div>
+            </div>
+
+            <div className={assignmentanalyzedetail.complete}>
+                <button type = "button" className={assignmentanalyzedetail.complete_button} onClick={btn_analyze_request}>분석의뢰 답변 저장</button>
+                <button type = "button" className={assignmentanalyzedetail.complete_button} onClick={btn_analyze_cancle}>취소</button>
             </div>
         </div>
     )
