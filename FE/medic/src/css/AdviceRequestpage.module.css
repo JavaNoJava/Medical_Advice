@@ -13,7 +13,7 @@
 
 .request_usertable{
     width: 850px;
-    height: 200px;
+    height: 210px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
@@ -21,6 +21,7 @@
     border-right: none; /* 오른쪽 테두리 없음 */
     margin-bottom: 65px;
 }
+
 .row_box{
     display: flex;
     align-items: center;
@@ -29,6 +30,7 @@
     /* border: 1px solid black; */
     border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
 }
+
 .title_box{
     display: flex;
     justify-content: start;
@@ -38,8 +40,8 @@
     width: 128px;
     padding-left: 20px;
     background: #f5f5f5;
-    
 }
+
 .input_box{
     display: flex;
     justify-content: start;
@@ -48,50 +50,22 @@
     padding-left: 20px;
     width: 250px;
 }
-.input_ptssnumbox{
-    display : flex;
-    flex-direction : column;
-    justify-content : center;
-    align-items : start;
-}
-.request_patienttable{
-    width: 850px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    border-top: 2px solid #10b3cc;
-    border-left: none; /* 왼쪽 테두리 없음 */
-    border-right: none; /* 오른쪽 테두리 없음 */
-    margin-bottom: 65px;
-}
-.patient_box{
-    height: 80px;
-}
+
 .row_contentbox{
     height: 128px;
 }
+
 .count_box{
     height : 118px;
     display : flex;
     flex-direction : column;
     justify-content : end;
-    
 }
-.request_insurancetable{
-    height: 84px;
-    width: 850px;
-    display: flex;
-    flex-direction: column;
-}
-.request_diagtable{
-    height: 356px;
-    width: 850px;
-    display: flex;
-    flex-direction: column;
-}
+
 .datebox{
     display: flex;
 }
+
 .request_othertable{
     width: 850px;
     height: 300px;
@@ -102,6 +76,7 @@
     border-right: none; /* 오른쪽 테두리 없음 */
     margin-bottom: 65px;
 }
+
 .request_questiontable{
     width: 850px;
     height: 300px;
@@ -112,6 +87,7 @@
     border-right: none; /* 오른쪽 테두리 없음 */
     margin-bottom: 65px;
 }
+
 .file_table{
     width: 850px;
     height: 300px;
@@ -122,6 +98,7 @@
     border-right: none; /* 오른쪽 테두리 없음 */
     margin-bottom: 65px;
 }
+
 .iconbox {
     display: flex;
     flex-direction: column;
@@ -131,24 +108,16 @@
     width: 880px;
 }
 
-
-
-.tb{
-    max-width: 850px;
-  width: 100%;
-  overflow-x: auto; /* Enable horizontal scroll if content overflows */
-}
-
 .title {
     margin-bottom: -20px;
     font-size: 2.5rem;
     color: #0f3a75;
 }
+
 .title_bottom {
     font-size: 1.125rem;
     color: #0f3a75;
 }
-
 
 .tit {
     background: url(../img/bullet.png) 0 2px no-repeat;
@@ -161,7 +130,7 @@
 
 .request_patienttable2{
     width: 850px;
-    height: 380px;
+    height: 394px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
@@ -191,7 +160,6 @@
     border-right: none; /* 오른쪽 테두리 없음 */
     margin-bottom: 65px;
 }
-
 
 div.complete {
     margin-top: 50px;
