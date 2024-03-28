@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from '../../css/FinduserInfopage.module.css'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer"
 
 export default function FinduserInfopage(){
     const [name, setName] = useState('')
@@ -62,6 +63,7 @@ export default function FinduserInfopage(){
         }
         try{
             const response = await axios.post('/login/findPw', userInfo)
+            console.log(1)
             navigate('/medic/finduserinfo/findpw', {state : {uId : id, uEmail : email_pw}})
         }catch(err){
             console.log(err)
@@ -69,48 +71,97 @@ export default function FinduserInfopage(){
         }
     }
     return(
-        <div className={style.Finduserwrap}>
-            <div className={style.FinduserinfoBox}>
-                <div className={style.Findusertitle}>
-                    <h2>아이디 찾기</h2>
-                </div>
-                <div className={style.FindBox_box}>
-                    <div className={style.findid_form}>
-                        <div className={style.find_input}>
-                            <div className={style.findid_input_info}>
-                                <h3>이름 : </h3>
-                                <input className={`${style.findid_input_name} ${style.input}`} onChange={input_name} maxLength={20}/>
+        <>
+            <div className={style.Finduserwrap}>
+                <div className={style.FinduserBox}>
+                    <h3 className={style.Find_titlebox}>
+                        아이디/비밀번호 찾기
+                    </h3>
+                    <div className={style.Find_userInfoContentBox}>
+                        <h4 className={style.Find_userInfoContent_title}><span className={style.Find_userInfoContent_titleimg}></span>ID/PW  찾기</h4>
+                        <div className={style.Find_userInfoInnnerBox}>
+                            <div className={style.Find_userIdPwBox}>
+                                <p className={style.Find_userIdPw_title}>
+                                    아이디 찾기
+                                </p>
+                                <div className={`${style.Find_userIdimg} ${style.Find_userIdPwimg}`}></div>
+                                <div className={style.Find_inputIdInfobox}>
+                                    <div className={style.Find_inputInfo_innerbox}>
+                                        이름 <span className={style.inputbox}><input type="text" className={style.input} onChange={input_name} maxLength={20}></input></span>
+                                    </div>
+                                    <div className={style.Find_inputInfo_innerbox}>
+                                        이메일 <span className={style.inputbox}><input type="email" className={style.input} onChange={input_email_id} maxLength={30}></input></span>
+                                    </div>
+                                    <div className={style.btn_findbtnbox}>
+                                        <button className={style.btn_findbtn} disabled={useridinfo} onClick={btn_findid}>아이디 찾기</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div className={style.findid_input_info}>
-                                <h3>이메일 : </h3>
-                                <input className={`${style.findid_input_email} ${style.input}`} onChange={input_email_id} maxLength={30}/>
+                            <div className={style.Find_userIdPwBox}>
+                                <p className={style.Find_userIdPw_title}> 
+                                    비밀번호 찾기
+                                </p>
+                                <div className={`${style.Find_userPwimg} ${style.Find_userIdPwimg}`}></div>
+                                <div className={style.Find_inputPwInfobox}>
+                                    <div className={style.Find_inputInfo_innerbox}>
+                                        아이디 <span className={style.inputbox}><input type="text" className={style.input} onChange={input_id} maxLength={12}></input></span>
+                                    </div>
+                                    <div className={style.Find_inputInfo_innerbox}>
+                                        이메일 <span className={style.inputbox}><input type="email" className={style.input} onChange={input_email_pw} maxLength={30}></input></span>
+                                    </div>
+                                    <div className={style.btn_findbtnbox}>
+                                        <button className={style.btn_findbtn} disabled={userpwinfo}  onClick={btn_findpw}>비밀번호 찾기</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <button className={style.btn_findbtn} disabled={useridinfo} onClick={btn_findid}>아이디 찾기</button>
                     </div>
                 </div>
-            </div>
-            <div className={style.FinduserinfoBox}>
-                <div className={style.Findusertitle}>
-                    <h2>비밀번호 찾기</h2>
-                </div>
-                    <div className={style.FindBox_box}>
-                    <div className={style.findid_form}>
-                        <div className={style.find_input}>
-                            <div className={style.findid_input_info}>
-                                <h3>아이디 : </h3>
-                                <input className={`${style.findpw_input_id} ${style.input}`} onChange={input_id} maxLength={12}/>
-                            </div>
-                            <div className={style.findid_input_info}>
-                                <h3>이메일 : </h3>
-                                <input className={`${style.findpw_input_email} ${style.input}`} onChange={input_email_pw} maxLength={30}/>
-                            </div>
-                        </div>
-                        <button className={style.btn_findbtn} disabled={userpwinfo} onClick={btn_findpw}>비밀번호 찾기</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </div>  
+            <Footer/>
+        </>
+        // <div className={style.Finduserwrap}>
+        //     <div className={style.FinduserinfoBox}>
+        //         <div className={style.Findusertitle}>
+        //             <h2>아이디 찾기</h2>
+        //         </div>
+        //         <div className={style.FindBox_box}>
+        //             <div className={style.findid_form}>
+        //                 <div className={style.find_input}>
+        //                     <div className={style.findid_input_info}>
+        //                         <h3>이름 : </h3>
+        //                         <input className={`${style.findid_input_name} ${style.input}`} onChange={input_name} maxLength={20}/>
+        //                     </div>
+        //                     <div className={style.findid_input_info}>
+        //                         <h3>이메일 : </h3>
+        //                         <input className={`${style.findid_input_email} ${style.input}`} onChange={input_email_id} maxLength={30}/>
+        //                     </div>
+        //                 </div>
+        //                 <button className={style.btn_findbtn} disabled={useridinfo} onClick={btn_findid}>아이디 찾기</button>
+        //             </div>
+        //         </div>
+        //     </div>
+        //     <div className={style.FinduserinfoBox}>
+        //         <div className={style.Findusertitle}>
+        //             <h2>비밀번호 찾기</h2>
+        //         </div>
+        //             <div className={style.FindBox_box}>
+        //             <div className={style.findid_form}>
+        //                 <div className={style.find_input}>
+        //                     <div className={style.findid_input_info}>
+        //                         <h3>아이디 : </h3>
+        //                         <input className={`${style.findpw_input_id} ${style.input}`} onChange={input_id} maxLength={12}/>
+        //                     </div>
+        //                     <div className={style.findid_input_info}>
+        //                         <h3>이메일 : </h3>
+        //                         <input className={`${style.findpw_input_email} ${style.input}`} onChange={input_email_pw} maxLength={30}/>
+        //                     </div>
+        //                 </div>
+        //                 <button className={style.btn_findbtn} disabled={userpwinfo} onClick={btn_findpw}>비밀번호 찾기</button>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
        
     )
 }
