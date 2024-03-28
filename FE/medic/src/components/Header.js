@@ -486,13 +486,6 @@ const renderAdminHeader = () => {
                         <li><span onClick={btn_program_FAQ_view}>자주 묻는 질문</span></li>
                     </ul>
                 </li>
-                <li>
-                    <button className="menu_button" style={mypageStyle}>마이페이지</button>
-                    <ul className={`${navigator.submenu}`}>
-                        <li><span onClick={btn_program_manager_mypage_view}>마이페이지</span></li>
-                    </ul>
-                    
-                </li>
             </ul>
         </div>
         </div>

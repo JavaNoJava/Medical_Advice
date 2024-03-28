@@ -87,7 +87,7 @@ export default function Loginpage(){
                                         비밀번호
                                     </div>
                                     <div className={style.input_background}>
-                                        <input type='text' className={style.input_idpw} onChange={inputPw} maxLength={15}/>
+                                        <input type='password' className={style.input_idpw} onChange={inputPw} maxLength={15}/>
                                     </div>
                                 </div>
                             </div>
