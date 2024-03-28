@@ -120,48 +120,5 @@ export default function FinduserInfopage(){
             </div>  
             <Footer/>
         </>
-        // <div className={style.Finduserwrap}>
-        //     <div className={style.FinduserinfoBox}>
-        //         <div className={style.Findusertitle}>
-        //             <h2>아이디 찾기</h2>
-        //         </div>
-        //         <div className={style.FindBox_box}>
-        //             <div className={style.findid_form}>
-        //                 <div className={style.find_input}>
-        //                     <div className={style.findid_input_info}>
-        //                         <h3>이름 : </h3>
-        //                         <input className={`${style.findid_input_name} ${style.input}`} onChange={input_name} maxLength={20}/>
-        //                     </div>
-        //                     <div className={style.findid_input_info}>
-        //                         <h3>이메일 : </h3>
-        //                         <input className={`${style.findid_input_email} ${style.input}`} onChange={input_email_id} maxLength={30}/>
-        //                     </div>
-        //                 </div>
-        //                 <button className={style.btn_findbtn} disabled={useridinfo} onClick={btn_findid}>아이디 찾기</button>
-        //             </div>
-        //         </div>
-        //     </div>
-        //     <div className={style.FinduserinfoBox}>
-        //         <div className={style.Findusertitle}>
-        //             <h2>비밀번호 찾기</h2>
-        //         </div>
-        //             <div className={style.FindBox_box}>
-        //             <div className={style.findid_form}>
-        //                 <div className={style.find_input}>
-        //                     <div className={style.findid_input_info}>
-        //                         <h3>아이디 : </h3>
-        //                         <input className={`${style.findpw_input_id} ${style.input}`} onChange={input_id} maxLength={12}/>
-        //                     </div>
-        //                     <div className={style.findid_input_info}>
-        //                         <h3>이메일 : </h3>
-        //                         <input className={`${style.findpw_input_email} ${style.input}`} onChange={input_email_pw} maxLength={30}/>
-        //                     </div>
-        //                 </div>
-        //                 <button className={style.btn_findbtn} disabled={userpwinfo} onClick={btn_findpw}>비밀번호 찾기</button>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
-       
     )
 }

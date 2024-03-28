@@ -1,11 +1,117 @@
-.updatepw_wrap{
-    width: 400px;
-    height: 400px;
-    margin: 0 auto;
+.Finduserwrap{
+    display: flex;
+    flex-direction : column;
+    justify-content:center;
+    align-items: center;
+    height:80vh;
+}
+.FinduserBox{
+    width: 730px;
+    height: 516px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+.Find_titlebox{
+    font-size: 2.5rem;
+    margin: 0 0 56px 0;
+    color: #0F3A75;
+}
+.Find_userInfoContentBox{
+    height: 408px;
+    width: 730px;
+}
+.Find_userInfoContent_title{
+    color: #1B69A8;
+    margin: 0 0 17px 0;
+    font-size: 1.25rem;
+}
+
+.Find_userInfoContent_titleimg{
+    background: url("../img/bullet.png") 0 2px no-repeat;
+    padding-left: 10px;
+}
+.Find_userInfoInnnerBox{
+    width: 730px;
+    height: 368px;
+    display: flex;
+    justify-content: center;
+}
+.Find_userIdPwBox{
+    width: 350px;
+    height: 368px;
+    border: 1px solid rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
-    border: 3px solid black;
-    border-radius: 15px;
+}
+.Find_userIdPw_title{
+    font-size: 1.25rem;
+    color: #0F3A75;
+    margin: 25px 0 15px 0;
+    font-weight: bold;
+}
+.Find_userIdPwimg{
+    width: 60px;
+    height: 70px;
+    background-repeat: no-repeat;
+}
+.Find_userIdimg{
+    background-image: url('../img/login_icon3.gif');
+}
+.Find_userPwimg{
+    background-image: url('../img/pw_icon1.gif');
+}
+.Find_inputIdInfobox, .Find_inputPwInfobox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 308px;
+    height: 130px;
+    margin: 30px 0 5px 0;
+    font-size: 0.813rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight:600;
+}
+.Find_inputInfo_innerbox{
+    display: flex;
+    width: 320px;
+    height: 35px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.inputbox{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 3px;
+    background-color: white;
+    width: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.input{
+    width: 180px;
+    border: none;
+    &:focus{
+        outline: none;
+    }
+}
+.btn_findbtnbox{
+    width: 320px;
+    height: auto;
+    display: flex;
+    justify-content: end;
+}
+.btn_findbtn{
+    width: 206px;
+    height: 35px;
+    margin-top: 10px;
+    padding: 0;
+    cursor: pointer;
+    background-color: #0F3A75;
+    color: white;
 }
