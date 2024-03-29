@@ -7,6 +7,7 @@ import { Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faTrash} from "@fortawesome/free-solid-svg-icons"
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function Announcementpage() {
   const [announcements, setAnnouncements] = useState([]);
@@ -113,21 +114,27 @@ export default function Announcementpage() {
     <div className={announce.wrap}>
       <div className={announce.announce_title}>
         <h2>
-          <i className="fa-solid fa-circle icon"></i>
           공지사항
         </h2>
       </div>
       <br />
-
-      <div>
-        <input
-          type="text"
-          placeholder="검색어를 입력하세요"
-          value={searchKeyword}
-          onChange={(e) => setSearchKeyword(e.target.value)}
-        />
-        <button onClick={searchAnnounceInfo}>검색</button>
-      </div>
+      <div className={announce.search_bar}>
+                <form onSubmit={(e) => { e.preventDefault(); searchAnnounceInfo(); }}>
+                    <span>
+                        <input
+                            type="text"
+                            name="st"
+                            title="검색어 입력"
+                            value={searchKeyword}
+                            onChange={(e) => setSearchKeyword(e.target.value)}
+                            style={{ width: '190px' }}
+                        />
+                    </span>
+                    <button className={announce.gradient} onClick={searchAnnounceInfo}>
+                    검색
+                    </button>
+                </form>
+            </div>
 
       <div className={announce.announce_quirytable}>
             <div className={announce.announce_quirylist_titlebox}>
@@ -142,7 +149,7 @@ export default function Announcementpage() {
             </div>
               {isAdmin && (
                
-                     <div className={`${announce.announce_list_writedate} ${announce.announce_list_title}`}>
+               <div className={`${announce.announce_delete} ${announce.announce_list_title} `}>
                 삭제
             </div>
           
@@ -164,7 +171,7 @@ export default function Announcementpage() {
                     {formatDateString(quiry.amRegDate)}
                 </div>
                 {isAdmin && (
-              <div className={`${announce.announce_quirylist_writedate} ${announce.announce_list_content}`} onClick={()=>handleDeleteAnnounce(quiry.amId)}>
+              <div className={`${announce.announce_delete} ${announce.announce_list_content}`} onClick={()=>handleDeleteAnnounce(quiry.amId)}>
               <FontAwesomeIcon icon={faTrash}  />
               </div>
                 )}
@@ -185,12 +192,13 @@ export default function Announcementpage() {
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
             >
-            ◀
+            
+            <FaChevronLeft />
             </button>
             {[...Array(Math.ceil(announcements.length / itemsPerPage))].map((_, index) => (
             <button
                 key={index}
-                className={announce.paginationButton}
+                className={announce.paginationNumber}
                 onClick={() => handlePageChange(index + 1)}
                 disabled={currentPage === index + 1}
             >
@@ -201,7 +209,8 @@ export default function Announcementpage() {
             className={announce.paginationButton}
             onClick={() => handlePageChange(currentPage + 1)}
             >
-            ▶
+            
+            <FaChevronRight />
             </button>
         </div>
       
