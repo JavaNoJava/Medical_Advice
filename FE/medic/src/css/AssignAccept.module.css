@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "돋움", Dotum, Arial, sans-serif;
 }
 i{
     color : #f4a460;
@@ -11,9 +12,8 @@ div.terms {
     border : 1px solid black;
     height : 200px; 
     width : 1000px;
-    text-align : center;
-    overflow-y: scroll;
-    
+    text-align : start;
+    overflow: auto;
 }
 .agree_title{
     width: 1048px;
@@ -31,8 +31,8 @@ div.policy {
     border : 1px solid black;
     height : 200px; 
     width : 1000px; 
-    text-align : center;
-    overflow-y: scroll;
+    text-align : start;
+    overflow:auto;
     
 }
 
@@ -75,22 +75,57 @@ button.btt_certifi{
     border: none;
 }
 
-div.next{
-    text-align : center;
-    margin-top : 50px;
-
+div.next {
+    margin-top: 50px;
+    display: flex;
+    align-items: center; /* 수직 정렬을 위해 사용 */
+    justify-content: center;
 }
-.btt_next{
-    display : inline-block;
+
+.btt_next {
+    display: inline-block;
     font-size: 1.2rem;
-    background-color : #3cb371;
+    background-color: #10b3cc; /* 배경색 설정 */
+    color: #fff; /* 텍스트 색상 설정 */
     height: 50px;
     width: 180px;
-    border: none;
-    border-radius: 20px;
+    border: 2px solid #10b3cc; /* 테두리 설정 */
+    border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
+    margin: 0 20px;
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
+    opacity: 1; /* 버튼이 비활성화되지 않은 경우에는 투명도를 1로 설정 */
 }
+
+.btt_next:disabled {
+    background-color: #ccc; /* 비활성화된 상태일 때의 배경색 */
+    border-color: #ccc; /* 비활성화된 상태일 때의 테두리 색상 변경 */
+    cursor: not-allowed; /* 클릭할 수 없는 상태이므로 커서를 변경 */
+}
+
+.btt_next:hover:enabled {
+    background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
+    border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
+}
+
+
+
 .text_num{
     display: flex;
     width: 350px;
     justify-content: space-between;
+}
+
+.tit {
+    background: url(../img/bullet.png) 0 2px no-repeat;
+    padding-left: 10px;
+    font-size: 25px;
+    color: #1b699b;
+    margin-bottom: 17px;
+    margin-left: 10px;
+}
+
+.contentBox{
+    vertical-align: middle;
+    margin-right: 300px;
 }
