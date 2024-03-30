@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import translatelist from '../../css/TranslateListpage.module.css';
 import { useNavigate } from 'react-router-dom';
-
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function TranslateListPage() {
   const [selectedStatus, setSelectedStatus] = useState('번역의뢰중');
@@ -63,52 +63,62 @@ export default function TranslateListPage() {
   return (
     <div className={translatelist.contents}>
         <div className={translatelist.iconbox}>
-                <h1>
-                    <i className="fa-solid fa-circle icon"></i>
-                    번역의뢰 현황
-                </h1>
-            </div>
-            
-      <table className={translatelist.translateList_table}>
-        <thead>
-          <tr>
-            <th className={translatelist.translateList_th}>NO.</th>
-            <th className={translatelist.translateList_th}>진단과목</th>
-            <th className={translatelist.translateList_th}>진단명</th>
-            <th className={translatelist.translateList_th}>의뢰신청일</th>
-            <th className={translatelist.translateList_th}>의뢰배정일</th>
-            <th className={translatelist.translateList_th}>의뢰번역일</th>
-            <th className={translatelist.translateList_th}>진행상태</th>
-          </tr>
-          </thead>
-        <tbody>
-        {visibleTranslateList.map((translation, index) => (
-            <tr key={index}>
-              <td className={translatelist.translateList_td} onClick={() => btn_detail_translate(translation.trId)}>
+          <h2 className={translatelist.title}>
+            번역의뢰 현황
+          </h2>
+        </div>
+        <div className={translatelist.write_table}>
+        <div className={translatelist.title_row_box}>
+          <div className={translatelist.title_box}>
+            NO.
+          </div>
+          <div className={translatelist.title_box}>
+            진단과목
+          </div>
+          <div className={translatelist.title_box}>
+            진단명
+          </div>
+          <div className={translatelist.title_box}>
+            의뢰신청일
+          </div>
+          <div className={translatelist.title_box}>
+            의뢰배정일
+          </div>
+          <div className={translatelist.title_box}>
+            의뢰번역일
+          </div>
+          <div className={translatelist.title_box} style={{borderRight: 'none'}}>
+            진행상태
+          </div>
+        </div>
+          {visibleTranslateList.map((translate, index) => (
+            <div className={translatelist.data_row_box}>
+              <div className={translatelist.input_box} onClick={() => btn_detail_translate(translate.trId)} key={index}>
                   {translateList.length - startIndex - index}
-              </td>              
-              <td className={translatelist.translateList_td}>{translation.trPtSub}</td>
-              <td className={translatelist.translateList_td}>{translation.trPtDiagnosis}</td>
-              <td className={translatelist.translateList_td}>{formatDate(translation.trRegDate)}</td>
-              <td className={translatelist.translateList_td}>{formatDate(translation.tamDate)}</td>
-              <td className={translatelist.translateList_td}>{translation.trAnswerDate === null ? '미답변' : translation.trAnswerDate}</td>
-              <td className={translatelist.translateList_td}>{translation.trProgressStatus === null ? '번역의뢰중' : translation.trProgressStatus}</td>
-            </tr>
+              </div>
+              <div className={translatelist.input_box}>{translate.trPtSub}</div>
+              <div className={translatelist.input_box}>{translate.trPtDiagnosis}</div>
+              <div className={translatelist.input_box}>{formatDate(translate.trRegDate)}</div>
+              <div className={translatelist.input_box}>{formatDate(translate.tamDate)}</div>
+              <div className={translatelist.input_box}>
+                {translate.trAnswerDate === null ? '미답변' : translate.trAnswerDate}
+              </div>
+              <div className={translatelist.input_box} style={{borderRight: 'none'}}>{translate.trProgressStatus === null ? '번역의뢰중' : translate.trProgressStatus}</div>
+            </div>
           ))}
-        </tbody>
-      </table>
+      </div>
       <div className={translatelist.pagination}>
         <button
           className={translatelist.paginationButton}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          ◀
+        <FaChevronLeft />
         </button>
         {[...Array(Math.ceil(translateList.length / itemsPerPage))].map((_, index) => (
           <button
             key={index}
-            className={translatelist.paginationButton}
+            className={translatelist.paginationNumber}
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
           >
@@ -120,9 +130,10 @@ export default function TranslateListPage() {
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === Math.ceil(translateList.length / itemsPerPage)}
         >
-          ▶
+        <FaChevronRight />
         </button>
       </div>
     </div>
   );
 }
+
