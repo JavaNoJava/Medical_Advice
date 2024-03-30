@@ -565,7 +565,7 @@ export default function AdviceRequestpage(){
                                 selectsStart
                                 startDate={admStartDate}
                                 endDate={admEndDate}
-                                locale="ko"
+                                // locale="ko"
                                 minDate={minDate}
                             />
                         </div>
@@ -605,7 +605,7 @@ export default function AdviceRequestpage(){
                                 selectsStart
                                 startDate={visitStartDate}
                                 endDate={visitEndDate}
-                                locale="ko"
+                                // locale="ko"
                                 minDate={minDate}
                             />
                         </div>
@@ -624,7 +624,7 @@ export default function AdviceRequestpage(){
                                 startDate={visitStartDate}
                                 endDate={visitEndDate}
                                 minDate={visitStartDate || minDate} // 최소 날짜는 시작 날짜 이후부터
-                                locale="ko"
+                                // locale="ko"
                             />
                         </div>
                     </div>
