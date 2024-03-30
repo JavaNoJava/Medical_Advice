@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import analyzelist from '../../css/AnalyzeListpage.module.css';
 import { useNavigate } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 
 
@@ -64,51 +65,62 @@ export default function AnalyzeListPage() {
   return (
     <div className={analyzelist.contents}>
         <div className={analyzelist.iconbox}>
-                <h1>
-                    <i className="fa-solid fa-circle icon"></i>
-                    분석의뢰 현황
-                </h1>
-            </div>
-      <table className={analyzelist.analyzeList_table}>
-        <thead>
-          <tr>
-            <th className={analyzelist.analyzeList_th}>NO.</th>
-            <th className={analyzelist.analyzeList_th}>진단과목</th>
-            <th className={analyzelist.analyzeList_th}>진단명</th>
-            <th className={analyzelist.analyzeList_th}>의뢰신청일</th>
-            <th className={analyzelist.analyzeList_th}>의뢰배정일</th>
-            <th className={analyzelist.analyzeList_th}>의뢰분석일</th>
-            <th className={analyzelist.analyzeList_th}>진행상태</th>
-          </tr>
-          </thead>
-        <tbody>
-        {visibleAnalyzeList.map((analyze, index) => (
-            <tr key={index}>
-              <td className={analyzelist.analyzeList_td} onClick={() => btn_detail_analyze(analyze.anId)}>
+          <h2 className={analyzelist.title}>
+            분석의뢰 현황
+          </h2>
+        </div>
+        <div className={analyzelist.write_table}>
+        <div className={analyzelist.title_row_box}>
+          <div className={analyzelist.title_box}>
+            NO.
+          </div>
+          <div className={analyzelist.title_box}>
+            진단과목
+          </div>
+          <div className={analyzelist.title_box}>
+            진단명
+          </div>
+          <div className={analyzelist.title_box}>
+            의뢰신청일
+          </div>
+          <div className={analyzelist.title_box}>
+            의뢰배정일
+          </div>
+          <div className={analyzelist.title_box}>
+            의뢰분석일
+          </div>
+          <div className={analyzelist.title_box} style={{borderRight: 'none'}}>
+            진행상태
+          </div>
+        </div>
+          {visibleAnalyzeList.map((analyze, index) => (
+            <div className={analyzelist.data_row_box}>
+              <div className={analyzelist.input_box} onClick={() => btn_detail_analyze(analyze.anId)} key={index}>
                   {analyzeList.length - startIndex - index}
-              </td>             
-              <td className={analyzelist.analyzeList_td}>{analyze.anPtSub}</td>
-              <td className={analyzelist.analyzeList_td}>{analyze.anPtDiagnosis}</td>
-              <td className={analyzelist.analyzeList_td}>{formatDate(analyze.anRegDate)}</td>
-              <td className={analyzelist.analyzeList_td}>{formatDate(analyze.anMdDate)}</td>
-              <td className={analyzelist.analyzeList_td}>{analyze.anAnswerDate === null ? '미답변' : analyze.anAnswerDate}</td>
-              <td className={analyzelist.analyzeList_td}>{analyze.anProgressStatus === null ? '분석의뢰중' : analyze.anProgressStatus}</td>
-            </tr>
+              </div>
+              <div className={analyzelist.input_box}>{analyze.anPtSub}</div>
+              <div className={analyzelist.input_box}>{analyze.anPtDiagnosis}</div>
+              <div className={analyzelist.input_box}>{formatDate(analyze.anRegDate)}</div>
+              <div className={analyzelist.input_box}>{formatDate(analyze.anMdDate)}</div>
+              <div className={analyzelist.input_box}>
+                {analyze.anAnswerDate === null ? '미답변' : analyze.anAnswerDate}
+              </div>
+              <div className={analyzelist.input_box} style={{borderRight: 'none'}}>{analyze.anProgressStatus === null ? '분석의뢰중' : analyze.anProgressStatus}</div>
+            </div>
           ))}
-        </tbody>
-      </table>
+      </div>
       <div className={analyzelist.pagination}>
         <button
           className={analyzelist.paginationButton}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          ◀
+        <FaChevronLeft />
         </button>
         {[...Array(Math.ceil(analyzeList.length / itemsPerPage))].map((_, index) => (
           <button
             key={index}
-            className={analyzelist.paginationButton}
+            className={analyzelist.paginationNumber}
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
           >
@@ -118,11 +130,12 @@ export default function AnalyzeListPage() {
         <button
           className={analyzelist.paginationButton}
           onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === Math.ceil(analyzeList.length / itemsPerPage)}
+          disabled={currentPage === Math.ceil(analyzelist.length / itemsPerPage)}
         >
-          ▶
+        <FaChevronRight />
         </button>
       </div>
     </div>
   );
 }
+
