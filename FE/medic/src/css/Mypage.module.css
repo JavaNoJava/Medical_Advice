@@ -1,12 +1,99 @@
 .mypage_box{
-    width: 800px;
-    height: 800px;
+    width: 980px;
+    height: 985px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: start;
+ }
+ /* 나의 현황 css */
+ .mypage_requestcount_box{
+    width: 198px;
+    height: 300px;
+    padding-top: 100px;
+ }
+ .mypage_requestcount_title{
+    font-size : 1.563rem;
+    margin:0;
+    font-weight: bold;
+    color: #444;
+ }
+ .mypage_count_wrap{
+    width: 198px;
+    height: 172px;
+    border-top: 2px solid #0f3a75;
+    margin: 15px 0 56px;
+ }
+ .mypage_countbox{
+    width: 191px;
+    height: 40px;
+    padding: 0 0 0 7px;
+    font-size: 0.938rem;
+    font-weight: 900;
+    display: flex;
     align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    color: #666;
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+ }
+
+ /* 정보수정 css */
+.modify_wrap{
+    width: 730px;
+    height: 752px;
+    margin-top: 50px;
 }
+.modify_title{
+    width: 730px;
+    margin: 0 0 56px;
+    color: #0f3a75;
+    font-size: 2.5rem;
+}
+.modify_subtitle{
+    color: #1B69A8;
+    margin: 0 0 17px 0;
+    font-size: 1.25rem;
+}
+ 
+.Find_userInfoContent_title{
+    color: #1B69A8;
+    margin: 0 0 17px 0;
+    font-size: 1.25rem;
+}
+
+.modify_subtitleimg{
+    background: url("../img/bullet.png") 0 2px no-repeat;
+    padding-left: 10px;
+}
+.modify_userinfo{
+    width: 730px;
+    height: auto;
+}
+.modify_userinfotable{
+    border-top: 2px solid #10b3cc;;
+}
+.modify_row{
+    width: 730px;
+    height: 43px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    display: flex;
+}
+.modify_row_title{
+    width: 122px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 33px;
+    font-size: 0.813rem;
+    color: #252323;
+    background-color: #F5F5F5;
+    border-right: 1px solid rgba(0,0,0,0.3);
+    font-weight: 600;
+}
+ /*
 .mypage_requestcount_box{
     width: 700px;
     height: 700px;
@@ -44,4 +131,4 @@
     border: none;
     border-radius: 20px;
     margin-top: 20px;
-}
+} */
