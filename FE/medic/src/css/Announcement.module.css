@@ -1,77 +1,187 @@
-.wrap{
+.wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  position : relative;
+  font-family: "돋움", Dotum, Arial, sans -serif;
 }
-.announce_title{
-  width: 900px;
+
+.announce_title {
+  width: 850px;
   display: flex;
   justify-content: start;
 }
-.announce_quirytable{
+
+.search_bar {
+  width: 450px;
+  border: 1px solid #d9d9d9;
+  padding: 14px 200px;
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_bar input {
+  width: 200px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.announce_quirytable {
   width: 850px;
-  height: 350px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  align-items: center; 
+  border-top: 2px solid #10b3cc;
+ 
 }
-.announce_quirylist_titlebox{
+
+
+.announce_quirylist_titlebox {
   width: 850px;
   height: 40px;
   display: flex;
 }
-.announce_list_content, .announce_list_title {
+
+.announce_list_content,
+.announce_list_title {
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid #ddd;
 }
-.announce_list_title{   
+
+.announce_list_title {
   font-size: 1.3rem;
   height: 40px;
   font-weight: bold;
   background-color: #f2f2f2;
 }
-.announce_list_content{
+
+/* .announce_list_content {
+  /* cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  } */
+
+.announce_quirylist_no {
   cursor: pointer;
-  &:hover{
-      text-decoration: underline;
-  }
-}
-.announce_quirylist_content{
+  &:hover {
+    text-decoration: underline;
+} 
+} 
+
+.announce_quirylist_content {
   width: 850px;
   height: 40px;
   display: flex;
 }
-.announce_list_no, .announce_quirylist_no{
-  width: 150px;
+
+.announce_list_no,
+.announce_quirylist_no {
+  border-left: none;
+  width: 60px;
 }
-.announce_list_question, .announce_quirylist_question{
-  width: 500px;
+
+.announce_title h2 {
+  font-size: 2.5em; 
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+  margin-bottom: 56px;
+  color: #0f3a75;
 }
-.announce_list_writedate, .announce_quirylist_writedate{
+
+.announce_list_question,
+.announce_quirylist_question {
+  width: 650px;
+}
+
+.announce_list_writedate,
+.announce_quirylist_writedate {
   width: 200px;
 }
-.btn_write_inquiry{  
-  font-size: 0.8rem;
-  background-color: #3cb371;
-  height: 50px;
-  width: 180px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
+.announce_delete{
+  width: 100px;
 }
+
+.gradient {
+  width: 50px;
+  height: 26px;
+  font-weight: 900;
+  color: black;
+  text-align: center;
+  background: white;
+  border: solid 2px black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn_write_inquiry {
+  display: inline-block;
+  font-size: 1.2rem;
+  background-color: transparent; /* 배경색 제거 */
+  color: #10b3cc; /* 글자색을 하늘색으로 설정 */
+  height: 50px;
+  width: 100px;
+  border: 2px solid #10b3cc; /* 테두리 색상 설정 */
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-end; /* 버튼을 오른쪽으로 정렬 */
+  margin-bottom: 10px; /* 아래 여백 조절 */
+  margin-left: 750px;
+}
+
+
 .pagination {
   margin-top: 30px; /* Adjust as needed */
   text-align: center;
 }
 
 .paginationButton {
-  font-size: 16px; /* Adjust the font size as needed */
-  margin: 0 5px; /* Adjust the spacing as needed */
+  font-size: 1.2rem; /* 필요에 따라 폰트 크기 조정 */
+  margin: 0 5px; /* 필요에 따라 간격 조정 */
   background: none;
   border: none;
   cursor: pointer;
   outline: none;
+  transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
 }
+
+.paginationButton:hover {
+  color: #10b3cc; /* 호버 시 텍스트 색상 변경 */
+}
+
+.paginationNumber {
+  font-size: 1.5rem; /* 필요에 따라 폰트 크기 조정 */
+  margin: 0 5px; /* 필요에 따라 간격 조정 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
+}
+:not(.manager) .announce_list_writedate ,.announce_list_content,.announce_list_title{
+  border-right: none;
+}
+/* h2 {
+  display: block;
+  font-size: 2.5em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+  margin-bottom: 56px;
+  color: #0f3a75;
+} */

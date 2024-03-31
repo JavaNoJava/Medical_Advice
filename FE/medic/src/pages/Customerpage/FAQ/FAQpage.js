@@ -5,6 +5,7 @@ import { Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function FAQpage() {
   const [faqList, setFaqList] = useState([]);
@@ -121,29 +122,28 @@ export default function FAQpage() {
   return (
     <div className={faq.wrap}>
       <div className={faq.announce_title}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2>
           자주 묻는 질문
-        </h1>
+        </h2>
       </div>
      
-      <div>
+      <div className={faq.search_bar}>
         <input
           type="text"
           placeholder="검색어를 입력하세요"
           value={searchKeyword}
           onChange={(e) => setSearchKeyword(e.target.value)}
         />
-        <button onClick={searchFaqInfo}>검색</button>
+        <button className={faq.gradient} onClick={searchFaqInfo}>검색</button>
       </div>
 
       <div className={faq.announce_quirytable}>
         <div className={faq.announce_quirylist_titlebox}>
-          <div className={`${faq.announce_list_no} ${faq.announce_list_title}`}>NO.</div>
+          <div className={`${faq.announce_list_no} ${faq.announce_list_title}`}>NO</div>
           <div className={`${faq.announce_list_question} ${faq.announce_list_title}`}>질문</div>
           <div className={ `${faq.announce_list_writedate} ${faq.announce_list_title}`}>등록일</div>
           {isAdmin && (
-            <div className={`${faq.announce_list_writedate} ${faq.announce_list_title}`}>
+            <div className={`${faq.announce_delete} ${faq.announce_list_title}`}>
               삭제
             </div>
           )}
@@ -162,7 +162,7 @@ export default function FAQpage() {
                 {formatDateString(list.faqRegDate)}
               </div>
               {isAdmin && (
-                <div className={`${faq.announce_quirylist_writedate} ${faq.announce_list_content}`} onClick={() => handleDeleteAnnounce(list.faqId)}>
+                <div className={`${faq.announce_delete} ${faq.announce_list_content}`} onClick={() => handleDeleteAnnounce(list.faqId)}>
                   <FontAwesomeIcon icon={faTrash}  />
                 </div>
               )}
@@ -173,7 +173,7 @@ export default function FAQpage() {
       {isAdmin &&(
         <div className={faq.complete}>
         <button className={faq.btn_write_inquiry} onClick={medicWrite}>
-          작성
+          글쓰기
         </button>
       </div>
 
@@ -185,15 +185,16 @@ export default function FAQpage() {
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          ◀
+          <FaChevronLeft />
         </button>
         {[...Array(Math.ceil(faqList.length / itemsPerPage))].map((_, index) => (
           <button
             key={index}
-            className={faq.paginationButton}
+            className={faq.paginationNumber}
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
           >
+            
             {index + 1}
           </button>
         ))}
@@ -201,7 +202,7 @@ export default function FAQpage() {
           className={faq.paginationButton}
           onClick={() => handlePageChange(currentPage + 1)}
         >
-          ▶
+            <FaChevronRight /> 
         </button>
       </div>
     </div>

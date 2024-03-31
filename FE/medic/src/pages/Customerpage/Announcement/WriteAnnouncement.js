@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import writeannoucement from '../../../css/WriteAnnouncement.module.css';
+import writeannoucement from '../../../css/WriteQna.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
 
-const WriteAnnouncement = () => {
+export default function WriteAnnouncement()  {
   const [timer, setTimer] = useState("");
   const [annoucement_titile, setAnnouncementTitle] = useState('')
   const [amContent, setAmContent] = useState('')
   const [amContentcount, setAmContentcount] = useState(0)
+  const [announceCount, setAnnounceContentcount] = useState(0)
   const [writer, setWriter] = useState('');
 
   const navigate = useNavigate();
@@ -34,6 +35,11 @@ const WriteAnnouncement = () => {
     }
   };
 
+  const announce = () => {
+    navigate('/medic/customer/announcement');
+  };
+  
+
   const currentTimer = () => {
     const date = new Date();
     const year = date.getFullYear()
@@ -51,39 +57,70 @@ const WriteAnnouncement = () => {
   }
   return (
     <div className={writeannoucement.writeform}>
-      <div className={writeannoucement.announce_title}>
-        <h2>
-          <i className="fa-solid fa-circle icon"></i>
+      <div className={writeannoucement.inquiry_title}>
+        <h2 className={writeannoucement.title}>
+    
           공지사항 작성
         </h2>
       </div>
       <br/>
-        <table className={writeannoucement.write_table}>
-          <tbody>
-            <tr>
-              <th className={writeannoucement.write_th}>제목</th>
-              <td className={writeannoucement.write_td} colSpan="3"><input type="text" name="subject" onChange={input_annoucement_titile} maxLength={50}/></td>
-            </tr>
-            <tr>
-            <th className={writeannoucement.write_th}>작성자</th>
-              <td className={writeannoucement.write_td}><input type="text" disabled={true} name="writer" value={writer} maxLength={20} width={900}/></td>
-              <th className={writeannoucement.write_th}>등록일</th>
-              <td className={writeannoucement.write_td}><input type="text" name="date" value={timer} readOnly /></td>
-            </tr>
-            <tr>
-              <th className={writeannoucement.write_th}>내용</th>
-              <td className={writeannoucement.write_td} colSpan="3">
-                <textarea name="content" onChange={input_am_Content} maxLength={500}></textarea>
-                <span>{amContentcount}/500</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div className={writeannoucement.complete}>
-          <button type="button" onClick={medicannounce} className={writeannoucement.btt_write}>글쓰기 완료</button>
+
+      <div className={writeannoucement.write_table}>
+        <div className={writeannoucement.write_rowbox}>
+          <div className={writeannoucement.write_title}>
+            제목
+            </div>
+            <div className={writeannoucement.write_titleinputbox} style={{width:'600px'}}>
+              <input className={writeannoucement.write_titleinput} onChange={input_annoucement_titile} ></input>
+            </div>
+          </div>
+          
+        <div className={writeannoucement.write_rowbox}>
+            <div className={writeannoucement.write_title}>
+            작성자
+            </div>
+            <div className={writeannoucement.input_box} style={{width:'300px'}} >
+              {writer}
+            </div>
+         
+          <div className={writeannoucement.write_title} style={{borderLeft: '1px solid black'}}> 
+              작성일
+          </div>
+          <div className={writeannoucement.input_box} style={{width:'150px'}}>
+            {timer}
+          </div>
+    
         </div>
-    </div>
+
+        <div className={`${writeannoucement.write_rowbox} ${writeannoucement.write_contentrowbox}`}>
+          <div className={`${writeannoucement.write_title} ${writeannoucement.write_contentrowbox}`}>
+            내용
+          </div>
+          <div className={writeannoucement.input_box} style={{width:'670px', height : '300px'}}>
+          <textarea
+          cols="50"
+          rows="500"
+          className={writeannoucement.write_content}
+          onChange={input_am_Content}
+          maxLength={300}
+          style={{ height: '300px' }}
+            ></textarea>
+
+          <div className={writeannoucement.contentcount}>
+            <span>/300</span>
+          </div>
+        </div>
+        </div>
+        
+
+      </div>  
+
+      <div className={writeannoucement.complete}>
+          <button className={writeannoucement.btt_write} onClick={medicannounce}>작성</button>
+          <button className={writeannoucement.btt_write} onClick={announce}>록록</button>
+      </div>
+</div>
+
+
   );
 };
-
-export default WriteAnnouncement;
