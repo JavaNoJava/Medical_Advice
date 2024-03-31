@@ -43,10 +43,10 @@ export default function ModifyMyInfopage(){
 
     const errmsg = {
         email : '올바르지 않은 이메일 형식입니다.',
-        tel : '올바르지 않은 전화번호 형식입니다.',
-        phone : '올바르지 않은 전화번호 형식입니다.',
-        cpNum : '올바르지 않은 사업자번호 형식입니다.',
-        cpFx : '올바르지 않은 팩스번호 형식입니다.',
+        tel : '올바르지 않은 전화번호 형식입니다. (숫자와 "-"만 입력하세요)',
+        phone : '올바르지 않은 전화번호 형식입니다. (숫자와 "-"만 입력하세요)',
+        cpNum : '올바르지 않은 사업자번호 형식입니다. (숫자와 "-"만 입력하세요)',
+        cpFx : '올바르지 않은 팩스번호 형식입니다. (숫자와 "-"만 입력하세요)',
     }
 
     const postcodeScriptUrl = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";

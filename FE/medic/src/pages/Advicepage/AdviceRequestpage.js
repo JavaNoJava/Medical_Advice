@@ -8,7 +8,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 
 export default function AdviceRequestpage(){
-    
     const startYear = 1960;
     const today = new Date();
     const todayYear = today.getFullYear();

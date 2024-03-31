@@ -63,7 +63,6 @@ export default function FinduserInfopage(){
         }
         try{
             const response = await axios.post('/login/findPw', userInfo)
-            console.log(1)
             navigate('/medic/finduserinfo/findpw', {state : {uId : id, uEmail : email_pw}})
         }catch(err){
             console.log(err)
