@@ -99,8 +99,12 @@ export default function Announcementpage() {
     try {
       const confirmed = window.confirm('게시글을 삭제하시겠습니까?');
       const response = await axios.delete(`/announcement/delete/${amId}`);
+      const resp = await axios.get(`/announcement/list`);
+      const data = resp.data;
+      setAnnouncements(data);
       if (confirmed) {
         alert('게시글이 삭제되었습니다.');
+        window.location.reload();
       } else {
         
       }
@@ -119,7 +123,7 @@ export default function Announcementpage() {
       </div>
       <br />
       <div className={announce.search_bar}>
-                <form onSubmit={(e) => { e.preventDefault(); searchAnnounceInfo(); }}>
+              
                     <span>
                         <input
                             type="text"
@@ -133,7 +137,7 @@ export default function Announcementpage() {
                     <button className={announce.gradient} onClick={searchAnnounceInfo}>
                     검색
                     </button>
-                </form>
+
             </div>
 
       <div className={announce.announce_quirytable}>

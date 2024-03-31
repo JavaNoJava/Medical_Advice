@@ -59,8 +59,7 @@ export default function WriteFaqPage  ()  {
   return (
     <div className={writeannoucement.writeform}>
       <div className={writeannoucement.inquiry_title}>
-        <h2>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={writeannoucement.title}>
             자주 묻는 질문 작성
         </h2>
       </div>
@@ -71,39 +70,39 @@ export default function WriteFaqPage  ()  {
           <div className={writeannoucement.write_title}>
             질문
             </div>
-            <div className={writeannoucement.write_titleinputbox}>
+            <div className={writeannoucement.write_titleinputbox} style={{width:'600px'}}>
               <input className={writeannoucement.write_titleinput} onChange={input_faq_titile} ></input>
             </div>
           </div>
+
         <div className={writeannoucement.write_rowbox}>
-          <div className={writeannoucement.write_writerinfo}>
             <div className={writeannoucement.write_title}>
             작성자
             </div>
-            <div className={writeannoucement.write_writerinfocontent}>
+            <div className={writeannoucement.input_box} style={{width:'300px'}}>
               {writer}
             </div>
-          </div>
-          
-          <div className={writeannoucement.write_writerinfo}>
-          <div className={writeannoucement.write_title}> 
+        
+        
+          <div className={writeannoucement.write_title}  style={{borderLeft: '1px solid black'}}> 
               작성일
           </div>
-          <div className={writeannoucement.write_writerinfocontent}>
+          <div className={writeannoucement.input_box}  style={{width:'150px'}}>
             {timer}
           </div>
-          </div>
+       
 
         </div>
 
         <div className={`${writeannoucement.write_rowbox} ${writeannoucement.write_contentrowbox}`}>
-          <div className={`${writeannoucement.write_contenttitle} ${writeannoucement.write_title}`}>
-              <h3 style={{paddingLeft:'20px'}}> 답변내용 </h3>
+          <div className={`${writeannoucement.write_title} ${writeannoucement.write_contentrowbox}`}>
+              답변내용 
           </div>
+          <div className={writeannoucement.input_box} style={{width:'670px', height : '30px'}}>
           <textarea
           className={writeannoucement.write_content}
-          cols={60}
-          rows={50}
+          cols="50"
+          rows="20"
           onChange={e => {
             setFaqAnswer(e.target.value)
             setFaqContentcount(e.target.value.length)
@@ -111,15 +110,19 @@ export default function WriteFaqPage  ()  {
           >
 
           </textarea>
+          <div className={writeannoucement.contentcount}>
+            <span>/300</span>
+          </div>
+          </div>
         </div>
         
 
       </div>  
 
 
-        <div className={writeannoucement.btn_writequestionbox}>
-          <button type="button" onClick={faqWrite} className={writeannoucement.btn_writequestion}>작성</button>
-          <button type="button" onClick={faqList} className={writeannoucement.btn_writequestion}>목록</button>
+        <div className={writeannoucement.complete}>
+          <button type="button" onClick={faqWrite} className={writeannoucement.btt_write}>작성</button>
+          <button type="button" onClick={faqList} className={writeannoucement.btt_write}>목록</button>
 
         </div>
     </div>

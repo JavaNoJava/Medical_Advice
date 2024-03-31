@@ -126,8 +126,7 @@ const prevDetailPage = async (prevFaqId) => {
 return (
   <div className={announcedetail.detailform}>
     <div className={announcedetail.inquiry_title}>
-      <h2>
-        <i className="fa-solid fa-circle icon"></i>
+      <h2 className={announcedetail.title}>
         자주 묻는 질문 상세
       </h2>
     </div>
@@ -136,16 +135,16 @@ return (
 
     <div className={announcedetail.detail_table}>
           <div className={announcedetail.detail_rowbox}>
-              <div className={announcedetail.detail_title} style={{width : '96.5px'}}>
+              <div className={announcedetail.detail_title} >
                   제목
               </div>
-              <div className={announcedetail.detail_titleinputbox}>
+              <div className={announcedetail.detail_titleinputbox} style={{width:'300px'}}>
                   {faqDetail.faqQuestion}
               </div>
           </div>
           <div className={announcedetail.detail_rowbox}>
               <div className={announcedetail.detail_writerinfo}>
-                  <div className={announcedetail.detail_title}>
+                  <div className={announcedetail.detail_title}  style={{width:'85px'}}>
                       작성자
                   </div>
                   <div className={announcedetail.detail_writerinfocontent}>
@@ -182,11 +181,24 @@ return (
 
       <br></br>
   
-      <div className={announcedetail.detail_rowbox}>
-<div className={announcedetail.detail_title} style={{ width: '210px' }}>
+      <div className={announcedetail.complete}>
+        <button type="button" onClick={medicannounce} className={announcedetail.btt_write}>
+          목록
+        </button>
+
+
+      {isAdmin &&(
+
+      <button type="button" onClick={editFaq} className={announcedetail.btt_write}>수정</button>
+  
+    )}
+  </div>
+    <div className={announcedetail.preAndNext_table}>
+<div className={announcedetail.preAndNext_row_box}>
+<div className={announcedetail.preAndNext_title_box} >
   이전글
 </div>
-<div className={announcedetail.detail_titleinputbox}>
+<div className={announcedetail.preAndNext_input_box} style={{width:'300px'}}>
   {prevTitle ? (
     <span onClick={() => prevDetailPage(prevFaqId)}>
       {prevTitle}
@@ -196,11 +208,11 @@ return (
   )}
 </div>
 </div>
-<div className={announcedetail.detail_rowbox}>
-<div className={announcedetail.detail_title} style={{ width: '210px' }}>
+<div className={announcedetail.preAndNext_row_box}>
+<div className={announcedetail.preAndNext_title_box} >
   다음글
 </div>
-<div className={announcedetail.detail_titleinputbox}>
+<div className={announcedetail.preAndNext_input_box} style={{width:'300px'}}>
   {nextTitle ? (
     <span onClick={() => nextDetailPage(nextFaqId)}>
       {nextTitle}
@@ -210,20 +222,10 @@ return (
   )}
 </div>
 </div>
+</div>
 
 
-
-      <div className={announcedetail.complete}>
-        <button type="button" onClick={medicannounce} className={announcedetail.btt_write}>
-          목록
-        </button>
-      </div>
-
-      {isAdmin &&(
-<div className={announcedetail.complete}>
-      <button type="button" onClick={editFaq} className={announcedetail.btt_write}>수정</button>
-    </div>
-    )}
+  
   </div>
 );
 };

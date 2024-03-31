@@ -80,7 +80,7 @@ export default function WriteAnnouncement()  {
             작성자
             </div>
             <div className={writeannoucement.input_box} style={{width:'300px'}} >
-              <input value={writer} className={writeannoucement.write_titleinput} style={{width:'250px'}}></input>
+              {writer}
             </div>
          
           <div className={writeannoucement.write_title} style={{borderLeft: '1px solid black'}}> 

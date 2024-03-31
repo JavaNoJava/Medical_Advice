@@ -104,7 +104,7 @@ console.log('ann',announceDetail)
                     제목
                 </div>
                 <div className={announcedetail.detail_titleinputbox} style={{width:'300px'}}>
-                    <input type='text' value={amName} className={announcedetail.inputWithoutBorder} onChange={e=>input_amName(e)}></input>
+                    <input type='text' value={amName} className={announcedetail.write_titleinput} onChange={e=>input_amName(e)} ></input>
                 </div>
             </div>
             <div className={announcedetail.detail_rowbox}>
@@ -131,7 +131,7 @@ console.log('ann',announceDetail)
                         수정일
                     </div>
                     <div className={announcedetail.detail_writerinfocontent}>
-                    <input value={timer}  className={announcedetail.inputWithoutBorder} readOnly={true} ></input>
+                     {timer}  
                     </div>
                   </div>  
             </div>
@@ -140,7 +140,7 @@ console.log('ann',announceDetail)
   <div className={`${announcedetail.write_title} ${announcedetail.write_contentrowbox}`}>
     내용
   </div>
-  <div className={announcedetail.input_box} style={{width:'670px', height : '200px'}}>
+  <div className={announcedetail.input_box} style={{width:'670px', height : '300px'}}>
     <textarea
     cols="50"
     rows="500"
@@ -150,7 +150,7 @@ console.log('ann',announceDetail)
       style={{ height: '200px' }}
       className={announcedetail.write_content}
     ></textarea>
-    <div className={announceDetail.contentcount}> 
+    <div className={announcedetail.contentcount}> 
     <span>/300</span>
     </div>
   </div>

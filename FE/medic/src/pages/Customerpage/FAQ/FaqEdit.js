@@ -79,28 +79,27 @@ console.log('ann',faqDetail)
     <>
         <div className={announcedetail.detailform}>
             <div className={announcedetail.inquiry_title}>
-                <h1>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h2 className={announcedetail.title}>
                     자주 묻는 질문 수정
-                </h1>
+                </h2>
             </div>
         <div className={announcedetail.detail_table}>
             <div className={announcedetail.detail_rowbox}>
-                <div className={announcedetail.detail_title} style={{width : '96.5px'}}>
+                <div className={announcedetail.detail_title} >
                     제목
                 </div>
                 <div className={announcedetail.detail_titleinputbox}>
-                    <input type='text' value={faqQuestion} className={announcedetail.inputWithoutBorder} onChange={e=>setFaqQuestion(e.target.value)}></input>
+                    <input type='text' value={faqQuestion} className={announcedetail.write_titleinput} onChange={e=>setFaqQuestion(e.target.value)}  style={{width:'800px'}}></input>
                 </div>
             </div>
             <div className={announcedetail.detail_rowbox}>
                 <div className={announcedetail.detail_writerinfo}>
-                    <div className={announcedetail.detail_title}>
+                    <div className={announcedetail.detail_title} style={{width:'85px'}}>
                         작성자
                     </div>
                     <div className={announcedetail.detail_writerinfocontent}>
         
-                        <input type='text' value={writer} className={announcedetail.inputWithoutBorder} ></input>
+                        {writer} 
                     </div>
                 </div> 
                 <div className={announcedetail.detail_writerinfo}>
@@ -109,7 +108,7 @@ console.log('ann',faqDetail)
                     </div>
                     <div className={announcedetail.detail_writerinfocontent}>
                         
-                        <input value={formatDateString(faqRegDate)} className={announcedetail.inputWithoutBorder} readOnly ={true}></input>
+                       {formatDateString(faqRegDate)}
                     </div>
                 </div>   
                  <div className={announcedetail.detail_writerinfo}>
@@ -117,21 +116,27 @@ console.log('ann',faqDetail)
                         수정일
                     </div>
                     <div className={announcedetail.detail_writerinfocontent}>
-                    <input value={timer}  className={announcedetail.inputWithoutBorder} readOnly={true} ></input>
+                      {timer}
                     </div>
                   </div>  
             </div>
-            <div className={`${announcedetail.detail_rowbox} ${announcedetail.detail_contentrowbox}`}>
-  <div className={`${announcedetail.detail_contenttitle} ${announcedetail.detail_title}`}>
-    <h3 style={{ paddingLeft: '20px' }}>내용</h3>
+
+   <div className={`${announcedetail.write_rowbox} ${announcedetail.write_contentrowbox}`}>
+  <div className={`${announcedetail.write_title} ${announcedetail.write_contentrowbox}`}>
+   내용
   </div>
-  <div className={announcedetail.detail_content}>
+  <div className={announcedetail.input_box} style={{width:'670px', height : '300px'}}>
     <textarea
       value={faqAnswer}
       onChange={(e) => 
       setFaqAnswer(e.target.value)}
-      className={announcedetail.textareaWithoutBorder}
+      className={announcedetail.write_content}
+      style={{ height: '200px' , width:'400px' }}
+      maxLength={300}
     ></textarea>
+     <div className={announcedetail.contentcount}> 
+    <span>/300</span>
+    </div>
   </div>
 </div>
         </div>
@@ -143,8 +148,8 @@ console.log('ann',faqDetail)
           <button type="button" onClick={medicannounce} className={announcedetail.btt_write}>
             목록
           </button>
-        </div>
-        <div className={announcedetail.complete}>
+    
+       
           <button type="button" onClick={btn_faq_modify} className={announcedetail.btt_write}>
             수정
           </button>
