@@ -38,11 +38,12 @@ export default function AnalyzeRequestpage(){
     const getUserInfo = async() =>{
         try{
             const response = await axios.get('/user/userInfo')
+            const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
             console.log(response.data)
             setUname(response.data.name)
             setUtel(response.data.userTel)
             setUphone(response.data.userPhone)
-            setUaddress(response.data.userAddress)
+            setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
         } catch(err){
             console.log(err)
         }  
@@ -213,7 +214,7 @@ export default function AnalyzeRequestpage(){
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>주소</div>
-                    <div className={analyzerequest.input_box}>
+                    <div className={analyzerequest.input_box} style={{width: "500px"}}>
                         <span>{uaddress}</span>
                     </div>
                 </div>

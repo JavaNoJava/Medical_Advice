@@ -59,12 +59,13 @@ export default function ConsultativeAdviceAssignmentDetailpage(){
     const getUserInfo = async() =>{
         try{
             const response = await axios.get(`/consultative/assignedAdvice/detail/${index}`)
+            const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
             console.log(response)
             setAssignmentAdvice(response.data)
             setUname(response.data.uname)
             setUtel(response.data.userTel)
             setUphone(response.data.userPhone)
-            setUaddress(response.data.userAddress)
+            setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
             setAdptname(response.data.adPtName)
             setAdptsub(response.data.adPtSub)
             setAdptdiagnosis(response.data.adPtDiagnosis)
@@ -234,7 +235,7 @@ export default function ConsultativeAdviceAssignmentDetailpage(){
                 </div>
                 <div className={assignmentadvicedetail.row_box}>
                     <div className={assignmentadvicedetail.title_box}>주소</div>
-                    <div className={assignmentadvicedetail.input_box}>
+                    <div className={assignmentadvicedetail.input_box} style={{width: "500px"}}>
                         <span>{uaddress}</span>
                     </div>
                 </div>

@@ -29,13 +29,35 @@ export default function Joinpage(){
     const [comapanyDetailAddress, setComapanyDetailAddress] = useState('')
     const [cpAddress, setCpAddress] = useState('') //회사 주소
 
+    const [showCompanyInfo, setShowCompanyInfo] = useState(false);
+
     const [idchk, setIdchk] = useState(false) // 중복검사
     const [pwchk, setPwchk] = useState(false)
     const [infoEmpty, setInfoEmpty] = useState(false)
+    
 
-    // const [useDaumPostcodePopup, setUseDaumPostcodePopup] = useState('');
+    const [isValidId, setIsValidId] = useState(true)
+    const [isValidPw, setIsValidPw] = useState(true)
+    const [isValidName, setIsValidName] = useState(true)
+    const [isValidEmail, setIsValidEmail] = useState(true)
+    const [isValidTel, setIsValidTel] = useState(true)
+    const [isValidPhone, setIsValidPhone] = useState(true)
+    const [isValidCpNum, setIsValidCpNum] = useState(true)
+    const [isValidCpFx ,setIsValidCpFx] = useState(true)
+    const [isValidCpTel, setIsValidCpTel] = useState(true)
+
+    const errmsg = {
+        id : '올바르지 않은 아이디 형식입니다.',
+        pw : '올바르지 않은 비밀번호 형식입니다.',
+        name : '올바르지 않은 이름 형식입니다.',
+        email : '올바르지 않은 이메일 형식입니다.',
+        tel : '올바르지 않은 전화번호 형식입니다.',
+        phone : '올바르지 않은 전화번호 형식입니다.',
+        cpNum : '올바르지 않은 사업자번호 형식입니다.',
+        cpFx : '올바르지 않은 팩스번호 형식입니다.',
+    }
+
     const postcodeScriptUrl = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
-    const [props, setProps] = useState('');
     //클릭 시 수행될 팝업 생성 함수
     const open = useDaumPostcodePopup(postcodeScriptUrl);
 
@@ -91,20 +113,20 @@ export default function Joinpage(){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        const uadd = zipcode + " " + userroadAddress + " " + userDetailAddress;
-        setUserAddress(uadd)
-        const cadd = cpZipcode + " " + comapanyroadAddress + " " + comapanyDetailAddress;
-        setCpAddress(cadd)
-        if(uPart && uId && uPw && uName && uEmail && userTel && userPhone && userAddress && company && ceo && cpTel && cpFx && cpNum && cpAddress && idchk && pwchk){
+        if(uPart && uId && uPw && uName && uEmail && userTel && userPhone && zipcode && userroadAddress && userDetailAddress && (!showCompanyInfo || (company && ceo && cpTel && cpFx && cpNum && cpZipcode && comapanyroadAddress && comapanyDetailAddress && isValidCpTel && isValidCpNum && isValidCpFx)) && idchk && pwchk && isValidId && isValidPw && isValidName && isValidEmail && isValidTel && isValidPhone){
             setInfoEmpty(true);
         } else{
             setInfoEmpty(false)
         }
-    }, [uPart,  uId,  uPw,  uName,  uEmail,  userTel,  userPhone,  userAddress,  company,  ceo,  cpTel,  cpFx,  cpNum,  cpAddress,  idchk,  pwchk])
+    }, [uPart,  uId,  uPw,  uName,  uEmail,  userTel,  userPhone, zipcode,  userroadAddress, userDetailAddress, company,  ceo,  cpTel,  cpFx,  cpNum,  cpZipcode, comapanyroadAddress, comapanyDetailAddress, idchk,  pwchk, isValidId, isValidPw, isValidName, isValidEmail, isValidTel, isValidPhone, isValidCpTel, isValidCpNum, isValidCpFx, showCompanyInfo])
 
     const radio_select_userPart = e => {
         setUPart(e.target.value)
-        console.log(e.target.value)
+        if (e.target.value === 'general_user') {
+            setShowCompanyInfo(false); // 일반회원 선택 시, 업체 정보 입력란 숨기기
+        } else {
+            setShowCompanyInfo(true); // 다른 값 선택 시, 업체 정보 입력란 표시
+        }
     }
     const btn_progrm_idConfirm = async(e) =>{
         if(uId === ''){
@@ -132,8 +154,16 @@ export default function Joinpage(){
         setUId(e.target.value)
         console.log(e.target.value)
     }
+    const valid_id = e => {
+        const idRegex = /^[a-zA-Z0-9_]{1,12}$/;
+        setIsValidId(idRegex.test(e.target.value))
+    }
     const input_pw = e => {
         setUPw(e.target.value)
+    }
+    const valid_pw = e => {
+        const pwRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        setIsValidPw(pwRegex.test(e.target.value))
     }
     const input_pwchk = e => {
         const re_pw = e.target.value
@@ -147,36 +177,41 @@ export default function Joinpage(){
     const input_name = e => {
         setUName(e.target.value)
     }
+    const valid_name = e => {
+        const nameRegex = /^[a-zA-Z가-힣]{1,20}$/;
+        setIsValidName(nameRegex.test(e.target.value))
+    }
     const input_email = e => {
         setUEmail(e.target.value)
+    }
+    const valid_email = e => {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        setIsValidEmail(emailRegex.test(e.target.value))
     }
     const input_tel = e => {
         setUserTel(e.target.value)
     }
+    const valid_tel = e => {
+        const telRegex = /^0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4]|70|8[1-4])-?\d{3,4}-?\d{4}$/;
+        setIsValidTel(telRegex.test(e.target.value))
+    }
     const input_phone = e => {
         setUserPhone(e.target.value)
     }
-    const input_zipcode = e => {
-        setZipcode(e.target.value)
+    const valid_phone = e => {
+        const phoneRegex = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/
+        setIsValidPhone(phoneRegex.test(e.target.value))
     }
     const input_userDetails = e => {
+        const uadd = zipcode + "/" + userroadAddress + "/" + userDetailAddress;
+        setUserAddress(uadd)
         setUserDetailAddress(e.target.value)
     }
     const input_CompanyDetails = e => {
+        const cadd = cpZipcode + "/" + comapanyroadAddress + "/" + comapanyDetailAddress;
+        setCpAddress(cadd)
         setComapanyDetailAddress(e.target.value)
     }
-    const totalUserAddress = e => {
-        const uadd = zipcode + " " + userroadAddress + " " + userDetailAddress;
-        setUserAddress(uadd)
-    }
-    const totalCompanyAddress = e => {
-        const cadd = cpZipcode + " " + comapanyroadAddress + " " + comapanyDetailAddress;
-        setCpAddress(cadd)
-    }
-    // const input_details_zipcode = e => {
-    //     const uadd = zipcodeNum + " " + zipcode + " " + e.target.value
-    //     setUserAddress(uadd)
-    // }
     const input_cpname = e => {
         setCompany(e.target.value)
     }
@@ -186,22 +221,24 @@ export default function Joinpage(){
     const input_cp_tel = e => {
         setCpTel(e.target.value)
     }
+    const valid_cptel = e => {
+        const cpTelRegex = /^0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4]|70|8[1-4])-?\d{3,4}-?\d{4}$/;
+        setIsValidCpTel(cpTelRegex.test(e.target.value))
+    }
     const input_cp_fx = e => {
         setCpFx(e.target.value)
+    }
+    const valid_cpfx = e => {
+        const fxRegex = /^0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4]|70|8[1-4])-?\d{3,4}-?\d{4}$/;
+        setIsValidCpFx(fxRegex.test(e.target.value))
     }
     const input_cp_num = e => {
         setCpNum(e.target.value)
     }
-    // const input_cp_zipcode_num = e => {
-    //     setCpZipcodeNum(e.target.value)
-    // }
-    const input_cp_zipcode = e => {
-        setCpZipcode(e.target.value)
+    const valid_cpnum = e => {
+        const cpnumRegex = /^\d{3}-\d{2}-\d{5}$/
+        setIsValidCpNum(cpnumRegex.test(e.target.value))
     }
-    // const input_cp_details_zipcode = e => {
-    //     const cpadd = cpZipcodeNum + " " + cpZipcode + " " + e.target.value
-    //     setCpAddress(cpadd)
-    // }
     const user_signup = async(userInfo) => {
         console.log(2)
         const response = await axios.post('/signUp', userInfo)
@@ -262,14 +299,17 @@ export default function Joinpage(){
                 <div className={joinpage.user_row_box}>
                     <div className={joinpage.user_title_box}>아이디</div>
                     <div className={joinpage.user_input_box}>
-                        <input type="text" name="id" className={joinpage.input_id} onChange={input_id} maxLength={12}/>
-                        <button type="button" onClick={btn_progrm_idConfirm} className={joinpage.btt_id}>아이디 중복확인</button>
+                        <input type="text" name="id" className={joinpage.input_id} onBlur={valid_id} onChange={input_id} maxLength={12}/>
+                        <button type="button" onClick={btn_progrm_idConfirm} className={joinpage.btn_changemypw}>아이디 중복확인</button>
+                        {isValidId ? <></> : <span className={joinpage.errmsg}>{errmsg.id} (영문, 숫자, _ 포함 1~12자)</span>}
                     </div>
                 </div>
                 <div className={joinpage.user_row_box}>
                     <div className={joinpage.user_title_box}>비밀번호</div>
                     <div className={joinpage.user_input_box}>
-                        <input type="password" name="pw" onChange={input_pw} maxLength={15}/>
+                        <input type="password" name="pw" onBlur={valid_pw} onChange={input_pw} maxLength={15}/>
+                        {isValidPw ? <></> : <span className={joinpage.errmsg}>{errmsg.pw} (최소 8자, 대소문자, 숫자, 특수문자를 각각 1개 이상 포함)</span>}
+
                     </div>
                 </div>
                 <div className={joinpage.user_row_box}>
@@ -281,37 +321,41 @@ export default function Joinpage(){
                 <div className={joinpage.user_row_box}>
                     <div className={joinpage.user_title_box}>회원명</div>
                     <div className={joinpage.user_input_box}>
-                        <input type="text" name="name" onChange={input_name} maxLength={20}/>
+                        <input type="text" name="name" onBlur={valid_name} onChange={input_name} maxLength={20}/>
+                        {isValidName ? <></> : <span className={joinpage.errmsg}>{errmsg.name} (한글 또는 영문으로 최대 20자)</span>}
                     </div>
                 </div>
                 <div className={joinpage.user_row_box}>
                     <div className={joinpage.user_title_box}>이메일</div>
                     <div className={joinpage.user_input_box}>
-                        <input type="text" name="email" onChange={input_email} maxLength={30}/>
+                        <input type="text" name="email" onBlur={valid_email} onChange={input_email} maxLength={30}/>
+                        {isValidEmail ? <></> : <span className={joinpage.errmsg}>{errmsg.email} (이메일 형식에 맞게 입력하세요)</span>}
                     </div>
                 </div>
                 <div className={joinpage.user_row_box}>
-                    <div className={joinpage.user_title_box}>일반전화</div>
+                    <div className={joinpage.user_title_box}>일반전화 (- 포함)</div>
                     <div className={joinpage.user_input_box}>
-                        <input type="text" name="tel" onChange={input_tel} maxLength={13}/>
+                        <input type="text" name="tel" onBlur={valid_tel} onChange={input_tel} maxLength={13}/>
+                        {isValidTel ? <></> : <span className={joinpage.errmsg}>{errmsg.tel} (숫자와 '-'만 입력하세요)</span>}
                     </div>
                 </div>
                 <div className={joinpage.user_row_box}>
-                    <div className={joinpage.user_title_box}>휴대폰번호</div>
+                    <div className={joinpage.user_title_box}>휴대폰번호 (- 포함)</div>
                     <div className={joinpage.user_input_box}>
-                        <input type="text" name="phone" onChange={input_phone} maxLength={13}/>
+                        <input type="text" name="phone" onBlur={valid_phone} onChange={input_phone} maxLength={13}/>
+                        {isValidPhone ? <></> : <span className={joinpage.errmsg}>{errmsg.phone} (숫자와 '-'만 입력하세요)</span>}
                     </div>
                 </div>
-                <div className={joinpage.user_row_box} style={{height: '80px'}}>
-                    <div className={joinpage.user_address_title_box}>주소</div>
+                <div className={joinpage.user_row_box} style={{alignItems : 'center'}}>
+                    <div className={joinpage.user_title_box} style={{height : '80px'}}>주소</div>
                     <div className={joinpage.user_address_input_box}>
-                        <div style={{marginBottom: '10px'}}>
-                            <input type="text" disabled="false" value={zipcode} onChange={input_phone} style={{width: '70px'}}/>
-                            <button type="button" onClick={handleUClick} >주소찾기</button>
-                        </div>
                         <div>
-                            <input type="text" disabled="false" value={userroadAddress} onChange={input_phone} style={{width: '300px'}}/> 
-                            <input type="text" name="userDetailAddress" onChange={input_userDetails} style={{margin: '0 20px', width: '300px'}}/>
+                            <input type="text" disabled={false} value={zipcode} style={{width: '80px'}}/>
+                            <button type="button" className={joinpage.btn_findaddress} onClick={handleUClick} >주소찾기</button>
+                        </div>
+                        <div style={{display : "flex"}}>
+                            <input type="text" disabled={false} value={userroadAddress} style={{width: '250px'}}/> 
+                            <input type="text" value={userDetailAddress} onChange={input_userDetails} style={ {width:'250px', marginLeft : '10px'}}/>
                         </div>
                     </div>
                 </div>
@@ -319,57 +363,63 @@ export default function Joinpage(){
 
 
 
-
-            <div className={joinpage.iconbox}>
-                <h3 className={joinpage.tit}>
-                    업체 정보
-                </h3>
-            </div>    
-            <div className={joinpage.join_companytable}>
-                <div className={joinpage.company_row_box}>
-                    <div className={joinpage.company_title_box}>회사명</div>
-                    <div className={joinpage.company_input_box}>
-                        <input type="text" name="cp_name" onChange={input_cpname} maxLength={20}/>
-                    </div>
-                </div>
-                <div className={joinpage.company_row_box}>
-                    <div className={joinpage.company_title_box}>대표자명</div>
-                    <div className={joinpage.company_input_box}>
-                        <input type="text" name="cp_ceo" onChange={input_cp_ceo} maxLength={8}/>
-                    </div>
-                </div>
-                <div className={joinpage.company_row_box}>
-                    <div className={joinpage.company_title_box}>일반전화</div>
-                    <div className={joinpage.company_input_box}>
-                        <input type="text" name="cp_tel" onChange={input_cp_tel} maxLength={13}/>
-                    </div>
-                </div>
-                <div className={joinpage.company_row_box}>
-                    <div className={joinpage.company_title_box}>팩스번호</div>
-                    <div className={joinpage.company_input_box}>
-                        <input type="text" name="cp_fx" onChange={input_cp_fx} maxLength={15}/>
-                    </div>
-                </div>
-                <div className={joinpage.company_row_box}>
-                    <div className={joinpage.company_title_box}>사업자번호(법인)</div>
-                    <div className={joinpage.company_input_box}>
-                        <input type="text" name="cp_num" onChange={input_cp_num} maxLength={20}/>
-                    </div>
-                </div>
-                <div className={joinpage.company_row_box} style={{height: '80px'}}>
-                    <div className={joinpage.company_address_title_box}>사업장 주소</div>
-                    <div className={joinpage.company_address_input_box}>
-                        <div style={{marginBottom: '10px'}}>
-                            <input type="text" disabled="false" value={cpZipcode} onChange={input_phone} style={{width: '70px'}}/>
-                            <button type="button" onClick={handleCClick} >주소찾기</button>
+            {showCompanyInfo && (
+                <>
+                    <div className={joinpage.iconbox}>
+                        <h3 className={joinpage.tit}>
+                            업체 정보
+                        </h3>
+                    </div>    
+                    <div className={joinpage.join_companytable}>
+                        <div className={joinpage.company_row_box}>
+                            <div className={joinpage.company_title_box}>회사명</div>
+                            <div className={joinpage.company_input_box}>
+                                <input type="text" name="cp_name" onChange={input_cpname} maxLength={20}/>
+                            </div>
                         </div>
-                        <div>
-                            <input type="text" disabled="false" value={comapanyroadAddress} onChange={input_phone} style={{width: '300px'}}/> 
-                            <input type="text" name="companyDetailAddress" onChange={input_CompanyDetails} style={{margin: '0 20px', width: '300px'}}/>
+                        <div className={joinpage.company_row_box}>
+                            <div className={joinpage.company_title_box}>대표자명</div>
+                            <div className={joinpage.company_input_box}>
+                                <input type="text" name="cp_ceo" onChange={input_cp_ceo} maxLength={8}/>
+                            </div>
+                        </div>
+                        <div className={joinpage.company_row_box}>
+                            <div className={joinpage.company_title_box}>일반전화</div>
+                            <div className={joinpage.company_input_box}>
+                                <input type="text" name="cp_tel" onBlur={valid_cptel} onChange={input_cp_tel} maxLength={13}/>
+                                {isValidCpTel ? <></> : <span className={joinpage.errmsg}>{errmsg.tel} (숫자와 '-'만 입력하세요)</span>}
+                            </div>
+                        </div>
+                        <div className={joinpage.company_row_box}>
+                            <div className={joinpage.company_title_box}>팩스번호</div>
+                            <div className={joinpage.company_input_box}>
+                                <input type="text" name="cp_fx" onBlur={valid_cpfx} onChange={input_cp_fx} maxLength={15}/>
+                                {isValidCpFx ? <></> : <span className={joinpage.errmsg}>{errmsg.cpFx} (숫자와 '-'만 입력하세요)</span>}
+                            </div>
+                        </div>
+                        <div className={joinpage.company_row_box}>
+                            <div className={joinpage.company_title_box}>사업자번호(법인)</div>
+                            <div className={joinpage.company_input_box}>
+                                <input type="text" name="cp_num" onBlur={valid_cpnum} onChange={input_cp_num} maxLength={20}/>
+                                {isValidCpNum ? <></> : <span className={joinpage.errmsg}>{errmsg.cpNum} (숫자와 '-'만 입력하세요)</span>}
+                            </div>
+                        </div>
+                        <div className={joinpage.company_row_box} style={{alignItems : 'center'}}>
+                            <div className={joinpage.company_title_box} style={{height : '80px'}}>사업장 주소</div>
+                            <div className={joinpage.company_address_input_box}>
+                                <div>
+                                    <input type="text" disabled={false} value={cpZipcode} style={{width: '80px'}}/>
+                                    <button type="button" className={joinpage.btn_findaddress} onClick={handleCClick} >주소찾기</button>
+                                </div>
+                                <div style={{display : "flex"}}>
+                                    <input type="text" disabled={false} value={comapanyroadAddress} style={{width: '250px'}}/> 
+                                    <input type="text" value={comapanyDetailAddress} onChange={input_CompanyDetails} style={ {width:'250px', marginLeft : '10px'}}/>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                    </>
+                )}
             <div className={joinpage.complete}>
                 <button type = "button" onClick={btn_progrm_signup} disabled={!infoEmpty} className={joinpage.btt_complete}>회원 가입 완료</button>
             </div>

@@ -13,9 +13,9 @@ export default function AdviceRequestpage(){
     const todayYear = today.getFullYear();
 
     const [admStartDate, setadmStartDate] = useState(null);
-    const [admEndDate, setadmEndDate] = useState(new Date());
+    const [admEndDate, setadmEndDate] = useState(null);
     const [visitStartDate, setVisitStartDate] = useState(null);
-    const [visitEndDate, setVisitEndDate] = useState(new Date());
+    const [visitEndDate, setVisitEndDate] = useState(null);
 
     const minDate = new Date(1960, 0, 1);
 
@@ -83,11 +83,12 @@ export default function AdviceRequestpage(){
     const getUserInfo = async() =>{
         try{
             const response = await axios.get('/user/userInfo')
+            const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
             console.log(response.data)
             setUname(response.data.name)
             setUtel(response.data.userTel)
             setUphone(response.data.userPhone)
-            setUaddress(response.data.userAddress)
+            setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
         } catch(err){
             console.log(err)
         }  
@@ -418,7 +419,7 @@ export default function AdviceRequestpage(){
                 </div>
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>주소</div>
-                    <div className={advicerequest.input_box}>
+                    <div className={advicerequest.input_box} style={{width: "500px"}}>
                         <span>{uaddress}</span>
                     </div>
                 </div>
