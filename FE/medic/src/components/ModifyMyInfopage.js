@@ -31,8 +31,23 @@ export default function ModifyMyInfopage(){
     const [cpAddress, setCpAddress] = useState('') //회사 주소
     const [infoEmpty, setInfoEmpty] = useState(false)
 
+    const [isValidEmail, setIsValidEmail] = useState(true)
+    const [isValidTel, setIsValidTel] = useState(true)
+    const [isValidPhone, setIsValidPhone] = useState(true)
+    const [isValidCpNum, setIsValidCpNum] = useState(true)
+    const [isValidCpFx ,setIsValidCpFx] = useState(true)
+    const [isValidCpTel, setIsValidCpTel] = useState(true)
+
     const navigate = useNavigate()
     const cookie = new Cookies()
+
+    const errmsg = {
+        email : '올바르지 않은 이메일 형식입니다.',
+        tel : '올바르지 않은 전화번호 형식입니다.',
+        phone : '올바르지 않은 전화번호 형식입니다.',
+        cpNum : '올바르지 않은 사업자번호 형식입니다.',
+        cpFx : '올바르지 않은 팩스번호 형식입니다.',
+    }
 
     const postcodeScriptUrl = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
     const [props, setProps] = useState('');
@@ -112,7 +127,7 @@ export default function ModifyMyInfopage(){
         }
     }
     const setPrevUserAddress = user_address => {
-        const uadd = user_address.split(' ')
+        const uadd = user_address.split('/')
         console.log(uadd)
         setUserAddress(user_address)
         setZipcode(uadd[0])
@@ -120,7 +135,7 @@ export default function ModifyMyInfopage(){
         setDetailAddress(uadd[2])
     }
     const setPrevCpAddress = cp_address => {
-        const cadd = cp_address.split(' ')
+        const cadd = cp_address.split('/')
         console.log(cadd)
         setCpAddress(cp_address)
         setCpZipcode(cadd[0])
@@ -155,12 +170,12 @@ export default function ModifyMyInfopage(){
     }, [])
     
     useEffect(()=>{
-        if(uPw && uEmail && userTel && userPhone && zipcodeNum && zipcode && detailAddress && company && ceo && cpTel && cpFx && cpNum && cpZipcodeNum && cpZipcode && detailCpAddress){
+        if(uPw && uEmail && userTel && userPhone && userroadAddress && zipcode && detailAddress && company && ceo && cpTel && cpFx && cpNum && comapanyroadAddress && cpZipcode && detailCpAddress && isValidEmail && isValidTel && isValidPhone && isValidCpTel && isValidCpNum && isValidCpFx){
             setInfoEmpty(true);
         } else{
             setInfoEmpty(false)
         }
-    }, [uPw,  uEmail,  userTel,  userPhone,  zipcodeNum, zipcode, detailAddress,  company,  ceo,  cpTel,  cpFx,  cpNum, cpZipcodeNum, cpZipcode, detailCpAddress])
+    }, [uPw,  uEmail,  userTel,  userPhone,  zipcodeNum, zipcode, detailAddress,  company,  ceo,  cpTel,  cpFx,  cpNum, cpZipcodeNum, cpZipcode, detailCpAddress, isValidEmail, isValidTel, isValidPhone, isValidCpTel, isValidCpNum, isValidCpFx])
 
     const changeMyPw = e => {
         navigate('/medic/mypage/modifymyinfo/modifyMyPw', {state:{upw : uPw}})
@@ -168,20 +183,34 @@ export default function ModifyMyInfopage(){
     const input_email = e => {
         setUEmail(e.target.value)
     }
+    const valid_email = e => {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        setIsValidEmail(emailRegex.test(e.target.value))
+    }
     const input_tel = e => {
         setUserTel(e.target.value)
+    }
+    const valid_tel = e => {
+        const emailRegex = /^0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4]|70|8[1-4])-?\d{3,4}-?\d{4}$/;
+        setIsValidTel(emailRegex.test(e.target.value))
     }
     const input_phone = e => {
         setUserPhone(e.target.value)
     }
+    const valid_phone = e => {
+        const emailRegex = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/
+        setIsValidPhone(emailRegex.test(e.target.value))
+    }
     const input_zipcode_num = e => {
+        console.log(e.target.value)
         setZipcodeNum(e.target.value)
     }
     const input_zipcode = e => {
         setZipcode(e.target.value)
     }
     const input_details_zipcode = e => {
-        const uadd = zipcodeNum + " " + zipcode + " " + e.target.value
+        const uadd = zipcode + "/" + userroadAddress + "/" + e.target.value
+        console.log(uadd)
         setDetailAddress(e.target.value)
         setUserAddress(uadd)
     }
@@ -194,11 +223,23 @@ export default function ModifyMyInfopage(){
     const input_cp_tel = e => {
         setCpTel(e.target.value)
     }
+    const valid_cptel = e => {
+        const cpTelRegex = /^0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4]|70|8[1-4])-?\d{3,4}-?\d{4}$/;
+        setIsValidCpTel(cpTelRegex.test(e.target.value))
+    }
     const input_cp_fx = e => {
         setCpFx(e.target.value)
     }
+    const valid_cpfx = e => {
+        const fxRegex = /^0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4]|70|8[1-4])-?\d{3,4}-?\d{4}$/;
+        setIsValidCpFx(fxRegex.test(e.target.value))
+    }
     const input_cp_num = e => {
         setCpNum(e.target.value)
+    }
+    const valid_cpnum = e => {
+        const cpnumRegex = /^\d{3}-\d{2}-\d{5}$/
+        setIsValidCpNum(cpnumRegex.test(e.target.value))
     }
     const input_cp_zipcode_num = e => {
         setCpZipcodeNum(e.target.value)
@@ -207,12 +248,11 @@ export default function ModifyMyInfopage(){
         setCpZipcode(e.target.value)
     }
     const input_cp_details_zipcode = e => {
-        const cpadd = cpZipcodeNum + " " + cpZipcode + " " + e.target.value
+        const cpadd = cpZipcode + "/" + comapanyroadAddress + "/" + e.target.value
         setDetailCpAddress(e.target.value)
         setCpAddress(cpadd)
     }
     const user_modify = async(userInfo) => {
-        console.log(2)
         const response = await axios.put('/user/modifyUserInfo', userInfo)
         console.log(response)
         if(response.data === '정보수정 완료!'){
@@ -222,6 +262,23 @@ export default function ModifyMyInfopage(){
     }
 
     const btn_progrm_modify = e => {
+        const userInfo = {
+            'uEmail' : uEmail,
+            'userTel' : userTel,
+            'userPhone' : userPhone,
+            'userAddress' : userAddress,
+            'company' : company,
+            'ceo' : ceo,
+            'cpTel' : cpTel,
+            'cpFx' : cpFx,
+            'cpNum' : cpNum,
+            'cpAddress' : cpAddress
+        } 
+        console.log(userInfo)
+        if(!infoEmpty){
+            alert('입력값을 확인하세요.')
+            return
+        }
         if(window.confirm("수정하시겠습니까?")){
             e.preventDefault()
             const userInfo = {
@@ -244,18 +301,26 @@ export default function ModifyMyInfopage(){
         try{
             cookie.remove('uId')
             cookie.remove('uRole')
-            const response = await axios.post('/user/deleteUser')
-            if(response.data === '탈퇴 완료'){
-                alert('탈퇴가 정상적으로 이루어졌습니다.')
-                navigate('/')
+            if(window.confirm('정말 탈퇴 하시겠습니까?')){
+                const response = await axios.post('/user/deleteUser')
+                if(response.data === '탈퇴 완료'){
+                    alert('탈퇴가 정상적으로 이루어졌습니다.')
+                    navigate('/')
+                }
+            }else{
+                return
             }
         } catch(err){
             console.log("오류")
         }
     }
-    const btn_goto_mypage = e => {
-        navigate('/medic/mypage')
-    
+    const btn_cancle_modify = e => {
+        if(window.confirm("변경하신 모든 내용이 날아갑니다.\n취소하시겠습니까?")){
+            alert('취소되었습니다.')
+            window.location.href = window.location.href;
+        }else{
+            return
+        }
     }
     return(
         <div className={mypage.modify_wrap}>
@@ -287,19 +352,37 @@ export default function ModifyMyInfopage(){
                     <div className={mypage.modify_row}>
                         <div className={mypage.modify_row_title}>이메일</div>
                         <div className={mypage.modify_userinfo_content}>
-                            <input type="text"value={uEmail} onChange={input_email} maxLength={30}/>
+                            <input type="text"value={uEmail} onBlur={valid_email} onChange={input_email} maxLength={30}/>
+                            {
+                                isValidEmail ?
+                                <></>
+                                :
+                                <span className={mypage.errmsg}>{errmsg.email}</span>
+                            }
                         </div>
                     </div>
                     <div className={mypage.modify_row}>
-                        <div className={mypage.modify_row_title}>일반전화</div>
+                        <div className={mypage.modify_row_title}>일반전화 (- 포함)</div>
                         <div className={mypage.modify_userinfo_content}>
-                            <input type="text" value={userTel} onChange={input_tel} maxLength={13}></input>
+                            <input type="text" value={userTel} onBlur={valid_tel} onChange={input_tel} maxLength={13}></input>
+                            {
+                                isValidTel ?
+                                <></>
+                                :
+                                <span className={mypage.errmsg}>{errmsg.tel}</span>
+                            }
                         </div>
                     </div>
                     <div className={mypage.modify_row}>
-                        <div className={mypage.modify_row_title}>휴대폰번호</div>
+                        <div className={mypage.modify_row_title}>휴대폰번호 (- 포함)</div>
                         <div className={mypage.modify_userinfo_content}>
-                        <input type="text" value={userPhone} onChange={input_phone} maxLength={13}></input>
+                            <input type="text" value={userPhone} onBlur={valid_phone} onChange={input_phone} maxLength={13}></input>
+                            {
+                                isValidPhone ?
+                                <></>
+                                :
+                                <span className={mypage.errmsg}>{errmsg.phone}</span>
+                            }
                         </div>
                     </div>
                     <div className={mypage.modify_row} style={{alignItems : 'center'}}>
@@ -335,19 +418,37 @@ export default function ModifyMyInfopage(){
                     <div className={mypage.modify_row}>
                         <div className={mypage.modify_row_title}>일반전화</div>
                         <div className={mypage.modify_userinfo_content}>
-                            <input type="text" value={cpTel} onChange={input_cp_tel} maxLength={13}></input>
+                            <input type="text" value={cpTel} onBlur={valid_cptel} onChange={input_cp_tel} maxLength={13}></input>
+                            {
+                                isValidCpTel ?
+                                <></>
+                                :
+                                <span className={mypage.errmsg}>{errmsg.tel}</span>
+                            }
                         </div>
                     </div>
                     <div className={mypage.modify_row}>
                         <div className={mypage.modify_row_title}>팩스번호</div>
                         <div className={mypage.modify_userinfo_content}>
-                            <input type="text" value={cpFx} onChange={input_cp_fx} maxLength={13}></input>
+                            <input type="text" value={cpFx} onBlur={valid_cpfx} onChange={input_cp_fx} maxLength={13}></input>
+                            {
+                                isValidCpFx ?
+                                <></>
+                                :
+                                <span className={mypage.errmsg}>{errmsg.cpFx}</span>
+                            }
                         </div>
                     </div>
                     <div className={mypage.modify_row}>
                         <div className={mypage.modify_row_title}>사업자번호(법인)</div>
                         <div className={mypage.modify_userinfo_content}>
-                            <input type="text" value={cpNum} onChange={input_cp_num} maxLength={20}></input>
+                            <input type="text" value={cpNum} onBlur={valid_cpnum} onChange={input_cp_num} maxLength={20}></input>
+                            {
+                                isValidCpNum ?
+                                <></>
+                                :
+                                <span className={mypage.errmsg}>{errmsg.cpNum}</span>
+                            }
                         </div>
                     </div>
                     <div className={mypage.modify_row} style={{alignItems : 'center'}}>
@@ -355,14 +456,21 @@ export default function ModifyMyInfopage(){
                         <div className={mypage.address_input_box}>
                             <div>
                                 <input type="text" disabled={false} value={cpZipcode} onChange={input_cp_zipcode} style={{width: '80px'}}/>
-                                <button type="button" className={mypage.btn_findaddress} onClick={handleUClick} >주소찾기</button>
+                                <button type="button" className={mypage.btn_findaddress} onClick={handleCClick} >주소찾기</button>
                             </div>
                             <div style={{display : "flex"}}>
                                 <input type="text" disabled={false} value={comapanyroadAddress} onChange={input_cp_zipcode_num} style={{width: '250px'}}/> 
-                                <input type="text" value={detailCpAddress} onChange={input_details_zipcode} style={ {width:'250px', marginLeft : '10px'}}/>
+                                <input type="text" value={detailCpAddress} onChange={input_cp_details_zipcode} style={ {width:'250px', marginLeft : '10px'}}/>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className={mypage.complete}>
+                <div className={mypage.complete_btnBox}>
+                    <button type = "button" onClick={btn_progrm_modify}  className={mypage.btt_complete} >수정</button>
+                    <button type = "button" onClick={btn_cancle_modify} className={mypage.btt_complete} style={{backgroundColor : 'white', color : '#0f3a75'}}>취소</button>
+                    <button type = "button" onClick={btn_progrm_deleteuser} className={mypage.btt_complete}>탈퇴</button>
                 </div>
             </div>
         </div>

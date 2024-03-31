@@ -134,42 +134,33 @@
     cursor: pointer;
     border : none;
 }
- /*
-.mypage_requestcount_box{
-    width: 700px;
-    height: 700px;
+.complete{
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 50px;
+    margin-top: 50px;
 }
-.mypage_count_wrap{
-    width: 700px;
-    height: 350px;
+.complete_btnBox{
+    width: 50%;
     display: flex;
-    justify-content: space-between;
-}
-.mypage_countbox{
-    width: 300px;
-    height: 300px;
-    border: 3px solid black;
-    display: flex;
-    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border-radius: 15px;
-    cursor: pointer;
-}
-.my_count{
-    text-decoration: underline;
-}
-.mypage_modifymyinfo{
-    display: inline-block;
-    font-size: 1.2rem;
-    background-color: #3cb371;
     height: 50px;
-    width: 180px;
+}
+.btt_complete{
+    width: 100px;
+    height: 40px;
+    background-color: #0f3a75;
+    color: white;
     border: none;
-    border-radius: 20px;
-    margin-top: 20px;
-} */
+    border-radius: 3px;
+    cursor: pointer;
+    border : 1px solid #0f3a75;
+}
+.errmsg{
+    color: red;
+    font-size: 0.625rem;
+    margin-left: 10px;
+}
