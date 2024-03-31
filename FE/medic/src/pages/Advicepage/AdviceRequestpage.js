@@ -14,9 +14,9 @@ export default function AdviceRequestpage(){
     const todayYear = today.getFullYear();
 
     const [admStartDate, setadmStartDate] = useState(null);
-    const [admEndDate, setadmEndDate] = useState(new Date());
+    const [admEndDate, setadmEndDate] = useState(null);
     const [visitStartDate, setVisitStartDate] = useState(null);
-    const [visitEndDate, setVisitEndDate] = useState(new Date());
+    const [visitEndDate, setVisitEndDate] = useState(null);
 
     const minDate = new Date(1960, 0, 1);
 
