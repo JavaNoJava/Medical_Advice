@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import advicerequest from '../../css/AdviceRequestpage.module.css'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+
 
 
 export default function AdviceDetailpage(){
@@ -352,7 +351,7 @@ const generateOptions = (start, end) => {
                         기타사항
                     </div>
                     <div className={advicerequest.input_box} style={{width : '600px', height : 'auto'}}>
-                        <textarea cols="50" rows="10" value={adviceDetails.adEtcValue} readOnly/>
+                        <textarea cols="50" rows="10" value={adviceDetails.adEtc} readOnly/>
                     </div>
                 </div>
             </div>
