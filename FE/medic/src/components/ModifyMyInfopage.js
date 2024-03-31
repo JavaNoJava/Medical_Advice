@@ -3,7 +3,7 @@ import axios from "axios";
 import mypage from '../css/Mypage.module.css'
 import { useLocation, useNavigate } from "react-router-dom";
 import { Cookies } from "react-cookie";
-
+import {useDaumPostcodePopup} from "react-daum-postcode";
 
 export default function ModifyMyInfopage(){
     const [uId, setUId] = useState('')
@@ -15,6 +15,7 @@ export default function ModifyMyInfopage(){
     const [userPhone, setUserPhone] = useState('') //
     const [zipcodeNum, setZipcodeNum] = useState('')
     const [zipcode, setZipcode] = useState('')
+    const [userroadAddress, setUserRoadAddress] = useState('')
     const [detailAddress, setDetailAddress] = useState('')
     const [userAddress, setUserAddress] = useState('')
 
@@ -24,13 +25,67 @@ export default function ModifyMyInfopage(){
     const [cpFx, setCpFx] = useState('') //회사 팩스번호
     const [cpNum, setCpNum] = useState('') //회사 사업자번호
     const [cpZipcodeNum, setCpZipcodeNum] = useState('')
-    const [cpZipcode, setCpZipcode] = useState('')
+    const [cpZipcode, setCpZipcode] = useState('')    
+    const [comapanyroadAddress, setComapanyRoadAddress] = useState('')
     const [detailCpAddress, setDetailCpAddress] = useState('')
     const [cpAddress, setCpAddress] = useState('') //회사 주소
     const [infoEmpty, setInfoEmpty] = useState(false)
 
     const navigate = useNavigate()
     const cookie = new Cookies()
+
+    const postcodeScriptUrl = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+    const [props, setProps] = useState('');
+    //클릭 시 수행될 팝업 생성 함수
+    const open = useDaumPostcodePopup(postcodeScriptUrl);
+
+    const handleUadderess = (data) => {
+        let fullAddress = data.address;
+        let extraAddress = ''; //추가될 주소
+        let localAddress = data.sido + ' ' + data.sigungu; //지역주소(시, 도 + 시, 군, 구)
+        let roadAddress = data.roadAddress;
+        if (data.addressType === 'R') { //주소타입이 도로명주소일 경우
+        if (data.bname !== '') {
+            extraAddress += data.bname; //법정동, 법정리
+        }
+        if (data.buildingName !== '') { //건물명
+            extraAddress += (extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName);
+        }
+        //지역주소 제외 전체주소 치환
+        setZipcode(data.zonecode);
+        setUserRoadAddress(roadAddress);
+        fullAddress = fullAddress.replace(localAddress, '');
+        }
+    }
+    //클릭 시 발생할 이벤트
+    const handleUClick = () => {
+        //주소검색이 완료되고, 결과 주소를 클릭 시 해당 함수 수행
+        open({onComplete: handleUadderess});
+    }
+  
+    const handleCadderess = (data) => {
+        let fullAddress = data.address;
+        let extraAddress = ''; //추가될 주소
+        let localAddress = data.sido + ' ' + data.sigungu; //지역주소(시, 도 + 시, 군, 구)
+        let roadAddress = data.roadAddress;
+        if (data.addressType === 'R') { //주소타입이 도로명주소일 경우
+        if (data.bname !== '') {
+            extraAddress += data.bname; //법정동, 법정리
+        }
+        if (data.buildingName !== '') { //건물명
+            extraAddress += (extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName);
+        }
+        //지역주소 제외 전체주소 치환
+        setCpZipcode(data.zonecode);
+        setComapanyRoadAddress(roadAddress);
+        fullAddress = fullAddress.replace(localAddress, '');
+        }
+    }
+    //클릭 시 발생할 이벤트
+    const handleCClick = () => {
+        //주소검색이 완료되고, 결과 주소를 클릭 시 해당 함수 수행
+        open({onComplete: handleCadderess});
+    }
 
     const setUserPart = (user_part) => {
         switch(user_part){
@@ -58,16 +113,18 @@ export default function ModifyMyInfopage(){
     }
     const setPrevUserAddress = user_address => {
         const uadd = user_address.split(' ')
+        console.log(uadd)
         setUserAddress(user_address)
-        setZipcodeNum(uadd[0])
-        setZipcode(uadd[1])
+        setZipcode(uadd[0])
+        setUserRoadAddress(uadd[1])
         setDetailAddress(uadd[2])
     }
     const setPrevCpAddress = cp_address => {
         const cadd = cp_address.split(' ')
+        console.log(cadd)
         setCpAddress(cp_address)
-        setCpZipcodeNum(cadd[0])
-        setCpZipcode(cadd[1])
+        setCpZipcode(cadd[0])
+        setComapanyRoadAddress(cadd[1])
         setDetailCpAddress(cadd[2])
     }
     const getMyInfo = async () => {
@@ -212,99 +269,104 @@ export default function ModifyMyInfopage(){
                         <div className={mypage.modify_row_title}>회원구분</div>
                         <div className={mypage.modify_userinfo_content}>{uPart}</div>
                     </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>아이디</div>
+                        <div className={mypage.modify_userinfo_content}>{uId}</div>
+                    </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>비밀번호</div>
+                        <div className={mypage.modify_userinfo_content}>
+                            <input type="password" name="pw" disabled={true} value={uPw} maxLength={15}/>
+                            <button type="button"  className={mypage.btn_changemypw} onClick={changeMyPw}>비밀번호 재설정</button>
+                        </div>
+                    </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>회원명</div>
+                        <div className={mypage.modify_userinfo_content}>{uName}</div>
+                    </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>이메일</div>
+                        <div className={mypage.modify_userinfo_content}>
+                            <input type="text"value={uEmail} onChange={input_email} maxLength={30}/>
+                        </div>
+                    </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>일반전화</div>
+                        <div className={mypage.modify_userinfo_content}>
+                            <input type="text" value={userTel} onChange={input_tel} maxLength={13}></input>
+                        </div>
+                    </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>휴대폰번호</div>
+                        <div className={mypage.modify_userinfo_content}>
+                        <input type="text" value={userPhone} onChange={input_phone} maxLength={13}></input>
+                        </div>
+                    </div>
+                    <div className={mypage.modify_row} style={{alignItems : 'center'}}>
+                        <div className={mypage.modify_row_title} style={{height : '80px'}}>주소</div>
+                        <div className={mypage.address_input_box}>
+                            <div>
+                                <input type="text" disabled={false} value={zipcode} onChange={input_zipcode} style={{width: '80px'}}/>
+                                <button type="button" className={mypage.btn_findaddress} onClick={handleUClick} >주소찾기</button>
+                            </div>
+                            <div style={{display : "flex"}}>
+                                <input type="text" disabled={false} value={userroadAddress} onChange={input_zipcode_num} style={{width: '250px'}}/> 
+                                <input type="text" value={detailAddress} onChange={input_details_zipcode} style={ {width:'250px', marginLeft : '10px'}}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={mypage.modify_userinfo} style={{marginTop : '60px'}}>
+                <h4 className={mypage.modify_subtitle}><span className={mypage.modify_subtitleimg}></span>업체 정보</h4>
+                <div className={mypage.modify_userinfotable}>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>회사명</div>
+                        <div className={mypage.modify_userinfo_content}>
+                            <input type="text" name="cp_name" value={company} onChange={input_cpname} maxLength={20}/>
+                        </div>
+                    </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>대표자명</div>
+                        <div className={mypage.modify_userinfo_content}>
+                            <input type="text" name="cp_name" value={ceo} onChange={input_cp_ceo} maxLength={8}/>  
+                        </div>
+                    </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>일반전화</div>
+                        <div className={mypage.modify_userinfo_content}>
+                            <input type="text" value={cpTel} onChange={input_cp_tel} maxLength={13}></input>
+                        </div>
+                    </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>팩스번호</div>
+                        <div className={mypage.modify_userinfo_content}>
+                            <input type="text" value={cpFx} onChange={input_cp_fx} maxLength={13}></input>
+                        </div>
+                    </div>
+                    <div className={mypage.modify_row}>
+                        <div className={mypage.modify_row_title}>사업자번호(법인)</div>
+                        <div className={mypage.modify_userinfo_content}>
+                            <input type="text" value={cpNum} onChange={input_cp_num} maxLength={20}></input>
+                        </div>
+                    </div>
+                    <div className={mypage.modify_row} style={{alignItems : 'center'}}>
+                        <div className={mypage.modify_row_title} style={{height : '80px'}}>사업장주소</div>
+                        <div className={mypage.address_input_box}>
+                            <div>
+                                <input type="text" disabled={false} value={cpZipcode} onChange={input_cp_zipcode} style={{width: '80px'}}/>
+                                <button type="button" className={mypage.btn_findaddress} onClick={handleUClick} >주소찾기</button>
+                            </div>
+                            <div style={{display : "flex"}}>
+                                <input type="text" disabled={false} value={comapanyroadAddress} onChange={input_cp_zipcode_num} style={{width: '250px'}}/> 
+                                <input type="text" value={detailCpAddress} onChange={input_details_zipcode} style={ {width:'250px', marginLeft : '10px'}}/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        // <div className={joinpage.join_wrap}>
-        //     <div className={joinpage.iconbox}>
-        //         <h2>
-        //             <i className="fa-solid fa-circle icon"></i>
-        //             내 정보 수정
-        //         </h2>
-        //     </div>
-        //     <div className={joinpage.iconbox}>
-        //         <h3>
-        //             <i className="fa-solid fa-circle icon"></i>
-        //             가입자 정보
-        //         </h3>
-        //     </div>
-        //     <div className = {joinpage.tb}>
-        //         <table className={joinpage.joinpage_table}>
-        //             <tr>
-        //                 <td className={joinpage.joinpage_th}>
-        //                     회원구분
-        //                 </td>
-        //                 <td colSpan="3" className={joinpage.joinpage_td}>
-        //                     {uPart}
-        //                 </td>
-        //             </tr>
-
-        //             <tr>
-        //                 <td className={joinpage.joinpage_th}>
-        //                     아이디
-        //                 </td>
-        //                 <td colSpan="3" className={joinpage.joinpage_td}>
-        //                     <div className={joinpage.id}>
-        //                         {uId}
-        //                     </div>
-        //                 </td>
-        //             </tr>
-
-        //             <tr style={{borderRight : '1px solid black'}}>
-        //                 <td className={joinpage.joinpage_th}>
-        //                     비밀번호
-        //                 </td>
-        //                 <td className={joinpage.joinpage_td} style={{borderRight : 'none'}}>
-        //                     <input type="password" name="pw" disabled={true} value={uPw} maxLength={15}/>
-        //                     <button type="button"  className={joinpage.btt_id} onClick={changeMyPw}>비밀번호 재설정</button>
-        //                 </td>
-        //             </tr>
-        //             <tr>
-        //                 <td className={joinpage.joinpage_td}>
-        //                     회원명
-        //                 </td>
-        //                 <td className={joinpage.joinpage_td}>
-        //                     {uName}
-        //                 </td>
-        //                 <td className={joinpage.joinpage_td}>
-        //                     이메일
-        //                 </td>
-        //                 <td className={joinpage.joinpage_td}>
-        //                     <input type="text" name="email" value={uEmail}  onChange={input_email} maxLength={30}/>
-        //                 </td>
-        //             </tr>
-
-        //             <tr>
-        //                 <td className={joinpage.joinpage_td}>
-        //                     일반전화
-        //                 </td>
-        //                 <td className={joinpage.joinpage_td}>
-        //                     <input type="text" name="tel" value={userTel} onChange={input_tel} maxLength={13}/>
-        //                 </td>
-        //                 <td className={joinpage.joinpage_td}>
-        //                     휴대폰번호
-        //                 </td>
-        //                 <td className={joinpage.joinpage_td}>
-        //                     <input type="text" name="phone" value={userPhone} onChange={input_phone} maxLength={13}/>
-        //                 </td>
-        //             </tr>
-
-        //             <tr className={joinpage.joinpage_zipcode_tb}>
-        //                 <td className={joinpage.joinpage_td}>
-        //                     주소
-        //                 </td>
-        //                 <td colSpan="4" className={joinpage.joinpage_td}>
-        //                     <div className={joinpage.joinpage_zipcode}>
-        //                         <input type="text" name="zipcode_num" value={zipcodeNum} onChange={input_zipcode_num} maxLength={5}/>
-        //                         <button type="button" onClick={() => alert('우편번호')} className={joinpage.joinpage_zipcode_btn}>우편번호</button>
-        //                         <br/>
-        //                         <input type="text" name="zipcode" value={zipcode} onChange={input_zipcode} maxLength={80}/><br/>
-        //                         <input type="text" name="details_zipcode" value={detailAddress} onChange={input_details_zipcode} maxLength={15}/>
-        //                     </div>
-        //                 </td>
-        //             </tr>
-        //         </table>
-        //     </div>
+        
         //     <div className={joinpage.iconbox}>
         //         <h3>
         //             <i className="fa-solid fa-circle icon"></i>
