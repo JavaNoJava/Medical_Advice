@@ -11,34 +11,6 @@
     color: #f4a460;
 }
 
-div.tb {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-div.tb .joinpage_table {
-    border-collapse: collapse;
-    width: 850px;
-    max-width: 100%;
-    margin: 10px;
-}
-
-div.tb .joinpage_table .joinpage_td,
-div.tb .joinpage_table .joinpage_th {
-    border: 1px solid black; /* Keep border for td and th */
-    text-align: left;
-    padding: 10px;
-}
-
-div.tb .joinpage_table tr {
-    border: none; /* Remove border for tr */
-}
-
-tr.zipcode_tb {
-    height: 100px;
-}
 
 div.complete {
     margin-top: 50px;
@@ -99,122 +71,140 @@ div.complete {
 }
 
 .join_usertable{
-    width: 850px;
-    height: 490px;
+    width: 730px;
+    height: 433px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
     border-left: none; /* 왼쪽 테두리 없음 */
     border-right: none; /* 오른쪽 테두리 없음 */
-    margin-bottom: 85px;
+    margin-bottom: 65px;
+    margin-right: 130px;
 }
 
 .user_row_box{
+    width: 730px;
+    height: auto;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
     display: flex;
-    align-items: center;
-    height: 50px;
-    border-collapse: collapse;
-    /* border: 1px solid black; */
-    border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
 }
 
 .user_title_box{
+    width: 122px;
+    height: 43px;
     display: flex;
-    justify-content: start;
     align-items: center;
-    border-right: 1px solid black;
-    height: 50px;
-    width: 200px;
-    padding-left: 20px;
-    background: #f5f5f5;
+    padding: 0 0 0 33px;
+    font-size: 0.813rem;
+    color: #252323;
+    background-color: #F5F5F5;
+    border-right: 1px solid rgba(0,0,0,0.3);
+    font-weight: 600;
 }
 
 .user_input_box{
+    font-size: 0.75rem;
+    color: #555555;
     display: flex;
-    justify-content: start;
     align-items: center;
-    height: 50px;
-    padding-left: 20px;
-    width: 1050px;
+    padding: 0 0 0 10px;
+    height: 43px;
 }
 
-.user_address_title_box{ 
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    border-right: 1px solid black;
-    height: 80px;
-    width: 200px;
-    padding-left: 20px;
-    background: #f5f5f5;
+.btn_changemypw{
+    font-size: 0.75rem;
+    margin-left: 5px;
+    background-color: #0f3a75;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .user_address_input_box{ 
+    padding: 0 0 0 10px;
+    width: 400px;
+    height: 70px;
     display: flex;
-    justify-content: center;
-    align-items: start;
-    height: 80px;
-    padding-left: 20px;
-    width: 1050px;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.address_input_box input {
+    height: 27px;
+    padding: 0 5px;
+    border : 1px solid rgba(0,0,0,0.3);
+}
+
+.btn_findaddress{
+    margin: 0 0 0 7px;
+    background-color: #535353;
+    padding: 4.5px 5px;
+    color: white;
+    cursor: pointer;
+    border : none;
 }
 
 .join_companytable{
-    width: 850px;
+    width: 730px;
     height: 330px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
     border-left: none; /* 왼쪽 테두리 없음 */
     border-right: none; /* 오른쪽 테두리 없음 */
-}
-.company_address_title_box{ 
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    border-right: 1px solid black;
-    height: 80px;
-    width: 200px;
-    padding-left: 20px;
-    background: #f5f5f5;
+    margin-right: 130px;
 }
 
 .company_address_input_box{ 
+    padding: 0 0 0 10px;
+    width: 400px;
+    height: 70px;
     display: flex;
-    justify-content: center;
-    align-items: start;
-    height: 80px;
-    padding-left: 20px;
-    width: 1050px;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.company_address_input_box input {
+    height: 27px;
+    padding: 0 5px;
+    border : 1px solid rgba(0,0,0,0.3);
 }
 
 .company_row_box{
+    width: 730px;
+    height: auto;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
     display: flex;
-    align-items: center;
-    height: 50px;
-    border-collapse: collapse;
-    /* border: 1px solid black; */
-    border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
 }
 
 .company_title_box{
+    width: 122px;
+    height: 43px;
     display: flex;
-    justify-content: start;
     align-items: center;
-    border-right: 1px solid black;
-    height: 50px;
-    width: 200px;
-    padding-left: 20px;
-    background: #f5f5f5;
+    padding: 0 0 0 33px;
+    font-size: 0.813rem;
+    color: #252323;
+    background-color: #F5F5F5;
+    border-right: 1px solid rgba(0,0,0,0.3);
+    font-weight: 600;
 }
 
 .company_input_box{
+    font-size: 0.75rem;
+    color: #555555;
     display: flex;
-    justify-content: start;
     align-items: center;
-    height: 50px;
-    padding-left: 20px;
-    width: 1050px;
+    padding: 0 0 0 10px;
+    height: 43px;
 }
 
+.errmsg{
+    color: red;
+    font-size: 0.625rem;
+    margin-left: 10px;
+}
