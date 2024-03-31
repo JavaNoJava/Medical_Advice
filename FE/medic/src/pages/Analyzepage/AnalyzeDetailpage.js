@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import analyzerequest from '../../css/AnalyzeRequestpage.module.css'
+import analyzerequest from '../../css/AdviceRequestpage.module.css'
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -18,8 +18,7 @@ export default function AnalyzeDetailpage(){
     const [uphone, setUphone] = useState('')
     const [uaddress, setUaddress] = useState('')
 
-    const [anPtSsNum1, setAnPtSsNum1] = useState();
-    const [anPtSsNum2, setAnPtSsNum2] = useState();
+    const [anPtSsNum, setAnPtSsNum] = useState();
 
     const [an_etc_count, setAnEtcCount] = useState(0);
 
@@ -30,6 +29,7 @@ export default function AnalyzeDetailpage(){
     const [anOther, setAnOther] = useState(false)
 
     const [anQuestion, setAnQuestion] = useState(0);
+    const [anAnswer, setAnAnswer] = useState(0);
 
     const getAnalyzeRequest = async() => {
             try{
@@ -38,9 +38,8 @@ export default function AnalyzeDetailpage(){
                 console.log("response",response);
                 console.log("response1",response.data.analyzeRequests);
                 setAnQuestion(response.data.analyzeRequests);
-                const an_PtSsNum = response.data.anPtSsNum.split('-');
-                setAnPtSsNum1(an_PtSsNum[0]);
-                setAnPtSsNum2(an_PtSsNum[1]);
+                setAnAnswer(response.data.analyzeRequests);
+                setAnPtSsNum(response.data.anPtSsNum);
             setAnReqForm(() => {
                 if(response.data.anReqForm === "empty_file"){
                     return false
@@ -137,7 +136,7 @@ export default function AnalyzeDetailpage(){
         if (!anQuestion || anQuestion.length === 0) {
             return null; // 또는 다른 처리를 수행하거나 빈 배열을 반환
           }
-        return anQuestion.map((question, index) => (
+        return anQuestion.map((answer, index) => (
           <div className={analyzerequest.row_box} style={{ height: 'auto' }} key={index}>
             <div className={analyzerequest.title_box}>
               답변 {index + 1} 입력
@@ -145,7 +144,7 @@ export default function AnalyzeDetailpage(){
             <div className={analyzerequest.input_box}>
               <input
                 type="text"
-                value={question.anAnswerContent || ''}
+                value={answer.anAnswerContent || ''}
                 maxLength={300}
               />
             </div>
@@ -161,123 +160,131 @@ export default function AnalyzeDetailpage(){
     
 
     return(
-        <div className={analyzerequest.anvicerequest_wrap}>
+        <div className={analyzerequest.advicerequest_wrap}>
             <div className={analyzerequest.iconbox}>
-                <h2>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h2 className={analyzerequest.title}>
                     분석의뢰 상세페이지
                 </h2>
+                <h4>
+                </h4>
              </div>
+
              <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={analyzerequest.tit}>
                     신청자 정보
                 </h3>
              </div>
              <div className={analyzerequest.request_usertable}>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>의뢰자명</div>
-                    <div className={analyzerequest.input_box}><input type="text" disabled={true} value={uname}/></div>
+                    <div className={analyzerequest.input_box}>
+                        <span>{uname}</span>
+                    </div>
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>일반전화</div>
-                    <div className={analyzerequest.input_box}><input type="text" disabled={true} value={utel}/></div>
-                    <div className={analyzerequest.title_box} style={{borderLeft : '1px solid black'}}>휴대전화</div>
-                    <div className={analyzerequest.input_box}><input type="text" disabled={true} value={uphone}/></div>
+                    <div className={analyzerequest.input_box}>
+                        <span>{utel}</span>
+                    </div>
+                </div>
+                <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box}>휴대전화</div>
+                    <div className={analyzerequest.input_box}>
+                        <span>{uphone}</span>
+                    </div>
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>주소</div>
-                    <div className={analyzerequest.input_box}><input type="text" disabled={true} value={uaddress}/></div>
+                    <div className={analyzerequest.input_box}>
+                        <span>{uaddress}</span>
+                    </div>
                 </div>
              </div>
+
              <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={analyzerequest.tit}>
                     환자의료 기록 사항
                 </h3>
             </div>
-            <div className={analyzerequest.request_patienttable}>
-                <div className={`${analyzerequest.row_box} ${analyzerequest.patient_box}`}>
-                    <div className={`${analyzerequest.title_box} ${analyzerequest.patient_box}`}>환자명</div>
-                    <div className={`${analyzerequest.input_box} ${analyzerequest.patient_box}`}>
-                            <input type="text" name="an_ptname" disabled={true} value={analyzeDetails.anPtName} ></input>
+            <div className={analyzerequest.request_patienttable2}>
+                <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box}>환자명</div>
+                    <div className={analyzerequest.input_box}>
+                        <span>{analyzeDetails.anPtName}</span>
                     </div>
-                    <div className={`${analyzerequest.title_box} ${analyzerequest.patient_box}`} style={{borderLeft : '1px solid black'}}>주민등록번호</div>
-                    <div className={`${analyzerequest.input_box} ${analyzerequest.input_ptssnumbox} ${analyzerequest.patient_box}`}>
-                        <input type="text" name="an_ptssnum1" disabled={true} value={anPtSsNum1}></input>
-                         -
-                        <input type="password" name="an_ptssnum2" disabled={true} value={anPtSsNum2}></input>
+                </div>
+                <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box}>주민등록번호</div>
+                    <div className={analyzerequest.input_box}>
+                        <span>{analyzeDetails.anPtSsNum}</span>               
                     </div>
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>진단과목</div>
                     <div className={analyzerequest.input_box}>
-                             <input type="text" name="an_ptsub" disabled={true} value={analyzeDetails.anPtSub} />
-                    </div>
-                    <div className={analyzerequest.title_box} style={{borderLeft : '1px solid black'}}>진단명</div>
-                    <div className={analyzerequest.input_box}>
-                            <input type="text" name="an_ptdiagnosis" disabled={true} value={analyzeDetails.anPtDiagnosis} />
+                        <span>{analyzeDetails.anPtSub}</span>
                     </div>
                 </div>
-                <div className={`${analyzerequest.row_box}`}>
-                    <div className ={`${analyzerequest.title_box} ${analyzerequest.row_contentbox}`}>
-                        진단 사항
+                <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box}>진단명</div>
+                    <div className={analyzerequest.input_box}>
+                            <span>{analyzeDetails.anPtDiagnosis}</span>
                     </div>
-                    <div className={analyzerequest.input_box} style={{width : '400px', height : 'auto'}}>
-                        <textarea cols="50" rows="10" disabled={true} value={analyzeDetails.anPtDiagContent}/>
-                        <div className={analyzerequest.count_box}>
-                            <span>/500</span>
-                        </div>
+                </div>
+                <div className={analyzerequest.row_box}>
+                    <div className ={`${analyzerequest.title_box} ${analyzerequest.row_contentbox}`}>
+                            진단 사항
+                    </div>
+                    <div className={analyzerequest.input_box} style={{width : '600px', height : 'auto'}}>
+                        <textarea cols="50" rows="10" value={analyzeDetails.anPtDiagContent} readOnly/>
                     </div>
                 </div>
             </div>
+
             <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={analyzerequest.tit}>
                     기타사항
                 </h3>
             </div>
             <div className={analyzerequest.request_othertable}>
                 <div className={analyzerequest.row_box} >
-                    <div className={analyzerequest.title_box} style={{height : '130px'}}>기타사항</div>
-                    <div className={analyzerequest.input_box} style={{width : '400px'}}>
-                        <textarea cols="50" rows="3" name="anEtc" disabled={true} value={analyzeDetails.anEtc} ></textarea>
-                        <div className={analyzerequest.count_box}>
-                            <span>{an_etc_count}/300</span>
-                        </div>
+                    <div className ={`${analyzerequest.title_box} ${analyzerequest.row_contentbox}`}>
+                        기타사항
+                    </div>
+                    <div className={analyzerequest.input_box} style={{width : '600px', height : 'auto'}}>
+                        <textarea cols="50" rows="10" value={analyzeDetails.anEtc} readOnly/>
                     </div>
                 </div>
             </div>
-            <div className={analyzerequest.iconbox} style={{marginTop : '50px'}}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+
+            <div className={analyzerequest.iconbox}>
+                <h3 className={analyzerequest.tit}>
                     질문지 작성
                 </h3>
             </div>
             <div className = {analyzerequest.request_questiontable}>
                 <div className={analyzerequest.row_box} style={{height : 'auto'}}>
                     <div className={analyzerequest.title_box}>
-                        질문 항목 수
+                        질문 항목
                     </div>
                     <div className={analyzerequest.input_box}>
                         <input
                             type="text"
-                            disabled={true}
-                            value={anQuestion ? anQuestion.length : 0}/>
+                            name="anQuestionTotal"
+                            value={anQuestion.length}
+                        />
+                    </div>
                 </div>
-                </div>
-                {renderQuestionInputs()}
-                </div>
+                    {renderQuestionInputs()}
+            </div>
         {analyzeDetails.anProgressStatus === '분석완료' && (
             <div>
-            <div className={analyzerequest.iconbox} style={{marginTop : '50px'}}>
-                    <h3>
-                        <i className="fa-solid fa-circle icon"></i>
-                        전문의 답변
-                    </h3>
-                    </div>
-
-                <div className = {analyzerequest.request_questiontable}>
+            <div className={analyzerequest.iconbox}>
+                <h3 className={analyzerequest.tit}>
+                    전문의 답변
+                </h3>
+            </div>
+            <div className = {analyzerequest.request_questiontable}>
                 <div className={analyzerequest.row_box} style={{height : 'auto'}}>
                     <div className={analyzerequest.title_box}>
                         답변 항목수
@@ -286,19 +293,17 @@ export default function AnalyzeDetailpage(){
                         <input
                             type="text"
                             name="anQuestionTotal"
-                            disabled={true}
-                            value={anQuestion ? anQuestion.length : 0}
+                            value={anAnswer.length}
                         />
                     </div>
                 </div>
-                {renderAnswerInputs()}
-                </div>
-                </div>
-                )}
+                    {renderQuestionInputs()}
+            </div>
+                    </div>
+        )}
              <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
-                        첨부자료
+                <h3 className={analyzerequest.tit}>
+                    첨부자료
                 </h3>
             </div>
             <div className={analyzerequest.file_table}>
@@ -412,8 +417,8 @@ export default function AnalyzeDetailpage(){
                     </div>
                 </div>
                 <div className={analyzerequest.complete}>
-                    <button type="button" onClick={btn_goto_list} className={analyzerequest.btt_complete}>목록</button>
-                    <button type="button" onClick={btn_edit} className={analyzerequest.btt_complete}>수정</button>
+                    <button type="button" onClick={btn_goto_list} className={analyzerequest.complete_button}>목록</button>
+                    <button type="button" onClick={btn_edit} className={analyzerequest.complete_button}>수정</button>
                     </div>
                  </div>
             </div>
