@@ -31,11 +31,12 @@ export default function TranslateRequestpage(){
     const getUserInfo = async() =>{
         try{
             const response = await axios.get('/user/userInfo')
+            const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
             console.log(response.data)
             setUname(response.data.name)
             setUtel(response.data.userTel)
             setUphone(response.data.userPhone)
-            setUaddress(response.data.userAddress)
+            setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
         } catch(err){
             console.log(err)
         }  
@@ -168,7 +169,7 @@ export default function TranslateRequestpage(){
                 </div>
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>주소</div>
-                    <div className={translaterequest.input_box}>
+                    <div className={translaterequest.input_box} style={{width: "500px"}}>
                         <span>{uaddress}</span>
                     </div>
                 </div>
