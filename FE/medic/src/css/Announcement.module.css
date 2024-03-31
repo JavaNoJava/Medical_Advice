@@ -64,12 +64,18 @@
   background-color: #f2f2f2;
 }
 
-.announce_list_content {
+/* .announce_list_content {
+  /* cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  } */
+
+.announce_quirylist_no {
   cursor: pointer;
   &:hover {
     text-decoration: underline;
-  }
-}
+} 
+} 
 
 .announce_quirylist_content {
   width: 850px;

@@ -123,7 +123,7 @@ const prevDetailPage = async (prevAmId) => {
         <div className={announcedetail.detailform}>
             <div className={announcedetail.inquiry_title}>
                 <h2 className={announcedetail.title}>
-                    공지사항
+                    공지사항 상세
                 </h2>
             </div>
 
