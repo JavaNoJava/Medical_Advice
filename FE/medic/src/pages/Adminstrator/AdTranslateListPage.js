@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ad from '../../css/AdAdviceListPage.module.css';
 import { useNavigate } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const AdTranslateListPage = () => {
   const [selectedStatus, setSelectedStatus] = useState('자문의뢰중');
@@ -19,7 +20,8 @@ const AdTranslateListPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/admin/translate/list');
-        setAllTransList(response.data);
+        const data = response.data.reverse();
+        setAllTransList(data);
       } catch (error) {
         console.error('번역 리스트를 가져오는 도중 에러 발생:', error);
       }
@@ -79,13 +81,69 @@ const AdTranslateListPage = () => {
   return (
     <div className={ad.ad_contents}>
       <div className={ad.ad_iconbox}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={ad.title}>
           번역의뢰 현황
-        </h1>
+        </h2>
       </div>
 
+      <div className={ad.write_table}>
+        <div className={ad.title_row_box}>
+          <div className={ad.title_box_no}>
+            NO.
+          </div>
+          <div className={ad.title_box}>
+            진단과목
+          </div>
+          <div className={ad.title_box}>
+            진단명
+          </div>
+          <div className={ad.title_box}>
+            의뢰신청일
+          </div>
+          <div className={ad.title_box}>
+            의뢰배정일
+          </div>
+          <div className={ad.title_box}>
+            의뢰번역일
+          </div>
+          <div className={ad.title_box} >
+            진행상태
+          </div>
+          <div className={ad.title_box} >
+            전문의 
+          </div>
+          <div className={ad.title_box } style={{borderRight: 'none'}} >
+            배정
+          </div>
+        </div>
+          {quiryList.map((advice, index) => (
+            <div className={ad.data_row_box}>
+              <div className={ad.input_box_no} onClick={() => btn_detail_translate(advice.trId)} key={index}>
+              {allTransList.length - startIndex - index}
+              </div>
+              <div className={ad.input_box}>{advice.uname}</div>
+              <div className={ad.input_box}>{advice.trPtDiagnosis}</div>
+              <div className={ad.input_box}>{formatDate(advice.trRegDate)}</div>
+              <div className={ad.input_box}>{advice.tamDate||"미배정"}</div>
+              <div className={ad.input_box}>
+                {advice.trAnswerDate||"미답변"}
+              </div>
+              {/* <div className={ad.input_box} style={{borderRight: 'none'}}>{advice.admProgressStatus === null ? '자문의뢰중' : advice.admProgressStatus}</div> */}
+              <div className={ad.input_box}>
+              {advice.trProgressStatus || '자문의뢰중'}
+              </div>
+              <div className={ad.input_box}> 
+                <span className="your-custom-style">
+                  {advice.cname || '미배정'}
+                </span></div>
+              <div className={ad.input_box} onClick={() => btn_set_doctor(advice.trId)} style={{borderRight: 'none'}}>
+              <i className="fa-solid fa-pen-to-square"></i>
+              </div>
+              </div>
+          ))}
+      </div>
 
+{/* 
       <table className={ad.ad_table}>
         <thead>
           <tr>
@@ -136,18 +194,21 @@ const AdTranslateListPage = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-      <div className={ad.ad_pagination}>
-        <button className={ad.ad_paginationButton} onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-          ◀
+      </table> */}
+
+      <div className={ad.pagination}>
+        <button className={ad.paginationButton} onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+        <FaChevronLeft />
+
         </button>
         {[...Array(Math.ceil(allTransList.length / itemsPerPage))].map((_, index) => (
-          <button key={index} className={ad.ad_paginationButton} onClick={() => handlePageChange(index + 1)} disabled={currentPage === index + 1}>
+          <button key={index} className={ad.paginationNumber} onClick={() => handlePageChange(index + 1)} disabled={currentPage === index + 1}>
             {index + 1}
           </button>
         ))}
         <button className={ad.ad_paginationButton} onClick={() => handlePageChange(currentPage + 1)}>
-          ▶
+        <FaChevronRight />
+
         </button>
       </div>
     </div>

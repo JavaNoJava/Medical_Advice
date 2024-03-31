@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ad from '../../css/AdAdviceListPage.module.css';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
 
 export default function AdSetDoc() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -147,11 +149,11 @@ export default function AdSetDoc() {
   return (
     <div className={ad.ad_contents}>
       <div className={ad.ad_iconbox}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={ad.title}>
           전문의 목록
-        </h1>
+        </h2>
       </div>
+      <div style={{marginLeft:'730px', marginBottom:'10px'}}>
       <select value={selectedDepartment} onChange={e => setSelectedDepartment(e.target.value)}>
       <option value="">부서 선택</option>
       <option value="내과">내과</option>
@@ -181,98 +183,135 @@ export default function AdSetDoc() {
       <option value="핵의학과">핵의학과</option>
       <option value="직업환경의학과">직업환경의학과</option>
       </select>
-
-      <table className={ad.ad_table}>
-        <thead>
-          <tr>
-            <th className={ad.ad_th}>NO.</th>
-            <th className={ad.ad_th}>아이디</th>
-            <th className={ad.ad_th}>이름</th>
-            <th className={ad.ad_th}>전화번호</th>
-            <th className={ad.ad_th}>부서</th>
-            <th className={ad.ad_th}>병원명</th>
-            <th className={ad.ad_th}>병원번호</th>
-            <th className={ad.ad_th}>선택</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredDocList.slice(startIndex, endIndex).map((advice, index) => (
-            <tr key={index}>
-              <td className={ad.ad_td}>{startIndex + index + 1}</td>
-              <td className={ad.ad_td}>{advice.cid}</td>
-              <td className={ad.ad_td}>{advice.cname}</td>
-              <td className={ad.ad_td}>{advice.cphone}</td>
-              <td className={ad.ad_td}>{advice.department}</td>
-              <td className={ad.ad_td}>{advice.hospName}</td>
-              <td className={ad.ad_td}>{advice.hospTel}</td>
-              <td className={ad.ad_td}>
-                <input
+      </div>
+          <div className={ad.write_table}>
+        <div className={ad.title_row_box}>
+          <div className={ad.title_box}>
+            NO.
+          </div>
+          <div className={ad.title_box}>
+            아이디
+          </div>
+          <div className={ad.title_box}>
+            이름
+          </div>
+          <div className={ad.title_box} style={{width:'150px'}}>
+            전화번호
+          </div>
+          <div className={ad.title_box}>
+            부서
+          </div>
+          <div className={ad.title_box}>
+            병원명
+          </div>
+          <div className={ad.title_box} >
+            병원번호
+          </div>
+          <div className={ad.title_box} style={{borderRight: 'none'}} >
+            선택
+          </div>
+         
+        </div>
+          {filteredDocList.slice(startIndex, endIndex).map((advice,index) => (
+            <div className={ad.data_row_box}>
+              <div className={ad.input_box} >
+              {startIndex + index + 1}
+              </div>
+              <div className={ad.input_box}>{advice.cid}</div>
+              <div className={ad.input_box}>{advice.cname}</div>
+              <div className={ad.input_box} style={{width:'150px'}}>{advice.cphone}</div>
+              <div className={ad.input_box}>{advice.department}</div>
+              <div className={ad.input_box}>
+              {advice.hospName}
+              </div>
+              <div className={ad.input_box}>
+              {advice.hospTel}
+              </div>
+              <div className={ad.input_box} style={{borderRight: 'none'}}> 
+              <input
                   type="checkbox"
                   checked={selectedCId === advice.cid}
                   onChange={() => handleCheckboxChange(advice.cid)}
                 />
-              </td>
-            </tr>
+                </div>
+             
+              </div>
           ))}
-        </tbody>
-      </table>
-      <div className={ad.ad_pagination}>
+      </div>
+   
+      <div className={ad.pagination}>
         <button
-          className={ad.ad_paginationButton}
+          className={ad.paginationButton}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          ◀
+           <FaChevronLeft />
         </button>
         {[...Array(totalPages)].map((_, pageIndex) => (
           <button
             key={pageIndex}
-            className={ad.ad_paginationButton}
+            className={ad.paginationNumber}
             onClick={() => handlePageChange(pageIndex + 1)}
             disabled={currentPage === pageIndex + 1}
           >
             {pageIndex + 1}
           </button>
         ))}
-        <button className={ad.ad_paginationButton} onClick={() => handlePageChange(currentPage + 1)}>
-          ▶
+        <button className={ad.paginationButton} onClick={() => handlePageChange(currentPage + 1)}>
+        <FaChevronRight />
         </button>
       </div>
 
-      <div className={ad.ad_complete}>
-        <button className={ad.ad_complete} onClick={handleSave} disabled={!isSaveButtonEnabled}>
+      <div className={ad.complete}>
+        <button className={ad.complete_button} onClick={handleSave} disabled={!isSaveButtonEnabled}>
           배정
         </button>
       </div>
 
       <div className={ad.ad_iconbox}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={ad.title}>
+
           진행 상황
-        </h1>
+        </h2>
       </div>
-      <table className={ad.ad_table}>
-        <thead>
-          <tr>
-            <th className={ad.ad_th}>NO.</th>
-            <th className={ad.ad_th}>이름</th>
-            <th className={ad.ad_th}>진단명</th>
-            <th className={ad.ad_th}>의뢰신청일</th>
-            <th className={ad.ad_th}>의뢰배정일</th>
-            <th className={ad.ad_th}>의뢰자문일</th>
-            <th className={ad.ad_th}>진행상태</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr key={index}>
-            <td className={ad.ad_td}>{adId}</td>
-            <td className={ad.ad_td}>{selectedAdvice.uname}</td>
-            <td className={ad.ad_td}>{selectedAdvice.adPtDiagnosis}</td>
-            <td className={ad.ad_td}>{selectedAdvice.adRegDate}</td>
-            <td className={ad.ad_td}>{admDate||"미배정"}
-            </td>
-            <td className={ad.ad_td}>{adAnswerDate||"미답변"}</td>
-            <td className={ad.ad_td}>
+
+      <div className={ad.write_table}>
+        <div className={ad.title_row_box}>
+          <div className={ad.title_box}>
+            NO.
+          </div>
+          <div className={ad.title_box}>
+            이름
+          </div>
+          <div className={ad.title_box}>
+            진단명
+          </div>
+          <div className={ad.title_box} style={{width:'150px'}}>
+            의뢰신청일
+          </div>
+          <div className={ad.title_box} style={{width:'150px'}}>
+            의뢰배정일
+          </div>
+          <div className={ad.title_box} style={{width:'150px'}}>
+            의뢰자문일
+          </div>
+          <div className={ad.title_box}  >
+            진행상태
+          </div>
+         
+        </div>
+            <div className={ad.data_row_box}>
+              <div className={ad.input_box} >
+              {adId}
+              </div>
+              <div className={ad.input_box}>{selectedAdvice.uname}</div>
+              <div className={ad.input_box}>{selectedAdvice.adPtDiagnosis}</div>
+              <div className={ad.input_box} style={{width:'150px'}}>{selectedAdvice.adRegDate}</div>
+              <div className={ad.input_box } style={{width:'150px'}}>{admDate||"미배정"}</div>
+              <div className={ad.input_box} style={{width:'150px'}}>
+              {adAnswerDate||"미답변"}
+              </div>
+              <div className={ad.input_box} >
               <select
                 value={admProgressStatus || '자문의뢰중'}
                 onChange={(e) => input_admProgressStatus(e)}
@@ -282,19 +321,16 @@ export default function AdSetDoc() {
                 <option value="결제하기">결제하기</option>
                 <option value="자문완료">자문완료</option>
               </select>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div className={ad.ad_complete}>
-        <button className={ad.ad_complete} onClick={btn_modify}>
-          저장
-        </button>
+              </div>
+             
+              </div>
       </div>
 
-      <div className={ad.ad_complete}>
-        <button className={ad.ad_complete} onClick={btn_trans_list}>
+      <div className={ad.complete} style={{marginBottom:'400px'}}>
+        <button className={ad.complete_button} onClick={btn_modify}>
+          저장
+        </button>
+        <button className={ad.complete_button} onClick={btn_trans_list}>
           목록
         </button>
       </div>
