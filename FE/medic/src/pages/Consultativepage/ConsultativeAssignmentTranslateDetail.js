@@ -39,11 +39,12 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
     const getUserInfo = async() =>{
         try{
             const response = await axios.get(`/consultative/assignedTranslate/detail/${index}`)
+            const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
             console.log(response.data)
             setUname(response.data.uname)
             setUtel(response.data.userTel)
             setUphone(response.data.userPhone)
-            setUaddress(response.data.userAddress)
+            setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
             setTrptname(response.data.trPtName)
             setTrptsub(response.data.trPtSub)
             setTrptdiagnosis(response.data.trPtDiagnosis)
@@ -183,7 +184,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                 </div>
                 <div className={assignmenttranslatedetail.row_box}>
                     <div className={assignmenttranslatedetail.title_box}>주소</div>
-                    <div className={assignmenttranslatedetail.input_box}>
+                    <div className={assignmenttranslatedetail.input_box} style={{width: "500px"}}>
                         <span>{uaddress}</span>
                     </div>
                 </div>
