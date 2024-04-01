@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import advicerequest from '../../css/AdviceRequestpage.module.css'
+import advicerequest from '../../css/AdviceDetailpage.module.css'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -117,11 +117,12 @@ const generateOptions = (start, end) => {
     const getUserInfo = async() =>{
         try{
             const response = await axios.get('/user/userInfo')
+            const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
             console.log(response.data)
             setUname(response.data.name)
             setUtel(response.data.userTel)
             setUphone(response.data.userPhone)
-            setUaddress(response.data.userAddress)
+            setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
         } catch(err){
             console.log(err)
         }  
@@ -227,7 +228,7 @@ const generateOptions = (start, end) => {
                 </div>
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>주소</div>
-                    <div className={advicerequest.input_box}>
+                    <div className={advicerequest.input_box} style={{width: "500px"}}>
                         <span>{uaddress}</span>
                     </div>
                 </div>
@@ -237,7 +238,7 @@ const generateOptions = (start, end) => {
                     환자의료 기록 사항
                 </h3>
             </div>
-            <div className={advicerequest.request_patienttable2}>
+            <div className={advicerequest.request_patienttable}>
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>환자명</div>
                     <div className={advicerequest.input_box}>
@@ -363,7 +364,7 @@ const generateOptions = (start, end) => {
             <div className = {advicerequest.request_questiontable}>
                 <div className={advicerequest.row_box} style={{height : 'auto'}}>
                     <div className={advicerequest.title_box}>
-                        질문 항목
+                        질문 항목수
                     </div>
                     <div className={advicerequest.input_box}>
                         <input
