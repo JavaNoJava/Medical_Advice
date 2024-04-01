@@ -437,7 +437,7 @@
                         <div className={advicerequest.input_box}>
                         {
                             adReqForm ? 
-                            <button>
+                            <button className={advicerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/advice/findFile/${index}/adReqForm`}
                                     download="adReqForm.jpg"
@@ -457,7 +457,7 @@
                         <div className={advicerequest.input_box}>
                         {
                             adDiagnosis ?
-                            <button>
+                            <button className={advicerequest.btn_file_download}> 
                                 <a
                                     href={`http://localhost:8080/advice/findFile/${index}/adDiagnosis`}
                                     download="adDiagnosis.jpg"
@@ -477,7 +477,7 @@
                         <div className={advicerequest.input_box}>
                         {
                             adRecord ?
-                            <button>
+                            <button className={advicerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/advice/findFile/${index}/adRecord`}
                                     download="adRecord.jpg"
@@ -497,7 +497,7 @@
                         <div className={advicerequest.input_box}>
                         {
                             adFilm ?
-                            <button>
+                            <button className={advicerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/advice/findFile/${index}/adFilm`}
                                     download="adFilm.jpg"
@@ -516,7 +516,7 @@
                         <div className={advicerequest.input_box}>
                             {
                                 adOther ?
-                                <button>
+                                <button className={advicerequest.btn_file_download}>
                                     <a
                                         href={`http://localhost:8080/advice/findFile/${index}/adOther`}
                                         download="adOther.jpg"

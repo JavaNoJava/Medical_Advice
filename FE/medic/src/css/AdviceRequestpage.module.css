@@ -239,3 +239,26 @@ div.complete {
     font-size : 12px;
     margin-left: 5px;
 }
+.btn_preview{
+    width: 80px;
+    height: 25px;
+    background-color: #10b3cc;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+.btn_file_cancle{
+    border: none;
+    background-color: white;
+    color: red;
+}
+.btn_file_download{
+    background-color: #0f3a75;
+    width: 80px;
+    height: 25px;
+    border: none;
+}
+.btn_file_download a{
+    color: white;
+    text-decoration: none;
+}

@@ -177,7 +177,7 @@ export default function AdDetailTranslate(){
                     <div className={translaterequest.input_box}>
                     {
                             trMtl ?
-                            <button>
+                            <button className={translaterequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/translate/findFile/${index}`}
                                     download="adRecord.zip"
@@ -197,7 +197,7 @@ export default function AdDetailTranslate(){
                     <div className={translaterequest.input_box}>
                         {
                             trAnswer ?
-                            <button>
+                            <button className={translaterequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/assignedTranslate/findFile/${index}`}
                                     download="adRecord.zip"

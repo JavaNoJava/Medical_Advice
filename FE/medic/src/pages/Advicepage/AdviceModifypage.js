@@ -708,14 +708,28 @@ return(
                     {
                         isAdReqForm ? 
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adReqForm`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={advicerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adReqForm`)}>미리보기</button>
+                            <button className={advicerequest.btn_file_cancle} onClick={()=>{
                                 setAdReqForm(null)
                                 setIsAdReqForm(false)
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={(e) => setAdReqForm(e.target.files[0])} />
+                        <>
+                            <label htmlFor="file-upload" className={advicerequest.file_label}>
+                                <button className={advicerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={advicerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAdReqForm(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={advicerequest.file_msg}>{adReqForm ? `선택된 파일: ${adReqForm.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }
                 </div>
             </div>
@@ -727,14 +741,28 @@ return(
                     {
                         isAdDiagnosis ?
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adDiagnosis`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={advicerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adDiagnosis`)}>미리보기</button>
+                            <button className={advicerequest.btn_file_cancle} onClick={()=>{
                                 setAdDiagnosis(null)
                                 setIsAdDiagnosis(false)
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={e => setAdDiagnosis(e.target.files[0])}/>    
+                        <>
+                            <label htmlFor="file-upload" className={advicerequest.file_label}>
+                                <button className={advicerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={advicerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAdDiagnosis(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={advicerequest.file_msg}>{adDiagnosis ? `선택된 파일: ${adDiagnosis.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }
                     
                 </div>
@@ -747,14 +775,28 @@ return(
                     {
                         isAdRecord ?
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adRecord`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={advicerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adRecord`)}>미리보기</button>
+                            <button className={advicerequest.btn_file_cancle} onClick={()=>{
                                 setAdRecord(null)
                                 setIsAdRecord(false)                                
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={e => setAdRecord(e.target.files[0])}/>
+                        <>
+                            <label htmlFor="file-upload" className={advicerequest.file_label}>
+                                <button className={advicerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={advicerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAdRecord(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={advicerequest.file_msg}>{adRecord ? `선택된 파일: ${adRecord.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }
                 </div>
             </div>
@@ -766,14 +808,28 @@ return(
                     {
                         isAdFilm ? 
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adFilm`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={advicerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adFilm`)}>미리보기</button>
+                            <button className={advicerequest.btn_file_cancle} onClick={()=>{
                                 setAdFilm(null)
                                 setIsAdFilm(false)
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={e => setAdFilm(e.target.files[0])}/>
+                        <>
+                            <label htmlFor="file-upload" className={advicerequest.file_label}>
+                                <button className={advicerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={advicerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAdFilm(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={advicerequest.file_msg}>{adFilm ? `선택된 파일: ${adFilm.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }      
                 </div>
             </div>
@@ -785,14 +841,28 @@ return(
                     {
                         isAdOther ?
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adOther`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={advicerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/advice/findFile/${index}/adOther`)}>미리보기</button>
+                            <button className={advicerequest.btn_file_cancle} onClick={()=>{
                                 setAdOther(null)
                                 setIsAdOther(false)
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={e => setAdOther(e.target.files[0])}/>
+                        <>
+                            <label htmlFor="file-upload" className={advicerequest.file_label}>
+                                <button className={advicerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={advicerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAdOther(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={advicerequest.file_msg}>{adOther ? `선택된 파일: ${adOther.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }
                 </div>
             </div>

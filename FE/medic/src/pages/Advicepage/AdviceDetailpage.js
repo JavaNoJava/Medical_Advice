@@ -412,7 +412,7 @@ const generateOptions = (start, end) => {
                     <div className={advicerequest.input_box}>
                         {
                             adReqForm ? 
-                            <button>
+                            <button className={advicerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/advice/findFile/${index}/adReqForm`}
                                     download="adReqForm.jpg"
@@ -432,7 +432,7 @@ const generateOptions = (start, end) => {
                     <div className={advicerequest.input_box}>
                         {
                             adDiagnosis ?
-                            <button>
+                            <button className={advicerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/advice/findFile/${index}/adDiagnosis`}
                                     download="adDiagnosis.jpg"
@@ -453,7 +453,7 @@ const generateOptions = (start, end) => {
                     <div className={advicerequest.input_box}>
                         {
                             adRecord ?
-                            <button>
+                            <button className={advicerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/advice/findFile/${index}/adRecord`}
                                     download="adRecord.jpg"
@@ -474,7 +474,7 @@ const generateOptions = (start, end) => {
                     <div className={advicerequest.input_box}>
                         {
                             adFilm ?
-                            <button>
+                            <button className={advicerequest.btn_file_download}> 
                                 <a
                                     href={`http://localhost:8080/advice/findFile/${index}/adFilm`}
                                     download="adFilm.jpg"
@@ -493,7 +493,7 @@ const generateOptions = (start, end) => {
                     <div className={advicerequest.input_box}>
                         {
                             adOther ?
-                            <button>
+                            <button className={advicerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/advice/findFile/${index}/adOther`}
                                     download="adOther.jpg"

@@ -314,7 +314,7 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
                     <div className={assignmentanalyzedetail.input_box}>
                         {
                             anReqForm ?
-                            <button>
+                            <button className={assignmentanalyzedetail.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anReqForm`}
                                     download="anReqForm.jpg"
@@ -334,7 +334,7 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
                     <div className={assignmentanalyzedetail.input_box}>
                         {
                             anDiagnosis ?
-                            <button>
+                            <button className={assignmentanalyzedetail.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anDiagnosis`}
                                     download="anDiagnosis.jpg"
@@ -354,7 +354,7 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
                     <div className={assignmentanalyzedetail.input_box}>
                         {
                             anRecord ?
-                            <button>
+                            <button className={assignmentanalyzedetail.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anRecord`}
                                     download="anRecord.jpg"
@@ -374,7 +374,7 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
                     <div className={assignmentanalyzedetail.input_box}>
                         {
                             anFilm ?
-                            <button>
+                            <button className={assignmentanalyzedetail.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anFilm`}
                                     download="anFilm.jpg"
@@ -394,7 +394,7 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
                     <div className={assignmentanalyzedetail.input_box}>
                     {
                             anOther ?
-                            <button>
+                            <button className={assignmentanalyzedetail.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anOther`}
                                     download="anOther.jpg"

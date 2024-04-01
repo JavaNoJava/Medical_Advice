@@ -285,7 +285,19 @@ export default function TranslateRequestpage(){
                         번역 요청자료
                     </div>
                     <div className={translaterequest.input_box}>
-                        <input type='file' accept='application/zip' onChange={(e)=> setTrMtl(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={translaterequest.file_label}>
+                            <button className={translaterequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={translaterequest.input_file}
+                            type="file"
+                            accept="application/zip"
+                            onChange={e => setTrMtl(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={translaterequest.file_msg}>{trMtl ? `선택된 파일: ${trMtl.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={translaterequest.complete}>
