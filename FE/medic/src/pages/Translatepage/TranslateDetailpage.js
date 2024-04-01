@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import translaterequest from '../../css/AdviceRequestpage.module.css'
+import translaterequest from '../../css/ConsultativeTranslateAssignmentDetailpage.module.css'
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -49,11 +49,12 @@ export default function TranslateDetailpage(){
     const getUserInfo = async() =>{
         try{
             const response = await axios.get('/user/userInfo')
+            const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
             console.log(response.data)
             setUname(response.data.name)
             setUtel(response.data.userTel)
             setUphone(response.data.userPhone)
-            setUaddress(response.data.userAddress)
+            setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
         } catch(err){
             console.log(err)
         }  
@@ -84,7 +85,7 @@ export default function TranslateDetailpage(){
 
 
     return(
-        <div className={translaterequest.advicerequest_wrap}>
+        <div className={translaterequest.translaterequest_wrap}>
             <div className={translaterequest.iconbox}>
                 <h2 className={translaterequest.title}>
                     번역의뢰 상세페이지
@@ -118,7 +119,7 @@ export default function TranslateDetailpage(){
                 </div>
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>주소</div>
-                    <div className={translaterequest.input_box}>
+                    <div className={translaterequest.input_box} style={{width: "500px"}}>
                         <span>{uaddress}</span>
                     </div>
                 </div>
@@ -128,7 +129,7 @@ export default function TranslateDetailpage(){
                     환자의료 기록 사항
                 </h3>
             </div>
-            <div className={translaterequest.request_patienttable2}>
+            <div className={translaterequest.request_patienttable}>
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>환자명</div>
                     <div className={translaterequest.input_box}>

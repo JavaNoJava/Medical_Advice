@@ -8,12 +8,41 @@
     margin-bottom: 50px;
     padding-bottom: 500px;
     font-family: "돋움", Dotum, Arial, sans-serif;
+}
 
+.iconbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    width: 880px;
+}
+
+
+.title {
+    margin-bottom: -20px;
+    font-size: 2.5rem;
+    color: #0f3a75;
+}
+
+.title_bottom {
+    font-size: 1.125rem;
+    color: #0f3a75;
+}
+
+.tit {
+    background: url(../img/bullet.png) 0 2px no-repeat;
+    padding-left: 10px;
+    font-size: 25px;
+    color: #1b699b;
+    margin-bottom: 17px;
+    margin-left: 10px;
 }
 
 .request_usertable{
     width: 850px;
-    height: 210px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
@@ -51,86 +80,9 @@
     width: 250px;
 }
 
-.row_contentbox{
-    height: 128px;
-}
-
-.count_box{
-    height : 118px;
-    display : flex;
-    flex-direction : column;
-    justify-content : end;
-}
-
-.datebox{
-    display: flex;
-}
-
-.request_othertable{
+.request_patienttable{
     width: 850px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    border-top: 2px solid #10b3cc;
-    border-left: none; /* 왼쪽 테두리 없음 */
-    border-right: none; /* 오른쪽 테두리 없음 */
-    margin-bottom: 65px;
-}
-
-.request_questiontable{
-    width: 850px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    border-top: 2px solid #10b3cc;
-    border-left: none; /* 왼쪽 테두리 없음 */
-    border-right: none; /* 오른쪽 테두리 없음 */
-    margin-bottom: 65px;
-}
-
-.file_table{
-    width: 850px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    border-top: 2px solid #10b3cc;
-    border-left: none; /* 왼쪽 테두리 없음 */
-    border-right: none; /* 오른쪽 테두리 없음 */
-    margin-bottom: 65px;
-}
-
-.iconbox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    text-align: center;
-    width: 880px;
-}
-
-.title {
-    margin-bottom: -20px;
-    font-size: 2.5rem;
-    color: #0f3a75;
-}
-
-.title_bottom {
-    font-size: 1.125rem;
-    color: #0f3a75;
-}
-
-.tit {
-    background: url(../img/bullet.png) 0 2px no-repeat;
-    padding-left: 10px;
-    font-size: 25px;
-    color: #1b699b;
-    margin-bottom: 17px;
-    margin-left: 10px;
-}
-
-.request_patienttable2{
-    width: 850px;
-    height: 394px;
+    height: 380px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
@@ -150,9 +102,46 @@
     margin-bottom: 65px;
 }
 
+.row_contentbox{
+    height: 128px;
+}
+
 .request_hospitaltable{
     width: 850px;
     height: 290px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #10b3cc;
+    border-left: none; /* 왼쪽 테두리 없음 */
+    border-right: none; /* 오른쪽 테두리 없음 */
+    margin-bottom: 65px;
+}
+
+.request_othertable{
+    width: 850px;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #10b3cc;
+    border-left: none; /* 왼쪽 테두리 없음 */
+    border-right: none; /* 오른쪽 테두리 없음 */
+    margin-bottom: 65px;
+}
+
+.request_questiontable{
+    width: 850px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #10b3cc;
+    border-left: none; /* 왼쪽 테두리 없음 */
+    border-right: none; /* 오른쪽 테두리 없음 */
+    margin-bottom: 65px;
+}
+
+.file_table{
+    width: 850px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
@@ -186,4 +175,25 @@ div.complete {
 .complete_button:hover {
     background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
     border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
+}
+
+.request_patienttable textarea,
+.request_hospitaltable textarea {
+    width: calc(100% - 40px); /* 텍스트 영역의 너비를 조정하여 테두리를 고려합니다. */
+    max-width: calc(100% - 40px); /* 최대 너비도 설정하여 텍스트 영역이 너무 커지지 않도록 합니다. */
+    min-width: calc(100% - 40px); /* 최소 너비도 설정하여 텍스트 영역이 너무 작아지지 않도록 합니다. */
+    height: 100px; /* 텍스트 영역의 높이를 조정합니다. */
+    margin: 5px 0; /* 위아래 여백을 추가합니다. */
+    padding: 10px; /* 내부 여백을 추가합니다. */
+    resize: none; /* 사용자가 텍스트 영역의 크기를 조정하지 못하도록 합니다. */
+}
+
+.request_othertable textarea {
+    width: calc(100% - 40px); /* 텍스트 영역의 너비를 조정하여 테두리를 고려합니다. */
+    max-width: calc(100% - 40px); /* 최대 너비도 설정하여 텍스트 영역이 너무 커지지 않도록 합니다. */
+    min-width: calc(100% - 40px); /* 최소 너비도 설정하여 텍스트 영역이 너무 작아지지 않도록 합니다. */
+    height: 100px; /* 텍스트 영역의 높이를 조정합니다. */
+    margin: 5px 0; /* 위아래 여백을 추가합니다. */
+    padding: 10px; /* 내부 여백을 추가합니다. */
+    resize: none; /* 사용자가 텍스트 영역의 크기를 조정하지 못하도록 합니다. */
 }

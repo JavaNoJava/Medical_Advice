@@ -544,24 +544,6 @@ const btn_program_consultative_mypage_view = (e) => {
     }
 }
 
-const btn_program_consultative_change_mypage_view = async (e) => {
-    if (isSession) {
-        const myInfo = await getMyInfo();
-        const role = cookies.get('uRole');
-        let nextPage = '/medic/mypage/modifymyinfo';
-        
-        if(role == 'consultative'){
-            nextPage = '/medic/mypage/ChangeConsultativeInfo';
-            navigate(nextPage, { state: { myInfo: myInfo } });
-
-        }else {
-            alert('권한이 없는 사용자입니다!');
-            navigate('/mediclogin');
-        
-       } 
-    }
-}
-
 
 const renderConsultantHeader = () => {
    return (
@@ -626,7 +608,6 @@ const renderConsultantHeader = () => {
                         <button className="menu_button" style={mypageStyle}>마이페이지</button>
                         <ul className={`${navigator.submenu}`}>
                             <li><span onClick={btn_program_consultative_mypage_view}>마이페이지</span></li>
-                            <li><span onClick={btn_program_consultative_change_mypage_view}>내 정보 수정</span></li>
                         </ul>
                     </li>
                 </ul>
