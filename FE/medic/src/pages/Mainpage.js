@@ -7,7 +7,6 @@ export default function Mainpage(){
         <div className={style.main_wrap}>
             <section>
             </section>
-            <Footer/>
         </div>
     )
 }

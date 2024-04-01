@@ -148,11 +148,7 @@ export default function App(){
                     <Route path='/medic/customer/announcement/edit/:amId' element ={<AnnouncementEdit/>}/>
                     <Route path='/medic/customre/faq/edit/:faqId' element={<FaqEdit/>}/>
                     <Route path="/medic/adminstrator/error" element={<ErrorPage/>}/>
-
-
-
                 </Routes>
-
             </div> 
             <Footer/>
             </div>   
