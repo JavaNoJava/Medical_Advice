@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import administrator from '../../css/DocManagement.module.css';
+import ad from '../../css/AdAdviceListPage.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
 
 export default function DocManagement() {
   const navigate = useNavigate();
@@ -53,43 +55,96 @@ export default function DocManagement() {
       alert('의사 삭제 중 오류가 발생했습니다.');
     }
   }
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = Math.min(doctorList.length, startIndex + itemsPerPage);
 
-  const renderDoctorList = () => {
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = Math.min(doctorList.length, startIndex + itemsPerPage);
+  // const renderDoctorList = () => {
+  //   const startIndex = (page - 1) * itemsPerPage;
+  //   const endIndex = Math.min(doctorList.length, startIndex + itemsPerPage);
 
-    return doctorList.slice(startIndex, endIndex).map((doctor, index) => (
-      <tr key={index}>
-        <td className={administrator.doc_td} onClick={() => handleEditDoc(doctor.cid)}>{startIndex + index + 1}</td>
-        <td className={administrator.doc_td}>{doctor.cname}</td>
-        <td className={administrator.doc_td}>{doctor.crole}</td>
-        <td className={administrator.doc_td}>{doctor.ctel}</td>
-        <td className={administrator.doc_td}>{doctor.countByAdviceAssignment}</td>
-        <td className={administrator.doc_td}>{doctor.countByAnalyzeAssignment}</td>
-        <td className={administrator.doc_td}>{doctor.countByTranslateAssignment}</td>
-        <td className={administrator.doc_td} onClick={() => handleDeleteDoc(doctor.cid)}>
-          <FontAwesomeIcon icon={faTrash} />
-        </td>
-      </tr>
-    ));
-  }
+  //   return doctorList.slice(startIndex, endIndex).map((doctor, index) => (
+  //     <tr key={index}>
+  //       <td className={administrator.doc_td} onClick={() => handleEditDoc(doctor.cid)}>{startIndex + index + 1}</td>
+  //       <td className={administrator.doc_td}>{doctor.cname}</td>
+  //       <td className={administrator.doc_td}>{doctor.crole}</td>
+  //       <td className={administrator.doc_td}>{doctor.ctel}</td>
+  //       <td className={administrator.doc_td}>{doctor.countByAdviceAssignment}</td>
+  //       <td className={administrator.doc_td}>{doctor.countByAnalyzeAssignment}</td>
+  //       <td className={administrator.doc_td}>{doctor.countByTranslateAssignment}</td>
+  //       <td className={administrator.doc_td} onClick={() => handleDeleteDoc(doctor.cid)}>
+  //         <FontAwesomeIcon icon={faTrash} />
+  //       </td>
+  //     </tr>
+  //   ));
+  // }
 
   const pageCount = Math.ceil(doctorList.length / itemsPerPage);
-  const pageButtons = [...Array(pageCount)].map((_, index) => (
-    <button key={index} className={administrator.doc_paginationButton} onClick={() => handlePageChange(index + 1)} disabled={page === index + 1}>
-      {index + 1}
-    </button>
-  ));
+  // const pageButtons = [...Array(pageCount)].map((_, index) => (
+  //   <button key={index} className={administrator.doc_paginationButton} onClick={() => handlePageChange(index + 1)} disabled={page === index + 1}>
+  //     {index + 1}
+  //   </button>
+  // ));
 
   return (
-    <div className={administrator.doc_contents}>
-      <div className={administrator.doc_iconbox}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+    <div className={ad.ad_contents}>
+     <div className={ad.iconbox}>
+        <h2 className={ad.title}>
           의사 관리
-        </h1>
+        </h2>
       </div>
-      <table className={administrator.doc_table}>
+
+      <div className={ad.write_table}>
+        <div className={ad.title_row_box}>
+          <div className={ad.title_box_no}>
+            NO.
+          </div>
+          <div className={ad.title_box}  style={{width:'120px'}}>
+            이름
+          </div>
+          <div className={ad.title_box}  style={{width:'130px'}}>
+            구분
+          </div>
+          <div className={ad.title_box} style={{width:'150px'}}>
+            전화 번호 
+          </div>
+          <div className={ad.title_box}>
+            자문 건수
+          </div>
+          <div className={ad.title_box}>
+            분석 건수
+          </div>
+          <div className={ad.title_box} >
+            번역 건수 
+          </div>
+          <div className={ad.title_box}  style={{borderRight:'none'}}>
+            삭제 
+          </div>
+        
+        </div>
+          {doctorList.slice(startIndex, endIndex).map((doctor,index) => (
+            <div className={ad.data_row_box}>
+              <div className={ad.input_box_no}onClick={() => handleEditDoc(doctor.cid)}>
+              {startIndex + index + 1}
+              </div>
+              <div className={ad.input_box}  style={{width:'120px'}}>{doctor.cname}</div>
+              <div className={ad.input_box}  style={{width:'130px'}}>{doctor.crole} </div>
+              <div className={ad.input_box}  style={{width:'150px'}}>{doctor.ctel}</div>
+              <div className={ad.input_box}>{doctor.countByAdviceAssignment}</div>
+              <div className={ad.input_box}>
+              {doctor.countByAnalyzeAssignment}
+              </div>
+              {/* <div className={ad.input_box} style={{borderRight: 'none'}}>{advice.admProgressStatus === null ? '자문의뢰중' : advice.admProgressStatus}</div> */}
+              <div className={ad.input_box}>
+              {doctor.countByTranslateAssignment}
+              </div>
+              <div className={ad.input_box} style={{borderRight:'none'}} onClick={() => handleDeleteDoc(doctor.cid)}> 
+              <FontAwesomeIcon icon={faTrash} />
+                </div>
+              </div>
+          ))}
+      </div>
+
+      {/* <table className={administrator.doc_table}>
         <thead>
           <tr>
             <th className={administrator.doc_th}>NO.</th>
@@ -105,14 +160,19 @@ export default function DocManagement() {
         <tbody>
           {renderDoctorList()}
         </tbody>
-      </table>
-      <div className={administrator.doc_pagination}>
-        <button className={administrator.doc_paginationButton} onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
-          ◀
+      </table> */}
+      <div className={ad.pagination}>
+        <button className={ad.paginationButton} onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
+        <FaChevronLeft />
+
         </button>
-        {pageButtons}
-        <button className={administrator.doc_paginationButton} onClick={() => handlePageChange(page + 1)} disabled={page === pageCount}>
-          ▶
+        {[...Array(Math.ceil(doctorList.length / 7))].map((_, index) => (
+          <button key={index} className={ad.paginationNumber} onClick={() => handlePageChange(index + 1)} disabled={page === index + 1}>
+            {index + 1}
+          </button>
+        ))}
+        <button className={ad.paginationButton} onClick={() => handlePageChange(page + 1)} disabled={page === pageCount}>
+        <FaChevronRight />
         </button>
       </div>
     </div>

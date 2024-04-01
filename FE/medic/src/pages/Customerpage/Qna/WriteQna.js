@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import writecustomerinquiry from '../../../css/WriteQna.module.css';
+import writecustomerinquiry from '../../../css/AnnouncementDetail.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
@@ -93,44 +93,46 @@ export default function WriteQna() {
         }
     }
   return (
-    <div className={writecustomerinquiry.writeform}>
+    <div className={writecustomerinquiry.detailform}>
       <div className={writecustomerinquiry.inquiry_title}>
-        <h1>
-          <i className="fa-solid fa-circle icon"></i>
+        <h2 className={writecustomerinquiry.title}>
+         
           문의사항 작성
-        </h1>
+        </h2>
       </div>
-      <div className={writecustomerinquiry.write_table}>
-        <div className={writecustomerinquiry.write_rowbox}>
-            <div className={writecustomerinquiry.write_title} style={{width : '96.5px'}}>
+      
+      <div className={writecustomerinquiry.detail_table}>
+        <div className={writecustomerinquiry.detail_rowbox}>
+            <div className={writecustomerinquiry.detail_title} >
                 제목
             </div>
-            <div className={writecustomerinquiry.write_titleinputbox}>
+            <div className={writecustomerinquiry.detail_titleinputbox} style={{width:'300px'}}>
                 <input className={writecustomerinquiry.write_titleinput} value={inputTitle} onChange={input_questiontitle}/>
             </div>
         </div>
-        <div className={writecustomerinquiry.write_rowbox}>
-            <div className={writecustomerinquiry.write_writerinfo}>
-                <div className={writecustomerinquiry.write_title}>
+        
+        <div className={writecustomerinquiry.detail_rowbox}>
+            <div className={writecustomerinquiry.detail_writerinfo}>
+                <div className={writecustomerinquiry.detail_title} style={{width:'85px'}}>
                     작성자
                 </div>
-                <div className={writecustomerinquiry.write_writerinfocontent}>
+                <div className={writecustomerinquiry.detail_writerinfocontent}>
                     {writer}
                 </div>
             </div> 
-            <div className={writecustomerinquiry.write_writerinfo}>
-                <div className={writecustomerinquiry.write_title}>
+            <div className={writecustomerinquiry.detail_writerinfo}>
+                <div className={writecustomerinquiry.detail_title}>
                     작성일
                 </div>
-                <div className={writecustomerinquiry.write_writerinfocontent}>
+                <div className={writecustomerinquiry.detail_writerinfocontent}>
                     {timer}
                 </div>
             </div> 
-            <div className={writecustomerinquiry.write_writerinfo}>
-                <div className={writecustomerinquiry.write_title}>
+            <div className={writecustomerinquiry.detail_writerinfo}>
+                <div className={writecustomerinquiry.detail_title}>
                     비밀글 여부
                 </div>
-                <div className={writecustomerinquiry.write_writerinfocontent} style={{paddingLeft : '5px'}}>
+                <div className={writecustomerinquiry.detail_writerinfocontent} style={{paddingLeft : '5px'}}>
                     <input
                         type='checkbox'
                         checked = {isSecret}
@@ -161,38 +163,41 @@ export default function WriteQna() {
             </div>     
         </div>
         <div className={`${writecustomerinquiry.write_rowbox} ${writecustomerinquiry.write_contentrowbox}`}>
-            <div className={`${writecustomerinquiry.write_contenttitle} ${writecustomerinquiry.write_title}`}>
-                <h3 style={{paddingLeft: '20px'}}>문의내용</h3>
+            <div className={`${writecustomerinquiry.write_title} ${writecustomerinquiry.write_contentrowbox}`}>
+              내용
             </div>
-            <div className={writecustomerinquiry.write_contentbox}>
+            <div className={writecustomerinquiry.input_box} style={{width:'670px', height : '300px'}}>
                 <textarea 
                 className={writecustomerinquiry.write_content} 
-                cols={60} 
-                rows={50} 
+                cols="50"
+                rows="50" 
                 value={inquiryQuestion}
+                style={{ height: '200px' }}
                 onChange={e => {
                     setInquiryQuestion(e.target.value)
                     setQuestioncount(e.target.value.length)
                     }} maxLength={300}></textarea>
-            </div>
+           
             <div className={writecustomerinquiry.contentcount}>
                 {questionCount}/300
             </div>   
+            </div>
         </div>
       </div>
-      <div className={writecustomerinquiry.btn_writequestionbox}>
+
+      <div className={writecustomerinquiry.complete}>
         {
             <>
             {
                 isUpdate ?
-                <button className={writecustomerinquiry.btn_writequestion} disabled={isEmpty} onClick={btn_updatequestion}>수정</button>
+                <button className={writecustomerinquiry.btt_write} disabled={isEmpty} onClick={btn_updatequestion}>수정</button>
                 :
-                <button className={writecustomerinquiry.btn_writequestion} disabled={isEmpty} onClick={btn_writequestion}>작성</button>
+                <button className={writecustomerinquiry.btt_write} disabled={isEmpty} onClick={btn_writequestion}>작성</button>
             }
                
             </>
         }
-        <button className={writecustomerinquiry.btn_writequestion} onClick={btn_questionlist}>목록</button>
+        <button className={writecustomerinquiry.btt_write} onClick={btn_questionlist}>목록</button>
       </div>
     </div>
   );

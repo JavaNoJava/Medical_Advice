@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import analyzerequest from '../../css/AnalyzeRequestpage.module.css'
+import analyzerequest from '../../css/AdviceRequestpage.module.css'
 import axios from 'axios';
 import { useNavigate,useParams } from 'react-router-dom';
 
@@ -150,99 +150,109 @@ export default function AdDetailAnalyze(){
       }
 
     return(
-        <div className={analyzerequest.anvicerequest_wrap}>
+        <div className={analyzerequest.advicerequest_wrap}>
       
+      <div className={analyzerequest.iconbox}>
+                <h2 className={analyzerequest.title}>
+                    분석의뢰 상세페이지
+                </h2>
+                <h4>
+                </h4>
+             </div>
+
              <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={analyzerequest.tit}>
                     신청자 정보
                 </h3>
              </div>
+
              <div className={analyzerequest.request_usertable}>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>의뢰자명</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" disabled={true} value={analyzeDetails.uname}/>
+                    <span>{analyzeDetails.uname}</span>
                     </div>
                 </div>
+
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>일반전화</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" disabled={true} value={analyzeDetails.userTel}/>
+                            <span>  {analyzeDetails.userTel}</span>
                     </div>
-                    <div className={analyzerequest.title_box} style={{borderLeft : '1px solid black'}}>휴대전화</div>
+                    </div>
+                    <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box} >휴대전화</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" disabled={true} value={analyzeDetails.userPhone}/>
+                    <span>  {analyzeDetails.userPhone}</span>
                     </div>
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>주소</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" disabled={true} value={analyzeDetails.userAddress}/>
+                    <span>{analyzeDetails.userAddress}</span>
                     </div>
                 </div>
              </div>
              <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={analyzerequest.tit}>
+                   
                     환자의료 기록 사항
                 </h3>
             </div>
-            <div className={analyzerequest.request_patienttable}>
-                <div className={`${analyzerequest.row_box} ${analyzerequest.patient_box}`}>
-                    <div className={`${analyzerequest.title_box} ${analyzerequest.patient_box}`}>환자명</div>
-                    <div className={`${analyzerequest.input_box} ${analyzerequest.patient_box}`}>
-                        <input type="text" name="an_ptname" disabled={true} value={analyzeDetails.anPtName} ></input>
+
+            <div className={analyzerequest.request_othertable}>
+                <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box}>환자명</div>
+                    <div className={analyzerequest.input_box}>
+                    <span> {analyzeDetails.anPtName}</span>                        
                     </div>
-                    <div className={`${analyzerequest.title_box} ${analyzerequest.patient_box}`} style={{borderLeft : '1px solid black'}}>주민등록번호</div>
-                    <div className={`${analyzerequest.input_box} ${analyzerequest.input_ptssnumbox} ${analyzerequest.patient_box}`}>
-                        <input type="text" name="an_ptssnum1" disabled={true} value={anptssnum1}></input>
-                         -
-                        <input type="password" name="an_ptssnum2" disabled={true} value={anptssnum2}></input>
+                    </div>
+                    <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box} >주민등록번호</div>
+                    <div className={analyzerequest.input_box} >
+                     <span>{analyzeDetails.anPtSsNum}</span>
+
                     </div>
                 </div>
+
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>진단과목</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" name="an_ptsub" disabled={true} value={analyzeDetails.anPtSub} />
+                    <span>{analyzeDetails.anPtSub}</span>
                     </div>
-                    <div className={analyzerequest.title_box} style={{borderLeft : '1px solid black'}}>진단명</div>
+                    </div>
+                    <div className={analyzerequest.row_box}>
+                    <div className={analyzerequest.title_box} >진단명</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" name="an_ptdiagnosis" disabled={true} value={analyzeDetails.anPtDiagnosis} />
+                    <span>{analyzeDetails.anPtDiagnosis}</span>
                     </div>
                 </div>
-                <div className={`${analyzerequest.row_box}`}>
-                    <div className ={`${analyzerequest.title_box} ${analyzerequest.row_contentbox}`}>
+
+                <div className={analyzerequest.row_box}>
+                    <div className ={analyzerequest.title_box} style={{height:'128px'}} >
                         진단 사항
                     </div>
-                    <div className={analyzerequest.input_box} style={{width : '400px', height : 'auto'}}>
-                        <textarea cols="50" rows="10" disabled={true} value={analyzeDetails.anPtDiacontent}/>
-                        <div className={analyzerequest.count_box}>
-                            <span>/500</span>
-                        </div>
+                    <div className={analyzerequest.input_box} style={{width : '400px', height : 'auto'}} >
+                        <textarea cols="50" rows="5" readOnly value={analyzeDetails.anPtDiacontent}/> 
                     </div>
                 </div>
+
             </div>
             <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h3 className={analyzerequest.tit}> 
+            
                     기타사항
                 </h3>
             </div>
             <div className={analyzerequest.request_othertable}>
                 <div className={analyzerequest.row_box} >
-                    <div className={analyzerequest.title_box} style={{height : '130px'}}>기타사항</div>
-                    <div className={analyzerequest.input_box} style={{width : '400px'}}>
-                        <textarea cols="50" rows="3" name="anEtc" disabled={true} value={analyzeDetails.anEtc} ></textarea>
-                        <div className={analyzerequest.count_box}>
-                            <span>{}/300</span>
-                        </div>
-                    </div>
+                    <div className={`${analyzerequest.title_box} ${analyzerequest.row_contentbox}` }>기타사항</div>
+                        <textarea cols="50" rows="5" name="anEtc" readOnly value={analyzeDetails.anEtc} ></textarea>
+                
                 </div>
             </div>
-            <div className={analyzerequest.iconbox} style={{marginTop : '50px'}}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+            <div className={analyzerequest.iconbox} >
+                <h3 className={analyzerequest.tit}>
                     질문지 작성
                 </h3>
             </div>
@@ -261,9 +271,8 @@ export default function AdDetailAnalyze(){
                 {renderQuestionInputs()}
                 </div>
 
-                <div className={analyzerequest.iconbox} style={{marginTop : '50px'}}>
-                    <h3>
-                        <i className="fa-solid fa-circle icon"></i>
+                <div className={analyzerequest.iconbox}>
+                    <h3 className={analyzerequest.tit}>
                         전문의 답변
                     </h3>
                     </div>
@@ -285,13 +294,12 @@ export default function AdDetailAnalyze(){
                 </div>
 
 
-             <div className={analyzerequest.iconbox}>
-                <h3>
-                    <i className="fa-solid fa-circle icon"></i>
+             <div className={analyzerequest.iconbox} >
+                <h3 className={analyzerequest.tit}> 
                         첨부자료
                 </h3>
             </div>
-            <div className={analyzerequest.file_table}>
+            <div className={analyzerequest.file_table} style={{marginBottom:'1100px'}}>
                 <div className={analyzerequest.row_box} style={{height : 'auto'}}>
                     <div className={analyzerequest.title_box}>
                         분석의뢰신청서
@@ -393,7 +401,7 @@ export default function AdDetailAnalyze(){
                     </div>
                 </div>
                 <div className={analyzerequest.complete}>
-                    <button type = "button" className={analyzerequest.btt_complete} onClick={btn_analyze_list}>목록</button>
+                    <button type = "button" className={analyzerequest.complete_button} onClick={btn_analyze_list}>목록</button>
                  </div>
             </div>
         </div>
