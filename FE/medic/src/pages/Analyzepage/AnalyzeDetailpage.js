@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import analyzerequest from '../../css/AdviceRequestpage.module.css'
+import analyzerequest from '../../css/AnalyzeDetailpage.module.css'
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -84,11 +84,12 @@ export default function AnalyzeDetailpage(){
     const getUserInfo = async() =>{
         try{
             const response = await axios.get('/user/userInfo')
+            const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
             console.log(response.data)
             setUname(response.data.name)
             setUtel(response.data.userTel)
             setUphone(response.data.userPhone)
-            setUaddress(response.data.userAddress)
+            setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
         } catch(err){
             console.log(err)
         }  
@@ -160,7 +161,7 @@ export default function AnalyzeDetailpage(){
     
 
     return(
-        <div className={analyzerequest.advicerequest_wrap}>
+        <div className={analyzerequest.analyzereequest_wrap}>
             <div className={analyzerequest.iconbox}>
                 <h2 className={analyzerequest.title}>
                     분석의뢰 상세페이지
@@ -195,7 +196,7 @@ export default function AnalyzeDetailpage(){
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>주소</div>
-                    <div className={analyzerequest.input_box}>
+                    <div className={analyzerequest.input_box} style={{width: "500px"}}>
                         <span>{uaddress}</span>
                     </div>
                 </div>
@@ -206,7 +207,7 @@ export default function AnalyzeDetailpage(){
                     환자의료 기록 사항
                 </h3>
             </div>
-            <div className={analyzerequest.request_patienttable2}>
+            <div className={analyzerequest.request_patienttable}>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>환자명</div>
                     <div className={analyzerequest.input_box}>
@@ -265,7 +266,7 @@ export default function AnalyzeDetailpage(){
             <div className = {analyzerequest.request_questiontable}>
                 <div className={analyzerequest.row_box} style={{height : 'auto'}}>
                     <div className={analyzerequest.title_box}>
-                        질문 항목
+                        질문 항목수
                     </div>
                     <div className={analyzerequest.input_box}>
                         <input
@@ -278,7 +279,7 @@ export default function AnalyzeDetailpage(){
                     {renderQuestionInputs()}
             </div>
         {analyzeDetails.anProgressStatus === '분석완료' && (
-            <div>
+        <div>
             <div className={analyzerequest.iconbox}>
                 <h3 className={analyzerequest.tit}>
                     전문의 답변
@@ -299,7 +300,7 @@ export default function AnalyzeDetailpage(){
                 </div>
                     {renderQuestionInputs()}
             </div>
-                    </div>
+        </div>
         )}
              <div className={analyzerequest.iconbox}>
                 <h3 className={analyzerequest.tit}>
