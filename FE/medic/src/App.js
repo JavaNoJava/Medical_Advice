@@ -34,7 +34,6 @@ import AnnouncementDetail from "./pages/Customerpage/Announcement/AnnouncementDe
 import WriteAnnouncement from "./pages/Customerpage/Announcement/WriteAnnouncement";
 import FinduserInfopage from "./pages/FinduserInfo/FinduserInfopage";
 import Updatepw from './pages/FinduserInfo/Updatepw'
-import ChangeConsultativeInfo from "./pages/Mypage/ChangeConsultativeInfopage";
 import ConsultativeAdviceAssignment from './pages/Consultativepage/ConsultativeAdviceAssignment'
 import ConsultativeAnalyzeAssignment from './pages/Consultativepage/ConsultativeAnalyzeAssignment'
 import ConsultativeTranslateAssignment from './pages/Consultativepage/ConsultativeTranslateAssignment'
@@ -117,7 +116,6 @@ export default function App(){
                     <Route path='/medic/customer/announcement/writeannouncement' element={<WriteAnnouncement/>}/> 
                     <Route path="/medic/finduserinfo" element={<FinduserInfopage/>}/>
                     <Route path="/medic/finduserinfo/findpw" element={<Updatepw/>}/>
-                    <Route path="/medic/mypage/ChangeConsultativeInfo" element={<ChangeConsultativeInfo/>}/>
                     <Route path="/medic/consultative/assignmentAdviceList" element={<ConsultativeAdviceAssignment/>}/>
                     <Route path="/medic/consultative/assignmentAnalyzeList" element={<ConsultativeAnalyzeAssignment/>}/>
                     <Route path="/medic/consultative/assignmentTranslateList" element={<ConsultativeTranslateAssignment/>}/>
