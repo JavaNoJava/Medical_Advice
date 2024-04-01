@@ -696,7 +696,19 @@ export default function AdviceRequestpage(){
                         자문의뢰신청서
                     </div>
                     <div className={advicerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAdReqForm(e.target.files[0])}/>
+                        <label htmlFor="file-upload" style={{ padding: 0, position: 'relative' }}>
+                            <button style={{ padding: 0, zIndex: 1, width : '73px' }}>
+                                파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            type="file"
+                            accept="image/*"
+                            style={{ opacity: 0, position: 'absolute', top: 0, left: 0, zIndex: 2 , width : '73px', height : '100%'}}
+                            onChange={e => setAdReqForm(e.target.files[0])}
+                            />
+                        </label>
+                        <span style={{fontSize : '12px'}}>{adReqForm ? `선택된 파일: ${adReqForm.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={advicerequest.row_box} style={{height : 'auto'}}>
