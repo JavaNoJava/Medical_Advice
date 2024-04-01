@@ -315,7 +315,7 @@ export default function AnalyzeDetailpage(){
                     <div className={analyzerequest.input_box}>
                         {
                             anReqForm ?
-                            <button>
+                            <button className={analyzerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anReqForm`}
                                     download="anReqForm.jpg"
@@ -337,7 +337,7 @@ export default function AnalyzeDetailpage(){
                     <div className={analyzerequest.input_box}>
                         {
                             anDiagnosis ?
-                            <button>
+                            <button className={analyzerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anDiagnosis`}
                                     download="anDiagnosis.jpg"
@@ -359,7 +359,7 @@ export default function AnalyzeDetailpage(){
                     <div className={analyzerequest.input_box}>
                         {
                             anRecord ?
-                            <button>
+                            <button className={analyzerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anRecord`}
                                     download="anRecord.jpg"
@@ -381,7 +381,7 @@ export default function AnalyzeDetailpage(){
                     <div className={analyzerequest.input_box}>
                         {
                             anFilm ?
-                            <button>
+                            <button className={analyzerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anFilm`}
                                     download="anFilm.jpg"
@@ -403,7 +403,7 @@ export default function AnalyzeDetailpage(){
                     <div className={analyzerequest.input_box}>
                         {
                             anOther ?
-                            <button>
+                            <button className={analyzerequest.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/analyze/findFile/${index}/anOther`}
                                     download="anOther.jpg"

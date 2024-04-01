@@ -696,7 +696,19 @@ export default function AdviceRequestpage(){
                         자문의뢰신청서
                     </div>
                     <div className={advicerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAdReqForm(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={advicerequest.file_label}>
+                            <button className={advicerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={advicerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAdReqForm(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={advicerequest.file_msg}>{adReqForm ? `선택된 파일: ${adReqForm.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={advicerequest.row_box} style={{height : 'auto'}}>
@@ -704,7 +716,19 @@ export default function AdviceRequestpage(){
                         진단서
                     </div>
                     <div className={advicerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAdDiagnosis(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={advicerequest.file_label}>
+                            <button className={advicerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={advicerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAdDiagnosis(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={advicerequest.file_msg}>{adDiagnosis ? `선택된 파일: ${adDiagnosis.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={advicerequest.row_box} style={{height : 'auto'}}>
@@ -712,7 +736,19 @@ export default function AdviceRequestpage(){
                         의무기록지
                     </div>
                     <div className={advicerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAdRecord(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={advicerequest.file_label}>
+                            <button className={advicerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={advicerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAdRecord(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={advicerequest.file_msg}>{adRecord ? `선택된 파일: ${adRecord.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={advicerequest.row_box} style={{height : 'auto'}}>
@@ -720,7 +756,19 @@ export default function AdviceRequestpage(){
                         필름
                     </div>
                     <div className={advicerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAdFilm(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={advicerequest.file_label}>
+                            <button className={advicerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={advicerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAdFilm(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={advicerequest.file_msg}>{adFilm ? `선택된 파일: ${adFilm.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={advicerequest.row_box} style={{height : 'auto'}}>
@@ -728,7 +776,19 @@ export default function AdviceRequestpage(){
                         기타 자료
                     </div>
                     <div className={advicerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAdOther(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={advicerequest.file_label}>
+                            <button className={advicerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={advicerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAdOther(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={advicerequest.file_msg}>{adOther ? `선택된 파일: ${adOther.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={advicerequest.complete}>

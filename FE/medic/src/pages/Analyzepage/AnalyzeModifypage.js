@@ -418,14 +418,28 @@ const btn_analyze_update = async() => {
                     {
                         isAnReqForm ? 
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anReqForm`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={analyzerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anReqForm`)}>미리보기</button>
+                            <button className={analyzerequest.btn_file_cancle} onClick={()=>{
                                 setIsAnReqForm(!isAnReqForm)
                                 setAnReqForm(null)
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={(e) => setAnReqForm(e.target.files[0])} />
+                        <>
+                            <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                                <button className={analyzerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={analyzerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAnReqForm(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={analyzerequest.file_msg}>{anReqForm ? `선택된 파일: ${anReqForm.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }
                     </div>
                 </div>
@@ -437,14 +451,28 @@ const btn_analyze_update = async() => {
                     {
                         isAnDiagnosis ? 
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anDiagnosis`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={analyzerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anDiagnosis`)}>미리보기</button>
+                            <button className={analyzerequest.btn_file_cancle} onClick={()=>{
                                 setIsAnDiagnosis(!isAnDiagnosis)
                                 setAnDiagnosis(null)
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={(e) => setAnDiagnosis(e.target.files[0])} />
+                        <>
+                            <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                                <button className={analyzerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={analyzerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAnDiagnosis(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={analyzerequest.file_msg}>{anDiagnosis ? `선택된 파일: ${anDiagnosis.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }
                     </div>
                 </div>
@@ -456,14 +484,28 @@ const btn_analyze_update = async() => {
                     {
                         isAnRecord ? 
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anRecord`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={analyzerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anRecord`)}>미리보기</button>
+                            <button className={analyzerequest.btn_file_cancle} onClick={()=>{
                                 setIsAnRecord(!isAnRecord)
                                 setAnRecord(null)
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={(e) => setAnRecord(e.target.files[0])} />
+                        <>
+                            <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                                <button className={analyzerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={analyzerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAnRecord(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={analyzerequest.file_msg}>{anRecord ? `선택된 파일: ${anRecord.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }
                     </div>
                 </div>
@@ -475,14 +517,28 @@ const btn_analyze_update = async() => {
                     {
                         isAnFilm ? 
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anFilm`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={analyzerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anFilm`)}>미리보기</button>
+                            <button className={analyzerequest.btn_file_cancle} onClick={()=>{
                                 setIsAnFilm(!isAnFilm)
                                 setAnFilm(null)
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={(e) => setAnFilm(e.target.files[0])} />
+                        <>
+                            <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                                <button className={analyzerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={analyzerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAnFilm(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={analyzerequest.file_msg}>{anFilm ? `선택된 파일: ${anFilm.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }
                     </div>
                 </div>
@@ -494,14 +550,28 @@ const btn_analyze_update = async() => {
                     {
                         isAnOther ? 
                         <>
-                            <button onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anOther`)}>미리보기</button>
-                            <button onClick={()=>{
+                            <button className={analyzerequest.btn_preview} onClick={()=>btn_open_image(`http://localhost:8080/analyze/findFile/${index}/anOther`)}>미리보기</button>
+                            <button className={analyzerequest.btn_file_cancle} onClick={()=>{
                                 setIsAnOther(!isAnOther)
                                 setAnOther(null)
-                                }} >X</button>
+                                }} >x</button>
                         </>
                         :
-                        <input type='file' accept="image/*" onChange={(e) => setAnOther(e.target.files[0])} />
+                        <>
+                            <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                                <button className={analyzerequest.btn_file}>
+                                    <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                </button>
+                                <input
+                                id="file-upload"
+                                className={analyzerequest.input_file}
+                                type="file"
+                                accept="image/*"
+                                onChange={e => setAnOther(e.target.files[0])}
+                                />
+                            </label>
+                            <span className={analyzerequest.file_msg}>{anOther ? `선택된 파일: ${anOther.name}` : `선택된 파일: 없음`}</span>
+                        </>
                     }
                     </div>
                 </div>

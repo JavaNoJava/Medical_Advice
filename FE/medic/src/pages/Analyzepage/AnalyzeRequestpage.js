@@ -350,7 +350,19 @@ export default function AnalyzeRequestpage(){
                         분석의뢰신청서
                     </div>
                     <div className={analyzerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={(e) => setAnReqForm(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                            <button className={analyzerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={analyzerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAnReqForm(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={analyzerequest.file_msg}>{anReqForm ? `선택된 파일: ${anReqForm.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={analyzerequest.row_box} style={{height : 'auto'}}>
@@ -358,7 +370,19 @@ export default function AnalyzeRequestpage(){
                         진단서
                     </div>
                     <div className={analyzerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAnDiagnosis(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                            <button className={analyzerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={analyzerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAnDiagnosis(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={analyzerequest.file_msg}>{anDiagnosis ? `선택된 파일: ${anDiagnosis.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={analyzerequest.row_box} style={{height : 'auto'}}>
@@ -366,7 +390,19 @@ export default function AnalyzeRequestpage(){
                         의무기록지
                     </div>
                     <div className={analyzerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAnRecord(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                            <button className={analyzerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={analyzerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAnRecord(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={analyzerequest.file_msg}>{anRecord ? `선택된 파일: ${anRecord.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={analyzerequest.row_box} style={{height : 'auto'}}>
@@ -374,7 +410,19 @@ export default function AnalyzeRequestpage(){
                         필름
                     </div>
                     <div className={analyzerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAnFilm(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                            <button className={analyzerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={analyzerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAnFilm(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={analyzerequest.file_msg}>{anFilm ? `선택된 파일: ${anFilm.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={analyzerequest.row_box} style={{height : 'auto'}}>
@@ -382,7 +430,19 @@ export default function AnalyzeRequestpage(){
                         기타자료
                     </div>
                     <div className={analyzerequest.input_box}>
-                        <input type='file' accept="image/*" onChange={e => setAnOther(e.target.files[0])}/>
+                        <label htmlFor="file-upload" className={analyzerequest.file_label}>
+                            <button className={analyzerequest.btn_file}>
+                                <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                            </button>
+                            <input
+                            id="file-upload"
+                            className={analyzerequest.input_file}
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setAnOther(e.target.files[0])}
+                            />
+                        </label>
+                        <span className={analyzerequest.file_msg}>{anOther ? `선택된 파일: ${anOther.name}` : `선택된 파일: 없음`}</span>
                     </div>
                 </div>
                 <div className={analyzerequest.complete}>

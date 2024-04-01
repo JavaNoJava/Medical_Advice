@@ -268,7 +268,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                     <div className={assignmenttranslatedetail.input_box}>
                         {
                             trMtl ?
-                            <button>
+                            <button className={assignmenttranslatedetail.btn_file_download}>
                                 <a
                                     href={`http://localhost:8080/translate/findFile/${index}`}
                                     download="adRecord.zip"
@@ -290,7 +290,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                         {
                             isAnswer ?
                             trProgressStatus ? 
-                                <button>
+                                <button className={assignmenttranslatedetail.btn_file_download}>
                                     <a
                                         href={`http://localhost:8080/assignedTranslate/findFile/${index}`}
                                     >
@@ -299,19 +299,33 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                                 </button>
                             :
                             <>
-                                <button>
+                                <button className={assignmenttranslatedetail.btn_file_download}>
                                     <a
                                         href={`http://localhost:8080/assignedTranslate/findFile/${index}`}
                                     >
                                         다운로드
                                     </a>
                                 </button>
-                                <button onClick={
+                                <button className={assignmenttranslatedetail.btn_file_cancle} onClick={
                                     btn_modify_trAnswer
                                 } >수정</button>
                             </>
                             :
-                            <input type='file' accept='application/zip' onChange={(e)=> setTrAnswer(e.target.files[0])}/>
+                            <>
+                                <label htmlFor="file-upload" className={assignmenttranslatedetail.file_label}>
+                                    <button className={assignmenttranslatedetail.btn_file}>
+                                        <i class="fa-solid fa-plus" style={{color: '#ffffff'}}/> 파일 추가
+                                    </button>
+                                    <input
+                                    id="file-upload"
+                                    className={assignmenttranslatedetail.input_file}
+                                    type="file"
+                                    accept="application/zip"
+                                    onChange={e => setTrAnswer(e.target.files[0])}
+                                    />
+                                </label>
+                                <span className={assignmenttranslatedetail.file_msg}>{trAnswer ? `선택된 파일: ${trAnswer.name}` : `선택된 파일: 없음`}</span>
+                        </>
                         }
                     </div>
                 </div>
