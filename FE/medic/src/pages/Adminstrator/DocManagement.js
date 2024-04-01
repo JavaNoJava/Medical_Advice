@@ -89,7 +89,7 @@ export default function DocManagement() {
     <div className={ad.ad_contents}>
      <div className={ad.iconbox}>
         <h2 className={ad.title}>
-          회원 관리
+          의사 관리
         </h2>
       </div>
 
