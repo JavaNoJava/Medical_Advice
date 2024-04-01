@@ -71,6 +71,7 @@ import ErrorPage from "./pages/Adminstrator/ErrorPage";
 
 import WriteQna from "./pages/Customerpage/Qna/WriteQna";
 import QnaDetail from "./pages/Customerpage/Qna/QnaDetail";
+import Footer from "./components/Footer";
 
 
 export default function App(){
@@ -153,6 +154,7 @@ export default function App(){
                 </Routes>
 
             </div> 
+            <Footer/>
             </div>   
         </BrowserRouter>
     )
