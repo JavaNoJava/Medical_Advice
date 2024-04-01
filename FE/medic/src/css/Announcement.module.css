@@ -7,6 +7,12 @@
   font-family: "돋움", Dotum, Arial, sans -serif;
 }
 
+.title {
+  margin-bottom: 60px;
+  font-size: 2.5rem;
+  color: #0f3a75;
+}
+
 .announce_title {
   width: 850px;
   display: flex;

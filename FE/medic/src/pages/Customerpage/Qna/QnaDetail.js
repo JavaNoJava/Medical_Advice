@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import writecustomerinquiry from '../../../css/WriteQna.module.css';
+import writecustomerinquiry from '../../../css/AnnouncementDetail.module.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import AdminQnaAnswer from '../../../components/AdminQnaAnswer.js'
 import UserQnaAnswer from '../../../components/UserQnaAnswer.js'
@@ -49,45 +49,45 @@ export default function QnaDetail(){
     };
     return (
         <>
-            <div className={writecustomerinquiry.writeform}>
+            <div className={writecustomerinquiry.detailform}>
                 <div className={writecustomerinquiry.inquiry_title}>
-                    <h1>
-                        <i className="fa-solid fa-circle icon"></i>
+                    <h2 className={writecustomerinquiry.title}>
+                        
                         문의사항
-                    </h1>
+                    </h2>
                 </div>
-            <div className={writecustomerinquiry.write_table}>
+            <div className={writecustomerinquiry.detail_table}>
                 <div className={writecustomerinquiry.write_rowbox}>
-                    <div className={writecustomerinquiry.write_title} style={{width : '96.5px'}}>
+                    <div className={writecustomerinquiry.detail_title} >
                         제목
                     </div>
-                    <div className={writecustomerinquiry.write_titleinputbox}>
+                    <div className={writecustomerinquiry.detail_titleinputbox} style={{width:'300px'}}>
                         {detaillist.qaTitle}
                     </div>
                 </div>
-                <div className={writecustomerinquiry.write_rowbox}>
-                    <div className={writecustomerinquiry.write_writerinfo}>
-                        <div className={writecustomerinquiry.write_title}>
+                <div className={writecustomerinquiry.detail_rowbox}>
+                    <div className={writecustomerinquiry.detail_writerinfo}>
+                        <div className={writecustomerinquiry.detail_title} style={{width:'85px'}}>
                             작성자
                         </div>
-                        <div className={writecustomerinquiry.write_writerinfocontent}>
+                        <div className={writecustomerinquiry.detail_writerinfocontent}>
                             {detaillist.uid}
                         </div>
                     </div> 
-                    <div className={writecustomerinquiry.write_writerinfo}>
-                        <div className={writecustomerinquiry.write_title}>
+                    <div className={writecustomerinquiry.detail_writerinfo}  style={{marginLeft:'100px'}}>
+                        <div className={writecustomerinquiry.detail_title}>
                             작성일
                         </div>
-                        <div className={writecustomerinquiry.write_writerinfocontent}>
+                        <div className={writecustomerinquiry.detail_writerinfocontent}>
                             {formatDateString(detaillist.qaDate)}
                         </div>
                     </div>     
                 </div>
-                <div className={`${writecustomerinquiry.write_rowbox} ${writecustomerinquiry.write_contentrowbox}`}>
-                    <div className={`${writecustomerinquiry.write_contenttitle} ${writecustomerinquiry.write_title}`}>
-                        <h3 style={{paddingLeft: '20px'}}>문의내용</h3>
+                <div className={`${writecustomerinquiry.detail_rowbox} ${writecustomerinquiry.detail_contentrowbox}`}>
+                    <div className={`${writecustomerinquiry.detail_contenttitle} ${writecustomerinquiry.detail_contentrowbox}`}>
+                        문의내용
                     </div>
-                    <div className={writecustomerinquiry.write_content} >
+                    <div className={writecustomerinquiry.detail_content} style={{width:'730px', height : '330px', justifyContent: 'start'}}>
                         {detaillist.qaQuestion}
                     </div>  
                 </div>

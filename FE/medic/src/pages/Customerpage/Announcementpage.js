@@ -117,7 +117,7 @@ export default function Announcementpage() {
   return (
     <div className={announce.wrap}>
       <div className={announce.announce_title}>
-        <h2>
+        <h2 className={announce.title}>
           공지사항
         </h2>
       </div>

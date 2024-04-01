@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import customerinquirydetails from '../css/QnaDetails.module.css'
-import writecustomerinquiry from '../css/WriteQna.module.css';
+import ad from '../css/AnnouncementDetail.module.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {Cookies} from "react-cookie";
@@ -56,14 +56,14 @@ export default function UserQnaAnswer({qaId, QuestionInfo}) {
       }
     }
     return(
-        <div className={customerinquirydetails.answerwrap}>
-            <div className={writecustomerinquiry.inquiry_title}>
-                <h1>
-                    <i className="fa-solid fa-circle icon"></i>
+        <div className={ad.detailform} style={{marginTop:'50px'}}>
+            <div className={ad.inquiry_title}>
+                <h2 className={ad.title}>
+                    
                     문의답변
-                </h1>
+                </h2>
                 </div>
-                <div className={customerinquirydetails.answerContainer}>
+                <div className={customerinquirydetails.answerContainer} style={{marginRight:'90px'}}>
                   <div className={customerinquirydetails.answertext}>{isAnswer ? '작성된 답변이 없습니다.' : answer.qaAnswer}</div>   
                 </div>
                 <>

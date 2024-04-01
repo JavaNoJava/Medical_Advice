@@ -201,6 +201,8 @@
 
 
         return(
+
+            
             <div className={advicerequest.advicerequest_wrap}>
                      <div className={advicerequest.iconbox}>
                 <h2 className={advicerequest.title}>
@@ -209,6 +211,7 @@
                 <h4>
                 </h4>
              </div>
+
 
                 <div className={advicerequest.iconbox}>
                     <h3 className={advicerequest.tit}>
@@ -223,6 +226,7 @@
                             <span>{adviceDetails.uname}</span>
                         </div>
                     </div>
+
                     <div className={advicerequest.row_box}>
                         <div className={advicerequest.title_box}>일반전화</div>
                         <div className={advicerequest.input_box}>
@@ -256,7 +260,6 @@
                             <span> {adviceDetails.adPtName}</span>                        
                             </div>
                         </div>
-
                             <div className={advicerequest.row_box}> 
                         <div className={advicerequest.title_box}>주민등록번호</div>
                         <div className={advicerequest.input_box}>
@@ -292,6 +295,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div className={advicerequest.iconbox}>
                     <h3 className={advicerequest.tit}>
                         보험 계약 정보
