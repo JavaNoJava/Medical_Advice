@@ -7,6 +7,15 @@
     align-items: start;
     margin-bottom: 150px;
  }
+ .mypage_box_small{
+    width: 980px;
+    height: 650px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 50px;
+ }
  /* 나의 현황 css */
  .mypage_requestcount_box{
     width: 198px;
@@ -45,7 +54,9 @@
 .modify_wrap{
     width: 730px;
     height: 900px;
-    margin-top: 50px;
+}
+.modify_wrap_small{
+    height: 650px;
 }
 .modify_title{
     width: 730px;
