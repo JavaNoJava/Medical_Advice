@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
-    margin-bottom: 150px;
+    margin-bottom: 140px;
  }
  .mypage_box_small{
     width: 980px;
@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
  }
  /* 나의 현황 css */
  .mypage_requestcount_box{
