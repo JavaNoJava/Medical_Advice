@@ -48,10 +48,10 @@ export default function ModifyConsultativeInfopage(){
 
     const errmsg = {
         email : '올바르지 않은 이메일 형식입니다.',
-        tel : '올바르지 않은 전화번호 형식입니다.',
-        phone : '올바르지 않은 전화번호 형식입니다.',
-        cpNum : '올바르지 않은 사업자번호 형식입니다.',
-        cpFx : '올바르지 않은 팩스번호 형식입니다.',
+        tel : '올바르지 않은 전화번호 형식입니다. (숫자와 "-"만 입력하세요)',
+        phone : '올바르지 않은 전화번호 형식입니다. (숫자와 "-"만 입력하세요)',
+        cpNum : '올바르지 않은 사업자번호 형식입니다. (숫자와 "-"만 입력하세요)',
+        cpFx : '올바르지 않은 팩스번호 형식입니다. (숫자와 "-"만 입력하세요)',
     }
 
     const postcodeScriptUrl = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
@@ -113,18 +113,18 @@ export default function ModifyConsultativeInfopage(){
         }
     }
     
-    const setPrevUserAddress = user_address => {
-        const uadd = user_address.split('/')
+    const setPrevUserAddress = cAddress => {
+        const uadd = cAddress.split('/')
         console.log(uadd)
-        setCAddress(user_address)
+        setCAddress(cAddress)
         setZipcode(uadd[0])
         setUserRoadAddress(uadd[1])
         setDetailAddress(uadd[2])
     }
-    const setPrevHpAddress = cp_address => {
-        const cadd = cp_address.split('/')
+    const setPrevHpAddress = hospAddress => {
+        const cadd = hospAddress.split('/')
         console.log(cadd)
-        setHospAddress(cp_address)
+        setHospAddress(hospAddress)
         setHpZipcode(cadd[0])
         setHospRoadAddress(cadd[1])
         setDetailHpAddress(cadd[2])
@@ -146,7 +146,7 @@ export default function ModifyConsultativeInfopage(){
             setHospNum(myInfo.hospNum);
             setC_Role(myInfo.crole)
             setDepartment(myInfo.department)
-            setPrevUserAddress(myInfo.cAddress)
+            setPrevUserAddress(myInfo.caddress)
             setPrevHpAddress(myInfo.hospAddress)
         } catch (err) {
             console.log(err);
