@@ -105,7 +105,8 @@ export default function ModifyMyInfopage(){
     const setUserPart = (user_part) => {
         switch(user_part){
             case 'general_user' : 
-                setUPart('일반회원') 
+                setUPart('일반회원')
+                window.localStorage.setItem('uPart', '일반회원') 
                 break;
             case 'insurance_co' : 
                 setUPart('보험사')
@@ -257,7 +258,7 @@ export default function ModifyMyInfopage(){
         console.log(response)
         if(response.data === '정보수정 완료!'){
             alert('정보수정이 완료되었습니다.')
-            navigate('/medic/mypage')
+            window.location.href = window.location.href;
         }
     }
 
@@ -323,7 +324,7 @@ export default function ModifyMyInfopage(){
         }
     }
     return(
-        <div className={mypage.modify_wrap}>
+        <div className={`${uPart === '일반회원' ? mypage.modify_wrap_small : mypage.modify_wrap}`}>
             <h3 className={mypage.modify_title}>
                 회원정보수정
             </h3>
@@ -400,7 +401,8 @@ export default function ModifyMyInfopage(){
                     </div>
                 </div>
             </div>
-            <div className={mypage.modify_userinfo} style={{marginTop : '60px'}}>
+            {uPart !== '일반회원' ?
+             <div className={mypage.modify_userinfo} style={{marginTop : '60px'}}>
                 <h4 className={mypage.modify_subtitle}><span className={mypage.modify_subtitleimg}></span>업체 정보</h4>
                 <div className={mypage.modify_userinfotable}>
                     <div className={mypage.modify_row}>
@@ -466,6 +468,9 @@ export default function ModifyMyInfopage(){
                     </div>
                 </div>
             </div>
+            :
+            <></>
+            }
             <div className={mypage.complete}>
                 <div className={mypage.complete_btnBox}>
                     <button type = "button" onClick={btn_progrm_modify}  className={mypage.btt_complete} >수정</button>
