@@ -1,11 +1,12 @@
 .contents {
-    height: 1080px;
+    height: 465px;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center; /* 추가: 화면 가운데 정렬 */
     text-align: center;
     font-family: "돋움", Dotum, Arial, sans-serif;
+    margin-bottom: 100px;
 }
   
 .iconbox {

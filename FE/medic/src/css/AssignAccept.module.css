@@ -80,6 +80,7 @@ div.next {
     display: flex;
     align-items: center; /* 수직 정렬을 위해 사용 */
     justify-content: center;
+    margin-bottom: 100px;
 }
 
 .btt_next {

@@ -1,11 +1,11 @@
 .advicerequest_wrap {
-    height: 2500px;
+    height: 2450px;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center; /* 추가: 화면 가운데 정렬 */
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     padding-bottom: 500px;
     font-family: "돋움", Dotum, Arial, sans-serif;
 }
