@@ -243,6 +243,7 @@
   &:hover {
     text-decoration: underline;
   }
+
 }
 .input_box{
   display: flex;

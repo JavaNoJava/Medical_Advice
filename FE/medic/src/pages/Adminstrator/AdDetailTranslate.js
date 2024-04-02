@@ -42,6 +42,9 @@ export default function AdDetailTranslate(){
                 const anptssnum = response.data.trPtSsNum.split('-');
                 setTrptssnum1(anptssnum[0]);
                 setTrptssnum2(anptssnum[1]);
+                const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
+                setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
+
                 setTrMtl(()=>{
                     if(response.data.trMtl === "empty_file"){
                         return false
@@ -109,7 +112,7 @@ export default function AdDetailTranslate(){
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>주소</div>
                     <div className={translaterequest.input_box}>
-                        <span>{translateDetails.userAddress}</span>
+                        <span>{uaddress}</span>
                     </div>
                 </div>
              </div>

@@ -37,8 +37,10 @@ export default function UserManagement() {
   }
   
   const handleEditUser = (userId) => {
-    navigate(`/medic/adminstrator/useredit/${userId}`, { state: { useredit: userList[userId] } });
+    console.log("userId:", userId); // userId 값이 정상적으로 전달되는지 확인
+    navigate(`/medic/adminstrator/useredit/${userId}`, { state: { useredit: userId } });
   }
+  
 
   const handleDeleteUser = async (userId) => {
     try {
@@ -59,29 +61,6 @@ export default function UserManagement() {
   const itemsPerPage = 7;
   const startIndex = (Page - 1) * itemsPerPage;
   const endIndex = Math.min(userList.length, startIndex + itemsPerPage);
-
-  // const renderUserList = () => {
-  //   if (userList.length === 0) return null;
-
-  //   const itemsPerPage = 7;
-  //   const startIndex = (Page - 1) * itemsPerPage;
-  //   const endIndex = Math.min(userList.length, startIndex + itemsPerPage);
-
-  //   return userList.slice(startIndex, endIndex).map((user, index) => (
-  //     <tr key={index}>
-  //       <td className={usermanage.user_td} onClick={() => handleEditUser(startIndex + index)}>{startIndex + index + 1}</td>
-  //       <td className={usermanage.user_td}>{user.uname}</td>
-  //       <td className={usermanage.user_td}>{user.urole}</td>
-  //       <td className={usermanage.user_td}>{user.userTel}</td>
-  //       <td className={usermanage.user_td}>{user.countByAdvice}</td>
-  //       <td className={usermanage.user_td}>{user.countByAnalyze}</td>
-  //       <td className={usermanage.user_td}>{user.countByTranslate}</td>
-  //       <td className={usermanage.user_td} onClick={() => handleDeleteUser(user.uid)}>
-  //         <FontAwesomeIcon icon={faTrash} />
-  //       </td>
-  //     </tr>
-  //   ));
-  // }
 
   return (
     <div className={ad.ad_contents}>
@@ -121,7 +100,7 @@ export default function UserManagement() {
         </div>
           {userList.slice(startIndex, endIndex).map((user,index) => (
             <div className={ad.data_row_box}>
-              <div className={ad.input_box_no} onClick={() => handleEditUser(startIndex+endIndex)}>
+              <div className={ad.input_box_no} onClick={() => handleEditUser(user.uid)}>
               {startIndex + index + 1}
               </div>
               <div className={ad.input_box}  style={{width:'120px'}}>{user.uname}</div>
@@ -142,26 +121,7 @@ export default function UserManagement() {
           ))}
       </div>
 
-
-
-      {/* <table className={usermanage.user_table}>
-        <thead>
-          <tr>
-            <th className={usermanage.user_th}>NO.</th>
-            <th className={usermanage.user_th}>이름</th>
-            <th className={usermanage.user_th}>구분</th>
-            <th className={usermanage.user_th}>전화 번호</th>
-            <th className={usermanage.user_th}>자문 건수</th>
-            <th className={usermanage.user_th}>분석 건수</th>
-            <th className={usermanage.user_th}>번역 건수</th>
-            <th className={usermanage.user_th}>삭제</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderUserList()}
-        </tbody>
-      </table> */}
-      <div className={ad.pagination}>
+      <div className={ad.pagination} style={{marginBottom:'100px'}}>
         <button className={ad.paginationButton} onClick={() => handlePageChange(Page - 1)} disabled={Page === 1}>
         <FaChevronLeft />
         </button>

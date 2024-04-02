@@ -170,7 +170,7 @@ console.log('ann',announceDetail)
         </div>
 
       
-
+        <div style={{marginBottom:'100px'}}></div>
         </div>
       
     </>

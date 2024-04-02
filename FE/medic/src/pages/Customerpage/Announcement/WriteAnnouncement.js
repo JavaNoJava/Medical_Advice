@@ -117,7 +117,7 @@ export default function WriteAnnouncement()  {
 
       <div className={writeannoucement.complete}>
           <button className={writeannoucement.btt_write} onClick={medicannounce}>작성</button>
-          <button className={writeannoucement.btt_write} onClick={announce}>록록</button>
+          <button className={writeannoucement.btt_write} onClick={announce}>목록</button>
       </div>
 </div>
 

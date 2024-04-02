@@ -134,7 +134,7 @@ export default function Announcementpage() {
                             style={{ width: '190px' }}
                         />
                     </span>
-                    <button className={announce.gradient} onClick={searchAnnounceInfo}>
+                    <button className={announce.search_button} onClick={searchAnnounceInfo}>
                     검색
                     </button>
 
@@ -185,7 +185,7 @@ export default function Announcementpage() {
             </div>
         </div>
         {isAdmin &&(
-<div className={announce.complete}>
+      <div className={announce.complete}>
         <button type="button" onClick={medicWrite} className={announce.btn_write_inquiry}>글쓰기</button>
       </div>
       )}

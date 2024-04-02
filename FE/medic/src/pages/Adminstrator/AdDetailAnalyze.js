@@ -52,6 +52,9 @@ export default function AdDetailAnalyze(){
                 setAnQuestion(response.data.analyzeRequestList);
                 setAnPtSsNum1(anptssnum[0]);
                 setAnPtSsNum2(anptssnum[1]);
+                const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
+                setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
+
                 setAnReqForm(() => {
                     if(response.data.anReqForm === "empty_file"){
                         return false
@@ -189,7 +192,7 @@ export default function AdDetailAnalyze(){
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>주소</div>
                     <div className={analyzerequest.input_box}>
-                    <span>{analyzeDetails.userAddress}</span>
+                    <span>{uaddress}</span>
                     </div>
                 </div>
              </div>
@@ -240,15 +243,16 @@ export default function AdDetailAnalyze(){
             </div>
             <div className={analyzerequest.iconbox}>
                 <h3 className={analyzerequest.tit}> 
-            
+                
                     기타사항
                 </h3>
             </div>
             <div className={analyzerequest.request_othertable}>
                 <div className={analyzerequest.row_box} >
                     <div className={`${analyzerequest.title_box} ${analyzerequest.row_contentbox}` }>기타사항</div>
+                    <div className={analyzerequest.input_box} style={{width : '400px', height : 'auto'}} >
                         <textarea cols="50" rows="5" name="anEtc" readOnly value={analyzeDetails.anEtc} ></textarea>
-                
+                        </div>
                 </div>
             </div>
             <div className={analyzerequest.iconbox} >

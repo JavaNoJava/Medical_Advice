@@ -134,7 +134,7 @@ export default function FAQpage() {
           value={searchKeyword}
           onChange={(e) => setSearchKeyword(e.target.value)}
         />
-        <button className={faq.gradient} onClick={searchFaqInfo}>검색</button>
+        <button className={faq.search_button} onClick={searchFaqInfo}>검색</button>
       </div>
 
       <div className={faq.announce_quirytable}>

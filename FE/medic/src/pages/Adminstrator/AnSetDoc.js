@@ -266,7 +266,7 @@ fetchData1();
         <FaChevronRight />
         </button>
       </div>
-      <div className={ad.complete}>
+      <div className={ad.complete} style={{marginBottom:'100px'}}>
       <button className={ad.complete_button} onClick={handleSave} disabled={!isSaveButtonEnabled}>
         배정
       </button>
@@ -299,7 +299,7 @@ fetchData1();
           <div className={ad.title_box} style={{width:'150px'}}>
             의뢰자문일
           </div>
-          <div className={ad.title_box}  >
+          <div className={ad.title_box} style={{borderRight:'none'}} >
             진행상태
           </div>
          
@@ -316,7 +316,7 @@ fetchData1();
               <div className={ad.input_box} style={{width:'150px'}}>
               {anAnswerDate||"미답변"}
               </div>
-              <div className={ad.input_box} >
+              <div className={ad.input_box} style={{borderRight:'none'}} >
               <select
                 value={adProgressStatus || '분석의뢰중'}
                 onChange={(e) => input_adProgressStatus(e)}
@@ -372,7 +372,7 @@ fetchData1();
         </tbody>
       </table> */}
 
-      <div className={ad.complete} style={{marginBottom:'400px'}}>
+      <div className={ad.complete} style={{marginBottom:'100px'}}>
         <button className={ad.complete_button} onClick={btn_modify}>
           저장
         </button>

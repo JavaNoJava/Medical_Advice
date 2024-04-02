@@ -204,6 +204,7 @@ public class TrAllListService {
     public TranslateListDto translateListDto(Long trId){
         TranslationAssignment translationAssignment = translationAssignmentRepository.findByTrId(trId);
         TranslationRequestList translationRequestList = translationAssignment.getTranslationRequestList();
+        TranslationAnswerFile translationAnswerFile = translationAnswerFileRepository.findAnswerFileById(trId);
 
         Client client  = translationRequestList.getClient();
         logger.info("trid4:{}",client.getUName());
@@ -214,6 +215,7 @@ public class TrAllListService {
                 .uName(client.getUName())
                 .trProgressStatus(translationAssignment.getTrProgressStatus())
                 .trPtDiagnosis(translationRequestList.getTrPtDiagnosis())
+                .trAnswerDate(translationAnswerFile.getTrAnswerDate())
                 .build();
 
         return translateListDto;

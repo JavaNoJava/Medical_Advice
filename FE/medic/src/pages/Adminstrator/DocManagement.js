@@ -144,24 +144,7 @@ export default function DocManagement() {
           ))}
       </div>
 
-      {/* <table className={administrator.doc_table}>
-        <thead>
-          <tr>
-            <th className={administrator.doc_th}>NO.</th>
-            <th className={administrator.doc_th}>이름</th>
-            <th className={administrator.doc_th}>직책</th>
-            <th className={administrator.doc_th}>전화번호</th>
-            <th className={administrator.doc_th}>자문건수</th>
-            <th className={administrator.doc_th}>분석건수</th>
-            <th className={administrator.doc_th}>번역건수</th>
-            <th className={administrator.doc_th}>삭제</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderDoctorList()}
-        </tbody>
-      </table> */}
-      <div className={ad.pagination}>
+      <div className={ad.pagination} style={{marginBottom:'100px'}}>
         <button className={ad.paginationButton} onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
         <FaChevronLeft />
 

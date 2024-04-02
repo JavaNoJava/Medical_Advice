@@ -380,7 +380,7 @@ const navigate = useNavigate();
   };
 
   return (
-    <div className={mypage.mypage_box} style={{marginRight:'200px',marginTop:'50px'}}>
+    <div className={mypage.mypage_box} style={{marginRight:'150px',marginTop:'50px'}}>
  
     
     <div className={mypage.modify_wrap}>

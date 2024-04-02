@@ -184,7 +184,7 @@ export default function AdSetDoc() {
       <option value="직업환경의학과">직업환경의학과</option>
       </select>
       </div>
-          <div className={ad.write_table}>
+          <div className={ad.write_table} >
         <div className={ad.title_row_box}>
           <div className={ad.title_box}>
             NO.
@@ -237,7 +237,7 @@ export default function AdSetDoc() {
              
               </div>
           ))}
-      </div>
+   
    
       <div className={ad.pagination}>
         <button
@@ -261,13 +261,13 @@ export default function AdSetDoc() {
         <FaChevronRight />
         </button>
       </div>
-
-      <div className={ad.complete}>
+      </div>
+      <div className={ad.complete} style={{marginBottom:'100px'}}>
         <button className={ad.complete_button} onClick={handleSave} disabled={!isSaveButtonEnabled}>
           배정
         </button>
       </div>
-
+      
       <div className={ad.ad_iconbox}>
         <h2 className={ad.title}>
 
@@ -295,11 +295,12 @@ export default function AdSetDoc() {
           <div className={ad.title_box} style={{width:'150px'}}>
             의뢰자문일
           </div>
-          <div className={ad.title_box}  >
+          <div className={ad.title_box} style={{borderRight:'none'}} >
             진행상태
           </div>
          
         </div>
+        
             <div className={ad.data_row_box}>
               <div className={ad.input_box} >
               {adId}
@@ -311,7 +312,7 @@ export default function AdSetDoc() {
               <div className={ad.input_box} style={{width:'150px'}}>
               {adAnswerDate||"미답변"}
               </div>
-              <div className={ad.input_box} >
+              <div className={ad.input_box} style={{borderRight:'none'}} >
               <select
                 value={admProgressStatus || '자문의뢰중'}
                 onChange={(e) => input_admProgressStatus(e)}
@@ -326,7 +327,7 @@ export default function AdSetDoc() {
               </div>
       </div>
 
-      <div className={ad.complete} style={{marginBottom:'400px'}}>
+      <div className={ad.complete} style={{marginBottom:'100px'}}>
         <button className={ad.complete_button} onClick={btn_modify}>
           저장
         </button>

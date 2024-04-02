@@ -255,41 +255,6 @@ const handlePageChange = (newPage) => {
           ))}
       </div>
 
-      {/* <table className={ad.ad_table}>
-        <thead>
-          <tr>
-            <th className={ad.ad_th}>NO.</th>
-            <th className={ad.ad_th}>아이디</th>
-            <th className={ad.ad_th}>이름</th>
-            <th className={ad.ad_th}>전화번호</th>
-            <th className={ad.ad_th}>부서</th>
-            <th className={ad.ad_th}>병원명</th>
-            <th className={ad.ad_th}>병원번호</th>
-            <th className={ad.ad_th}>선택</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredDocList.slice(startIndex, endIndex).map((advice, index) => (
-            <tr key={index}>
-              <td className={ad.ad_td}>{startIndex + index + 1}</td>
-              <td className={ad.ad_td}>{advice.cid}</td>
-              <td className={ad.ad_td}>{advice.cname}</td>
-              <td className={ad.ad_td}>{advice.cphone}</td>
-              <td className={ad.ad_td}>{advice.department}</td>
-              <td className={ad.ad_td}>{advice.hospName}</td>
-              <td className={ad.ad_td}>{advice.hospTel}</td>
-              <td className={ad.ad_td}>
-                <input
-                  type="checkbox"
-                  checked={selectedCId===advice.cid}
-                  onChange={() => handleCheckboxChange(advice.cid)}
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
-
 
       <div className={ad.pagination}>
         <button
@@ -313,7 +278,7 @@ const handlePageChange = (newPage) => {
         <FaChevronRight />
         </button>
       </div>
-      <div className={ad.complete}>
+      <div className={ad.complete} style={{marginBottom:'100px'}}>
       <button className={ad.complete_button} onClick={handleSave} disabled={!isSaveButtonEnabled}>
         배정
       </button>
@@ -346,7 +311,7 @@ const handlePageChange = (newPage) => {
           <div className={ad.title_box} style={{width:'150px'}}>
             의뢰자문일
           </div>
-          <div className={ad.title_box}  >
+          <div className={ad.title_box} style={{borderRight:'none'}} >
             진행상태
           </div>
          
@@ -363,7 +328,7 @@ const handlePageChange = (newPage) => {
               <div className={ad.input_box} style={{width:'150px'}}>
               {trAnswerDate||"미답변"}
               </div>
-              <div className={ad.input_box} >
+              <div className={ad.input_box} style={{borderRight:'none'}}>
               <select
                 value={trProgressStatus || '자문의뢰중'}
                 onChange={(e) => input_trProgressStatus(e)}
@@ -378,46 +343,8 @@ const handlePageChange = (newPage) => {
               </div>
       </div>
 
-      {/* <table className={ad.ad_table}>
-        <thead>
-          <tr>
-            <th className={ad.ad_th}>NO.</th>
-            <th className={ad.ad_th}>이름</th>
-            <th className={ad.ad_th}>진단명</th>
-            <th className={ad.ad_th}>의뢰신청일</th>
-            <th className={ad.ad_th}>의뢰배정일</th>
-            <th className={ad.ad_th}>의뢰자문일</th>
-            <th className={ad.ad_th}>진행상태</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-            <tr key={index}>
-              <td className={ad.ad_td}>{trId}</td>
-              <td className={ad.ad_td}>{selectedTranslate.uname}</td>
-              <td className={ad.ad_td}>{selectedTranslate.trPtDiagnosis}</td>
-              <td className={ad.ad_td}>{selectedTranslate.trRegDate}</td>
-              <td className={ad.ad_td}>
-               {tamDate||"미배정"}
-              </td>
-              <td className={ad.ad_td}>{trAnswerDate||"미답변"}</td>
-              <td className={ad.ad_td}>
-              <select
-                  value={trProgressStatus || '번역의뢰중'}
-                  onChange={(e) => input_trProgressStatus(e)}
-                >
-                  <option value="번역의뢰중">번역의뢰중</option>
-                  <option value="번역배정중">번역배정중</option>
-                  <option value="결제하기">결제하기</option>
-                  <option value="번역완료">번역완료</option>
-                </select>
-              </td>
-            </tr>
-          
-        </tbody>
-      </table> */}
 
-      <div className={ad.complete} style={{marginBottom:'400px'}}>
+      <div className={ad.complete} style={{marginBottom:'100px'}}>
         <button className={ad.complete_button} onClick={btn_modify}>
           저장
         </button>

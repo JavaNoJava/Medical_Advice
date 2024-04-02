@@ -100,7 +100,8 @@
                     setVisitEndYear(visit_end_parts[0]);
                     setVisitEndMonth(visit_end_parts[1]);
                     setVisitEndDay(response.data.visitEnd.replaceAll('-', '/'));
-        
+                    const [zipcode, userroadAddress, userDetailAddress] = response.data.userAddress.split('/');
+                    setUaddress(`(${zipcode}) ${userroadAddress} ${userDetailAddress}`);
 
                     const ptSsNum = response.data.adPtSsNum.split('-');
                     setPtSsNum1(ptSsNum1[0]);
@@ -242,7 +243,7 @@
                     <div className={advicerequest.row_box}>
                         <div className={advicerequest.title_box}>주소</div>
                         <div className={advicerequest.input_box}>
-                        <span>{adviceDetails.userAddress}</span>
+                        <span>{uaddress}</span>
                         </div>
                     </div>
                 </div>
@@ -370,9 +371,9 @@
                 <div className={advicerequest.request_othertable}>
                     <div className={advicerequest.row_box} >
                         <div className={`${advicerequest.title_box} ${advicerequest.row_contentbox}`}>기타사항</div>
-                       
-                            <textarea cols="50" rows="5" name="adEtc" readOnly value={adviceDetails.adEtc} ></textarea>
-                        
+                        <div className={advicerequest.input_box} style={{width : '400px', height : 'auto'}}>
+                            <textarea cols="5" rows="5" name="adEtc" readOnly value={adviceDetails.adEtc} ></textarea>
+                        </div>
                     </div>
                 </div>
                 <div className={advicerequest.iconbox} >
@@ -426,7 +427,7 @@
                             첨부자료
                     </h3>
                 </div>
-                <div className={advicerequest.file_table}>
+                <div className={advicerequest.file_table} >
                     <div className={advicerequest.row_box} style={{height : 'auto'}}>
                         <div className={advicerequest.title_box}>
                             자문의뢰신청서
@@ -506,7 +507,7 @@
                         
                         </div>
                     </div>
-                    <div className={advicerequest.row_box} style={{height : 'auto'}}>
+                    <div className={advicerequest.row_box} style={{height : 'auto' }} >
                         <div className={advicerequest.title_box}>
                             기타 자료
                         </div>
@@ -525,7 +526,7 @@
                             
                         </div>
                     </div>
-                    <div className={advicerequest.complete}>
+                    <div className={advicerequest.complete} style={{marginBottom:'px'}}>
                         
                         <button type = "button" className={advicerequest.complete_button} onClick={btn_advice_list}>목록</button>
                     </div>

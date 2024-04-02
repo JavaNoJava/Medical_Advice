@@ -220,6 +220,7 @@ const prevDetailPage = async (prevAmId) => {
         
 
 
+    <div style={{marginBottom:'100px'}}></div>
         </div>
 
 
