@@ -26,7 +26,11 @@ export default function Loginpage(){
         }
         try{
             const response = await axios.post('/login', userInfo)
-            console.log(response.status)
+            const userInfoAll = await axios.get('/user/userInfoAll')
+            
+            if(userInfoAll.data.upart === 'general_user'){
+                window.localStorage.setItem('uPart', '일반회원')
+            }
             if(response.status === 200){
                 alert('로그인 되었습니다.')
                 navigate('/', {state : {isLogin : true}})
