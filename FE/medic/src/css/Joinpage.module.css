@@ -22,11 +22,11 @@ div.complete {
 
 .btt_complete {
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     background-color: #10b3cc; /* 배경색 설정 */
     color: #fff; /* 텍스트 색상 설정 */
-    height: 50px;
-    width: 180px;
+    height: 40px;
+    width: 100px;
     border: 2px solid #10b3cc; /* 테두리 설정 */
     border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
     margin: 0 20px;
@@ -133,7 +133,7 @@ div.complete {
     align-items: start;
 }
 
-.address_input_box input {
+.user_address_input_box input {
     height: 27px;
     padding: 0 5px;
     border : 1px solid rgba(0,0,0,0.3);
