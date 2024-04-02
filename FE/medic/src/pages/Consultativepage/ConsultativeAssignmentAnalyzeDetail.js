@@ -108,10 +108,10 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
     const renderQuestionInputs = () => {
         return anQuestionContents.map((content, index) => (
           <div className={assignmentanalyzedetail.row_box} style={{ height: 'auto' }} key={index}>
-            <div className={assignmentanalyzedetail.title_box}>
+            <div className={assignmentanalyzedetail.title_box} style={{width: '140px'}}>
               질문 {index + 1}
             </div>
-            <div className={assignmentanalyzedetail.input_box}>
+            <div className={assignmentanalyzedetail.input_box} style={{width: '275px'}}>
               <input
                 type="text"
                 name={`anQuestionContent_${index}`}
@@ -120,10 +120,10 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
                 maxLength={300}
               />
             </div>
-            <div className={assignmentanalyzedetail.title_box}>
+            <div className={assignmentanalyzedetail.title_box} style={{width: '150px', borderLeft: '1px solid black'}}>
               답변 {index + 1}
             </div>
-            <div className={assignmentanalyzedetail.input_box}>
+            <div className={assignmentanalyzedetail.input_box} style={{width: '275px'}}>
               <input
                 type="text"
                 name={`anAnswerContent_${index}`}
@@ -410,7 +410,7 @@ export default function ConsultativeAnalyzeAssignmentDetailpage(){
             </div>
 
             <div className={assignmentanalyzedetail.complete}>
-                <button type = "button" className={assignmentanalyzedetail.complete_button} onClick={btn_analyze_request}>분석의뢰 답변 저장</button>
+                <button type = "button" className={assignmentanalyzedetail.complete_button} onClick={btn_analyze_request}>답변 저장</button>
                 <button type = "button" className={assignmentanalyzedetail.complete_button} onClick={btn_analyze_cancle}>취소</button>
             </div>
         </div>

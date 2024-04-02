@@ -135,10 +135,10 @@ export default function ConsultativeAdviceAssignmentDetailpage(){
     const renderQuestionInputs = () => {
         return adQuestionContents.map((content, index) => (
           <div className={assignmentadvicedetail.row_box} style={{ height: 'auto' }} key={index}>
-            <div className={assignmentadvicedetail.title_box}>
+            <div className={assignmentadvicedetail.title_box} style={{width: '140px'}}>
               질문 {index + 1}
             </div>
-            <div className={assignmentadvicedetail.input_box}>
+            <div className={assignmentadvicedetail.input_box} style={{width: '275px'}}>
               <input
                 type="text"
                 name={`adQuestionContent_${index}`}
@@ -147,10 +147,10 @@ export default function ConsultativeAdviceAssignmentDetailpage(){
                 maxLength={300}
               />
             </div>
-            <div className={assignmentadvicedetail.title_box}>
+            <div className={assignmentadvicedetail.title_box} style={{width: '150px', borderLeft: '1px solid black'}}>
               답변 {index + 1}
             </div>
-            <div className={assignmentadvicedetail.input_box}>
+            <div className={assignmentadvicedetail.input_box} style={{width: '275px'}}>
               <input
                 type="text"
                 name={`adAnswerContent_${index}`}
@@ -505,7 +505,7 @@ export default function ConsultativeAdviceAssignmentDetailpage(){
             </div>      
 
             <div className={assignmentadvicedetail.complete}>
-                <button type = "button" className={assignmentadvicedetail.complete_button} onClick={btn_advice_request}>자문의뢰 답변 저장</button>
+                <button type = "button" className={assignmentadvicedetail.complete_button} onClick={btn_advice_request}>답변 저장</button>
                 <button type = "button" className={assignmentadvicedetail.complete_button} onClick={btn_advice_cancle}>취소</button>
             </div>
         </div>
