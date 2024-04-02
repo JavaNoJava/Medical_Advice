@@ -140,7 +140,6 @@ export default function ModifyMyPwpage(){
                     }
                 </div>
             </div> 
-            <Footer/>
         </>
     )
 }
