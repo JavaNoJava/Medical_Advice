@@ -301,14 +301,14 @@ export default function Joinpage(){
                     <div className={joinpage.user_input_box}>
                         <input type="text" name="id" className={joinpage.input_id} onBlur={valid_id} onChange={input_id} maxLength={12}/>
                         <button type="button" onClick={btn_progrm_idConfirm} className={joinpage.btn_changemypw}>아이디 중복확인</button>
-                        {isValidId ? <></> : <span className={joinpage.errmsg}>{errmsg.id} (영문, 숫자, _ 포함 1~12자)</span>}
+                        {isValidId ? <></> : <span className={joinpage.errmsg}>{errmsg.id} <br/>(영문, 숫자, _ 포함 1~12자)</span>}
                     </div>
                 </div>
                 <div className={joinpage.user_row_box}>
                     <div className={joinpage.user_title_box}>비밀번호</div>
                     <div className={joinpage.user_input_box}>
                         <input type="password" name="pw" onBlur={valid_pw} onChange={input_pw} maxLength={15}/>
-                        {isValidPw ? <></> : <span className={joinpage.errmsg}>{errmsg.pw} (최소 8자, 대소문자, 숫자, 특수문자를 각각 1개 이상 포함)</span>}
+                        {isValidPw ? <></> : <span className={joinpage.errmsg}>{errmsg.pw} <br/> (최소 8자, 대소문자, 숫자, 특수문자를 각각 1개 이상 포함)</span>}
 
                     </div>
                 </div>
