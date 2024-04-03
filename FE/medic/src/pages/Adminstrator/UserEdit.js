@@ -27,6 +27,7 @@
     const [userAddress, setUserAddress] = useState()
     const [uPart, setUPart] = useState()
     const [comapanyroadAddress, setComapanyRoadAddress] = useState('')
+    const [uaddress, setUaddress] = useState('')
 
     const [company, setCompany] = useState() //업체명
     const [ceo, setCeo] = useState() //대표자명
@@ -115,6 +116,7 @@
             setURole(response.data.urole)
         
             // setUId(response.data.uid);
+            setUPart(response.data.upart)
             setUPw(response.data.upw);
             setUName(response.data.uname);
             setUEmail(response.data.uemail);
@@ -130,20 +132,20 @@
             setPrevCpAddress(response.data.cpAddress)
 
             // userAddress가 정의되어 있는지 확인 후 설정
-            if (response.data.userAddress) {
-                const userAddressArray = response.data.userAddress.split(" ");
-                setZipcodeNum(userAddressArray[0]);
-                setZipcode(userAddressArray[1]);
-                setDetailAddress(userAddressArray.slice(2).join(" "));
-            }
+            // if (response.data.userAddress) {
+            //     const userAddressArray = response.data.userAddress.split(" ");
+            //     setZipcodeNum(userAddressArray[0]);
+            //     setZipcode(userAddressArray[1]);
+            //     setDetailAddress(userAddressArray.slice(2).join(" "));
+            // }
 
-            // cpAddress가 정의되어 있는지 확인 후 설정
-            if (response.data.cpAddress) {
-                const cpAddressArray = response.data.cpAddress.split(" ");
-                setCpZipcodeNum(cpAddressArray[0]);
-                setCpZipcode(cpAddressArray[1]);
-                setDetailCpAddress(cpAddressArray.slice(2).join(" "));
-            }
+            // // cpAddress가 정의되어 있는지 확인 후 설정
+            // if (response.data.cpAddress) {
+            //     const cpAddressArray = response.data.cpAddress.split(" ");
+            //     setCpZipcodeNum(cpAddressArray[0]);
+            //     setCpZipcode(cpAddressArray[1]);
+            //     setDetailCpAddress(cpAddressArray.slice(2).join(" "));
+            // }
 
         } catch (error) {
             console.error('유저 정보를 가져오는 도중 에러 발생', error);
