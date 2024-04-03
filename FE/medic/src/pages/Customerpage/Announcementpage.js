@@ -46,7 +46,7 @@ export default function Announcementpage() {
     try {
       if (searchKeyword.trim() !== "") {
         const resp = await axios.get(`/announcement/search/${searchKeyword}`);
-        const data = resp.data;
+        const data = resp.data.reverse();
         setAnnouncements(data);
       } else {
         const resp = await axios.get('/announcement/list');

@@ -151,7 +151,7 @@ console.log('ann',announceDetail)
       className={announcedetail.write_content}
     ></textarea>
     <div className={announcedetail.contentcount}> 
-    <span>/300</span>
+    <span>/500</span>
     </div>
   </div>
 </div>

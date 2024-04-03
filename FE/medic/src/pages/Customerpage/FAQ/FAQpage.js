@@ -49,7 +49,7 @@ export default function FAQpage() {
         setFaqList(data);
       } else {
         const resp = await axios.get(`/faq/search/${searchKeyword}`);
-        const data = resp.data;
+        const data = resp.data.reverse();
         setFaqList(data);
       }
     } catch (error) {
