@@ -104,7 +104,7 @@ export default function MedicalNegligencepage(){
               placeholder="검색어를 입력하세요"
               value={searchKeyword}
               onChange={(e) => setSearchKeyword(e.target.value)}
-              style={{ width: '300px', height: '30px', fontSize: '1rem', fontFamily: '돋움, Dotum, Arial, sans-serif'}}
+              style={{ width: '200px', height: '25px', fontSize: '1rem', fontFamily: '돋움, Dotum, Arial, sans-serif'}}
               />
           </span>
         <button onClick={searchMedicalNegligenceInfo} className={MedicalNegligence.search_button}>검색</button>

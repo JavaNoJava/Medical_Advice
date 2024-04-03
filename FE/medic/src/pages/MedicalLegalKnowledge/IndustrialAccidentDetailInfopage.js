@@ -104,11 +104,19 @@ export default function IndustrialAccidentDetailInfopage(){
       {/* 게시글 */}
       <div className={industrialAccidentDetail.write_table}>
         <div className={industrialAccidentDetail.row_box}>
+            <div className={industrialAccidentDetail.title_box}>
+                제목
+            </div>
+            <div className={industrialAccidentDetail.input_box} style={{width:'600px'}}>
+              <span>{industrialAccidentInfoDetail.iaName}</span>
+            </div>
+        </div>
+        <div className={industrialAccidentDetail.row_box}>
           <div className={industrialAccidentDetail.title_box}>
             기관명
           </div>
           <div className={industrialAccidentDetail.input_box} style={{width:'300px'}}>
-            <span>{industrialAccidentInfoDetail.iaName}</span>
+            <span>{industrialAccidentInfoDetail.iaInstitution}</span>
           </div>
           <div className={industrialAccidentDetail.title_box} style={{borderLeft: '1px solid black'}}>
             작성일
@@ -118,11 +126,11 @@ export default function IndustrialAccidentDetailInfopage(){
           </div>
         </div>
         <div className={`${industrialAccidentDetail.row_box} ${industrialAccidentDetail.row_contentbox}`}>
-                <div className={`${industrialAccidentDetail.title_box} ${industrialAccidentDetail.row_contentbox}`}>내용</div>
-                <div className={industrialAccidentDetail.content_box} style={{width:'730px', height : '330px', justifyContent: 'start'}}>
-                  {industrialAccidentInfoDetail.iaContent}
-                </div>
+            <div className={`${industrialAccidentDetail.title_box} ${industrialAccidentDetail.row_contentbox}`}>내용</div>
+            <div className={industrialAccidentDetail.input_box} style={{width:'620px', height : '200px', justifyContent: 'start',alignItems: 'flex-start' }}>
+                {industrialAccidentInfoDetail.iaContent}
             </div>
+        </div>
       </div>
 
       <div className={industrialAccidentDetail.complete}>

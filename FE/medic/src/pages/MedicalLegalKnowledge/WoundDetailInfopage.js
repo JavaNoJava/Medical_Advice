@@ -104,11 +104,19 @@ export default function WoundAccidentDetailInfopage(){
       {/* 게시글 */}
       <div className={woundAccidentDetail.write_table}>
         <div className={woundAccidentDetail.row_box}>
+            <div className={woundAccidentDetail.title_box}>
+                제목
+            </div>
+            <div className={woundAccidentDetail.input_box} style={{width:'600px'}}>
+              <span>{woundInfoDetail.woName}</span>
+            </div>
+        </div>
+        <div className={woundAccidentDetail.row_box}>
           <div className={woundAccidentDetail.title_box}>
             기관명
           </div>
           <div className={woundAccidentDetail.input_box} style={{width:'300px'}}>
-            <span>{woundInfoDetail.woName}</span>
+            <span>{woundInfoDetail.woInstitution}</span>
           </div>
           <div className={woundAccidentDetail.title_box} style={{borderLeft: '1px solid black'}}>
             작성일
@@ -119,7 +127,7 @@ export default function WoundAccidentDetailInfopage(){
         </div>
         <div className={`${woundAccidentDetail.row_box} ${woundAccidentDetail.row_contentbox}`}>
                 <div className={`${woundAccidentDetail.title_box} ${woundAccidentDetail.row_contentbox}`}>내용</div>
-                <div className={woundAccidentDetail.content_box} style={{width:'730px', height : '330px', justifyContent: 'start'}}>
+                <div className={woundAccidentDetail.input_box} style={{width:'620px', height : '200px', justifyContent: 'start',alignItems: 'flex-start' }}>
                   {woundInfoDetail.woContent}
                 </div>
             </div>

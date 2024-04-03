@@ -93,7 +93,7 @@ export default function AssignAccept(){
                 </div>
             </div> */}
             <div className={style.next}>
-                <button type = "button" disabled={!userAgree} onClick={checkAgree} className={style.btt_next}>회원 가입 다음단계</button>
+                <button type = "button" disabled={!userAgree} onClick={checkAgree} className={style.btt_next}>다음단계</button>
             </div>
         </form>
     )

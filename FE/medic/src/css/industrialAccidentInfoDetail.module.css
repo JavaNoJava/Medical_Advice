@@ -32,7 +32,7 @@
 
 .write_table{
   width: 850px;
-  height: 400px;
+  height: 357px;
   display: flex;
   flex-direction: column;
   border-top: 2px solid #10b3cc;
@@ -44,7 +44,7 @@
 .row_box{
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 51px;
   border-collapse: collapse;
   /* border: 1px solid black; */
   border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
@@ -55,8 +55,8 @@
   justify-content: start;
   align-items: center;
   border-right: 1px solid black;
-  height: 50px;
-  width: 80px;
+  height: 51px;
+  width: 128px;
   padding-left: 20px;
   background: #f5f5f5;
 }
@@ -65,13 +65,13 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  height: 52px;
+  height: 51px;
   padding-left: 20px;
   width: 250px;
 }
 
 .row_contentbox{
-  height: 350px;
+  height: 250px;
 }
 
 .preAndNext_table{
@@ -82,7 +82,7 @@
   border-top: 1px solid black;
   border-left: none; /* 왼쪽 테두리 없음 */
   border-right: none; /* 오른쪽 테두리 없음 */
-  margin-bottom: 65px;
+  margin-bottom: 100px;
   margin-right: 100px;
   margin-top: 80px;
 }

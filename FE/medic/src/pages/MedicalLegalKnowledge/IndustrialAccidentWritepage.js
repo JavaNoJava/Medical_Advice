@@ -11,8 +11,12 @@ export default function IndustrialAccidentWritepage() {
     const [writer, setWriter] = useState('');
     const [postTitle, setPostTitle] = useState('')
 
-    const [indusId, setIndusId] = useState('')
-    const [isUpdate, setIsUpdate] = useState(false)
+    const [indusId, setIndusId] = useState('');
+    const [isUpdate, setIsUpdate] = useState(false);
+    const [isValidTitle, setIsValidTitle] = useState(true);
+    const [isValidInstitution, setIsValidInstitution] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('');
+
 
     const navigate = useNavigate();
     const cookie = new Cookies()
@@ -23,6 +27,8 @@ export default function IndustrialAccidentWritepage() {
         setIndustrialWrite(content);
         setQuestionCount(content.length);
     }
+
+
 
     useEffect(()=>{
         currentTimer();
@@ -44,11 +50,27 @@ export default function IndustrialAccidentWritepage() {
             }
         }
     }
-    
+    useEffect(() => {
+        if (errorMessage !== '') {
+            alert(errorMessage);
+        }
+    }, [errorMessage]);
     useEffect(()=>{
         getUpdateInfo()
     },[])
     const btn_writePost = async()=> {
+        if (!postTitle.trim() || !writer.trim() || !industrialWrite.trim()) { //빈 문자열인 경우 저장 방지
+            alert("모든 필드를 입력해주세요.");
+            return;
+        }
+        if (!isValidTitle) { // 유효성 검사 결과를 확인
+            alert("올바른 제목 형식이 아닙니다.");
+            return;
+        }
+        if (!isValidInstitution) { // 기관명 유효성 검사 결과를 확인
+            alert("올바른 기관명 형식이 아닙니다.");
+            return;
+        }
         const today = new Date();
         const IndustrialAccidentInfo = {
             'iaName' : postTitle,
@@ -76,9 +98,19 @@ export default function IndustrialAccidentWritepage() {
       };
     const input_postTitle = e => {
         setPostTitle(e.target.value)
+        setIsValidTitle(true);
+    }
+    const valid_title = e => {
+        const titleRegex = /^[a-zA-Z가-힣]{1,30}$/;
+        setIsValidTitle(titleRegex.test(e.target.value))
     }
     const input_writer = e => {
         setWriter(e.target.value)
+        setIsValidInstitution(true);
+    }
+    const valid_institution = e => {
+        const institutionRegex = /^[a-zA-Z가-힣]{1,30}$/;
+        setIsValidInstitution(institutionRegex.test(e.target.value))
     }
     const btn_updatePost = async() => {
         const today = new Date();
@@ -98,6 +130,7 @@ export default function IndustrialAccidentWritepage() {
             console.log(err)
         }
     }
+
   return (
     <div className={industrialwrite.writeform}>
       <div className={industrialwrite.industrial_title}>
@@ -111,7 +144,8 @@ export default function IndustrialAccidentWritepage() {
                 제목
             </div>
             <div className={industrialwrite.input_box} style={{width:'600px'}}>
-                <input value={postTitle} className={industrialwrite.write_titleinput} onChange={input_postTitle}/>
+                <input value={postTitle} onBlur={valid_title} className={industrialwrite.write_titleinput} onChange={input_postTitle}/>
+                {!isValidTitle && <></>}
             </div>
         </div>
         <div className={industrialwrite.row_box}>
@@ -119,7 +153,8 @@ export default function IndustrialAccidentWritepage() {
                     기관명
             </div>
             <div className={industrialwrite.input_box} style={{width:'300px'}}>
-                <input value = {writer} className={industrialwrite.write_titleinput} onChange={input_writer} style={{width:'250px'}}/>
+                <input value = {writer} onBlur={valid_institution} className={industrialwrite.write_titleinput} onChange={input_writer} style={{width:'250px'}}/>
+                {!isValidInstitution && <></>}
             </div>
             <div className={industrialwrite.title_box} style={{borderLeft: '1px solid black'}}>
                 작성일
@@ -131,10 +166,10 @@ export default function IndustrialAccidentWritepage() {
 
         <div className={`${industrialwrite.row_box} ${industrialwrite.row_contentbox}`}>
             <div className={`${industrialwrite.title_box} ${industrialwrite.row_contentbox}`}>내용</div>
-            <div className={industrialwrite.input_box} style={{width:'670px', height : '340px'}}>
-                <textarea cols="50" rows="10" maxLength={300} value={industrialWrite} onChange={handleIndustrialAccidentWriteChange} style={{height: '300px'}}/>
+            <div className={industrialwrite.input_box} style={{width:'620px', height : '250px'}}>
+                <textarea cols="50" rows="10" maxLength={300} value={industrialWrite} onChange={handleIndustrialAccidentWriteChange}/>
                     <div className={industrialwrite.contentcount}>
-                        <span>{questionCount}/300</span>
+                        <span>{questionCount}/500</span>
                     </div>         
             </div>
         </div>

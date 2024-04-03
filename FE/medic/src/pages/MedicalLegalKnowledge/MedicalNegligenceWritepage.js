@@ -13,6 +13,9 @@ export default function MedicalNegligenceWritepage() {
 
     const [medicalNegligenceId, setMedicalNegligenceId] = useState('')
     const [isUpdate, setIsUpdate] = useState(false)
+    const [isValidTitle, setIsValidTitle] = useState(true);
+    const [isValidInstitution, setIsValidInstitution] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
     const cookie = new Cookies()
@@ -48,8 +51,24 @@ export default function MedicalNegligenceWritepage() {
     useEffect(()=>{
         getUpdateInfo()
     },[])
-
+    useEffect(() => {
+        if (errorMessage !== '') {
+            alert(errorMessage);
+        }
+    }, [errorMessage]);
     const btn_writePost = async()=> {
+        if (!postTitle.trim() || !writer.trim() || !medicalNegligenceWrite.trim()) { //빈 문자열인 경우 저장 방지
+            alert("모든 필드를 입력해주세요.");
+            return;
+        }
+        if (!isValidTitle) { // 유효성 검사 결과를 확인
+            alert("올바른 제목 형식이 아닙니다.");
+            return;
+        }
+        if (!isValidInstitution) { // 기관명 유효성 검사 결과를 확인
+            alert("올바른 기관명 형식이 아닙니다.");
+            return;
+        }
         const today = new Date();
         const medicalNegligence = {
             'mnName' : postTitle,
@@ -77,9 +96,19 @@ export default function MedicalNegligenceWritepage() {
       };
     const input_postTitle = e => {
         setPostTitle(e.target.value)
+        setIsValidTitle(true);
+    }
+    const valid_title = e => {
+        const titleRegex = /^[a-zA-Z가-힣]{1,30}$/;
+        setIsValidTitle(titleRegex.test(e.target.value))
     }
     const input_writer = e => {
         setWriter(e.target.value)
+        setIsValidInstitution(true);
+    }
+    const valid_institution = e => {
+        const institutionRegex = /^[a-zA-Z가-힣]{1,30}$/;
+        setIsValidInstitution(institutionRegex.test(e.target.value))
     }
 
     const btn_updatePost = async() => {
@@ -113,7 +142,8 @@ export default function MedicalNegligenceWritepage() {
                     제목
                 </div>
                 <div className={MedicalNegligenceWrite.input_box} style={{width:'600px'}}>
-                    <input value = {postTitle} className={MedicalNegligenceWrite.write_titleinput} onChange={input_postTitle}/>
+                    <input value = {postTitle} onBlur={valid_title} className={MedicalNegligenceWrite.write_titleinput} onChange={input_postTitle}/>
+                    {!isValidTitle && <></>}
                 </div>
             </div>
 
@@ -122,7 +152,8 @@ export default function MedicalNegligenceWritepage() {
                     기관명
                 </div>
                 <div className={MedicalNegligenceWrite.input_box} style={{width:'300px'}}>
-                    <input value = {writer} className={MedicalNegligenceWrite.write_titleinput} onChange={input_writer} style={{width:'250px'}}/>
+                    <input value = {writer} onBlur={valid_institution} className={MedicalNegligenceWrite.write_titleinput} onChange={input_writer} style={{width:'250px'}}/>
+                    {!isValidInstitution && <></>}
                 </div>
                 <div className={MedicalNegligenceWrite.title_box} style={{borderLeft: '1px solid black'}}>
                     작성일
@@ -134,10 +165,10 @@ export default function MedicalNegligenceWritepage() {
 
             <div className={`${MedicalNegligenceWrite.row_box} ${MedicalNegligenceWrite.row_contentbox}`}>
                 <div className={`${MedicalNegligenceWrite.title_box} ${MedicalNegligenceWrite.row_contentbox}`}>내용</div>
-                <div className={MedicalNegligenceWrite.input_box} style={{width:'670px', height : '340px'}}>
-                    <textarea cols="50" rows="10" maxLength={300} value={medicalNegligenceWrite} onChange={handleMedicalNegligenceWriteChange} style={{height: '300px'}}/>
+                <div className={MedicalNegligenceWrite.input_box} style={{width:'620px', height : '250px'}}>
+                    <textarea cols="50" rows="10" maxLength={300} value={medicalNegligenceWrite} onChange={handleMedicalNegligenceWriteChange}/>
                         <div className={MedicalNegligenceWrite.contentcount}>
-                            <span>{questionCount}/300</span>
+                            <span>{questionCount}/500</span>
                         </div>
                 </div>
             </div>

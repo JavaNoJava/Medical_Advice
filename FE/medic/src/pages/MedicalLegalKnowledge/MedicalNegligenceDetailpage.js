@@ -102,12 +102,20 @@ export default function MedicalNegligenceDetailpage(){
 
       {/* 게시글 */}
       <div className={medicalNegligencedetails.write_table}>
+      <div className={medicalNegligencedetails.row_box}>
+            <div className={medicalNegligencedetails.title_box}>
+                제목
+            </div>
+            <div className={medicalNegligencedetails.input_box} style={{width:'600px'}}>
+              <span>{medicalNegligenceDetail.mnName}</span>
+            </div>
+        </div>
         <div className={medicalNegligencedetails.row_box}>
           <div className={medicalNegligencedetails.title_box}>
             기관명
           </div>
           <div className={medicalNegligencedetails.input_box} style={{width:'300px'}}>
-            <span>{medicalNegligenceDetail.mnName}</span>
+            <span>{medicalNegligenceDetail.mnInstitution}</span>
           </div>
           <div className={medicalNegligencedetails.title_box} style={{borderLeft: '1px solid black'}}>
             작성일
@@ -118,7 +126,7 @@ export default function MedicalNegligenceDetailpage(){
         </div>
         <div className={`${medicalNegligencedetails.row_box} ${medicalNegligencedetails.row_contentbox}`}>
                 <div className={`${medicalNegligencedetails.title_box} ${medicalNegligencedetails.row_contentbox}`}>내용</div>
-                <div className={medicalNegligencedetails.content_box} style={{width:'730px', height : '330px', justifyContent: 'start'}}>
+                <div className={medicalNegligencedetails.input_box} style={{width:'620px', height : '200px', justifyContent: 'start',alignItems: 'flex-start' }}>
                   {medicalNegligenceDetail.mnContent}
                 </div>
             </div>

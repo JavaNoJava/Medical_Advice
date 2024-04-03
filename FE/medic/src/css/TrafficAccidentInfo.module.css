@@ -54,31 +54,21 @@ h2{
     border-right: none; /* 마지막 열의 오른쪽 선 제거 */
 }
   
-.write_button {
-    display: inline-block;
-    font-size: 1.2rem;
-    background-color: #3cb371;
-    height: 50px;
-    width: 180px;
-    border: none;
-    border-radius: 20px;
-}
-  
 div.complete {
     text-align: right;
-    margin-top: 50px;
+    margin-top: 20px;
 }
   
 .btt_write {
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 0.813rem;
     background-color: #10b3cc; /* 배경색 설정 */
     color: #fff; /* 텍스트 색상 설정 */
-    height: 50px;
-    width: 180px;
+    height: 40px;
+    width: 100px;
     border: 2px solid #10b3cc; /* 테두리 설정 */
     border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
-    margin: 0 20px;
+    margin: 0 0 0 850px;
     
     cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
     transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
@@ -92,7 +82,8 @@ div.complete {
 .pagination {
     margin-top: 30px; /* Adjust as needed */
     text-align: center;
-  }
+    margin-bottom: 100px;
+}
   
 .paginationNumber {
     font-size: 1.5rem; /* 필요에 따라 폰트 크기 조정 */
@@ -125,7 +116,7 @@ div.complete {
 
 .search_bar {
     border: 1px solid #d9d9d9;
-    padding: 20px 265px;
+    padding: 20px 230px;
     background-color: #f5f5f5;
     margin-bottom: 20px;
     margin-top: 80px;
@@ -136,8 +127,8 @@ div.complete {
     font-size: 1rem;
     background-color: #10b3cc; /* 배경색 변경 */
     color: #ffffff; /* 텍스트 색상 변경 */
-    height: 35.74px; /* 높이 조정 */
-    width: 70px; /* 너비 조정 */
+    height: 25px; /* 높이 조정 */
+    width: 50px; /* 너비 조정 */
     border: none; /* 테두리 없앰 */
     border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
     margin: 0 20px;
