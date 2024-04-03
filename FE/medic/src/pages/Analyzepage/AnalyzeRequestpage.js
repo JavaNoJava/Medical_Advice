@@ -9,6 +9,19 @@ export default function AnalyzeRequestpage(){
     const [uphone, setUphone] = useState('')
     const [uaddress, setUaddress] = useState('')
 
+    //유효성 체크
+    //환자
+    const [isValidAnptname, setIsValidAnptname] = useState(true);
+    const [isValidAnptssnum1, setIsValidAnptssnum1] = useState(true);
+    const [isValidAnptssnum2, setIsValidAnptssnum2] = useState(true);
+    const [isValidAnptdiagnosis, setIsValidAnptdiagnosis] = useState(true);
+    //모든 유효성 통과
+    const [infoEmpty, setInfoEmpty] = useState(false)
+
+    const errmsg = {
+        msg : '올바르지 않은 형식입니다.',
+    }
+
     //환자
     const [an_ptname, setAnptname] = useState('')
     const [an_ptssnum1, setAnptssnum1] = useState('');
@@ -92,34 +105,56 @@ export default function AnalyzeRequestpage(){
     const input_an_ptname = e => {
         setAnptname(e.target.value)
     }
+    const valid_an_ptname = e => {
+        const anptnameRegex = /^[a-zA-Z가-힣\s]{1,20}$/;
+        setIsValidAnptname(anptnameRegex.test(e.target.value))
+    }
     const input_an_ptssnum1 = e => {
         setAnptssnum1(e.target.value)
         console.log(e.target.value + '-')
     }
+    const valid_an_ptssnum1 = e => {
+        const anptssnum1Regex = /^\d{6}$/;
+        setIsValidAnptssnum1(anptssnum1Regex.test(e.target.value))
+    }
     const input_an_ptssnum2 = e => {
         setAnptssnum2(e.target.value)
     }
-    const input_an_ptsub = e => {
-        setAnptsub(e.target.value)
+    const valid_an_ptssnum2 = e => {
+        const anptssnum2Regex = /^[1-4]\d{6}$/;
+        setIsValidAnptssnum2(anptssnum2Regex.test(e.target.value))
     }
     const input_an_ptdiagnosis = e => {
         setAnptdiagnosis(e.target.value)
+    }
+    const valid_an_ptdiagnosis = e => {
+        const anptdiagnosisRegex = /^[a-zA-Z가-힣0-9\s]{1,50}$/;
+        setIsValidAnptdiagnosis(anptdiagnosisRegex.test(e.target.value))
     }
     const input_an_ptdiagcontent = e => {
         const contents = e.target.value
         setAnptdiagcontent(contents)
         setContentscount(contents.length)
     }
+    
+    //유효성 전체 조건 검사
+    useEffect(() => {
+        if (isValidAnptname && isValidAnptssnum1 && isValidAnptssnum2 && isValidAnptdiagnosis) {
+            setInfoEmpty(true);
+        } else {
+            setInfoEmpty(false);
+        }
+    }, [isValidAnptname, isValidAnptssnum1, isValidAnptssnum2, isValidAnptdiagnosis]);
+    
     const isFormValid = () => {
-          // 여러 입력 필드와 텍스트 영역의 유효성을 확인
-          const isUserInfoValid = uname && utel && uphone && uaddress;
-          const isPtInfoValid = an_ptname && an_ptssnum1 && an_ptssnum2 && an_ptsub && an_ptdiagnosis;
-          const isEtcInfoValid = anEtcValue;
-          const isQuestionInfoValid = anQuestionContents.every(content => content); // 모든 질문 내용이 비어있지 않아야 함
-        
-          // 모든 조건을 만족하면 true를 반환
-          return isUserInfoValid && isPtInfoValid && isEtcInfoValid && isQuestionInfoValid;
-        };
+        // 여러 입력 필드와 텍스트 영역의 유효성을 확인
+        const isUserInfoValid = uname && utel && uphone && uaddress;
+        const isPtInfoValid = an_ptname && an_ptssnum1 && an_ptssnum2 && an_ptsub && an_ptdiagnosis;
+        const isEtcInfoValid = anEtcValue;
+        const isQuestionInfoValid = anQuestionContents.every(content => content); // 모든 질문 내용이 비어있지 않아야 함
+        // 모든 조건을 만족하면 true를 반환
+        return isUserInfoValid && isPtInfoValid && isEtcInfoValid && isQuestionInfoValid && infoEmpty;
+    };
       const btn_analyze_request = async() => {
            // 유효성 검사
           if (!isFormValid()) {
@@ -231,15 +266,20 @@ export default function AnalyzeRequestpage(){
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>환자명</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" name="an_ptname" onChange={input_an_ptname}></input>
+                        <input type="text" name="an_ptname" onBlur={valid_an_ptname} onChange={input_an_ptname}></input>
+                        {isValidAnptname? <></> : <span className={analyzerequest.errmsg}>{errmsg.msg} <br/>(한글 또는 영문으로 최대 20자(띄어쓰기 포함))</span>}
                     </div>
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>주민등록번호</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" name="an_ptssnum1" maxLength={6} onChange={input_an_ptssnum1}></input>
+                        <input type="text" name="an_ptssnum1" onBlur={valid_an_ptssnum1}  maxLength={6} onChange={input_an_ptssnum1}></input>
                          -
-                        <input type="password" name="an_ptssnum2" maxLength={7} onChange={input_an_ptssnum2}></input>                    </div>
+                        <input type="password" name="an_ptssnum2" onBlur={valid_an_ptssnum2} maxLength={7} onChange={input_an_ptssnum2}></input>
+                        {!isValidAnptssnum1 || !isValidAnptssnum2 ? (
+                            <span className={analyzerequest.errmsg}>{errmsg.msg} <br/>(숫자 앞자리 6자, 뒷자리 7자)</span>
+                        ) : null}
+                    </div>
                 </div>
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>진단과목</div>
@@ -278,7 +318,8 @@ export default function AnalyzeRequestpage(){
                 <div className={analyzerequest.row_box}>
                     <div className={analyzerequest.title_box}>진단명</div>
                     <div className={analyzerequest.input_box}>
-                        <input type="text" name="an_ptdiagnosis" onChange={input_an_ptdiagnosis}/>
+                        <input type="text" name="an_ptdiagnosis" onBlur={valid_an_ptdiagnosis} onChange={input_an_ptdiagnosis}/>
+                        {isValidAnptdiagnosis? <></> : <span className={analyzerequest.errmsg}>{errmsg.msg} <br/>(한글 또는 영문으로 최대 50자(띄어쓰기 포함)))</span>}
                     </div>
                 </div>
                 <div className={analyzerequest.row_box}>

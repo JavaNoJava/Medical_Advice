@@ -47,7 +47,7 @@
     align-items: center;
     height: 52px;
     padding-left: 20px;
-    width: 250px;
+    width: 750px;
 }
 
 .row_contentbox{
@@ -209,7 +209,7 @@ div.complete {
 }
 
 .input_box{
-    width: 300px;
+    width: 600px;
 }
 .file_label{
     padding: 0;
@@ -260,4 +260,10 @@ div.complete {
 .btn_file_download a{
     color: white;
     text-decoration: none;
+}
+
+.errmsg{
+    color: red;
+    font-size: 0.625rem;
+    margin-left: 10px;
 }
