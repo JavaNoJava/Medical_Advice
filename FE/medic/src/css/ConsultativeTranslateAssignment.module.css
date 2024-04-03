@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: start;
   text-align: center;
-  width: 950px;
+  width: 850px;
 }
 
 .write_table{
@@ -26,7 +26,6 @@
   border-top: 2px solid #10b3cc;
   border-left: none; /* 왼쪽 테두리 없음 */
   border-right: none; /* 오른쪽 테두리 없음 */
-  margin-right: 100px;
 }
 
 .title_row_box{
@@ -77,7 +76,6 @@ font-size: 20px;
 .pagination {
 margin-top: 40px; /* Adjust as needed */
 text-align: center;
-margin-right: 100px;
 }
 
 .paginationNumber {
