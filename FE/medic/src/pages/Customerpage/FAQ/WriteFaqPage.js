@@ -106,7 +106,7 @@ export default function WriteFaqPage  ()  {
           onChange={e => {
             setFaqAnswer(e.target.value)
             setFaqContentcount(e.target.value.length)
-          }} maxLength={300}
+          }} maxLength={500}
           >
 
           </textarea>

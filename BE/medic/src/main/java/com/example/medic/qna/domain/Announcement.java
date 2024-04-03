@@ -24,12 +24,14 @@ public class Announcement {
     private Long amId;
 
     @NotNull
+    @Column(length = 50)
     private String amName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull
     private LocalDate amRegDate;
 
+    @Column(length = 500)
     private String amContent;
 
 

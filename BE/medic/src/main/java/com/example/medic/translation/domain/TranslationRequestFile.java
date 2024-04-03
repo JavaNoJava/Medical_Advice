@@ -20,6 +20,7 @@ public class TranslationRequestFile {
     @NotNull
     private Long tfId;
 
+    @Column(length = 100)
     private String trMtl;
 
     @OneToOne(fetch = FetchType.LAZY)

@@ -102,12 +102,12 @@ export default function WriteAnnouncement()  {
           rows="500"
           className={writeannoucement.write_content}
           onChange={input_am_Content}
-          maxLength={300}
+          maxLength={500}
           style={{ height: '300px' }}
             ></textarea>
 
           <div className={writeannoucement.contentcount}>
-            <span>/300</span>
+            <span>/500</span>
           </div>
         </div>
         </div>

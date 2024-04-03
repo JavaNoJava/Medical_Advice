@@ -23,16 +23,20 @@ public class Qna {
     private Long qaId;
 
     @NotNull
+
     private LocalDate qaDate;
 
     @NotNull
+    @Column(length = 50)
     private String qaTitle;     // QNA 제목
 
     @NotNull
+    @Column(length = 300)
     private String qaQuestion;      // QNA 본문 내용
 
     private boolean qaSecret;
 
+    @Column(length = 4)
     private String qaPw;
 
     @OneToOne(mappedBy = "qna", cascade = CascadeType.REMOVE) // 변경된 부분

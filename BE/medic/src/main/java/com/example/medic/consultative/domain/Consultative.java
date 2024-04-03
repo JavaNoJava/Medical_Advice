@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -24,42 +25,56 @@ public class Consultative {
 
     @Id
     @NotNull
+    @Column(length = 12)
     private String cId;
 
     @NotNull
+    @Column(length = 15)
     private String cPw;
 
     @NotNull
+    @Column(length = 10)
     private String cRole;
 
     @NotNull
+    @Column(length = 20)
     private String cName;
 
     @NotNull
+    @Column(length = 30)
     private String cEmail;
 
+    @Column(length = 13)
     private String cTel;
 
     @NotNull
+    @Column(length = 13)
     private String cPhone;
 
     @NotNull
+    @Column(length = 100)
     private String cAddress;
 
     @NotNull
+    @Column(length = 30)
     private String hospName;
 
     @NotNull
+    @Column(length = 13)
     private String hospTel;
 
     @NotNull
+    @Column(length = 13)
     private String department;
 
+    @Column(length = 15)
     private String hospFx;
 
     @NotNull
+    @Column(length = 20)
     private String hospNum;
     @NotNull
+    @Column(length = 100)
     private String hospAddress;
 
     @OneToMany(mappedBy = "consultative")

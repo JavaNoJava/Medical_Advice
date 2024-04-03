@@ -22,9 +22,11 @@ public class IndustrialAccidentInfo {
     private Long iaId;
 
     @NotNull
+    @Column(length = 30)
     private String iaName;
 
     @NotNull
+    @Column(length = 30)
     private String iaInstitution;
 
     @NotNull
@@ -33,6 +35,7 @@ public class IndustrialAccidentInfo {
     private LocalDate iaMdDate;
 
     @NotNull
+    @Column(length = 500)
     private String iaContent;
 
     @ManyToOne

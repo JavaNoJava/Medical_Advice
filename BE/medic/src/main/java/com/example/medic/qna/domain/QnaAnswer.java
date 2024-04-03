@@ -25,6 +25,7 @@ public class QnaAnswer {
     private Long qaAnswerId;
 
     @NotNull
+    @Column(length = 500)
     private String qaAnswer;    // Qna 답변글
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
