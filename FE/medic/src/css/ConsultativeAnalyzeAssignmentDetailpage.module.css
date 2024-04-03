@@ -82,7 +82,7 @@
 
 .request_patienttable{
     width: 850px;
-    height: 380px;
+    height: 340px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
