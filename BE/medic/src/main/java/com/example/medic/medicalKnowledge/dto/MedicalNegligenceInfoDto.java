@@ -22,7 +22,7 @@ public class MedicalNegligenceInfoDto {
         return MedicalNegligenceInfoDto.builder()
                 .mnName(medicalNegligenceInfo.getMnName())
                 .mnInstitution(medicalNegligenceInfo.getMnInstitution())
-                .mnRegDate(medicalNegligenceInfo.getMnRegdate())
+                .mnRegDate(medicalNegligenceInfo.getMnRegDate())
                 .mnMdDate(medicalNegligenceInfo.getMnMdDate())
                 .mnContent(medicalNegligenceInfo.getMnContent())
                 .manager(medicalNegligenceInfo.getManager())
