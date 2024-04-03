@@ -297,7 +297,7 @@ fetchData1();
             의뢰배정일
           </div>
           <div className={ad.title_box} style={{width:'150px'}}>
-            의뢰자문일
+            의뢰분석일
           </div>
           <div className={ad.title_box} style={{borderRight:'none'}} >
             진행상태
@@ -331,46 +331,6 @@ fetchData1();
               </div>
       </div>
 
-
-      {/* <table className={ad.ad_table}>
-        <thead>
-          <tr>
-            <th className={ad.ad_th}>NO.</th>
-            <th className={ad.ad_th}>이름</th>
-            <th className={ad.ad_th}>진단명</th>
-            <th className={ad.ad_th}>의뢰신청일</th>
-            <th className={ad.ad_th}>의뢰배정일</th>
-            <th className={ad.ad_th}>의뢰자문일</th>
-            <th className={ad.ad_th}>진행상태</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-            <tr key={index}>
-              <td className={ad.ad_td}>{anId}</td>
-              <td className={ad.ad_td}>{selectedAnalyze ? selectedAnalyze.uname : ""}</td>
-              <td className={ad.ad_td}>{selectedAnalyze ? selectedAnalyze.anPtDiagnosis : ""}</td>
-              <td className={ad.ad_td}>{selectedAnalyze ? selectedAnalyze.anRegDate : ""}</td>
-              <td className={ad.ad_td}>{adMdDate||"미배정"}
-
-</td>
-<td className={ad.ad_td}>{anAnswerDate||"미답변"}</td>
-
-              <td className={ad.ad_td}>
-              <select
-                  value={adProgressStatus || '분석의뢰중'}
-                  onChange={(e) => input_adProgressStatus(e)}
-                >
-                  <option value="분석의뢰중">분석의뢰중</option>
-                  <option value="분석배정중">분석배정중</option>
-                  <option value="결제하기">결제하기</option>
-                  <option value="분석완료">분석완료</option>
-                </select>
-              </td>
-            </tr>
-          
-        </tbody>
-      </table> */}
 
       <div className={ad.complete} style={{marginBottom:'100px'}}>
         <button className={ad.complete_button} onClick={btn_modify}>
