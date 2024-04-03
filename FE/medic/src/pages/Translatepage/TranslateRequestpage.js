@@ -109,14 +109,14 @@ export default function TranslateRequestpage(){
     }, [isValidTrptname, isValidTrptssnum1, isValidTrptssnum2, isValidTrptdiagnosis]);
     
     const isFormValid = () => {
-        // 여러 입력 필드와 텍스트 영역의 유효성을 확인
-        const isUserInfoValid = uname && utel && uphone && uaddress;
-        const isPtInfoValid = tr_ptname && tr_ptssnum1 && tr_ptssnum2 && tr_ptsub && tr_ptdiagnosis && tr_ptcmt;
-        const isEtcInfoValid = trEtcValue;
-        
-        // 모든 조건을 만족하면 true를 반환
-        return isUserInfoValid && isPtInfoValid && isEtcInfoValid && infoEmpty;
-    };
+          // 여러 입력 필드와 텍스트 영역의 유효성을 확인
+          const isUserInfoValid = uname && utel && uphone && uaddress;
+          const isPtInfoValid = tr_ptname && tr_ptssnum1 && tr_ptssnum2 && tr_ptsub && tr_ptdiagnosis && tr_ptcmt;
+          const isEtcInfoValid = trEtcValue;
+
+          // 모든 조건을 만족하면 true를 반환
+          return isUserInfoValid && isPtInfoValid && isEtcInfoValid && trMtl;
+        };
       const btn_translate_request = async() => {
            // 유효성 검사
           if (!isFormValid()) {

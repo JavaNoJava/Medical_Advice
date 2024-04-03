@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import style from '../css/Loginpage.module.css'
-import Footer from '../components/Footer'
 
 export default function Loginpage(){
     const [uid, setUid] = useState('');
@@ -18,27 +17,35 @@ export default function Loginpage(){
         setUpw(e.target.value)
     }
     const userLogin = async(e) => {
-        e.preventDefault();
-        const userInfo = {
-            'uId' : uid,
-            'uPw' : upw,
-            'role' : role
-        }
-        try{
-            const response = await axios.post('/login', userInfo)
-            const userInfoAll = await axios.get('/user/userInfoAll')
-            
-            if(userInfoAll.data.upart === 'general_user'){
-                window.localStorage.setItem('uPart', '일반회원')
+        e.preventDefault()
+        const idRegex = /^[a-zA-Z0-9_]{1,12}$/;
+        const pwRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if(!(idRegex.test(uid) && pwRegex.test(upw))){
+            setErrmsg('아이디 또는 비밀번호 형식이 잘못되었습니다.')
+            return
+        } else{
+            const userInfo = {
+                'uId' : uid,
+                'uPw' : upw,
+                'role' : role
             }
-            if(response.status === 200){
-                alert('로그인 되었습니다.')
-                navigate('/', {state : {isLogin : true}})
-            } else{
-                setErrmsg('아이디와 비밀번호를 확인하세요.')
+            try{
+                const response = await axios.post('/login', userInfo)
+                const userInfoAll = await axios.get('/user/userInfoAll')
+                
+                if(userInfoAll.data.upart === 'general_user'){
+                    window.localStorage.setItem('uPart', '일반회원')
+                }
+                if(response.status === 200){
+                    alert('로그인 되었습니다.')
+                    navigate('/', {state : {isLogin : true}})
+                } else{
+                    setErrmsg('회원구분 또는 아이디와 비밀번호를 확인하세요.')
+                }
+            } catch(err){
+                setErrmsg('회원구분 또는 아이디와 비밀번호를 확인하세요.')
             }
-        } catch(err){
-            setErrmsg('아이디와 비밀번호를 확인하세요.')
         }
     }
     const btn_show_mainpage = e => {
@@ -130,7 +137,6 @@ export default function Loginpage(){
             </div> 
         </form>
     </div>     
-    <Footer/>
     </>
     )   
 }
