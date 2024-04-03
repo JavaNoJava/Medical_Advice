@@ -33,7 +33,7 @@ public class Consultative {
     private String cPw;
 
     @NotNull
-    @Column(length = 10)
+    @Column(length = 15)
     private String cRole;
 
     @NotNull

@@ -31,7 +31,7 @@ public class Manager {
     private String mPw;
 
     @NotNull
-    @Column(length = 10)
+    @Column(length = 15)
     private String mRole;
 
     @NotNull
