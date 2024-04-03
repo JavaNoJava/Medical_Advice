@@ -1,193 +1,193 @@
 .wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    height: 590px;
-    margin: 0 0 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  position : relative;
+  font-family: "돋움", Dotum, Arial, sans -serif;
+}
+
+.announce_title {
+  width: 850px;
+  display: flex;
+  justify-content: start;
+}
+
+.search_bar {
+  width: 450px;
+  border: 1px solid #d9d9d9;
+  padding: 14px 200px;
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_bar input {
+  width: 200px;
+  height: 25px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.announce_quirytable {
+  width: 850px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  border-top: 2px solid #10b3cc;
+  margin-bottom: 20px;
+}
+
+.announce_quirylist_titlebox {
+  width: 850px;
+  height: 40px;
+  display: flex;
+}
+
+.announce_list_content,
+.announce_list_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+}
+
+.announce_list_title {
+  font-size: 1.3rem;
+  height: 40px;
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
+.announce_list_content {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
   }
-  
-  .title {
-    margin-bottom: 60px;
-    font-size: 2.5rem;
-    color: #0f3a75;
-  }
-  
-  .announce_title {
-    width: 850px;
-    display: flex;
-    justify-content: start;
-  }
-  
-  .search_bar {
-    width: 450px;
-    border: 1px solid #d9d9d9;
-    padding: 14px 200px;
-    background-color: #f5f5f5;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .search_bar input {
-    width: 200px;
-    height: 20px;
-    margin-right: 10px;
-  }
-  
-  .announce_quirytable {
-    width: 850px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    border-top: 2px solid #10b3cc;
-   
-  }
-  
-  
-  .announce_quirylist_titlebox {
-    width: 850px;
-    height: 40px;
-    display: flex;
-  }
-  
-  .announce_list_content,
-  .announce_list_title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ddd;
-  }
-  
-  .announce_list_title {
-    font-size: 1.3rem;
-    height: 40px;
-    font-weight: bold;
-    background-color: #f2f2f2;
-  }
-  
-  /* .announce_list_content {
-    /* cursor: pointer;
-    &:hover {
-      text-decoration: underline;
-    } */
-  
-  .announce_quirylist_no {
-    cursor: pointer;
-    &:hover {
-      text-decoration: underline;
-  } 
-  } 
-  
-  .announce_quirylist_content {
-    width: 850px;
-    height: 40px;
-    display: flex;
-  }
-  
-  .announce_list_no,
-  .announce_quirylist_no {
-    border-left: none;
-    width: 60px;
-  }
-  
-  .announce_title h2 {
-    font-size: 2.5em; 
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    unicode-bidi: isolate;
-    margin-bottom: 56px;
-    color: #0f3a75;
-  }
-  
-  .announce_list_question,
-  .announce_quirylist_question {
-    width: 650px;
-  }
-  
-  .announce_list_writedate,
-  .announce_quirylist_writedate {
-    width: 200px;
-  }
-  .announce_delete{
-    width: 100px;
-  }
-  
-  .gradient {
-    width: 50px;
-    height: 26px;
-    font-weight: 900;
-    color: black;
-    text-align: center;
-    background: white;
-    border: solid 2px black;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn_write_inquiry {
+}
+
+.announce_quirylist_content {
+  width: 850px;
+  height: 40px;
+  display: flex;
+}
+
+.announce_list_no,
+.announce_quirylist_no {
+  border-left: none;
+  width: 60px;
+}
+
+.announce_title h2 {
+  font-size: 2.5em; 
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+  margin-bottom: 56px;
+  color: #0f3a75;
+}
+
+.announce_list_question,
+.announce_quirylist_question {
+  width: 650px;
+}
+
+.announce_list_writedate,
+.announce_quirylist_writedate {
+  width: 200px;
+}
+.announce_delete{
+  width: 100px;
+}
+
+.search_button {
     display: inline-block;
-    font-size: 0.813rem;
-    background-color: #10b3cc; /* 배경색 제거 */
-    color: white; /* 글자색을 하늘색으로 설정 */
-    height: 40px;
-    width: 100px;
-    border: 2px solid #10b3cc; /* 테두리 색상 설정 */
-    border-radius: 5px;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: flex-end; /* 버튼을 오른쪽으로 정렬 */
-    margin-bottom: 10px; /* 아래 여백 조절 */
-    margin-left: 750px;
-  }
-  
-  
-  .pagination {
-    margin-top: 30px; /* Adjust as needed */
-    text-align: center;
-  }
-  
-  .paginationButton {
-    font-size: 1.2rem; /* 필요에 따라 폰트 크기 조정 */
-    margin: 0 5px; /* 필요에 따라 간격 조정 */
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
-  }
-  
-  .paginationButton:hover {
-    color: #10b3cc; /* 호버 시 텍스트 색상 변경 */
-  }
-  
-  .paginationNumber {
-    font-size: 1.5rem; /* 필요에 따라 폰트 크기 조정 */
-    margin: 0 5px; /* 필요에 따라 간격 조정 */
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
-  }
-  :not(.manager) .announce_list_writedate ,.announce_list_content,.announce_list_title{
-    border-right: none;
-  }
-  /* h2 {
-    display: block;
-    font-size: 2.5em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    unicode-bidi: isolate;
-    margin-bottom: 56px;
-    color: #0f3a75;
-  } */
+    font-size: 1rem;
+    background-color: #10b3cc; /* 배경색 변경 */
+    color: #ffffff; /* 텍스트 색상 변경 */
+    height: 25px; /* 높이 조정 */
+    width: 50px; /* 너비 조정 */
+    border: none; /* 테두리 없앰 */
+    border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
+    /* margin: 0 20px; */
+    margin-right: 30px;
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
+}
+
+.search_button:hover {
+    background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
+    border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
+}
+
+.btn_write_inquiry {
+  display: inline-block;
+  font-size: 0.813rem;
+  background-color: #10b3cc; /* 배경색 제거 */
+  color: #fff; /* 텍스트 색상 설정 */
+  height: 40px;
+  width: 100px;
+  border: 2px solid #10b3cc; /* 테두리 설정 */
+  border-radius: 5px;
+  margin-bottom: 1000px;
+  cursor: pointer;
+
+  margin-bottom: 10px; /* 아래 여백 조절 */
+  margin-left: 750px;
+}
+
+.btn_write_inquiry:hover {
+  background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
+  border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
+}
+
+.pagination {
+  margin-top: 30px; /* Adjust as needed */
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.paginationButton {
+  font-size: 1.2rem; /* 필요에 따라 폰트 크기 조정 */
+  margin: 0 5px; /* 필요에 따라 간격 조정 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
+}
+
+.paginationButton:hover {
+  color: #10b3cc; /* 호버 시 텍스트 색상 변경 */
+}
+
+.paginationNumber {
+  font-size: 1.5rem; /* 필요에 따라 폰트 크기 조정 */
+  margin: 0 5px; /* 필요에 따라 간격 조정 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
+}
+:not(.manager) .announce_list_writedate ,.announce_list_content,.announce_list_title{
+  border-right: none;
+}
+/* h2 {
+  display: block;
+  font-size: 2.5em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+  margin-bottom: 56px;
+  color: #0f3a75;
+} */

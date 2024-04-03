@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import writecustomerinquiry from '../../../css/AnnouncementDetail.module.css';
+import writecustomerinquiry from '../../../css/WriteQna.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
@@ -172,7 +172,7 @@ export default function WriteQna() {
                 cols="50"
                 rows="50" 
                 value={inquiryQuestion}
-                style={{ height: '200px' }}
+                style={{ height: '100px' }}
                 onChange={e => {
                     setInquiryQuestion(e.target.value)
                     setQuestioncount(e.target.value.length)
@@ -202,5 +202,3 @@ export default function WriteQna() {
     </div>
   );
 };
-
-

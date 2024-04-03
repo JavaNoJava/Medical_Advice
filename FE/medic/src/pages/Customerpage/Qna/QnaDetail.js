@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import writecustomerinquiry from '../../../css/AnnouncementDetail.module.css';
+import writecustomerinquiry from '../../../css/QnaDetails.module.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import AdminQnaAnswer from '../../../components/AdminQnaAnswer.js'
 import UserQnaAnswer from '../../../components/UserQnaAnswer.js'
@@ -87,8 +87,8 @@ export default function QnaDetail(){
                     <div className={`${writecustomerinquiry.detail_contenttitle} ${writecustomerinquiry.detail_contentrowbox}`}>
                         문의내용
                     </div>
-                    <div className={writecustomerinquiry.detail_content} style={{width:'730px', height : '330px', justifyContent: 'start'}}>
-                        {detaillist.qaQuestion}
+                    <div className={writecustomerinquiry.detail_content} style={{width:'730px', height : '200px', justifyContent: 'start'}}>
+                        <textarea cols="50" rows="500" value={detaillist.qaQuestion} readOnly/>
                     </div>  
                 </div>
             </div>
