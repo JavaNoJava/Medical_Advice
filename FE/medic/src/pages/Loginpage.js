@@ -18,7 +18,10 @@ export default function Loginpage(){
         setUpw(e.target.value)
     }
     const userLogin = async(e) => {
-        const 
+        const idRegex = /^[a-zA-Z0-9_]{1,12}$/;
+        const pwRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        
         const userInfo = {
             'uId' : uid,
             'uPw' : upw,

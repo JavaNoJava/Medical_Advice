@@ -1,9 +1,10 @@
 .contents{
     display: flex;
-    flex-direction : column;
-    justify-content:center;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height:80vh;
+    height: 495px;
+    margin: 100px 0 100px 0;
 }
 .contents_box{
     height: 480px;
