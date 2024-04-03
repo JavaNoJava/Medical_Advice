@@ -113,6 +113,7 @@ public class ClientManagementService {
                 .countByAdvice(countByAdvice(findClient))
                 .countByAnalyze(countByAnalyze(findClient))
                 .countByTranslate(countByTranslate(findClient))
+                .uPart(findClient.getUPart())
                 .build();
 
         return response;
