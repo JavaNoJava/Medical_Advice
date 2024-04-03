@@ -121,7 +121,7 @@ export default function WriteQna() {
                 </div>
             </div> 
             <div className={writecustomerinquiry.detail_writerinfo}>
-                <div className={writecustomerinquiry.detail_title}>
+                <div className={writecustomerinquiry.detail_title} style={{borderLeft : '1px solid'}}>
                     작성일
                 </div>
                 <div className={writecustomerinquiry.detail_writerinfocontent}>
@@ -129,8 +129,8 @@ export default function WriteQna() {
                 </div>
             </div> 
             <div className={writecustomerinquiry.detail_writerinfo}>
-                <div className={writecustomerinquiry.detail_title}>
-                    비밀글 여부
+                <div className={writecustomerinquiry.detail_title} style={{borderLeft : '1px solid'}}>
+                    비밀글<br/>여부
                 </div>
                 <div className={writecustomerinquiry.detail_writerinfocontent} style={{paddingLeft : '5px'}}>
                     <input
