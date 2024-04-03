@@ -162,12 +162,13 @@ const prevDetailPage = async (prevAmId) => {
                     </div>
                 </div>  
             </div>
-            <div className={`${announcedetail.detail_rowbox} ${announcedetail.detail_contentrowbox}`}>
+            <div className={`${announcedetail.detail_rowbox} ${announcedetail.detail_contentrowbox}`}  style={{alignItems: 'start'}}>
                 <div className={`${announcedetail.detail_contenttitle} ${announcedetail.detail_contentrowbox}`}>
                     내용
                 </div>
-                <div className={announcedetail.detail_content} style={{width:'730px', height : '330px', justifyContent: 'start'}} >
-                    {announceDetail1.amContent}
+                <div className={announcedetail.detail_content}style={{width:'670px', height : '300px'}} >
+                <textarea cols="50" rows="500" value={announceDetail1.amContent} readOnly/>
+                  
                 </div>  
             </div>
         </div>

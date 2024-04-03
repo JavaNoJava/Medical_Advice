@@ -168,12 +168,14 @@ return (
                   </div>
               </div>  
           </div>
-          <div className={`${announcedetail.detail_rowbox} ${announcedetail.detail_contentrowbox}`}>
+          <div className={`${announcedetail.detail_rowbox} ${announcedetail.detail_contentrowbox}`} style={{alignItems: 'start'}}>
+
               <div className={`${announcedetail.detail_contenttitle} ${announcedetail.detail_title}`}>
-                  <h3 style={{paddingLeft: '20px'}}>내용</h3>
+                내용
               </div>
-              <div className={announcedetail.detail_content} >
-                  {faqDetail.faqAnswer}
+              <div className={announcedetail.detail_content}  style={{width:'670px', height : '300px'}}>
+              <textarea cols="50" rows="10" value={faqDetail.faqAnswer} readOnly/>
+            
               </div>  
           </div>
       </div>

@@ -17,6 +17,7 @@ export default function FaqEdit()  {
   const [faqId , setFaqId] = useState(location.state.faqId);
   const [timer, setTimer] = useState("");
   const [writer, setWriter] = useState('');
+  const [faqCount, setFaqCount] = useState(0)
 
   useEffect(()=>{
     currentTimer();
@@ -121,21 +122,23 @@ console.log('ann',faqDetail)
                   </div>  
             </div>
 
-   <div className={`${announcedetail.write_rowbox} ${announcedetail.write_contentrowbox}`}>
+   <div className={`${announcedetail.write_rowbox} ${announcedetail.write_contentrowbox}`} style={{alignItems: 'start'}}>
   <div className={`${announcedetail.write_title} ${announcedetail.write_contentrowbox}`}>
    내용
   </div>
-  <div className={announcedetail.input_box} style={{width:'670px', height : '300px'}}>
+  <div className={announcedetail.input_box} style={{width:'670px', height : '200px'}}>
     <textarea
       value={faqAnswer}
-      onChange={(e) => 
-      setFaqAnswer(e.target.value)}
+      onChange={e =>{
+        setFaqAnswer(e.target.value)
+        setFaqCount(e.target.value.length)}
+      } 
+     
       className={announcedetail.write_content}
-      style={{ height: '200px' , width:'400px' }}
-      maxLength={300}
+      maxLength={500}
     ></textarea>
      <div className={announcedetail.contentcount}> 
-    <span>/500</span>
+    {faqCount}/500
     </div>
   </div>
 </div>

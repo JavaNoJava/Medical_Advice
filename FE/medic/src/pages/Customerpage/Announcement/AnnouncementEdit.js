@@ -17,6 +17,7 @@ export default function AnnouncementEdit()  {
   const [mId, setMid] = useState(announceDetail.mId);
   const [timer, setTimer] = useState("");
   const [writer, setWriter] = useState('');
+  const [announceCount, setAnnouncecount] = useState(announceDetail.amContent.trim().length);
 
   useEffect(()=>{
     currentTimer();
@@ -136,22 +137,24 @@ console.log('ann',announceDetail)
                   </div>  
             </div>
 
-  <div className={`${announcedetail.write_rowbox} ${announcedetail.write_contentrowbox}`}>
+  <div className={`${announcedetail.write_rowbox} ${announcedetail.write_contentrowbox}`}  style={{alignItems: 'start'}}>
   <div className={`${announcedetail.write_title} ${announcedetail.write_contentrowbox}`}>
     내용
   </div>
-  <div className={announcedetail.input_box} style={{width:'670px', height : '300px'}}>
+  <div className={announcedetail.detail_content} style={{width:'670px', height : '300px'}}>
     <textarea
     cols="50"
     rows="500"
       value={amContent}
-      onChange={(e) => input_amContent(e)}
-      maxLength={300}
+      onChange={e =>{setAmContent(e.target.value)
+        setAnnouncecount(e.target.value.length)} 
+      }
+      maxLength={500}
       style={{ height: '200px' }}
       className={announcedetail.write_content}
     ></textarea>
     <div className={announcedetail.contentcount}> 
-    <span>/500</span>
+    {announceCount}/500
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import writeannoucement from '../../../css/WriteQna.module.css';
+import writeannoucement from '../../../css/WriteAnnouncement.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
@@ -94,24 +94,23 @@ export default function WriteFaqPage  ()  {
 
         </div>
 
-        <div className={`${writeannoucement.write_rowbox} ${writeannoucement.write_contentrowbox}`}>
+        <div className={`${writeannoucement.write_rowbox} ${writeannoucement.write_contentrowbox}`} >
           <div className={`${writeannoucement.write_title} ${writeannoucement.write_contentrowbox}`}>
               답변내용 
           </div>
-          <div className={writeannoucement.input_box} style={{width:'670px', height : '30px'}}>
+          <div className={writeannoucement.input_box} style={{width:'670px', height : '300px'}}>
           <textarea
           className={writeannoucement.write_content}
           cols="50"
-          rows="20"
+          rows="10"
           onChange={e => {
             setFaqAnswer(e.target.value)
             setFaqContentcount(e.target.value.length)
           }} maxLength={500}
           >
-
           </textarea>
           <div className={writeannoucement.contentcount}>
-            <span>/300</span>
+            <span>/500</span>
           </div>
           </div>
         </div>

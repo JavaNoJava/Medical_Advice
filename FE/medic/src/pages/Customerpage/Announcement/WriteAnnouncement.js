@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import writeannoucement from '../../../css/WriteQna.module.css';
+import writeannoucement from '../../../css/WriteAnnouncement.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
@@ -9,7 +9,7 @@ export default function WriteAnnouncement()  {
   const [annoucement_titile, setAnnouncementTitle] = useState('')
   const [amContent, setAmContent] = useState('')
   const [amContentcount, setAmContentcount] = useState(0)
-  const [announceCount, setAnnounceContentcount] = useState(0)
+  const [announceCount, setAnnounceCount] = useState(0)
   const [writer, setWriter] = useState('');
 
   const navigate = useNavigate();
@@ -101,13 +101,15 @@ export default function WriteAnnouncement()  {
           cols="50"
           rows="500"
           className={writeannoucement.write_content}
-          onChange={input_am_Content}
+          onChange={e => 
+          {setAmContent(e.target.value)
+          setAnnounceCount(e.target.value.length)}}
           maxLength={500}
-          style={{ height: '300px' }}
+        
             ></textarea>
 
           <div className={writeannoucement.contentcount}>
-            <span>/500</span>
+            {announceCount}/500
           </div>
         </div>
         </div>
