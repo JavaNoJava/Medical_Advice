@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import cusinquiry from '../../css/Announcement.module.css'
+import cusinquiry from '../../css/Qnapage.module.css'
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 import { Cookies } from "react-cookie";

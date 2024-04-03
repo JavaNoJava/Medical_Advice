@@ -3,7 +3,8 @@
     flex-direction : column;
     justify-content:center;
     align-items: center;
-    height:80vh;
+    height: 500px;
+    margin: 75px 0 100px 0;
 }
 .FinduserBox{
     width: 730px;
@@ -112,6 +113,7 @@
     margin-top: 10px;
     padding: 0;
     cursor: pointer;
-    background-color: #0F3A75;
+    background-color: #10b3cc;
     color: white;
+    border : none;
 }

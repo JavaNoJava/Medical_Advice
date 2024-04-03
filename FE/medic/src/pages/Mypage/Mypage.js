@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import mypage from '../../css/Mypage.module.css'
-import Footer from '../../components/Footer'
 import ModifyMyInfopage from "../../components/ModifyMyInfopage";
 import MyRequestCount from "../../components/MyRequestCount";
 
@@ -18,7 +17,6 @@ export default function Mypage(){
                 <MyRequestCount/>
                 <ModifyMyInfopage/>
             </div>
-            <Footer/>
         </>
     )
 }

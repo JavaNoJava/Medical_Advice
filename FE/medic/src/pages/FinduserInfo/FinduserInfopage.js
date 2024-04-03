@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import style from '../../css/FinduserInfopage.module.css'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Footer from "../../components/Footer"
 
 export default function FinduserInfopage(){
     const [name, setName] = useState('')
@@ -117,7 +116,6 @@ export default function FinduserInfopage(){
                     </div>
                 </div>
             </div>  
-            <Footer/>
         </>
     )
 }

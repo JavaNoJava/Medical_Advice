@@ -103,6 +103,7 @@ export default function ModifyMyInfopage(){
     }
 
     const setUserPart = (user_part) => {
+        console.log(user_part)
         switch(user_part){
             case 'general_user' : 
                 setUPart('일반회원')
