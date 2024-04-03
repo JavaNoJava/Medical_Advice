@@ -52,7 +52,7 @@ div.complete {
     justify-content: center;
     align-items: start;
     text-align: center;
-    width: 880px;
+    width: 850px;
     margin: 0 auto 20px;
 }
 
@@ -61,30 +61,28 @@ div.complete {
     padding-left: 10px;
     font-size: 25px;
     color: #1b699b;
-    margin-bottom: 17px;
-    margin-left: 10px;
+    margin-bottom: 15px;
 }
 
 .title {
-    margin-bottom: -20px;
+    margin-bottom: 10px;
     font-size: 2.5rem;
     color: #0f3a75;
 }
 
 .join_usertable{
-    width: 730px;
+    width: 850px;
     height: 433px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
     border-left: none; /* 왼쪽 테두리 없음 */
     border-right: none; /* 오른쪽 테두리 없음 */
-    margin-bottom: 65px;
-    margin-right: 130px;
+    margin-bottom: 40px;
 }
 
 .user_row_box{
-    width: 730px;
+    width: 850px;
     height: auto;
     border-bottom: 1px solid rgba(0,0,0,0.3);
     display: flex;
