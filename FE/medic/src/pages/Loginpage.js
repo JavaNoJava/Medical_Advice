@@ -18,7 +18,7 @@ export default function Loginpage(){
         setUpw(e.target.value)
     }
     const userLogin = async(e) => {
-        e.preventDefault();
+        const 
         const userInfo = {
             'uId' : uid,
             'uPw' : upw,
@@ -35,10 +35,10 @@ export default function Loginpage(){
                 alert('로그인 되었습니다.')
                 navigate('/', {state : {isLogin : true}})
             } else{
-                setErrmsg('아이디와 비밀번호를 확인하세요.')
+                setErrmsg('회원구분 또는 아이디와 비밀번호를 확인하세요.')
             }
         } catch(err){
-            setErrmsg('아이디와 비밀번호를 확인하세요.')
+            setErrmsg('회원구분 또는 아이디와 비밀번호를 확인하세요.')
         }
     }
     const btn_show_mainpage = e => {
@@ -130,7 +130,6 @@ export default function Loginpage(){
             </div> 
         </form>
     </div>     
-    <Footer/>
     </>
     )   
 }
