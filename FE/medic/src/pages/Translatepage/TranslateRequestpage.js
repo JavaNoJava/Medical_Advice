@@ -79,7 +79,7 @@ export default function TranslateRequestpage(){
           const isEtcInfoValid = trEtcValue;
 
           // 모든 조건을 만족하면 true를 반환
-          return isUserInfoValid && isPtInfoValid && isEtcInfoValid;
+          return isUserInfoValid && isPtInfoValid && isEtcInfoValid && trMtl;
         };
       const btn_translate_request = async() => {
            // 유효성 검사

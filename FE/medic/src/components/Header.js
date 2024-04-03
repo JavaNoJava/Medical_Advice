@@ -99,17 +99,18 @@ export default function Header({}) {
 
     const signout_text = async () => {
         try {
-            cookies.remove('uId')
-            cookies.remove('uRole')
-            window.localStorage.removeItem('uPart')
-            const response = await axios.get('/logout');
-            if (response.status === 200) {
-                alert('로그아웃 되었습니다.');
-                navigate('/');
-            } else {
-                alert('현재 로그인된 세션이 없습니다.');
-            }
-            console.log(response);
+            if(window.confirm("로그아웃 하시겠습니까?")){
+                cookies.remove('uId')
+                cookies.remove('uRole')
+                window.localStorage.removeItem('uPart')
+                const response = await axios.get('/logout');
+                if (response.status === 200) {
+                    alert('로그아웃 되었습니다.');
+                    navigate('/');
+                } else {
+                    alert('현재 로그인된 세션이 없습니다.');
+                }
+            } 
         } catch (err) {
             console.log(err);
         }
