@@ -9,6 +9,19 @@ export default function TranslateRequestpage(){
     const [uphone, setUphone] = useState('')
     const [uaddress, setUaddress] = useState('')
 
+    //유효성 체크
+    //환자
+    const [isValidTrptname, setIsValidTrptname] = useState(true);
+    const [isValidTrptssnum1, setIsValidTrptssnum1] = useState(true);
+    const [isValidTrptssnum2, setIsValidTrptssnum2] = useState(true);
+    const [isValidTrptdiagnosis, setIsValidTrptdiagnosis] = useState(true);
+    //모든 유효성 통과
+    const [infoEmpty, setInfoEmpty] = useState(false)
+
+    const errmsg = {
+        msg : '올바르지 않은 형식입니다.',
+    }
+
     //환자
     const [tr_ptname, setTrptname] = useState('')
     const [tr_ptssnum1, setTrptssnum1] = useState('');
@@ -54,33 +67,56 @@ export default function TranslateRequestpage(){
     const input_tr_ptname = e => {
         setTrptname(e.target.value)
     }
+    const valid_tr_ptname = e => {
+        const trptnameRegex = /^[a-zA-Z가-힣\s]{1,20}$/;
+        setIsValidTrptname(trptnameRegex.test(e.target.value))
+    }
     const input_tr_ptssnum1 = e => {
         setTrptssnum1(e.target.value)
         console.log(e.target.value + '-')
     }
+    const valid_tr_ptssnum1 = e => {
+        const trptssnum1Regex = /^\d{6}$/;
+        setIsValidTrptssnum1(trptssnum1Regex.test(e.target.value))
+    }
     const input_tr_ptssnum2 = e => {
         setTrptssnum2(e.target.value)
     }
-    const input_tr_ptsub = e => {
-        setTrptsub(e.target.value)
+    const valid_tr_ptssnum2 = e => {
+        const trptssnum2Regex = /^[1-4]\d{6}$/;
+        setIsValidTrptssnum2(trptssnum2Regex.test(e.target.value))
     }
     const input_tr_ptdiagnosis = e => {
         setTrptdiagnosis(e.target.value)
+    }
+    const valid_tr_ptdiagnosis = e => {
+        const trptdiagnosisRegex = /^[a-zA-Z가-힣0-9\s]{1,50}$/;
+        setIsValidTrptdiagnosis(trptdiagnosisRegex.test(e.target.value))
     }
     const input_tr_ptcmt = e => {
         const contents = e.target.value
         setTrptcmt(contents)
         setContentscount(contents.length)
     }
+    
+    //유효성 전체 조건 검사
+    useEffect(() => {
+        if (isValidTrptname && isValidTrptssnum1 && isValidTrptssnum2 && isValidTrptdiagnosis) {
+            setInfoEmpty(true);
+        } else {
+            setInfoEmpty(false);
+        }
+    }, [isValidTrptname, isValidTrptssnum1, isValidTrptssnum2, isValidTrptdiagnosis]);
+    
     const isFormValid = () => {
-          // 여러 입력 필드와 텍스트 영역의 유효성을 확인
-          const isUserInfoValid = uname && utel && uphone && uaddress;
-          const isPtInfoValid = tr_ptname && tr_ptssnum1 && tr_ptssnum2 && tr_ptsub && tr_ptdiagnosis && tr_ptcmt;
-          const isEtcInfoValid = trEtcValue;
-
-          // 모든 조건을 만족하면 true를 반환
-          return isUserInfoValid && isPtInfoValid && isEtcInfoValid;
-        };
+        // 여러 입력 필드와 텍스트 영역의 유효성을 확인
+        const isUserInfoValid = uname && utel && uphone && uaddress;
+        const isPtInfoValid = tr_ptname && tr_ptssnum1 && tr_ptssnum2 && tr_ptsub && tr_ptdiagnosis && tr_ptcmt;
+        const isEtcInfoValid = trEtcValue;
+        
+        // 모든 조건을 만족하면 true를 반환
+        return isUserInfoValid && isPtInfoValid && isEtcInfoValid && infoEmpty;
+    };
       const btn_translate_request = async() => {
            // 유효성 검사
           if (!isFormValid()) {
@@ -186,15 +222,19 @@ export default function TranslateRequestpage(){
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>환자명</div>
                     <div className={translaterequest.input_box}>
-                        <input type="text" name="tr_ptname" onChange={input_tr_ptname}></input>
+                        <input type="text" name="tr_ptname" onBlur={valid_tr_ptname} onChange={input_tr_ptname}></input>
+                        {isValidTrptname? <></> : <span className={translaterequest.errmsg}>{errmsg.msg} <br/>(한글 또는 영문으로 최대 20자(띄어쓰기 포함))</span>}
                     </div>
                 </div>
                 <div className={translaterequest.row_box}>
-                    <div className={translaterequest.title_box}>주민등록번록</div>
+                    <div className={translaterequest.title_box}>주민등록번호</div>
                     <div className={translaterequest.input_box}>
-                        <input type="text" name="tr_ptssnum1" maxLength={6} onChange={input_tr_ptssnum1}></input>
+                        <input type="text" name="tr_ptssnum1" onBlur={valid_tr_ptssnum1} maxLength={6} onChange={input_tr_ptssnum1}></input>
                          -
-                        <input type="password" name="tr_ptssnum2" maxLength={7} onChange={input_tr_ptssnum2}></input>
+                        <input type="password" name="tr_ptssnum2" onBlur={valid_tr_ptssnum2} maxLength={7} onChange={input_tr_ptssnum2}></input>
+                        {!isValidTrptssnum1 || !isValidTrptssnum2 ? (
+                            <span className={translaterequest.errmsg}>{errmsg.msg} <br/>(숫자 앞자리 6자, 뒷자리 7자)</span>
+                        ) : null}
                     </div>
                 </div>
                 <div className={translaterequest.row_box}>
@@ -234,7 +274,8 @@ export default function TranslateRequestpage(){
                 <div className={translaterequest.row_box}>
                     <div className={translaterequest.title_box}>진단명</div>
                     <div className={translaterequest.input_box}>
-                        <input type="text" name="tr_ptdiagnosis" onChange={input_tr_ptdiagnosis}/>
+                        <input type="text" name="tr_ptdiagnosis" onBlur={valid_tr_ptdiagnosis} onChange={input_tr_ptdiagnosis}/>
+                        {isValidTrptdiagnosis? <></> : <span className={translaterequest.errmsg}>{errmsg.msg} <br/>(한글 또는 영문으로 최대 50자(띄어쓰기 포함)))</span>}
                     </div>
                 </div>
                 <div className={translaterequest.row_box}>

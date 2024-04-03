@@ -19,8 +19,24 @@ export default function AdviceRequestpage(){
 
     const minDate = new Date(1960, 0, 1);
 
+    //유효성 체크
+    //환자
+    const [isValidAdptname, setIsValidAdptname] = useState(true);
+    const [isValidAdptssnum1, setIsValidAdptssnum1] = useState(true);
+    const [isValidAdptssnum2, setIsValidAdptssnum2] = useState(true);
+    const [isValidAdptdiagnosis, setIsValidAdptdiagnosis] = useState(true);
+    const [isValidAdptrec, setIsValidAdptrec] = useState(true);
+    // 보험사
+    const [isValidInsurance, setIsValidInsurance] = useState(true);
+    const [isValidInsurename, setIsValidInsurename] = useState(true);
+    // 진료기록
+    const [isValidHospital, setIsValidHospital] = useState(true);
+    //모든 유효성 통과
+    const [infoEmpty, setInfoEmpty] = useState(false)
 
-
+    const errmsg = {
+        msg : '올바르지 않은 형식입니다.',
+    }
 
     const [uname, setUname] = useState('')
     const [utel, setUtel] = useState('')
@@ -164,10 +180,7 @@ export default function AdviceRequestpage(){
       setSelectedDay(e.target.value);
     };
 
-    const handleAdEtcChange = (e) => {
-        setAdEtcValue(e.target.value);
-        setAdetccount(e.target.value.length)
-      };
+    
 
     const handleQuestionTotalChange = (e) => {
         let value = parseInt(e.target.value, 10);
@@ -184,21 +197,38 @@ export default function AdviceRequestpage(){
     const input_ad_ptname = e => {
         setAdptname(e.target.value)
     }
+    const valid_ad_ptname = e => {
+        const adptnameRegex = /^[a-zA-Z가-힣\s]{1,20}$/;
+        setIsValidAdptname(adptnameRegex.test(e.target.value))
+    }
     const input_ad_ptssnum1 = e => {
         setAdptssnum1(e.target.value)
         console.log(e.target.value + '-')
     }
+    const valid_ad_ptssnum1 = e => {
+        const adptssnum1Regex = /^\d{6}$/;
+        setIsValidAdptssnum1(adptssnum1Regex.test(e.target.value))
+    }
     const input_ad_ptssnum2 = e => {
         setAdptssnum2(e.target.value)
     }
-    const input_ad_ptsub = e => {
-        setAdptsub(e.target.value)
+    const valid_ad_ptssnum2 = e => {
+        const adptssnum2Regex = /^[1-4]\d{6}$/;
+        setIsValidAdptssnum2(adptssnum2Regex.test(e.target.value))
     }
     const input_ad_ptdiagnosis = e => {
         setAdptdiagnosis(e.target.value)
     }
+    const valid_ad_ptdiagnosis = e => {
+        const adptdiagnosisRegex = /^[a-zA-Z가-힣0-9\s]{1,50}$/;
+        setIsValidAdptdiagnosis(adptdiagnosisRegex.test(e.target.value))
+    }
     const input_ad_ptrec = e => {
         setAdptrec(e.target.value)
+    }
+    const valid_ad_ptrec = e => {
+        const adptrec = /^[a-zA-Z가-힣0-9\s]{1,100}$/;
+        setIsValidAdptrec(adptrec.test(e.target.value))
     }
     const input_ad_ptcmt = e => {
         const contents = e.target.value
@@ -208,53 +238,42 @@ export default function AdviceRequestpage(){
     const input_insurance = e => {
         setInsurance(e.target.value)
     }
+    const valid_insurance = e => {
+        const insuranceRegex = /^[a-zA-Z가-힣0-9\s]{1,10}$/;
+        setIsValidInsurance(insuranceRegex.test(e.target.value))
+    }
     const input_insure_name = e => {
         setInsurename(e.target.value)
+    }
+    const valid_insure_name = e => {
+        const insurenameRegex = /^[a-zA-Z가-힣0-9\s]{1,10}$/;
+        setIsValidInsurename(insurenameRegex.test(e.target.value))
     }
     const input_hospital = e => {
         setHospital(e.target.value)
     }
-    const input_adm_startYear = e => {
-        setAdmstartYear(e.target.value)
-    }
-    const input_adm_startMonth = e => {
-        setAdmstartMonth(e.target.value)
-    } 
-    const input_adm_startDay = e => {
-        setAdmstartDay(e.target.value)
-    }
-    const input_adm_endYear = e => {
-        setAdmendYear(e.target.value)
-    }
-    const input_adm_endMonth = e => {
-        setAdmendMonth(e.target.value)
-    }
-    const input_adm_endDay = e => {
-        setAdmendDay(e.target.value)
+    const valid_hospital = e => {
+        const hospitalRegex = /^[a-zA-Z가-힣0-9\s]{1,10}$/;
+        setIsValidHospital(hospitalRegex.test(e.target.value))
     }
     const input_treat_cmt = e => {
         setTreatcmt(e.target.value)
         setTreatcmtcount(e.target.value.length)
     }
-    const input_visit_startYear = e => {
-        setVisitstartYear(e.target.value)
-    }
-    const input_visit_startMonth = e => {
-        setVisitstartMonth(e.target.value)
-    }
-    const input_visit_startDay = e => {
-        setVisitstartDay(e.target.value)
-    }
-
-    const input_visit_endYear = e => {
-        setVisitendYear(e.target.value)
-    }
-    const input_visit_endMonth = e => {
-        setVisitendMonth(e.target.value)
-    }
-    const input_visit_endDay = e => {
-        setVisitendDay(e.target.value)
-    }
+    const handleAdEtcChange = (e) => {
+        setAdEtcValue(e.target.value);
+        setAdetccount(e.target.value.length)
+    };
+    
+    //유효성 전체 조건 검사
+    useEffect(() => {
+        if (isValidAdptname && isValidAdptssnum1 && isValidAdptssnum2 && isValidAdptdiagnosis && isValidAdptrec && isValidInsurance && isValidInsurename && isValidHospital) {
+            setInfoEmpty(true);
+        } else {
+            setInfoEmpty(false);
+        }
+    }, [isValidAdptname, isValidAdptssnum1, isValidAdptssnum2, isValidAdptdiagnosis, isValidAdptrec, isValidInsurance, isValidInsurename, isValidHospital]);
+    
     const isFormValid = () => {
         // 여러 입력 필드와 텍스트 영역의 유효성을 확인
         const isUserInfoValid = uname && utel && uphone && uaddress;
@@ -264,9 +283,9 @@ export default function AdviceRequestpage(){
           visit_startYear && visit_startMonth && visit_startDay && visit_endYear && visit_endMonth && visit_endDay && treat_cmt;
         const isEtcInfoValid = adEtcValue;
         const isQuestionInfoValid = adQuestionContents.every(content => content); // 모든 질문 내용이 비어있지 않아야 함
-      
+
         // 모든 조건을 만족하면 true를 반환
-        return isUserInfoValid && isPtInfoValid && isInsuranceValid && isHospitalInfoValid && isEtcInfoValid && isQuestionInfoValid;
+        return isUserInfoValid && isPtInfoValid && isInsuranceValid && isHospitalInfoValid && isEtcInfoValid && isQuestionInfoValid && infoEmpty;
       };
     const btn_advice_request = async() => {
          // 유효성 검사
@@ -436,15 +455,21 @@ export default function AdviceRequestpage(){
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>환자명</div>
                     <div className={advicerequest.input_box}>
-                        <input type="text" name="ad_ptname" onChange={input_ad_ptname} maxLength={20}></input>
+                        <input type="text" name="ad_ptname" onBlur={valid_ad_ptname} onChange={input_ad_ptname} maxLength={20}></input>
+                        {isValidAdptname? <></> : <span className={advicerequest.errmsg}>{errmsg.msg} <br/>(한글 또는 영문으로 최대 20자(띄어쓰기 포함))</span>}
                     </div>
                 </div>
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>주민등록번호</div>
                     <div className={advicerequest.input_box}>
-                        <input type="text" name="ad_ptssnum1" maxLength={6} onChange={input_ad_ptssnum1}></input>
+                        <input type="text" name="ad_ptssnum1" onBlur={valid_ad_ptssnum1} maxLength={6} onChange={input_ad_ptssnum1}></input>
                          -
-                        <input type="password" name="ad_ptssnum2" maxLength={7} onChange={input_ad_ptssnum2}></input>                    </div>
+                        <input type="password" name="ad_ptssnum2" onBlur={valid_ad_ptssnum2} maxLength={7} onChange={input_ad_ptssnum2}></input>
+                        {!isValidAdptssnum1 || !isValidAdptssnum2 ? (
+                            <span className={advicerequest.errmsg}>{errmsg.msg} <br/>(숫자 앞자리 6자, 뒷자리 7자)</span>
+                        ) : null}
+
+                    </div>
                 </div>
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>진단과목</div>
@@ -483,13 +508,15 @@ export default function AdviceRequestpage(){
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>진단명</div>
                     <div className={advicerequest.input_box}>
-                        <input type="text" name="ad_ptdiagnosis" onChange={input_ad_ptdiagnosis} maxLength={50}/>
+                        <input type="text" name="ad_ptdiagnosis" onBlur={valid_ad_ptdiagnosis} onChange={input_ad_ptdiagnosis} maxLength={50}/>
+                        {isValidAdptdiagnosis? <></> : <span className={advicerequest.errmsg}>{errmsg.msg} <br/>(한글 또는 영문으로 최대 50자(띄어쓰기 포함)))</span>}
                     </div>
                 </div>
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>과거 진단이력</div>
                     <div className={advicerequest.input_box}>
-                    <input type="text" name="ad_ptrec" onChange={input_ad_ptrec} maxLength={100}/>
+                        <input type="text" name="ad_ptrec" onBlur={valid_ad_ptrec} onChange={input_ad_ptrec} maxLength={100}/>
+                        {isValidAdptrec? <></> : <span className={advicerequest.errmsg}>{errmsg.msg} <br/>(한글, 영문, 숫자로 최대 100자(띄어쓰기 포함))</span>}
                     </div>
                 </div>
                 <div className={advicerequest.row_box}>
@@ -514,10 +541,11 @@ export default function AdviceRequestpage(){
             </div>
             <div className={advicerequest.request_insurancetable}>
                 <div className={advicerequest.row_box}>
-                        <div className={advicerequest.title_box}>보험사명</div>
-                        <div className={advicerequest.input_box}>
-                            <input type="text" name="insurance" onChange={input_insurance} maxLength={10}></input>
-                        </div>
+                    <div className={advicerequest.title_box}>보험사명</div>
+                    <div className={advicerequest.input_box}>
+                        <input type="text" name="insurance" onBlur={valid_insurance} onChange={input_insurance} maxLength={10}></input>
+                        {isValidInsurance? <></> : <span className={advicerequest.errmsg}>{errmsg.msg} <br/>(한글, 영문, 숫자로 최대 10자(띄어쓰기 포함))</span>}
+                    </div>
                 </div>
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>계약일자</div>
@@ -529,7 +557,8 @@ export default function AdviceRequestpage(){
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>보험계약명</div>
                     <div className={advicerequest.input_box}>
-                        <input type="text" name="insure_name" onChange={input_insure_name} maxLength={20}></input>
+                        <input type="text" name="insure_name" onBlur={valid_insure_name} onChange={input_insure_name} maxLength={20}></input>
+                        {isValidInsurename? <></> : <span className={advicerequest.errmsg}>{errmsg.msg} <br/>(한글, 영문, 숫자로 최대 20자(띄어쓰기 포함))</span>}
                     </div>
                 </div>
                 
@@ -546,7 +575,8 @@ export default function AdviceRequestpage(){
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>1차 치료 병원명</div>
                     <div className={advicerequest.input_box}>
-                        <input type="text" name="hospital" onChange={input_hospital} maxLength={20}></input>
+                        <input type="text" name="hospital" onBlur={valid_hospital} onChange={input_hospital} maxLength={20}></input>
+                        {isValidHospital? <></> : <span className={advicerequest.errmsg}>{errmsg.msg} <br/>(한글, 영문, 숫자로 최대 20자(띄어쓰기 포함))</span>}
                     </div>
                 </div>
                 <div className={advicerequest.row_box}>
