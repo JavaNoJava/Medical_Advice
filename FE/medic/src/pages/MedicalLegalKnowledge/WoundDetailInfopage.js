@@ -125,10 +125,10 @@ export default function WoundAccidentDetailInfopage(){
             <span>{formatDateString(woundInfoDetail.woRegDate)}</span>
           </div>
         </div>
-        <div className={`${woundAccidentDetail.row_box} ${woundAccidentDetail.row_contentbox}`}>
+        <div className={`${woundAccidentDetail.row_box} ${woundAccidentDetail.row_contentbox}`} style={{alignItems: 'start'}}>
                 <div className={`${woundAccidentDetail.title_box} ${woundAccidentDetail.row_contentbox}`}>내용</div>
-                <div className={woundAccidentDetail.input_box} style={{width:'620px', height : '200px', justifyContent: 'start',alignItems: 'flex-start' }}>
-                  {woundInfoDetail.woContent}
+                <div className={woundAccidentDetail.input_box} style={{width:'620px', height : '200px', justifyContent: 'start', alignItems: 'start', paddingLeft: '10px',paddingTop: '10px'}}>
+                  <textarea cols="50" rows="10" value={woundInfoDetail.woContent} readOnly/>
                 </div>
             </div>
       </div>
