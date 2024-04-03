@@ -21,6 +21,7 @@ public class TranslationAnswerFile {
     @NotNull
     private Long trAnswerId;
 
+    @Column(length = 100)
     private String trAnswer;
 
     private LocalDate trAnswerDate;

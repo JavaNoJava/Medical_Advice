@@ -24,28 +24,38 @@ public class AdviceRequestList {
     private Long adId;
 
     @NotNull
+    @Column(length = 20)
     private String adPtName;
 
     @NotNull
+    @Column(length = 14)
     private String adPtSsNum;
 
     @NotNull
+    @Column(length = 10)
     private String adPtSub;
 
     @NotNull
+    @Column(length = 50)
     private String adPtDiagnosis;
 
+    @Column(length = 100)
     private String adPtRec;
 
     @NotNull
+    @Column(length = 500)
     private String adPtCmt;
 
+    @Column(length = 10)
     private String insurance;
 
+    @Column(length = 10)
     private String insureDate;
 
+    @Column(length = 20)
     private String insureName;
 
+    @Column(length = 300)
     private String adEtc;
 
     private LocalDate adRegDate;

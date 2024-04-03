@@ -25,9 +25,11 @@ public class Faq {
     private LocalDate faqRegDate;
 
     @NotNull
+    @Column(length = 50)
     private String faqQuestion;
 
     @NotNull
+    @Column(length = 500)
     private String faqAnswer;
 
     private LocalDate faqMdDate;

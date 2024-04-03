@@ -20,24 +20,31 @@ public class DiagnosisRecord {
     private Long drId;
 
     @NotNull
+    @Column(length = 20)
     private String hospital;
 
     @NotNull
+    @Column(length = 10)
     private String admStart;
 
     @NotNull
+    @Column(length = 10)
     private String admEnd;
 
     @NotNull
+    @Column(length = 10)
     private String visitStart;
 
     @NotNull
+    @Column(length = 10)
     private String visitEnd;
 
     @NotNull
+    @Column(length = 500)
     private String treatCmt;
 
     @NotNull
+    @Column(length = 50)
     private int diagRound;
 
     @ManyToOne

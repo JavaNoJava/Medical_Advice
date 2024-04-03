@@ -27,20 +27,26 @@ public class AnalyzeRequestList {
     private Long anId;
 
     @NotNull
+    @Column(length = 20)
     private String anPtName;
 
     @NotNull
+    @Column(length = 14)
     private String anPtSsNum;
 
     @NotNull
+    @Column(length = 10)
     private String anPtSub;
     @NotNull
+    @Column(length = 50)
     private String anPtDiagnosis;
 
     @NotNull
+    @Column(length = 100)
     private String anPtDiagContent;
 
     @NotNull
+    @Column(length = 500)
     private String anEtc;
 
 

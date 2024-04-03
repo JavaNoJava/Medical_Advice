@@ -23,18 +23,23 @@ import java.util.List;
 public class Manager {
     @Id
     @NotNull
+    @Column(length = 12)
     private String mId;
 
     @NotNull
+    @Column(length = 15)
     private String mPw;
 
     @NotNull
+    @Column(length = 10)
     private String mRole;
 
     @NotNull
+    @Column(length = 20)
     private String mName;
 
     @NotNull
+    @Column(length = 13)
     private String mgrPhone;
 
     @OneToMany(mappedBy = "manager")

@@ -22,21 +22,27 @@ public class TranslationRequestList {
     private Long trId;
 
     @NotNull
+    @Column(length = 20)
     private String trPtName;
 
     @NotNull
+    @Column(length = 14)
     private String trPtSsNum;
 
     @NotNull
+    @Column(length = 10)
     private String trPtSub;
 
     @NotNull
+    @Column(length = 50)
     private String trPtDiagnosis;
 
     @NotNull
+    @Column(length = 100)
     private String trPtDiagContent;
 
     @NotNull
+    @Column(length = 300)
     private String trEtc;
 
     private LocalDate trRegDate;

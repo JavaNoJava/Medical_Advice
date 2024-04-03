@@ -24,16 +24,19 @@ public class MedicalNegligenceInfo {
     private Long mnId;
 
     @NotNull
+    @Column(length = 30)
     private String mnName;
 
     @NotNull
+    @Column(length = 30)
     private String mnInstitution;
 
     @NotNull
-    private LocalDate mnRegdate;
+    private LocalDate mnRegDate;
     private LocalDate mnMdDate;
 
     @NotNull
+    @Column(length = 500)
     private String mnContent;
 
     @ManyToOne
@@ -47,7 +50,7 @@ public class MedicalNegligenceInfo {
         this.mnId = mnId;
         this.mnName = mnName;
         this.mnInstitution = mnInstitution;
-        this.mnRegdate = mnRegDate;
+        this.mnRegDate = mnRegDate;
         this.mnMdDate = mnMdDate;
         this.mnContent = mnContent;
         this.manager = manager;

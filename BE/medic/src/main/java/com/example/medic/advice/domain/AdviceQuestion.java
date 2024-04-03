@@ -25,10 +25,10 @@ public class AdviceQuestion {
     @NotNull
     private String adQuestionContent;
 
-
+    @Column(length = 300)
     private String adAnswerContent;
 
-
+    @Column(length = 300)
     private LocalDate adAnswerDate;
 
     @ManyToOne

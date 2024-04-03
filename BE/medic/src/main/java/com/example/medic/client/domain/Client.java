@@ -22,41 +22,56 @@ public class Client {
 
     @Id
     @NotNull
-    @Column(name = "u_id")
+    @Column(name = "u_id", length = 12)
     private String uId;
 
     @NotNull
+    @Column(length = 15)
     private String uPw;
 
 
     @NotNull
+    @Column(length = 10)
     private String uRole;
 
     @NotNull
+    @Column(length = 20)
     private String uName;
 
     @NotNull
+    @Column(length = 30)
     private String uEmail;
 
+    @Column(length = 13)
     private String userTel;
 
     @NotNull
+    @Column(length = 13)
     private String userPhone;
 
     @NotNull
+    @Column(length = 100)
     private String userAddress;
+
+
     private String uPart;
 
+    @Column(length = 20)
     private String company;
 
+    @Column(length = 8)
     private String ceo;
 
+    @Column(length = 13)
     private String cpTel;
 
+    @Column(length = 15)
     private String cpFx;
 
+    @Column(length = 20)
     private String cpNum;
 
+    @Column(length = 100)
     private String cpAddress;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)

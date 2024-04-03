@@ -18,14 +18,16 @@ public class AnalyzeRequestFile {
     @NotNull
     private Long anfId;
 
+    @Column(length = 100)
     private String anReqForm;
-
+    @Column(length = 100)
     private String anDiagnosis;
-
+    @Column(length = 100)
     private String anRecord;
-
+    @Column(length = 100)
     private String anFilm;
 
+    @Column(length = 100)
     private String anOther;
 
     @ManyToOne

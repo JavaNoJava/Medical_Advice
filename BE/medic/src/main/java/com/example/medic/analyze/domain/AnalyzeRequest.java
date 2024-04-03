@@ -20,8 +20,10 @@ public class AnalyzeRequest {
     private Long anQid;
 
     @NotNull
+    @Column(length = 300)
     private String anQuestionContent;
 
+    @Column(length = 300)
     private String anAnswerContent;
 
     private LocalDate anAnswerDate;
