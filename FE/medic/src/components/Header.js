@@ -101,6 +101,7 @@ export default function Header({}) {
         try {
             cookies.remove('uId')
             cookies.remove('uRole')
+            window.localStorage.removeItem('uPart')
             const response = await axios.get('/logout');
             if (response.status === 200) {
                 alert('로그아웃 되었습니다.');

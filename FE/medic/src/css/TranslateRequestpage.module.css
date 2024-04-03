@@ -175,7 +175,7 @@ div.complete {
     resize: none; /* 사용자가 텍스트 영역의 크기를 조정하지 못하도록 합니다. */
 }
 .input_box{
-    width: 300px;
+    width: 600px;
 }
 .file_label{
     padding: 0;
@@ -186,7 +186,7 @@ div.complete {
     height: 25px;
     z-index: 1;
     width: 100%;
-    background-color: #1b699b;
+    background-color: #10b3cc;
     border : none;
     padding: 0;
     color: white;
@@ -218,7 +218,7 @@ div.complete {
     color: red;
 }
 .btn_file_download{
-    background-color: #0f3a75;
+    background-color: #10b3cc;
     width: 80px;
     height: 25px;
     border: none;
@@ -226,4 +226,9 @@ div.complete {
 .btn_file_download a{
     color: white;
     text-decoration: none;
+}
+.errmsg{
+    color: red;
+    font-size: 0.625rem;
+    margin-left: 10px;
 }

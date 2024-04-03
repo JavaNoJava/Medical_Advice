@@ -124,10 +124,10 @@ export default function TrafficAccidentDetailInfopage(){
             <span>{formatDateString(trafficAccidentInfoDetail.taRegDate)}</span>
           </div>
         </div>
-        <div className={`${trafficAccidentDetail.row_box} ${trafficAccidentDetail.row_contentbox}`}>
+        <div className={`${trafficAccidentDetail.row_box} ${trafficAccidentDetail.row_contentbox}`} style={{alignItems: 'start'}}>
                 <div className={`${trafficAccidentDetail.title_box} ${trafficAccidentDetail.row_contentbox}`}>내용</div>
-                <div className={trafficAccidentDetail.input_box} style={{width:'620px', height : '200px', justifyContent: 'start',alignItems: 'flex-start' }}>
-                  {trafficAccidentInfoDetail.taContent}
+                <div className={trafficAccidentDetail.input_box} style={{width:'620px', height : '200px', justifyContent: 'start', alignItems: 'start', paddingLeft: '10px',paddingTop: '10px'}}>
+                  <textarea cols="50" rows="10" value={trafficAccidentInfoDetail.taContent} readOnly/>
                 </div>
             </div>
       </div>

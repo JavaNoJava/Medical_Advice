@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import style from '../../css/Updatepw.module.css'
-import Footer from '../../components/Footer'
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import mypage from '../../css/Mypage.module.css'
@@ -140,7 +139,6 @@ export default function ModifyMyPwpage(){
                     }
                 </div>
             </div> 
-            <Footer/>
         </>
     )
 }
