@@ -24,9 +24,11 @@ public class TrafficAccidentInfo {
     private Long taId;
 
     @NotNull
+    @Column(length = 30)
     private String taName;
 
     @NotNull
+    @Column(length = 30)
     private String taInstitution;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -37,6 +39,7 @@ public class TrafficAccidentInfo {
     private Date taMdDate;
 
     @NotNull
+    @Column(length = 500)
     private String taContent;
 
     @ManyToOne

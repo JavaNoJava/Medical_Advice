@@ -23,9 +23,11 @@ public class WoundInfo {
     private Long woId;
 
     @NotNull
+    @Column(length = 30)
     private String woName;
 
     @NotNull
+    @Column(length = 30)
     private String woInstitution;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -36,6 +38,7 @@ public class WoundInfo {
     private Date woMdDate;
 
     @NotNull
+    @Column(length = 500)
     private String woContent;
 
     @ManyToOne

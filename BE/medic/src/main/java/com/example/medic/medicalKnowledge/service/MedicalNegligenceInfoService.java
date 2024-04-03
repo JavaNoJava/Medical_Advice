@@ -39,7 +39,7 @@ public class MedicalNegligenceInfoService {
             } else {
                 return MedicalNegligenceInfoDto.builder()
                         .mnName(medicalNegligenceInfo.getMnName())
-                        .mnRegDate(medicalNegligenceInfo.getMnRegdate())
+                        .mnRegDate(medicalNegligenceInfo.getMnRegDate())
                         .mnInstitution(medicalNegligenceInfo.getMnInstitution())
                         .mnContent(medicalNegligenceInfo.getMnContent())
                         .build();}
