@@ -31,7 +31,7 @@ public class Client {
 
 
     @NotNull
-    @Column(length = 10)
+    @Column(length = 15)
     private String uRole;
 
     @NotNull
