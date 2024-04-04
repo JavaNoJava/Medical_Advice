@@ -95,12 +95,10 @@ export default function WriteQna() {
   return (
     <div className={writecustomerinquiry.detailform}>
       <div className={writecustomerinquiry.inquiry_title}>
-        <h2 className={writecustomerinquiry.title}>
-         
+        <h2 className={writecustomerinquiry.title}>        
           문의사항 작성
         </h2>
-      </div>
-      
+      </div>     
       <div className={writecustomerinquiry.detail_table}>
         <div className={writecustomerinquiry.detail_rowbox}>
             <div className={writecustomerinquiry.detail_title} >
@@ -130,16 +128,17 @@ export default function WriteQna() {
             </div> 
             <div className={writecustomerinquiry.detail_writerinfo}>
                 <div className={writecustomerinquiry.detail_title} style={{borderLeft : '1px solid'}}>
-                    비밀글<br/>여부
+                    비밀글
                 </div>
                 <div className={writecustomerinquiry.detail_writerinfocontent} style={{paddingLeft : '5px'}}>
                     <input
                         type='checkbox'
                         checked = {isSecret}
                         onChange={e => {
-                            setIsSecret(isSecret => !isSecret);
-                            if (isSecret) {
-                                setSecretPw('');
+                            const isChecked = e.target.checked;
+                            setIsSecret(isChecked);
+                            if (!isChecked) {
+                                setSecretPw(''); // 체크박스가 체크되지 않았을 때 비밀번호 상태를 초기화
                             }
                         }}
                     />
@@ -166,7 +165,7 @@ export default function WriteQna() {
             <div className={`${writecustomerinquiry.write_title} ${writecustomerinquiry.write_contentrowbox}`}>
               내용
             </div>
-            <div className={writecustomerinquiry.input_box} style={{width:'670px', height : '300px'}}>
+            <div className={writecustomerinquiry.input_box} style={{width:'670px', height : '100px'}}>
                 <textarea 
                 className={writecustomerinquiry.write_content} 
                 cols="50"
@@ -176,15 +175,13 @@ export default function WriteQna() {
                 onChange={e => {
                     setInquiryQuestion(e.target.value)
                     setQuestioncount(e.target.value.length)
-                    }} maxLength={300}></textarea>
-           
+                    }} maxLength={300}></textarea>           
             <div className={writecustomerinquiry.contentcount}>
                 {questionCount}/300
             </div>   
             </div>
         </div>
       </div>
-
       <div className={writecustomerinquiry.complete}>
         {
             <>
