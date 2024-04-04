@@ -3,6 +3,7 @@ import style from '../../css/Updatepw.module.css'
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import mypage from '../../css/Mypage.module.css'
+import { Cookies } from "react-cookie";
 
 export default function ModifyMyPwpage(){
     const [checkCurrentPw, setChkCurrentPw] = useState(true)
@@ -15,6 +16,7 @@ export default function ModifyMyPwpage(){
 
     const location = useLocation();
     const navigate = useNavigate();
+    const cookies = new Cookies();
     const upw = location.state.upw
 
     const input_currentpw = e => {
@@ -66,7 +68,12 @@ export default function ModifyMyPwpage(){
             }
             try{
                 const response = await axios.post('/user/modifyUserPw', userPw)
-                alert(response.data)
+                cookies.remove('uId')
+                cookies.remove('uRole')
+                window.localStorage.removeItem('uPart')
+                const response2 = await axios.get('/logout');
+                alert('재설정이 완료되었습니다.')
+                alert("재로그인 해주세요!")
                 navigate('/')
             } catch(err){
                 console.log(err)

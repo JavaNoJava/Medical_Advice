@@ -59,12 +59,15 @@ export default function UserQnaAnswer({qaId, QuestionInfo}) {
         <div className={ad.detailform} style={{marginTop:'50px'}}>
             <div className={ad.inquiry_title}>
                 <h2 className={ad.title}>
-                    
                     문의답변
                 </h2>
                 </div>
                 <div className={customerinquirydetails.answerContainer} style={{marginRight:'90px'}}>
-                  <div className={customerinquirydetails.answertext}>{isAnswer ? '작성된 답변이 없습니다.' : answer.qaAnswer}</div>   
+                  <div className={customerinquirydetails.answertext}>{isAnswer ? '작성된 답변이 없습니다.' : 
+                    <>
+                      <textarea value={answer.qaAnswer}></textarea>
+                    </>
+                  }</div>   
                 </div>
                 <>
                   {

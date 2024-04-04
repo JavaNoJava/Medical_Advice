@@ -40,6 +40,7 @@ export default function AdminQnaAnswer({qaId}) {
           setAnswer('')
           getAnswer()
           alert('삭제되었습니다.')
+          window.location.href = window.location.href;
         }
       } catch(err){
         console.log(err)
@@ -54,14 +55,17 @@ export default function AdminQnaAnswer({qaId}) {
       <>
       {
         isWriteAnswer ? <AdminWriteQnaAnswer qaId={qaId} answer = {answer}/> : <div className={customerinquirydetails.answerwrap}>
-        <div className={writecustomerinquiry.inquiry_title}>
-            <h1>
-                <i className="fa-solid fa-circle icon"></i>
-                문의답변
-            </h1>
+            <div className={writecustomerinquiry.inquiry_title}>
+              <h2 className={writecustomerinquiry.title}>                       
+                  문의답변
+              </h2>
             </div>
             <div className={customerinquirydetails.answerContainer}>
-              <div className={customerinquirydetails.answertext}>{isAnswer ? '작성된 답변이 없습니다.' : answer.qaAnswer}</div>   
+              <div className={customerinquirydetails.answertext}>{isAnswer ? '작성된 답변이 없습니다.' :
+                <>
+                  <textarea className={customerinquirydetails.answerbox} disabled={true} value={answer.qaAnswer}></textarea>
+                </>
+              }</div>     
             </div>
               {
                 

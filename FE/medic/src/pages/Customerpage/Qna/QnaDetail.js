@@ -88,7 +88,7 @@ export default function QnaDetail(){
                         문의내용
                     </div>
                     <div className={writecustomerinquiry.detail_content} style={{width:'730px', height : '200px', justifyContent: 'start'}}>
-                        <textarea cols="50" rows="500" value={detaillist.qaQuestion} readOnly/>
+                        <textarea cols="50" rows="500" value={detaillist.qaQuestion} disabled ={true} style={{backgroundColor : 'white'}}/>
                     </div>  
                 </div>
             </div>

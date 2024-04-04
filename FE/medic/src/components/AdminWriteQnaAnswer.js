@@ -36,8 +36,8 @@ export default function AdminWriteQnaAnswer({qaId, answer}) {
           if(window.confirm('답변을 작성하시겠습니까?')){
             await axios.post(`/qna/writeAnswer/${qaId}`, Adminanswer)
             alert('작성되었습니다.')
+            window.location.href = window.location.href;
           }
-          setIsAnswer(true)
         } catch(err){
           console.log(err)
         }
@@ -52,8 +52,8 @@ export default function AdminWriteQnaAnswer({qaId, answer}) {
             if(window.confirm('답변을 수정하시겠습니까?')){
               await axios.put(`/qna/modifyAnswer/${qaId}/${answer.qaAnswerId}`, AdminUpdateAnswer)
               alert('작성되었습니다.')
+              window.location.href = window.location.href;
             }
-            setIsAnswer(true)
           } catch(err){
             console.log(err)
           }
@@ -67,10 +67,9 @@ export default function AdminWriteQnaAnswer({qaId, answer}) {
                 isAnswer ? <AdminQnaAnswer qaId={qaId}/> :
                 <div className={customerinquirydetails.answerwrap}>
             <div className={writecustomerinquiry.inquiry_title}>
-                <h1>
-                    <i className="fa-solid fa-circle icon"></i>
+                <h2 className={writecustomerinquiry.title}>
                     문의답변
-                </h1>
+                </h2>
                 </div>
                 <div className={customerinquirydetails.answerContainer}>
                 <textarea
@@ -80,8 +79,10 @@ export default function AdminWriteQnaAnswer({qaId, answer}) {
                     onChange={handleAnswerChange}
                     cols={10}
                     rows={60}
+                    maxLength={500}
                 />
-                <div className={customerinquirydetails.answerButton_wrap}>
+              </div>
+              <div className={customerinquirydetails.answerButton_wrap}>
                   <div className={customerinquirydetails.answerButtonbox}>
                       {
                           answer 
@@ -108,7 +109,6 @@ export default function AdminWriteQnaAnswer({qaId, answer}) {
                       </button>
                   </div>
                 </div>
-              </div>
           </div>
             }
         </>
