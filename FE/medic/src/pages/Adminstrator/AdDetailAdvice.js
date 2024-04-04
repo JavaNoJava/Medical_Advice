@@ -1,5 +1,5 @@
     import React, { useState, useEffect } from 'react';
-    import advicerequest from '../../css/AdviceRequestpage.module.css'
+    import advicerequest from '../../css/AdDetailRequestPage.module.css'
     import axios from 'axios';
     import { useNavigate, useParams } from 'react-router-dom';
 

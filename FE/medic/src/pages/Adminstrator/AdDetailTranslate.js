@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import translaterequest from '../../css/AdviceRequestpage.module.css'
+import translaterequest from '../../css/AdDetailRequestPage.module.css'
 import axios from 'axios';
 import { useNavigate , useParams } from 'react-router-dom';
 
@@ -72,7 +72,7 @@ export default function AdDetailTranslate(){
     }
 
     return(
-        <div className={translaterequest.advicerequest_wrap}>
+        <div className={translaterequest.translaterequest_wrap}>
                   <div className={translaterequest.iconbox}>
                 <h2 className={translaterequest.title}>
                     번역의뢰 상세페이지
