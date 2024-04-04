@@ -32,7 +32,7 @@ public class QnaAnswer {
     @NotNull
     private LocalDate qaAnswerDate;
 
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "qa_Id")
     @JsonIgnore
     private Qna qna;
