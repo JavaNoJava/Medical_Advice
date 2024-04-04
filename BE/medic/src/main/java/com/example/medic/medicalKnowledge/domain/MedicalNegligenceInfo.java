@@ -32,7 +32,7 @@ public class MedicalNegligenceInfo {
     private String mnInstitution;
 
     @NotNull
-    private LocalDate mnRegDate;
+    private LocalDate  mnRegdate;;
     private LocalDate mnMdDate;
 
     @NotNull
@@ -50,7 +50,7 @@ public class MedicalNegligenceInfo {
         this.mnId = mnId;
         this.mnName = mnName;
         this.mnInstitution = mnInstitution;
-        this.mnRegDate = mnRegDate;
+        this.mnRegdate = mnRegDate;
         this.mnMdDate = mnMdDate;
         this.mnContent = mnContent;
         this.manager = manager;
