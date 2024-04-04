@@ -77,7 +77,7 @@
     align-items: center;
     height: 52px;
     padding-left: 20px;
-    width: 250px;
+    width: 600px;
 }
 
 .request_patienttable{
@@ -186,9 +186,6 @@ div.complete {
     margin: 5px 0; /* 위아래 여백을 추가합니다. */
     padding: 10px; /* 내부 여백을 추가합니다. */
     resize: none; /* 사용자가 텍스트 영역의 크기를 조정하지 못하도록 합니다. */
-}
-.input_box{
-    width: 300px;
 }
 .file_label{
     padding: 0;

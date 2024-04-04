@@ -208,9 +208,6 @@ div.complete {
     resize: none; /* 사용자가 텍스트 영역의 크기를 조정하지 못하도록 합니다. */
 }
 
-.input_box{
-    width: 600px;
-}
 .file_label{
     padding: 0;
     position: relative;

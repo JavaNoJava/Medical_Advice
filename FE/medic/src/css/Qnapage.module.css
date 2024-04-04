@@ -62,10 +62,11 @@
   background-color: #f2f2f2;
 }
 
-.announce_list_content {
+.announce_quirylist_no {
   cursor: pointer;
-  &:hover {
+  &:hover{
     text-decoration: underline;
+
   }
 }
 
