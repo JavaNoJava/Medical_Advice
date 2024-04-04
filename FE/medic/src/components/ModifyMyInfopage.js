@@ -391,11 +391,11 @@ export default function ModifyMyInfopage(){
                         <div className={mypage.modify_row_title} style={{height : '80px'}}>주소</div>
                         <div className={mypage.address_input_box}>
                             <div>
-                                <input type="text" disabled={false} value={zipcode} onChange={input_zipcode} style={{width: '80px'}}/>
+                                <input type="text" disabled={true} value={zipcode} onChange={input_zipcode} style={{width: '80px'}}/>
                                 <button type="button" className={mypage.btn_findaddress} onClick={handleUClick} >주소찾기</button>
                             </div>
                             <div style={{display : "flex"}}>
-                                <input type="text" disabled={false} value={userroadAddress} onChange={input_zipcode_num} style={{width: '250px'}}/> 
+                                <input type="text" disabled={true} value={userroadAddress} onChange={input_zipcode_num} style={{width: '250px'}}/> 
                                 <input type="text" value={detailAddress} onChange={input_details_zipcode} style={ {width:'250px', marginLeft : '10px'}}/>
                             </div>
                         </div>
@@ -458,11 +458,11 @@ export default function ModifyMyInfopage(){
                         <div className={mypage.modify_row_title} style={{height : '80px'}}>사업장주소</div>
                         <div className={mypage.address_input_box}>
                             <div>
-                                <input type="text" disabled={false} value={cpZipcode} onChange={input_cp_zipcode} style={{width: '80px'}}/>
+                                <input type="text" disabled={true} value={cpZipcode} onChange={input_cp_zipcode} style={{width: '80px'}}/>
                                 <button type="button" className={mypage.btn_findaddress} onClick={handleCClick} >주소찾기</button>
                             </div>
                             <div style={{display : "flex"}}>
-                                <input type="text" disabled={false} value={comapanyroadAddress} onChange={input_cp_zipcode_num} style={{width: '250px'}}/> 
+                                <input type="text" disabled={true} value={comapanyroadAddress} onChange={input_cp_zipcode_num} style={{width: '250px'}}/> 
                                 <input type="text" value={detailCpAddress} onChange={input_cp_details_zipcode} style={ {width:'250px', marginLeft : '10px'}}/>
                             </div>
                         </div>

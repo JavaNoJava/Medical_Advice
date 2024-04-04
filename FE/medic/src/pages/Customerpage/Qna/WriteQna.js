@@ -45,21 +45,25 @@ export default function WriteQna() {
         }
     },[inputTitle, inquiryQuestion])
     const btn_writequestion = async()=> {
-        const today = new Date();
-        const InquiryInfo = {
-            'qaTitle' : inputTitle,
-            'qaQuestion' : inquiryQuestion,
-            'qaDate' : today,
-            'qaSecret' : isSecret,
-            'qaPw' : secretPw
-        }
-        try{
-            await axios.post('/qna/post', InquiryInfo)
-            alert('작성되었습니다.')
-            navigate('/medic/customer/customerInquiry');
-        } catch(err){
-            console.log(err)
-        }
+        if(isEmpty){
+            alert("입력값을 확인해주세요.")
+        } else{
+            const today = new Date();
+            const InquiryInfo = {
+                'qaTitle' : inputTitle,
+                'qaQuestion' : inquiryQuestion,
+                'qaDate' : today,
+                'qaSecret' : isSecret,
+                'qaPw' : secretPw
+            }
+            try{
+                await axios.post('/qna/post', InquiryInfo)
+                alert('작성되었습니다.')
+                navigate('/medic/customer/customerInquiry');
+            } catch(err){
+                console.log(err)
+            }
+        }    
     };
     const btn_questionlist = e => {
         navigate('/medic/customer/customerInquiry')
@@ -189,7 +193,7 @@ export default function WriteQna() {
                 isUpdate ?
                 <button className={writecustomerinquiry.btt_write} disabled={isEmpty} onClick={btn_updatequestion}>수정</button>
                 :
-                <button className={writecustomerinquiry.btt_write} disabled={isEmpty} onClick={btn_writequestion}>작성</button>
+                <button className={writecustomerinquiry.btt_write} onClick={btn_writequestion}>작성</button>
             }
                
             </>
