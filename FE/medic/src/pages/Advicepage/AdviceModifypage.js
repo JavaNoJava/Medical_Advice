@@ -3,12 +3,20 @@ import advicerequest from '../../css/AdviceRequestpage.module.css';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import ImageModal from '../../components/ImageModal';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default function AdviceModifypage(){
     
     const [imageError, setImageError] = useState(false);
     const today = new Date();
     const [adviceDetails, setAdviceDetails] = useState({});
+    const [admStartDate, setAdmStartDate] = useState(null);
+    const [admEndDate, setAdmEndDate] = useState(null);
+    const [visitStartDate, setVisitStartDate] = useState(null);
+    const [visitEndDate, setVisitEndDate] = useState(null);
+
+    const minDate = new Date(1960, 0, 1);
 
     const todayYear = today.getFullYear();
 
@@ -171,6 +179,11 @@ export default function AdviceModifypage(){
             setVisitEndYear(visit_end_parts[0]);
             setVisitEndMonth(visit_end_parts[1]);
             setVisitEndDay(visit_end_parts[2]);
+
+            setAdmStartDate(response.data.admStart.replaceAll('-', '/'))
+            setAdmEndDate(response.data.admEnd.replaceAll('-', '/'))
+            setVisitStartDate(response.data.visitStart.replaceAll('-', '/'))
+            setVisitEndDate(response.data.visitEnd.replaceAll('-', '/'))
         
 
             const ad_PtSsNum = response.data.adPtSsNum.split('-');
@@ -246,7 +259,7 @@ const btn_advice_update = async() => {
     const today = new Date()
     const admStart = adm_startYear + '-' + adm_startMonth + '-' + adm_startDay
     const admEnd = adm_endYear + '-' + adm_endMonth + '-' + adm_endDay
-    const visitStart = visit_startYear + '-' + visit_startMonth + '-' + visit_startMonth
+    const visitStart = visit_startYear + '-' + visit_startMonth + '-' + visit_startDay
     const visitEnd = visit_endYear + '-' + visit_endMonth + '-' + visit_endDay
     
     const adFile = [adReqForm, adDiagnosis, adRecord, adFilm, adOther];
@@ -487,57 +500,63 @@ const closeImageModal = e => {
 }
 return(
     <div className={advicerequest.advicerequest_wrap}>
-        <div className={advicerequest.iconbox}>
-            <h2>
-                <i className="fa-solid fa-circle icon"></i>
-                자문의뢰 수정
-            </h2>
-            - 의료 자문의뢰를 신청하고자 하는 의뢰자께서는 아래 모든 항목에 대해 모두 입력해주세요.
-         </div>
-         <div className={advicerequest.iconbox}>
-            <h3>
-                <i className="fa-solid fa-circle icon"></i>
-                신청자 정보
-            </h3>
-         </div>
-         <div className={advicerequest.request_usertable}>
-            <div className={advicerequest.row_box}>
-                <div className={advicerequest.title_box}>의뢰자명</div>
-                <div className={advicerequest.input_box}>
-                    <input type="text" disabled={true} value={uname}/>
+            <div className={advicerequest.iconbox}>
+                <h2 className={advicerequest.title}>
+                    자문의뢰 수정
+                </h2>
+                <h4 className={advicerequest.title_bottom}>
+                   - 의료 자문의뢰를 신청하고자 하는 의뢰자께서는 아래 모든 항목에 대해 모두 입력해주세요.
+                </h4>
+             </div>
+
+            {/*신청자 정보 */}
+
+             <div className={advicerequest.iconbox}>
+                <h3 className={advicerequest.tit}>
+                    신청자 정보
+                </h3>
+             </div>
+             <div className={advicerequest.request_usertable}>
+                <div className={advicerequest.row_box}>
+                    <div className={advicerequest.title_box}>의뢰자명</div>
+                    <div className={advicerequest.input_box}>
+                        <span>{uname}</span>
+                    </div>
                 </div>
+                <div className={advicerequest.row_box}>
+                    <div className={advicerequest.title_box}>일반전화</div>
+                    <div className={advicerequest.input_box}>
+                        <span>{utel}</span>
+                    </div>
+                </div>
+                <div className={advicerequest.row_box}>
+                    <div className={advicerequest.title_box}>휴대전화</div>
+                    <div className={advicerequest.input_box}>
+                        <span>{uphone}</span>
+                    </div>
+                </div>
+                <div className={advicerequest.row_box}>
+                    <div className={advicerequest.title_box}>주소</div>
+                    <div className={advicerequest.input_box} style={{width: "500px"}}>
+                        <span>{uaddress}</span>
+                    </div>
+                </div>
+             </div>
+             <div className={advicerequest.iconbox}>
+                <h3 className={advicerequest.tit}>
+                    환자의료 기록 사항
+                </h3>
             </div>
-            <div className={advicerequest.row_box}>
-                <div className={advicerequest.title_box}>일반전화</div>
-                <div className={advicerequest.input_box}>
-                    <input type="text" disabled={true} value={utel}/>
-                </div>
-                <div className={advicerequest.title_box} style={{borderLeft : '1px solid black'}}>휴대전화</div>
-                <div className={advicerequest.input_box}>
-                    <input type="text" disabled={true} value={uphone}/>
-                </div>
-            </div>
-            <div className={advicerequest.row_box}>
-                <div className={advicerequest.title_box}>주소</div>
-                <div className={advicerequest.input_box}>
-                    <input type="text" disabled={true} value={uaddress}/>
-                </div>
-            </div>
-         </div>
-         <div className={advicerequest.iconbox}>
-            <h3>
-                <i className="fa-solid fa-circle icon"></i>
-                환자의료 기록 사항
-            </h3>
-        </div>
-        <div className={advicerequest.request_patienttable}>
-            <div className={`${advicerequest.row_box} ${advicerequest.patient_box}`}>
-                <div className={`${advicerequest.title_box} ${advicerequest.patient_box}`}>환자명</div>
-                <div className={`${advicerequest.input_box} ${advicerequest.patient_box}`}>
+            <div className={advicerequest.request_patienttable2}>
+                <div className={advicerequest.row_box}>
+                    <div className={advicerequest.title_box}>환자명</div>
+                    <div className={advicerequest.input_box}>
                     <input type="text" name="ad_ptname" value={ad_ptname} disabled={false} onChange={input_ad_ptname} maxLength={20}></input>
                 </div>
-                <div className={`${advicerequest.title_box} ${advicerequest.patient_box}`} style={{borderLeft : '1px solid black'}}>주민등록번호</div>
-                <div className={`${advicerequest.input_box} ${advicerequest.input_ptssnumbox} ${advicerequest.patient_box}`}>
+                </div>
+                <div className={advicerequest.row_box}>
+                    <div className={advicerequest.title_box}>주민등록번호</div>
+                    <div className={advicerequest.input_box}>
                     <input type="text" name="ad_ptssnum1" value={adPtSsNum1} disabled={false} maxLength={6} onChange={input_ad_ptssnum1}></input>
                      -
                     <input type="password" name="ad_ptssnum2" value={adPtSsNum2} disabled={false} maxLength={7} onChange={input_ad_ptssnum2}></input>
@@ -546,10 +565,40 @@ return(
             <div className={advicerequest.row_box}>
                 <div className={advicerequest.title_box}>진단과목</div>
                 <div className={advicerequest.input_box}>
-                    <input type="text" name="ad_ptsub" value={ad_ptsub} disabled={false} onChange={input_ad_ptsub} maxLength={10}/>
+                    <select value={ad_ptsub} onChange={e => setAdptsub(e.target.value)}>
+                            <option value="">부서 선택</option>
+                            <option value="내과">내과</option>
+                            <option value="신경과">신경과</option>
+                            <option value="정신건강의학과">정신건강의학과</option>
+                            <option value="외과">외과</option>
+                            <option value="정형외과">정형외과</option>
+                            <option value="신경외과">신경외과</option>
+                            <option value="흉부외과">흉부외과</option>
+                            <option value="성형외과">성형외과</option>
+                            <option value="마취통증의학과">마취통증의학과</option>
+                            <option value="산부인과">산부인과</option>
+                            <option value="소아청소년과">소아청소년과</option>
+                            <option value="안과">안과</option>
+                            <option value="이비인후과">이비인후과</option>
+                            <option value="피부과">피부과</option>
+                            <option value="비뇨의학과">비뇨의학과</option>
+                            <option value="영상의학과">영상의학과</option>
+                            <option value="방사선종양학과">방사선종양학과</option>
+                            <option value="병리과">병리과</option>
+                            <option value="진단검사의학과">진단검사의학과</option>
+                            <option value="결핵과">결핵과</option>
+                            <option value="재활의학과">재활의학과</option>
+                            <option value="예방의학과">예방의학과</option>
+                            <option value="가정의학과">가정의학과</option>
+                            <option value="응급의학과">응급의학과</option>
+                            <option value="핵의학과">핵의학과</option>
+                            <option value="직업환경의학과">직업환경의학과</option>
+                        </select>
+                    </div>
                 </div>
-                <div className={advicerequest.title_box} style={{borderLeft : '1px solid black'}}>진단명</div>
-                <div className={advicerequest.input_box}>
+                <div className={advicerequest.row_box}>
+                    <div className={advicerequest.title_box}>진단명</div>
+                    <div className={advicerequest.input_box}>
                     <input type="text" name="ad_ptdiagnosis" value={ad_ptdiagnosis} disabled={false} onChange={input_ad_ptdiagnosis} maxLength={50}/>
                 </div>
             </div>
@@ -563,7 +612,7 @@ return(
                 <div className ={`${advicerequest.title_box} ${advicerequest.row_contentbox}`}>
                     내용
                 </div>
-                <div className={advicerequest.input_box} style={{width : '400px', height : 'auto'}}>
+                <div className={advicerequest.input_box} style={{width : '600px', height : 'auto'}}>
                     <textarea cols="50" rows="10" value={ad_ptcmt} disabled={false} onChange={input_ad_ptcmt} maxLength={500}/>
                     <div className={advicerequest.count_box}>
                         <span>{contents_count}/500</span>
@@ -572,19 +621,20 @@ return(
             </div>
         </div>
         <div className={advicerequest.iconbox}>
-             <h3>
-                 <i className="fa-solid fa-circle icon"></i>
-                 보험 계약 정보
-             </h3>
-         </div>
+                <h3 className={advicerequest.tit}>
+                     보험 계약 정보
+                </h3>
+            </div>
          <div className={advicerequest.request_insurancetable}>
             <div className={advicerequest.row_box}>
                 <div className={advicerequest.title_box}>보험사명</div>
                 <div className={advicerequest.input_box}>
                     <input type="text" name="insurance" value={insurance} disabled={false} onChange={input_insurance} maxLength={10}></input>
                 </div>
-                <div className={advicerequest.title_box} style={{borderLeft : '1px solid black'}}>계약일자</div>
-                <div className={advicerequest.input_box}>
+                </div>
+                <div className={advicerequest.row_box}>
+                    <div className={advicerequest.title_box}>계약일자</div>
+                    <div className={advicerequest.input_box}>
                     <select onChange={handleYearChange} value={insureYear}>{generateOptions(startYear, todayYear)}</select> -
                     <select onChange={handleMonthChange} value={insureMonth}>{generateOptions(1, 12)}</select> -
                     <select onChange={handleDayChange} value={insureDay}>{dayOptions.map((day) => day)}</select>
@@ -598,72 +648,116 @@ return(
             </div>
         </div>
         <div className={advicerequest.iconbox}>
-             <h3>
-                  <i className="fa-solid fa-circle icon"></i>
-                 병원치료사항
-             </h3>
-        </div>
-        <div className={advicerequest.request_diagtable}>
-            <div className={advicerequest.row_box} style={{height : '42px'}}>
+                <h3 className={advicerequest.tit}>
+                     병원치료사항
+                </h3>
+            </div>
+            <div className={advicerequest.request_hospitaltable}>
+                <div className={advicerequest.row_box}>
                 <div className={advicerequest.title_box} >1차 치료 병원명</div>
                 <div className={advicerequest.input_box}>
                     <input type="text" name="hospital" value={hospital} disabled={false} onChange={input_hospital} maxLength={20}></input>
                 </div>
             </div>
             <div className={advicerequest.row_box}>
-                <div className={advicerequest.title_box} style={{height : '92px'}}>입원 치료기간</div>
-                <div className={advicerequest.input_box} style={{display:'flex', flexDirection:'column' ,width: '600px', alignItems : 'space-between', height : '80px'}}>
-                    <div className={advicerequest.datebox}>
-                        <input type="text" name="adm_startYear" value={adm_startYear} disabled={false} onChange={input_adm_startYear} minLength={4} maxLength={4}></input>년
-                        <input type="text" name="adm_startMonth" value={adm_startMonth} disabled={false} onChange={input_adm_startMonth} minLength={2} maxLength={2}></input>월
-                        <input type="text" name="adm_startDay" value={adm_startDay} disabled={false} onChange={input_adm_startDay} minLength={2} maxLength={2}></input>일
-                    </div>                       
-                    ~
-                    <div className={advicerequest.datebox}>
-                        <input type="text" name="adm_endYear" value={adm_endYear} disabled={false} onChange={input_adm_endYear} minLength={4} maxLength={4}></input>년
-                        <input type="text" name="adm_endMonth" value={adm_endMonth} disabled={false} onChange={input_adm_endMonth} minLength={2} maxLength={2}></input>월
-                        <input type="text" name="adm_endDay" value={adm_endDay} disabled={false} onChange={input_adm_endDay} minLength={2} maxLength={2}></input>일
-                    </div>                       
-                </div>
-            </div>
-            <div className={advicerequest.row_box}>
-                <div className={advicerequest.title_box} style={{height : '92px'}}>통원 치료기간</div>
-                <div className={advicerequest.input_box} style={{display:'flex', flexDirection:'column' ,width: '600px', justifyContent : 'start', alignItems : 'space-between', height : '80px'}}>
-                    <div className={advicerequest.datebox}>
-                        <input type="text" name="visit_startYear" value={visit_startYear} disabled={false} onChange={input_visit_startYear} minLength={4} maxLength={4}></input>년
-                        <input type="text" name="visit_startMonth" value={visit_startMonth} disabled={false} onChange={input_visit_startMonth} minLength={2} maxLength={2}></input>월
-                        <input type="text" name="visit_startDay" value={visit_startDay} disabled={false} onChange={input_visit_startDay} minLength={2} maxLength={2}></input>일
-                    </div>                       
-                    ~
-                    <div className={advicerequest.datebox}>
-                        <input type="text" name="visit_endYear" value={visit_endYear} disabled={false} onChange={input_visit_endYear} minLength={4} maxLength={4}></input>년
-                        <input type="text" name="visit_endMonth" value={visit_endMonth} disabled={false} onChange={input_visit_endMonth} minLength={2} maxLength={2}></input>월
-                        <input type="text" name="visit_endDay" value={visit_endDay} disabled={false} onChange={input_visit_endDay} minLength={2} maxLength={2}></input>일
-                    </div>                       
-                </div>
-            </div>
-            <div className={advicerequest.row_box}>
-                <div className ={`${advicerequest.title_box} ${advicerequest.row_contentbox}`} style={{height : '130px'}}>
-                    치료사항
-                </div>
-                <div className={advicerequest.input_box} style={{width : '400px', height : 'auto'}}>
-                    <textarea cols="50" rows="10" value={treat_cmt} disabled={false} maxLength={500} onChange={input_treat_cmt}></textarea>
-                    <div className={advicerequest.count_box}>
-                        <span>{treat_cmt_count}/500</span>
+                <div className={advicerequest.title_box}>입원 치료기간</div>
+                    <div className={advicerequest.input_box}>
+                        <div className={advicerequest.datebox}>
+                        <DatePicker
+                                selected={admStartDate}
+                                onChange={date => {
+                                    setAdmStartDate(date);
+                                    setAdmStartYear(date.getFullYear());
+                                    setAdmStartMonth(date.getMonth() + 1); // 월은 0부터 시작하므로 1을 더해줍니다.
+                                    setAdmStartDay(date.getDate());
+                                }}
+                                dateFormat="yyyy/MM/dd"
+                                selectsStart
+                                startDate={admStartDate}
+                                endDate={admEndDate}
+                                // locale="ko"
+                                minDate={minDate}
+                            />
+                        </div>
+                        ~
+                        <div className={advicerequest.datebox}>
+                            <DatePicker
+                                selected={admEndDate}
+                                onChange={date => {
+                                    setAdmEndDate(date);
+                                    setAdmEndYear(date.getFullYear());
+                                    setAdmEndMonth(date.getMonth() + 1);
+                                    setAdmEndDay(date.getDate());
+                                }}
+                                dateFormat="yyyy/MM/dd"
+                                selectsEnd
+                                startDate={admStartDate}
+                                endDate={admEndDate}
+                                minDate={admStartDate || minDate} // 최소 날짜는 시작 날짜 이후부터
+                                locale="ko"
+                            />
+                        </div>
                     </div>
                 </div>
+                <div className={advicerequest.row_box}>
+                    <div className={advicerequest.title_box}>통원 치료기간</div>
+                    <div className={advicerequest.input_box}>
+                    <div className={advicerequest.datebox}>
+                            <DatePicker
+                                selected={visitStartDate}
+                                onChange={date => {
+                                    setVisitStartDate(date);
+                                    setVisitStartYear(date.getFullYear());
+                                    setVisitStartMonth(date.getMonth() + 1); // 월은 0부터 시작하므로 1을 더해줍니다.
+                                    setVisitStartDay(date.getDate());
+                                }}
+                                dateFormat="yyyy/MM/dd"
+                                selectsStart
+                                startDate={visitStartDate}
+                                endDate={visitEndDate}
+                                // locale="ko"
+                                minDate={minDate}
+                            />
+                        </div>
+                        ~
+                        <div className={advicerequest.datebox}>
+                            <DatePicker
+                                selected={visitEndDate}
+                                onChange={date => {
+                                    setVisitEndDate(date);
+                                    setVisitEndYear(date.getFullYear());
+                                    setVisitEndMonth(date.getMonth() + 1);
+                                    setVisitEndDay(date.getDate());
+                                }}
+                                dateFormat="yyyy/MM/dd"
+                                selectsEnd
+                                startDate={visitStartDate}
+                                endDate={visitEndDate}
+                                minDate={visitStartDate || minDate} // 최소 날짜는 시작 날짜 이후부터
+                                // locale="ko"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className={advicerequest.row_box}>
+                    <div className ={`${advicerequest.title_box} ${advicerequest.row_contentbox}`}>치료사항</div>
+                    <div className={advicerequest.input_box} style={{width : '600px', height : 'auto'}}>
+                    <textarea cols="50" rows="10" value={treat_cmt} disabled={false} maxLength={500} onChange={input_treat_cmt}></textarea>
+                    <div className={advicerequest.count_box}>
+                            <span>{treat_cmt_count}/500</span>
+                        </div>                   
+                     </div>
+                </div>
             </div>
-        </div>
-        <div className={advicerequest.iconbox}>
-            <h3>
-                <i className="fa-solid fa-circle icon"></i>
-                기타사항
-            </h3>
-        </div>
-        <div className={advicerequest.request_othertable}>
-            <div className={advicerequest.row_box} >
-                <div className={advicerequest.title_box} style={{height : '130px'}}>기타사항</div>
-                <div className={advicerequest.input_box} style={{width : '400px'}}>
+            <div className={advicerequest.iconbox}>
+                <h3 className={advicerequest.tit}>
+                    기타사항
+                </h3>
+            </div>
+            <div className={advicerequest.request_othertable}>
+                <div className={advicerequest.row_box} >
+                <div className ={`${advicerequest.title_box} ${advicerequest.row_contentbox}`}>기타사항</div>
+                    <div className={advicerequest.input_box} style={{width : '600px'}}>
                     <textarea cols="50" rows="3" name="adEtc" disabled={false} value={adEtcValue} onChange={handleAdEtcChange} maxLength={300}></textarea>
                     <div className={advicerequest.count_box}>
                         <span>{ad_etc_count}/300</span>
@@ -671,12 +765,11 @@ return(
                 </div>
             </div>
         </div>
-        <div className={advicerequest.iconbox} style={{marginTop : '50px'}}>
-            <h3>
-                <i className="fa-solid fa-circle icon"></i>
-                질문지 작성
-            </h3>
-        </div>
+        <div className={advicerequest.iconbox}>
+                <h3 className={advicerequest.tit}>
+                    질문지 작성
+                </h3>
+            </div>
         <div className = {advicerequest.request_questiontable}>
             <div className={advicerequest.row_box} style={{height : 'auto'}}>
                 <div className={advicerequest.title_box}>
@@ -693,12 +786,11 @@ return(
             </div>
                 {renderQuestionInputs()}
             </div>
-         <div className={advicerequest.iconbox}>
-            <h3>
-                <i className="fa-solid fa-circle icon"></i>
-                    첨부자료
-            </h3>
-        </div>
+            <div className={advicerequest.iconbox}>
+                <h3 className={advicerequest.tit}>
+                        첨부자료
+                </h3>
+            </div>
         <div className={advicerequest.file_table}>
         <div className={advicerequest.row_box} style={{height : 'auto'}}>
                 <div className={advicerequest.title_box}>
@@ -867,8 +959,8 @@ return(
                 </div>
             </div>
             <div className={advicerequest.complete}>
-                <button type = "button" className={advicerequest.btt_complete} onClick={btn_advice_update}>자문 의뢰수정</button>
-                <button type = "button" className={advicerequest.btt_complete} onClick={btn_advice_cancle}>취소</button>
+                <button type = "button" className={advicerequest.complete_button} onClick={btn_advice_update}>자문 의뢰수정</button>
+                <button type = "button" className={advicerequest.complete_button} onClick={btn_advice_cancle}>취소</button>
              </div>
              <ImageModal src={src} isOpenimage={isOpenimage} onRequestClose={closeImageModal} />
         </div>

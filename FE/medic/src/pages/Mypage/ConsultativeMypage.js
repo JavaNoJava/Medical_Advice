@@ -11,7 +11,6 @@ export default function ConsultativeMypage(){
                 <ConsultativeAssignmentCount/>
                 <ModifyConsultativeInfopage/>
             </div>
-            <Footer/>
         </>
         
     )

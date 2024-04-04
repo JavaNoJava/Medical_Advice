@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import translaterequest from '../../css/ConsultativeTranslateAssignmentDetailpage.module.css'
+import translaterequest from '../../css/TranslateDetailpage.module.css'
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 

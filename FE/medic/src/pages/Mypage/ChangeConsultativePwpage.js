@@ -140,7 +140,6 @@ export default function ChangeConsultativePwpage(){
                     }
                 </div>
             </div> 
-            <Footer/>
         </>
     )
 }
