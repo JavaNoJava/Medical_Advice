@@ -40,12 +40,13 @@ public class ManagedClientInfoDto {
     private int countByAnalyze;
 
     private int countByTranslate;
+    private String uPart;
 
     @Builder
     ManagedClientInfoDto(String uId, String uPw, String uRole, String uName, String uEmail, String userTel,
                          String userPhone, String userAddress, String company, String ceo, String cpTel,
                          String cpFx, String cpNum, String cpAddress, int countByAdvice, int countByAnalyze,
-                         int countByTranslate) {
+                         int countByTranslate,String uPart) {
         this.uId = uId;
         this.uPw = uPw;
         this.uRole = uRole;
@@ -63,5 +64,6 @@ public class ManagedClientInfoDto {
         this.countByAdvice = countByAdvice;
         this.countByAnalyze = countByAnalyze;
         this.countByTranslate = countByTranslate;
+        this.uPart = uPart;
     }
 }

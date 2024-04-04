@@ -89,7 +89,7 @@ console.log('ann',faqDetail)
                 <div className={announcedetail.detail_title} >
                     제목
                 </div>
-                <div className={announcedetail.detail_titleinputbox}>
+                <div className={announcedetail.detail_titleinputbox} >
                     <input type='text' value={faqQuestion} className={announcedetail.write_titleinput} onChange={e=>setFaqQuestion(e.target.value)}  style={{width:'800px'}}></input>
                 </div>
             </div>
@@ -126,9 +126,11 @@ console.log('ann',faqDetail)
   <div className={`${announcedetail.write_title} ${announcedetail.write_contentrowbox}`}>
    내용
   </div>
-  <div className={announcedetail.input_box} style={{width:'670px', height : '200px'}}>
+  <div className={announcedetail.detail_content} style={{width:'670px', height : '350px'}}>
     <textarea
       value={faqAnswer}
+      cols="50"
+      rows="500"
       onChange={e =>{
         setFaqAnswer(e.target.value)
         setFaqCount(e.target.value.length)}

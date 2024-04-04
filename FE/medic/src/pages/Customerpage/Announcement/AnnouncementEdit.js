@@ -141,7 +141,7 @@ console.log('ann',announceDetail)
   <div className={`${announcedetail.write_title} ${announcedetail.write_contentrowbox}`}>
     내용
   </div>
-  <div className={announcedetail.detail_content} style={{width:'670px', height : '300px'}}>
+  <div className={announcedetail.detail_content} style={{width:'630px', height : '350px'}}>
     <textarea
     cols="50"
     rows="500"
@@ -150,7 +150,7 @@ console.log('ann',announceDetail)
         setAnnouncecount(e.target.value.length)} 
       }
       maxLength={500}
-      style={{ height: '200px' }}
+      // style={{ height: '200px' }}
       className={announcedetail.write_content}
     ></textarea>
     <div className={announcedetail.contentcount}> 

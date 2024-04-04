@@ -96,7 +96,7 @@ export default function WriteAnnouncement()  {
           <div className={`${writeannoucement.write_title} ${writeannoucement.write_contentrowbox}`}>
             내용
           </div>
-          <div className={writeannoucement.input_box} style={{width:'670px', height : '300px'}}>
+          <div className={writeannoucement.input_box} style={{width:'630px', height : '300px'}}>
           <textarea
           cols="50"
           rows="500"

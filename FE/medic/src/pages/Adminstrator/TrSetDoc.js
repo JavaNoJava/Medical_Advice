@@ -309,7 +309,7 @@ const handlePageChange = (newPage) => {
             의뢰배정일
           </div>
           <div className={ad.title_box} style={{width:'150px'}}>
-            의뢰자문일
+            의뢰번역일
           </div>
           <div className={ad.title_box} style={{borderRight:'none'}} >
             진행상태

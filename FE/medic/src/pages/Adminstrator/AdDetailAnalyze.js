@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import analyzerequest from '../../css/AdviceRequestpage.module.css'
+import analyzerequest from '../../css/AdDetailRequestPage.module.css'
 import axios from 'axios';
 import { useNavigate,useParams } from 'react-router-dom';
 
@@ -153,7 +153,7 @@ export default function AdDetailAnalyze(){
       }
 
     return(
-        <div className={analyzerequest.advicerequest_wrap}>
+        <div className={analyzerequest.analyzerequest_wrap}>
       
       <div className={analyzerequest.iconbox}>
                 <h2 className={analyzerequest.title}>

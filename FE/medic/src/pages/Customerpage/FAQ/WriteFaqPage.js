@@ -8,7 +8,7 @@ export default function WriteFaqPage  ()  {
   const [timer, setTimer] = useState("");
   const [faq_titile, setFaqTitle] = useState('')
   const [faqAnswer, setFaqAnswer] = useState('')
-  const [faqCount, setFaqContentcount] = useState(0)
+  const [faqCount, setFaqContentCount] = useState(0)
   const [writer, setWriter] = useState('');
   
 
@@ -52,10 +52,7 @@ export default function WriteFaqPage  ()  {
   const input_faq_titile = e => {
     setFaqTitle(e.target.value)
   } 
-  const input_faq_Answer= e => {
-    setFaqAnswer(e.target.value)
-    setFaqContentcount(e.target.value.length)
-  }
+
   return (
     <div className={writeannoucement.writeform}>
       <div className={writeannoucement.inquiry_title}>
@@ -98,19 +95,19 @@ export default function WriteFaqPage  ()  {
           <div className={`${writeannoucement.write_title} ${writeannoucement.write_contentrowbox}`}>
               답변내용 
           </div>
-          <div className={writeannoucement.input_box} style={{width:'670px', height : '300px'}}>
+          <div className={writeannoucement.input_box} style={{width:'630px', height : '300px'}}>
           <textarea
           className={writeannoucement.write_content}
           cols="50"
           rows="10"
           onChange={e => {
             setFaqAnswer(e.target.value)
-            setFaqContentcount(e.target.value.length)
+            setFaqContentCount(e.target.value.length)
           }} maxLength={500}
           >
           </textarea>
           <div className={writeannoucement.contentcount}>
-            <span>/500</span>
+            {faqCount}/500
           </div>
           </div>
         </div>
