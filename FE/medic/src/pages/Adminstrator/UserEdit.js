@@ -27,7 +27,6 @@
     const [userAddress, setUserAddress] = useState()
     const [uPart, setUPart] = useState()
     const [comapanyroadAddress, setComapanyRoadAddress] = useState('')
-    const [uaddress, setUaddress] = useState('')
 
     const [company, setCompany] = useState() //업체명
     const [ceo, setCeo] = useState() //대표자명
