@@ -50,7 +50,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
             setTrptdiagnosis(response.data.trPtDiagnosis)
             setTrptdiagcontent(response.data.trPtDiagContent)
             setTrEtcValue(response.data.trEtc)
-            if(response.data.trProgressStatus === '결제하기' || response.data.trProgressStatus === '번역완료'){
+            if(response.data.trProgressStatus === '결제하기' || response.data.trProgressStatus === '자문완료'){
                 setTrProgressStatus(true)
             } else{
                 setTrProgressStatus(false)
