@@ -524,7 +524,7 @@ const navigate = useNavigate();
         </div>
   
     </div>
-    <div className={mypage.complete}>
+    <div className={mypage.complete} style={{marginBottom : '100px'}}>
         <div className={mypage.complete_btnBox}>
             <button type = "button" onClick={btn_progrm_doc_edit}  className={mypage.btt_complete} >수정</button>
             <button type = "button" onClick={btn_doc_list} className={mypage.btt_complete}>목록</button>

@@ -483,8 +483,8 @@
                 
                 <></>
                 {/* } */}
-                <div className={mypage.complete}>
-                    <div className={mypage.complete_btnBox}>
+                <div className={mypage.complete} style={{marginBottom : '100px'}}>
+                    <div className={mypage.complete_btnBox} >
                         <button type = "button" onClick={btn_progrm_modify}  className={mypage.btt_complete} >수정</button>
                         <button type = "button" onClick={btn_user_list} className={mypage.btt_complete} >취소</button>
                     </div>
