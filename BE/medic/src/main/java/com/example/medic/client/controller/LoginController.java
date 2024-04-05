@@ -65,7 +65,7 @@ public class LoginController {
                 uRole = ((Manager) success).getMRole();
             }
             session.setAttribute("uId", uId);
-            session.setMaxInactiveInterval(1800);
+            session.setMaxInactiveInterval(10800);
 
             sessionList.put(session.getId(), session);
 
@@ -73,8 +73,8 @@ public class LoginController {
             Cookie uIdCookie = new Cookie("uId", uId);
             Cookie uRoleCookie = new Cookie("uRole", uRole);
 
-            uIdCookie.setMaxAge(1800);
-            uRoleCookie.setMaxAge(1800);
+            uIdCookie.setMaxAge(10800);
+            uRoleCookie.setMaxAge(10800);
 
             httpServletResponse.addCookie(uIdCookie);
             httpServletResponse.addCookie(uRoleCookie);
