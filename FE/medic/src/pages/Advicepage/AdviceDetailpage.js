@@ -378,7 +378,7 @@ const generateOptions = (start, end) => {
             </div>
         {adviceDetails.admProgressStatus === '자문완료' && (
             <div>
-            <div className={advicerequest.iconbox}>
+            <div className={advicerequest.iconbox2}>
                 <h3 className={advicerequest.tit}>
                     전문의 답변
                 </h3>
@@ -400,7 +400,7 @@ const generateOptions = (start, end) => {
             </div>
                     </div>
         )}
-             <div className={advicerequest.iconbox}>
+             <div className={advicerequest.iconbox} style={{height : 'auto'}}>
                 <h3 className={advicerequest.tit}>
                     첨부자료
                 </h3>
