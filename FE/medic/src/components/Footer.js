@@ -29,8 +29,8 @@ export default function Footer(){
                 </div>
                 <div className={style.footer_box}>
                     <p>
-                        상호: 주식회사 한국의료자문센터 / 사업자번호:435-81-00113 / TEL: 02-834-4114 / FAX: 02-834-4115 / 이메일 : ikmcc@naver.com<br/>
-                        대표: 이세준 / 주소: 서울 관악구 난곡로 320, 5층(신림동, 세인빌딩) &nbsp;우. 08761<br/>
+                        상호: 주식회사 의료자문분석시스템 / 사업자번호:382-32-11357 / TEL: 02-815-3778 / FAX: 02-815-3778 / 이메일 : mass12@naver.com<br/>
+                        대표: 김정남 / 주소: 서울 송파구 동남로 99, 13층(용현빌딩) &nbsp;우. 08761<br/>
                         Copyright © KMCC Corp. All Rights Reserved.
                     </p>
                 </div>

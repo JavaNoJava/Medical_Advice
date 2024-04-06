@@ -6,7 +6,8 @@
     justify-content: start;
 }
 section {
-    height: 800px;
+    height: auto;
+    margin-bottom: 28px;
 }
 .main_footer{
     width : 100%;
@@ -50,43 +51,74 @@ section {
     font-size: 0.75rem;
     padding-left: 33px;
 }
-/* .main_wrap{
-    height : 1080px;
-    display : flex;
-    flex-direction : column;
+.main_banner_wrap{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    background-image: url('../img/main_banner_background.jpg');
+    background-size: contain;
+    align-items: end;
+    position: relative;
+    bottom: 30px;
+}
+.main_banner_box{
+    width: 600px;
+    height: 400px;
+    display: flex;
     justify-content: space-between;
+    align-items: end;
 }
-
-
-
-.footer {
-    margin-top: auto;
-  }
-.footer_navigator{
-    width : 1680px;
-    height : 73px;
-    border-top : 1px solid black;
-    border-bottom : 1px solid black;
+.main_banner{
+    width: 300px;
+    height: 300px;
 }
-.footer_navigatorbox{
-    width : 500px;
-    height : 73px;
-    display : flex;
-    justify-content: space-around;
-    align-items: center;
+.main_banner_titlebox{
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    color: white;
+    font-weight: bold;
 }
-.footer_navigate_btn{
-    width : 169px;
-    height : 73px;
-    display : flex;
+.main_banner_title{
+    margin-top: 70px;
+    font-size: 2rem;
+}
+.main_banner_subtitle{
+    width: 290px;
+    display: flex;
+    justify-content: end;
+}
+.main_searchwrap{
+    width: 100%;
+    height: 110px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    margin: 50px 0 100px 0;
 }
-.footer_box{
-    background-color : #2a293f;        
-    height : 273px;    
+.main_serachbox{
+    width: 1000px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
 }
-.footer_navigate_btn{
+.main_bottom_btnbox{
+    padding: 0;
+    background-color: white;
+    border: none;
     cursor: pointer;
+}
+.main_bottom_btn{
+    width: 100%;
+    height: 100%;
+}
+/* .main_section{
+    width: 100%;
+    height: 400px;
+    background-color: black;
 } */
