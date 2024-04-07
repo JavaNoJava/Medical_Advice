@@ -77,6 +77,7 @@ export default function TrafficAccidentWritepage() {
         }
         try{
             const response = await axios.post('/trafficAccident/post', TrafficAccidentInfo)
+            alert('작성되었습니다.')
             navigate('/medic/medicalknowledge/trafficAccidentInfo');
         } catch(err){
             console.log(err)
@@ -98,7 +99,7 @@ export default function TrafficAccidentWritepage() {
         setIsValidTitle(true);
     }
     const valid_title = e => {
-        const titleRegex = /^[a-zA-Z가-힣]{1,30}$/;
+        const titleRegex = /^[a-zA-Z가-힣0-9\s]{1,30}$/;
         setIsValidTitle(titleRegex.test(e.target.value))
     }
     const input_writer = e => {
@@ -106,10 +107,22 @@ export default function TrafficAccidentWritepage() {
         setIsValidInstitution(true);
     }
     const valid_institution = e => {
-        const institutionRegex = /^[a-zA-Z가-힣]{1,30}$/;
+        const institutionRegex = /^[a-zA-Z가-힣0-9\s]{1,30}$/;
         setIsValidInstitution(institutionRegex.test(e.target.value))
     }
     const btn_updatePost = e=> {
+        if (!postTitle.trim() || !writer.trim() || !trafficWrite.trim()) { //빈 문자열인 경우 저장 방지
+            alert("모든 필드를 입력해주세요.");
+            return;
+        }
+        if (!isValidTitle) { // 유효성 검사 결과를 확인
+            alert("올바른 제목 형식이 아닙니다.");
+            return;
+        }
+        if (!isValidInstitution) { // 기관명 유효성 검사 결과를 확인
+            alert("올바른 기관명 형식이 아닙니다.");
+            return;
+        }
         const today = new Date();
         const upDatePost = {
             'taName' : postTitle,
@@ -164,7 +177,7 @@ export default function TrafficAccidentWritepage() {
         <div className={`${faultinfowrite.row_box} ${faultinfowrite.row_contentbox}`}>
             <div className={`${faultinfowrite.title_box} ${faultinfowrite.row_contentbox}`}>내용</div>
             <div className={faultinfowrite.input_box} style={{width:'620px', height : '250px'}}>
-                <textarea cols="50" rows="10" maxLength={300} value={trafficWrite} onChange={handleTrafficAccidentWriteChange}/>
+                <textarea cols="50" rows="10" maxLength={500} value={trafficWrite} onChange={handleTrafficAccidentWriteChange}/>
                     <div className={faultinfowrite.contentcount}>
                         <span>{questionCount}/500</span>
                     </div>

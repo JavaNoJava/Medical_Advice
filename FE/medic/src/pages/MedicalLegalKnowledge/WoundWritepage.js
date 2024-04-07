@@ -69,10 +69,6 @@ export default function WoundWritepage() {
             alert("올바른 기관명 형식이 아닙니다.");
             return;
         }
-        if (!isValidInstitution) {
-            setErrorMessage('올바르지 않은 기관명 형식입니다.');
-            return;
-        }
         const today = new Date();
         const WoundInfo = {
             'woName' : postTitle,
@@ -82,6 +78,7 @@ export default function WoundWritepage() {
         }
         try{
             const response = await axios.post('/woundInfo/post', WoundInfo)
+            alert('작성되었습니다.')
             navigate('/medic/medicalknowledge/woundInfo');
         } catch(err){
             console.log(err)
@@ -103,7 +100,7 @@ export default function WoundWritepage() {
         setIsValidTitle(true);
     }
     const valid_title = e => {
-        const titleRegex = /^[a-zA-Z가-힣]{1,30}$/;
+        const titleRegex = /^[a-zA-Z가-힣0-9\s]{1,30}$/;
         setIsValidTitle(titleRegex.test(e.target.value))
     }
     const input_writer = e => {
@@ -111,10 +108,22 @@ export default function WoundWritepage() {
         setIsValidInstitution(true);
     }
     const valid_institution = e => {
-        const institutionRegex = /^[a-zA-Z가-힣]{1,30}$/;
+        const institutionRegex = /^[a-zA-Z가-힣0-9\s]{1,30}$/;
         setIsValidInstitution(institutionRegex.test(e.target.value))
     }
     const btn_updatePost = e=> {
+        if (!postTitle.trim() || !writer.trim() || !woundWrite.trim()) { //빈 문자열인 경우 저장 방지
+            alert("모든 필드를 입력해주세요.");
+            return;
+        }
+        if (!isValidTitle) { // 유효성 검사 결과를 확인
+            alert("올바른 제목 형식이 아닙니다.");
+            return;
+        }
+        if (!isValidInstitution) { // 기관명 유효성 검사 결과를 확인
+            alert("올바른 기관명 형식이 아닙니다.");
+            return;
+        }
         const today = new Date();
         const upDatePost = {
             'woName' : postTitle,
@@ -169,7 +178,7 @@ export default function WoundWritepage() {
         <div className={`${woundwrite.row_box} ${woundwrite.row_contentbox}`}>
             <div className={`${woundwrite.title_box} ${woundwrite.row_contentbox}`}>내용</div>
             <div className={woundwrite.input_box} style={{width:'620px', height : '250px'}}>
-                    <textarea cols="50" rows="10" maxLength={300} value={woundWrite} onChange={handleWoundWriteChange}/>
+                    <textarea cols="50" rows="10" maxLength={500} value={woundWrite} onChange={handleWoundWriteChange}/>
                         <div className={woundwrite.contentcount}>
                             <span>{questionCount}/500</span>
                         </div>
