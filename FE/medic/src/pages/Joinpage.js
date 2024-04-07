@@ -207,12 +207,12 @@ export default function Joinpage(){
         setIsValidPhone(phoneRegex.test(e.target.value))
     }
     const input_userDetails = e => {
-        const uadd = zipcode + "/" + userroadAddress + "/" + userDetailAddress;
-        setUserAddress(uadd)
+        const uadd = zipcode + "/" + userroadAddress + "/" + e.target.value;
         setUserDetailAddress(e.target.value)
+        setUserAddress(uadd)
     }
     const input_CompanyDetails = e => {
-        const cadd = cpZipcode + "/" + comapanyroadAddress + "/" + comapanyDetailAddress;
+        const cadd = cpZipcode + "/" + comapanyroadAddress + "/" + e.target.value;
         setCpAddress(cadd)
         setComapanyDetailAddress(e.target.value)
     }
@@ -260,10 +260,9 @@ export default function Joinpage(){
             navigate('/mediclogin')
         }
     }
-    const btn_progrm_signup = e => {
-        
+    const btn_progrm_signup = async(e) => {
 
-        e.preventDefault()
+        e.preventDefault();
         const userInfo = {
             'uRole' : 'general_user',
             'uPart' : uPart,
