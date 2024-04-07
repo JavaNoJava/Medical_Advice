@@ -60,6 +60,7 @@ public class TranslationServiceImpl implements TranslationService {
 
             TranslationAssignment savedTranslationAssignment = TranslationAssignment.builder()  // 번역 배정 생성
                     .translationRequestList(savedTranslationList)
+                    .trProgressStatus("번역의뢰중")
                     .build();
 
             TranslationAnswerFile savedTranslationAnswerFile = TranslationAnswerFile.builder()  // 번역 답변 생성

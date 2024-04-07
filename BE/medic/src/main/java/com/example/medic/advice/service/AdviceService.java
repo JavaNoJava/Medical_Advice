@@ -62,6 +62,7 @@ public class AdviceService {
 
             AdviceAssignment adviceAssignment = AdviceAssignment.builder()
                     .adviceRequestList(savedAdviceRequestList)
+                    .admProgressStatus("자문의뢰중")
                     .build();
             adviceAssignmentRepository.save(adviceAssignment);
 

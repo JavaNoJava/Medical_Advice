@@ -57,6 +57,7 @@ public class AnalyzeServiceImpl implements AnalyzeService {
 
             AnalyzeAssignment analyzeAssignment = AnalyzeAssignment.builder()
                     .analyzeRequestList(savedAnalyzeRequestList)
+                    .anProgressStatus("분석의뢰중")
                     .build();
             analyzeAssignmentRepository.save(analyzeAssignment);
 

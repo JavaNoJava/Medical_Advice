@@ -39,14 +39,12 @@ public class AdviceAssignment {
     private Consultative consultative;
 
     @Builder
-
-
-    public AdviceAssignment(LocalDate admDate, Consultative consultative, AdviceRequestList adviceRequestList) {
-
+    public AdviceAssignment(LocalDate admDate, Consultative consultative,
+                            AdviceRequestList adviceRequestList, String admProgressStatus) {
             this.admDate = admDate;
             this.consultative = consultative;
             this.adviceRequestList = adviceRequestList;
-
+            this.admProgressStatus = admProgressStatus;
         }
 
 
