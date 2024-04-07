@@ -4,7 +4,8 @@
     align-items: center;
     position: relative;
     font-family: "돋움", Dotum, Arial, sans-serif;
-  }
+    margin: 0 0 100px 0;
+}
   
 .trafficAccident_title {
     display: flex;
