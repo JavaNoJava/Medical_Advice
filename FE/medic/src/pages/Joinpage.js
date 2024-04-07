@@ -42,6 +42,8 @@ export default function Joinpage(){
     const [isValidEmail, setIsValidEmail] = useState(true)
     const [isValidTel, setIsValidTel] = useState(true)
     const [isValidPhone, setIsValidPhone] = useState(true)
+    const [isValidCpName, setIsValidCpName] = useState(true)
+    const [isValidCpCeo, setIsValidCpCeo] = useState(true)
     const [isValidCpNum, setIsValidCpNum] = useState(true)
     const [isValidCpFx ,setIsValidCpFx] = useState(true)
     const [isValidCpTel, setIsValidCpTel] = useState(true)
@@ -53,6 +55,8 @@ export default function Joinpage(){
         email : '올바르지 않은 이메일 형식입니다.',
         tel : '올바르지 않은 전화번호 형식입니다.',
         phone : '올바르지 않은 전화번호 형식입니다.',
+        cpName : '올바르지 않은 회사명 형식입니다.',
+        cpCeo : '올바르지 않은 대표자명 형식입니다.',
         cpNum : '올바르지 않은 사업자번호 형식입니다.',
         cpFx : '올바르지 않은 팩스번호 형식입니다.',
     }
@@ -113,12 +117,12 @@ export default function Joinpage(){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if(uPart && uId && uPw && uName && uEmail && userTel && userPhone && zipcode && userroadAddress && userDetailAddress && (!showCompanyInfo || (company && ceo && cpTel && cpFx && cpNum && cpZipcode && comapanyroadAddress && comapanyDetailAddress && isValidCpTel && isValidCpNum && isValidCpFx)) && idchk && pwchk && isValidId && isValidPw && isValidName && isValidEmail && isValidTel && isValidPhone){
+        if(uPart && uId && uPw && uName && uEmail && userTel && userPhone && zipcode && userroadAddress && userDetailAddress && (!showCompanyInfo || (company && ceo && cpTel && cpFx && cpNum && cpZipcode && comapanyroadAddress && comapanyDetailAddress && isValidCpTel && isValidCpNum && isValidCpFx && isValidCpName && isValidCpCeo)) && idchk && pwchk && isValidId && isValidPw && isValidName && isValidEmail && isValidTel && isValidPhone){
             setInfoEmpty(true);
         } else{
             setInfoEmpty(false)
         }
-    }, [uPart,  uId,  uPw,  uName,  uEmail,  userTel,  userPhone, zipcode,  userroadAddress, userDetailAddress, company,  ceo,  cpTel,  cpFx,  cpNum,  cpZipcode, comapanyroadAddress, comapanyDetailAddress, idchk,  pwchk, isValidId, isValidPw, isValidName, isValidEmail, isValidTel, isValidPhone, isValidCpTel, isValidCpNum, isValidCpFx, showCompanyInfo])
+    }, [uPart,  uId,  uPw,  uName,  uEmail,  userTel,  userPhone, zipcode,  userroadAddress, userDetailAddress, company,  ceo,  cpTel,  cpFx,  cpNum,  cpZipcode, comapanyroadAddress, comapanyDetailAddress, idchk,  pwchk, isValidId, isValidPw, isValidName, isValidEmail, isValidTel, isValidPhone, isValidCpName, isValidCpCeo, isValidCpTel, isValidCpNum, isValidCpFx, showCompanyInfo])
 
     const radio_select_userPart = e => {
         setUPart(e.target.value)
@@ -215,8 +219,16 @@ export default function Joinpage(){
     const input_cpname = e => {
         setCompany(e.target.value)
     }
+    const valid_cpname = e => {
+        const cpnameRegex = /^[a-zA-Z가-힣0-9\s]{1,20}$/;
+        setIsValidCpName(cpnameRegex.test(e.target.value))
+    }
     const input_cp_ceo = e => {
         setCeo(e.target.value)
+    }
+    const valid_cpceo = e => {
+        const ceoRegex = /^[a-zA-Z가-힣]{1,8}$/;
+        setIsValidCpCeo(ceoRegex.test(e.target.value))
     }
     const input_cp_tel = e => {
         setCpTel(e.target.value)
@@ -374,13 +386,15 @@ export default function Joinpage(){
                         <div className={joinpage.company_row_box}>
                             <div className={joinpage.company_title_box}>회사명</div>
                             <div className={joinpage.company_input_box}>
-                                <input type="text" name="cp_name" onChange={input_cpname} maxLength={20}/>
+                                <input type="text" name="cp_name" onBlur={valid_cpname} onChange={input_cpname} maxLength={20}/>
+                                {isValidCpName ? <></> : <span className={joinpage.errmsg}>{errmsg.cpName} (한글, 영문, 숫자로 최대 20자(띄어쓰기 포함))</span>}
                             </div>
                         </div>
                         <div className={joinpage.company_row_box}>
                             <div className={joinpage.company_title_box}>대표자명</div>
                             <div className={joinpage.company_input_box}>
-                                <input type="text" name="cp_ceo" onChange={input_cp_ceo} maxLength={8}/>
+                                <input type="text" name="cp_ceo" onBlur={valid_cpceo} onChange={input_cp_ceo} maxLength={8}/>
+                                {isValidCpCeo ? <></> : <span className={joinpage.errmsg}>{errmsg.cpCeo} (한글 또는 영문으로 최대 8자)</span>}
                             </div>
                         </div>
                         <div className={joinpage.company_row_box}>
