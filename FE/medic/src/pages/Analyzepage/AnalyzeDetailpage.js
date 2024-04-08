@@ -105,7 +105,7 @@ export default function AnalyzeDetailpage(){
     }
 
     const btn_edit = () => {
-        if (analyzeDetails.adMdDate == null) {
+        if (analyzeDetails.adMdDate == null && analyzeDetails.anProgressStatus == '분석의뢰중') {
             navigate(`/medic/analyze/analyzeUpdate/${index}`);
         } else {
             alert("분석의뢰 신청이 전문의에게 배정된 이후로는 수정할 수 없습니다.")
@@ -278,8 +278,8 @@ export default function AnalyzeDetailpage(){
                 </div>
                     {renderQuestionInputs()}
             </div>
-        {analyzeDetails.anProgressStatus === '분석완료' && (
-        <div>
+        {analyzeDetails.anProgressStatus === '분석완료' ? (
+        <>
             <div className={analyzerequest.iconbox}>
                 <h3 className={analyzerequest.tit}>
                     전문의 답변
@@ -299,9 +299,8 @@ export default function AnalyzeDetailpage(){
                     </div>
                 </div>
                     {renderQuestionInputs()}
-            </div>
-        </div>
-        )}
+            </div></>
+        ) : null}
              <div className={analyzerequest.iconbox}>
                 <h3 className={analyzerequest.tit}>
                     첨부자료
