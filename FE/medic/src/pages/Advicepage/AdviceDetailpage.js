@@ -139,7 +139,7 @@ const generateOptions = (start, end) => {
     }
 
     const btn_edit = () => {
-        if (adviceDetails.admDate == null) {
+        if (adviceDetails.admDate == null && adviceDetails.admProgressStatus == '자문의뢰중') {
             navigate(`/medic/advice/adviceUpdate/${index}`);
         } else {
             alert("자문의뢰 신청이 전문의에게 배정된 이후로는 수정할 수 없습니다.")
@@ -238,7 +238,7 @@ const generateOptions = (start, end) => {
                     환자의료 기록 사항
                 </h3>
             </div>
-            <div className={advicerequest.request_patienttable}>
+            <div className={advicerequest.request_patienttable2}>
                 <div className={advicerequest.row_box}>
                     <div className={advicerequest.title_box}>환자명</div>
                     <div className={advicerequest.input_box}>
@@ -376,30 +376,26 @@ const generateOptions = (start, end) => {
                 </div>
                     {renderQuestionInputs()}
             </div>
-        {adviceDetails.admProgressStatus === '자문완료' && (
-            <div>
-            <div className={advicerequest.iconbox2}>
-                <h3 className={advicerequest.tit}>
-                    전문의 답변
-                </h3>
-            </div>
-            <div className = {advicerequest.request_questiontable}>
-                <div className={advicerequest.row_box} style={{height : 'auto'}}>
-                    <div className={advicerequest.title_box}>
-                        답변 항목수
-                    </div>
-                    <div className={advicerequest.input_box}>
-                        <input
-                            type="text"
-                            name="adQuestionTotal"
-                            value={adAnswer.length}
-                        />
-                    </div>
-                </div>
-                    {renderQuestionInputs()}
-            </div>
-                    </div>
-        )}
+        {adviceDetails.admProgressStatus === '자문완료' ? (
+            <><div className={advicerequest.iconbox}>
+                    <h3 className={advicerequest.tit}>
+                        전문의 답변
+                    </h3>
+                </div><div className={advicerequest.request_questiontable}>
+                        <div className={advicerequest.row_box} style={{ height: 'auto' }}>
+                            <div className={advicerequest.title_box}>
+                                답변 항목수
+                            </div>
+                            <div className={advicerequest.input_box}>
+                                <input
+                                    type="text"
+                                    name="adQuestionTotal"
+                                    value={adAnswer.length} />
+                            </div>
+                        </div>
+                        {renderQuestionInputs()}
+                    </div></>
+        ) : null}
              <div className={advicerequest.iconbox} style={{height : 'auto'}}>
                 <h3 className={advicerequest.tit}>
                     첨부자료
