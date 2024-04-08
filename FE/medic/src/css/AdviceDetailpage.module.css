@@ -1,57 +1,17 @@
 .advicerequest_wrap {
-    height: 2550px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center; /* 추가: 화면 가운데 정렬 */
     text-align: center;
-    margin-bottom: 50px;
-    padding-bottom: 500px;
+    margin-bottom: 100px;
     font-family: "돋움", Dotum, Arial, sans-serif;
-}
-
-.iconbox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    text-align: center;
-    width: 850px;
-}
-
-.iconbox2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    text-align: center;
-    width: 850px;
-    margin-top: 50px;
-}
-
-.title {
-    margin-bottom: -20px;
-    font-size: 2.5rem;
-    color: #0f3a75;
-}
-
-.title_bottom {
-    font-size: 1.125rem;
-    color: #0f3a75;
-}
-
-.tit {
-    background: url(../img/bullet.png) 0 2px no-repeat;
-    padding-left: 10px;
-    font-size: 25px;
-    color: #1b699b;
-    margin-bottom: 17px;
-    margin-left: 10px;
 }
 
 .request_usertable{
     width: 850px;
-    height: 200px;
+    height: 210px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
@@ -86,49 +46,27 @@
     align-items: center;
     height: 52px;
     padding-left: 20px;
-    width: 250px;
-}
-
-.request_patienttable{
-    width: 850px;
-    height: 380px;
-    display: flex;
-    flex-direction: column;
-    border-top: 2px solid #10b3cc;
-    border-left: none; /* 왼쪽 테두리 없음 */
-    border-right: none; /* 오른쪽 테두리 없음 */
-    margin-bottom: 65px;
-}
-
-.request_insurancetable{
-    width: 850px;
-    height: 160px;
-    display: flex;
-    flex-direction: column;
-    border-top: 2px solid #10b3cc;
-    border-left: none; /* 왼쪽 테두리 없음 */
-    border-right: none; /* 오른쪽 테두리 없음 */
-    margin-bottom: 65px;
+    width: 750px;
 }
 
 .row_contentbox{
     height: 128px;
 }
 
-.request_hospitaltable{
-    width: 850px;
-    height: 290px;
+.count_box{
+    height : 118px;
+    display : flex;
+    flex-direction : column;
+    justify-content : end;
+}
+
+.datebox{
     display: flex;
-    flex-direction: column;
-    border-top: 2px solid #10b3cc;
-    border-left: none; /* 왼쪽 테두리 없음 */
-    border-right: none; /* 오른쪽 테두리 없음 */
-    margin-bottom: 65px;
 }
 
 .request_othertable{
     width: 850px;
-    height: 128px;
+    height: auto;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
@@ -139,7 +77,7 @@
 
 .request_questiontable{
     width: 850px;
-    height: 150px;
+    height: auto;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #10b3cc;
@@ -159,6 +97,72 @@
     margin-bottom: 65px;
 }
 
+.iconbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    width: 850px;
+}
+
+.title {
+    margin-bottom: -20px;
+    font-size: 2.5rem;
+    color: #0f3a75;
+}
+
+.title_bottom {
+    font-size: 1.125rem;
+    color: #0f3a75;
+}
+
+.tit {
+    background: url(../img/bullet.png) 0 2px no-repeat;
+    padding-left: 10px;
+    font-size: 25px;
+    color: #1b699b;
+    margin-bottom: 17px;
+    margin-left: 10px;
+}
+
+.request_patienttable2{
+    width: 850px;
+    height: 394px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #10b3cc;
+    border-left: none; /* 왼쪽 테두리 없음 */
+    border-right: none; /* 오른쪽 테두리 없음 */
+    margin-bottom: 65px;
+}
+
+.request_insurancetable{
+    width: 850px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #10b3cc;
+    border-left: none; /* 왼쪽 테두리 없음 */
+    border-right: none; /* 오른쪽 테두리 없음 */
+    margin-bottom: 65px;
+}
+
+.request_hospitaltable{
+    width: 850px;
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #10b3cc;
+    border-left: none; /* 왼쪽 테두리 없음 */
+    border-right: none; /* 오른쪽 테두리 없음 */
+    margin-bottom: 65px;
+}
+
+.input_box{
+    width: 600px;
+}
+
 div.complete {
     margin-top: 50px;
     display: flex;
@@ -175,8 +179,7 @@ div.complete {
     width: 100px;
     border: 2px solid #10b3cc; /* 테두리 설정 */
     border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
-    margin: 0 20px;
-    
+    margin: 0 20px;    
     cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
     transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
 }
@@ -186,7 +189,7 @@ div.complete {
     border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
 }
 
-.request_patienttable textarea,
+.request_patienttable2 textarea,
 .request_hospitaltable textarea {
     width: calc(100% - 40px); /* 텍스트 영역의 너비를 조정하여 테두리를 고려합니다. */
     max-width: calc(100% - 40px); /* 최대 너비도 설정하여 텍스트 영역이 너무 커지지 않도록 합니다. */
@@ -207,9 +210,6 @@ div.complete {
     resize: none; /* 사용자가 텍스트 영역의 크기를 조정하지 못하도록 합니다. */
 }
 
-.input_box{
-    width: 300px;
-}
 .file_label{
     padding: 0;
     position: relative;
@@ -259,4 +259,10 @@ div.complete {
 .btn_file_download a{
     color: white;
     text-decoration: none;
+}
+
+.errmsg{
+    color: red;
+    font-size: 0.625rem;
+    margin-left: 10px;
 }
