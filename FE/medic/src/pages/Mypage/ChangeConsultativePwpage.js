@@ -4,6 +4,7 @@ import Footer from '../../components/Footer'
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import mypage from '../../css/Mypage.module.css'
+import { Cookies } from "react-cookie";
 
 export default function ChangeConsultativePwpage(){
     const [checkCurrentPw, setChkCurrentPw] = useState(true)
@@ -16,6 +17,7 @@ export default function ChangeConsultativePwpage(){
 
     const location = useLocation();
     const navigate = useNavigate();
+    const cookies = new Cookies();
     const cpw = location.state.cpw
 
     const input_currentpw = e => {
@@ -67,7 +69,11 @@ export default function ChangeConsultativePwpage(){
             }
             try{
                 const response = await axios.post('/consultative/modifyConsultativePw', userPw)
-                alert(response.data)
+                cookies.remove('uId')
+                cookies.remove('uRole')
+                const response2 = await axios.get('/logout');
+                alert('재설정이 완료되었습니다.')
+                alert("재로그인 해주세요!")
                 navigate('/')
             } catch(err){
                 console.log(err)
