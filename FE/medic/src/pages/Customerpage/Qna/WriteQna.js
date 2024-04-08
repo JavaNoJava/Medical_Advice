@@ -45,8 +45,13 @@ export default function WriteQna() {
         }
     },[inputTitle, inquiryQuestion])
     const btn_writequestion = async()=> {
+        console.log(isEmpty)
+        console.log(isSecret)
+        console.log(secretPw)
         if(isEmpty){
             alert("입력값을 확인해주세요.")
+        }else if(isSecret && !(secretPw.length == 4)){
+            alert("비밀번호는 4자리로 설정해주세요.")
         } else{
             const today = new Date();
             const InquiryInfo = {
@@ -109,7 +114,7 @@ export default function WriteQna() {
                 제목
             </div>
             <div className={writecustomerinquiry.detail_titleinputbox} style={{width:'300px'}}>
-                <input className={writecustomerinquiry.write_titleinput} value={inputTitle} onChange={input_questiontitle}/>
+                <input className={writecustomerinquiry.write_titleinput} value={inputTitle} onChange={input_questiontitle} maxLength={50}/>
             </div>
         </div>
         
