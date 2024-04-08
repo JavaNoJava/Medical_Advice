@@ -131,7 +131,7 @@ export default function TranslateModifypage(){
                     'Content-Type': 'multipart/form-data',
                 },
             })
-            alert('번역의뢰 신청이 완료되었습니다.')
+            alert('번역의뢰 수정이 완료되었습니다.')
             navigate('/')
         } catch(err){
             alert(err.message);
