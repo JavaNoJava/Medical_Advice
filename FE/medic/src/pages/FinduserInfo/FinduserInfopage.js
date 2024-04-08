@@ -20,17 +20,21 @@ export default function FinduserInfopage(){
         setEmail_id(e.target.value)
     }
     const btn_findid = async (e) => {
-        const userInfo = {
-            'uName': name,
-            'uEmail': email_id
-        }
-        try {
-            const response = await axios.post('/login/findId', userInfo); 
-            alert(response.data); // 문자열 연결 수정
-            navigate('/mediclogin');
-        } catch (err) {
-            console.log(err);
-            alert('가입된 정보가 없습니다.');
+        if(!useridinfo){
+            const userInfo = {
+                'uName': name,
+                'uEmail': email_id
+            }
+            try {
+                const response = await axios.post('/login/findId', userInfo); 
+                alert(response.data); // 문자열 연결 수정
+                navigate('/mediclogin');
+            } catch (err) {
+                console.log(err);
+                alert('가입된 정보가 없습니다.');
+            }
+        }else{
+            alert('입력값을 확인하세요.')
         }
     }
 
@@ -56,17 +60,22 @@ export default function FinduserInfopage(){
         setEmail_pw(e.target.value)
     }
     const btn_findpw = async(e) => {
-        const userInfo = {
-            'uId' : id,
-            'uEmail' : email_pw
+        if(!userpwinfo){
+            const userInfo = {
+                'uId' : id,
+                'uEmail' : email_pw
+            }
+            try{
+                const response = await axios.post('/login/findPw', userInfo)
+                navigate('/medic/finduserinfo/findpw', {state : {uId : id, uEmail : email_pw}})
+            }catch(err){
+                console.log(err)
+                alert('가입된 정보가 없습니다.')
+            }
+        } else{
+            alert("입력값을 확인하세요.")
         }
-        try{
-            const response = await axios.post('/login/findPw', userInfo)
-            navigate('/medic/finduserinfo/findpw', {state : {uId : id, uEmail : email_pw}})
-        }catch(err){
-            console.log(err)
-            alert('가입된 정보가 없습니다.')
-        }
+        
     }
     return(
         <>
@@ -91,7 +100,7 @@ export default function FinduserInfopage(){
                                         이메일 <span className={style.inputbox}><input type="email" className={style.input} onChange={input_email_id} maxLength={30}></input></span>
                                     </div>
                                     <div className={style.btn_findbtnbox}>
-                                        <button className={style.btn_findbtn} disabled={useridinfo} onClick={btn_findid}>아이디 찾기</button>
+                                        <button className={style.btn_findbtn} onClick={btn_findid}>아이디 찾기</button>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +117,7 @@ export default function FinduserInfopage(){
                                         이메일 <span className={style.inputbox}><input type="email" className={style.input} onChange={input_email_pw} maxLength={30}></input></span>
                                     </div>
                                     <div className={style.btn_findbtnbox}>
-                                        <button className={style.btn_findbtn} disabled={userpwinfo}  onClick={btn_findpw}>비밀번호 찾기</button>
+                                        <button className={style.btn_findbtn} onClick={btn_findpw}>비밀번호 찾기</button>
                                     </div>
                                 </div>
                             </div>
