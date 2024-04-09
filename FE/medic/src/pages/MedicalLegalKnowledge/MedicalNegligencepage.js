@@ -133,7 +133,9 @@ export default function MedicalNegligencepage(){
                     {medicalNegligence.mnName.length > 30 ? `${medicalNegligence.mnName.slice(0, 30)}...` : medicalNegligence.mnName}
                   </td>
                   <td className={MedicalNegligence.medicalNegligence_td}>{medicalNegligence.mnInstitution}</td>
-                  <td className={MedicalNegligence.medicalNegligence_td}>{formatDateString(medicalNegligence.mnRegdate)}</td>
+                  <td className={MedicalNegligence.medicalNegligence_td}>
+                    {medicalNegligence.mnMdDate ? formatDateString(medicalNegligence.mnMdDate) : formatDateString(medicalNegligence.mnRegdate)}
+                  </td>
                   {isAdmin && (
                       <td className={MedicalNegligence.medicalNegligence_td} onClick={() => handleDeleteAnnounce(medicalNegligence.mnId)}>
                         <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>

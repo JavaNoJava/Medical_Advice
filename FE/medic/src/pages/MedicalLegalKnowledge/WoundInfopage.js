@@ -142,7 +142,9 @@ export default function WoundInfopage(){
                   {woundInfo.woName.length > 30 ? `${woundInfo.woName.slice(0, 30)}...` : woundInfo.woName}
                 </td>
                 <td className={wound.wound_td}>{woundInfo.woInstitution}</td>
-                <td className={wound.wound_td}>{formatDateString(woundInfo.woRegdate)}</td>
+                <td className={wound.wound_td}>
+                  {woundInfo.woMdDate ? formatDateString(woundInfo.woMdDate) : formatDateString(woundInfo.woRegdate)}
+                </td>
                 {isAdmin && (
                   <td className={wound.wound_td} onClick={() => handleDeleteAnnounce(woundInfo.woId)}>
                     <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>

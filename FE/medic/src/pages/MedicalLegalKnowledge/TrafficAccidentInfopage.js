@@ -143,7 +143,9 @@ export default function TrafficAccidentInfopage(){
                 {trafficAccidentInfo.taName.length > 30 ? `${trafficAccidentInfo.taName.slice(0, 30)}...` : trafficAccidentInfo.taName}
                 </td>
                 <td className={trafficAccident.trafficAccident_td}>{trafficAccidentInfo.taInstitution}</td>
-                <td className={trafficAccident.trafficAccident_td}>{formatDateString(trafficAccidentInfo.taRegdate)}</td>
+                <td className={trafficAccident.trafficAccident_td}>
+                  {trafficAccidentInfo.taMdDate ? formatDateString(trafficAccidentInfo.taMdDate) : formatDateString(trafficAccidentInfo.taRegdate)}
+                </td>
                 {isAdmin && (
                   <td className={trafficAccident.trafficAccident_td} onClick={() => handleDeleteAnnounce(trafficAccidentInfo.taId)}>
                     <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>

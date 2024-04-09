@@ -143,7 +143,9 @@ export default function IndustrialAccidentInfopage(){
                         {industrialAccidentInfo.iaName.length > 30 ? `${industrialAccidentInfo.iaName.slice(0, 30)}...` : industrialAccidentInfo.iaName}
                     </td>
                     <td className={industrialAccident.industrialAccident_td}>{industrialAccidentInfo.iaInstitution}</td>
-                    <td className={industrialAccident.industrialAccident_td}>{formatDateString(industrialAccidentInfo.iaRegDate)}</td>
+                    <td className={industrialAccident.industrialAccident_td}>
+                      {industrialAccidentInfo.iaMdDate ? formatDateString(industrialAccidentInfo.iaMdDate) : formatDateString(industrialAccidentInfo.iaRegDate)}
+                    </td>
                     {isAdmin && (
                       <td className={industrialAccident.industrialAccident_td} onClick={() => handleDeleteAnnounce(industrialAccidentInfo.iaId)}>
                         <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
