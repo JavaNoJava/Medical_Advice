@@ -201,7 +201,7 @@ export default function TranslateDetailpage(){
                                 </a>
                             </button>
                             :
-                            "해당 파일이 존재하지 않습니다."
+                            "업로드된 파일이 없습니다."
                         }
                     </div>
                 </div>

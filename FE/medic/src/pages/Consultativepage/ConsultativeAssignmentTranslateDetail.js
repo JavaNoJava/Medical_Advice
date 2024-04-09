@@ -50,7 +50,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
             setTrptdiagnosis(response.data.trPtDiagnosis)
             setTrptdiagcontent(response.data.trPtDiagContent)
             setTrEtcValue(response.data.trEtc)
-            if(response.data.trProgressStatus === '결제하기' || response.data.trProgressStatus === '자문완료'){
+            if(response.data.trProgressStatus === '결제하기' || response.data.trProgressStatus === '번역완료'){
                 setTrProgressStatus(true)
             } else{
                 setTrProgressStatus(false)
@@ -277,7 +277,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                                 </a>
                             </button>
                             :
-                            "해당 파일이 존재하지 않습니다."
+                            "업로드된 파일이 없습니다."
                         }
                         
                     </div>

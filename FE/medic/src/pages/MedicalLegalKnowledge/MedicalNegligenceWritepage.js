@@ -101,6 +101,7 @@ export default function MedicalNegligenceWritepage() {
     }
     const valid_title = e => {
         const titleRegex = /^[a-zA-Z가-힣0-9\s]{1,30}$/;
+        console.log(titleRegex.test(e.target.value))
         setIsValidTitle(titleRegex.test(e.target.value))
     }
     const input_writer = e => {
