@@ -123,7 +123,7 @@ export default function IndustrialAccidentDetailInfopage(){
         <div className={`${industrialAccidentDetail.row_box} ${industrialAccidentDetail.row_contentbox}`} style={{alignItems: 'start'}}>
             <div className={`${industrialAccidentDetail.title_box} ${industrialAccidentDetail.row_contentbox}`}>내용</div>
             <div className={industrialAccidentDetail.input_box} style={{width:'620px', height : '200px', justifyContent: 'start', alignItems: 'start', paddingLeft: '10px',paddingTop: '10px'}}>
-                <textarea cols="50" rows="10" value={industrialAccidentInfoDetail.iaContent} readOnly/>
+            <textarea cols="50" rows="10" value={industrialAccidentInfoDetail.iaContent} readOnly disabled/>
             </div>
         </div>
       </div>

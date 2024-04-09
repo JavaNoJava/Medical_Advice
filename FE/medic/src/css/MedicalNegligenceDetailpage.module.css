@@ -176,8 +176,9 @@
   width: calc(100% - 40px); /* 텍스트 영역의 너비를 조정하여 테두리를 고려합니다. */
   max-width: calc(100% - 40px); /* 최대 너비도 설정하여 텍스트 영역이 너무 커지지 않도록 합니다. */
   min-width: calc(100% - 40px); /* 최소 너비도 설정하여 텍스트 영역이 너무 작아지지 않도록 합니다. */
-  height: 100px; /* 텍스트 영역의 높이를 조정합니다. */
+  height: 230px; /* 텍스트 영역의 높이를 조정합니다. */
   margin: 0px 0;
   resize: none; /* 사용자가 텍스트 영역의 크기를 조정하지 못하도록 합니다. */
   border: none;
+  background-color: #fff;
 }

@@ -121,7 +121,7 @@ export default function MedicalNegligenceDetailpage(){
         <div className={`${medicalNegligencedetails.row_box} ${medicalNegligencedetails.row_contentbox}`} style={{alignItems: 'start'}}>
                 <div className={`${medicalNegligencedetails.title_box} ${medicalNegligencedetails.row_contentbox}`}>내용</div>
                 <div className={medicalNegligencedetails.input_box} style={{width:'620px', height : '200px', justifyContent: 'start', alignItems: 'start', paddingLeft: '10px',paddingTop: '10px'}}>
-                  <textarea cols="50" rows="10" value={medicalNegligenceDetail.mnContent} readOnly/>
+                  <textarea cols="50" rows="10" value={medicalNegligenceDetail.mnContent} readOnly disabled/>
                 </div>
             </div>
       </div>
