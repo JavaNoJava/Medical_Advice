@@ -151,11 +151,11 @@ export default function IndustrialAccidentDetailInfopage(){
             이전글
           </div>
           <div className={industrialAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(prevNum)}>
-          {prevTitle != null? (
-                prevTitle
-            ) : (
-              '이전 글이 없습니다.'
-            )}
+          {prevTitle != null ? (
+            prevTitle.length > 15 ? `${prevTitle.slice(0, 15)}...` : prevTitle
+          ) : (
+            '이전 글이 없습니다.'
+          )}
           </div>
         </div>
         <div className={industrialAccidentDetail.preAndNext_row_box}>
@@ -164,8 +164,8 @@ export default function IndustrialAccidentDetailInfopage(){
           </div>
           <div className={industrialAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(nextNum)}>
           {nextTitle != null? (
-                    nextTitle
-              ) : (
+            nextTitle.length > 15 ? `${nextTitle.slice(0, 15)}...` : nextTitle
+          ) : (
                 '다음 글이 없습니다.'
               )}
           </div>

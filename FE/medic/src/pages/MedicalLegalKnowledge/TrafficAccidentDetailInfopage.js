@@ -147,11 +147,11 @@ export default function TrafficAccidentDetailInfopage(){
             이전글
           </div>
           <div className={trafficAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(prevNum)}>
-          {prevTitle != null? (
-                prevTitle
-            ) : (
-              '이전 글이 없습니다.'
-            )}
+          {prevTitle != null ? (
+            prevTitle.length > 15 ? `${prevTitle.slice(0, 15)}...` : prevTitle
+          ) : (
+            '이전 글이 없습니다.'
+          )}
           </div>
         </div>
         <div className={trafficAccidentDetail.preAndNext_row_box}>
@@ -160,8 +160,8 @@ export default function TrafficAccidentDetailInfopage(){
           </div>
           <div className={trafficAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(nextNum)}>
           {nextTitle != null? (
-                    nextTitle
-              ) : (
+            nextTitle.length > 15 ? `${nextTitle.slice(0, 15)}...` : nextTitle
+          ) : (
                 '다음 글이 없습니다.'
               )}
           </div>

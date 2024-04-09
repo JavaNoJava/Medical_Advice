@@ -138,7 +138,9 @@ export default function WoundInfopage(){
                 <td className={wound.wound_td} onClick={() => goToDetailPage(woundInfo.woId)}>
                       {woundInfos.length - startIndex - index}
                 </td>
-                <td className={wound.wound_td}>{woundInfo.woName}</td>
+                <td className={wound.wound_td}>
+                  {woundInfo.woName.length > 30 ? `${woundInfo.woName.slice(0, 30)}...` : woundInfo.woName}
+                </td>
                 <td className={wound.wound_td}>{woundInfo.woInstitution}</td>
                 <td className={wound.wound_td}>{formatDateString(woundInfo.woRegdate)}</td>
                 {isAdmin && (

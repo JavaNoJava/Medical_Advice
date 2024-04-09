@@ -139,7 +139,9 @@ export default function IndustrialAccidentInfopage(){
                     <td className={industrialAccident.industrialAccident_td} onClick={() => goToDetailPage(industrialAccidentInfo.iaId)}>
                       {industrialAccidentInfos.length - startIndex - index}
                     </td>
-                    <td className={industrialAccident.industrialAccident_td}>{industrialAccidentInfo.iaName}</td>
+                    <td className={industrialAccident.industrialAccident_td}>
+                        {industrialAccidentInfo.iaName.length > 30 ? `${industrialAccidentInfo.iaName.slice(0, 30)}...` : industrialAccidentInfo.iaName}
+                    </td>
                     <td className={industrialAccident.industrialAccident_td}>{industrialAccidentInfo.iaInstitution}</td>
                     <td className={industrialAccident.industrialAccident_td}>{formatDateString(industrialAccidentInfo.iaRegDate)}</td>
                     {isAdmin && (

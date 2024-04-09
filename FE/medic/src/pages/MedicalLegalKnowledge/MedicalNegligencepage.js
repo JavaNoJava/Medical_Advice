@@ -129,7 +129,9 @@ export default function MedicalNegligencepage(){
                   <td className={MedicalNegligence.medicalNegligence_td} onClick={() => goToDetailPage(medicalNegligence.mnId)}>
                       {medicalNegligences.length - startIndex - index}
                   </td>
-                  <td className={MedicalNegligence.medicalNegligence_td}>{medicalNegligence.mnName}</td>
+                  <td className={MedicalNegligence.medicalNegligence_td}>
+                    {medicalNegligence.mnName.length > 30 ? `${medicalNegligence.mnName.slice(0, 30)}...` : medicalNegligence.mnName}
+                  </td>
                   <td className={MedicalNegligence.medicalNegligence_td}>{medicalNegligence.mnInstitution}</td>
                   <td className={MedicalNegligence.medicalNegligence_td}>{formatDateString(medicalNegligence.mnRegdate)}</td>
                   {isAdmin && (
