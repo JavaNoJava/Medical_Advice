@@ -15,10 +15,6 @@ export default function WoundAccidentDetailInfopage(){
   const [nextNum, setNextNum] = useState('');
   const [prevTitle, setPrevTitle] = useState('');
   const [nextTitle, setNextTitle] = useState('');
-  const [prevWriter, setPrevWriter] = useState('');
-  const [nextWriter, setNextWriter] = useState('');
-  const [prevDate, setPrevDate] = useState('');
-  const [nextDate, setNextDate] = useState('');
   const [woundInfoDetail, setWoundInfoDetail] = useState([]);
 
   useEffect(() => {
@@ -35,16 +31,12 @@ export default function WoundAccidentDetailInfopage(){
         const prevData = prev.data;
         setPrevNum(prevData.prevNum); // 이전 글 번호 값
         setPrevTitle(prevData.prevTitle);
-        setPrevWriter(prevData.prevWriter);
-        setPrevDate(prevData.prevDate);
 
         // 본문 게시물 다음글 정보 조회
         const next = await axios.get(`/woundInfo/detail/next/${woundInfoId}`)
         const nextData = next.data;
         setNextNum(nextData.nextNum);  // 다음 글 번호 값
         setNextTitle(nextData.nextTitle);
-        setNextWriter(nextData.nextWriter);
-        setNextDate(nextData.nextDate);
 
         if(cookie.get('uRole') === 'manager'){
           setIsAdmin(true)
@@ -68,7 +60,7 @@ export default function WoundAccidentDetailInfopage(){
   // 이전 또는 다음 글 이동
   // 이동할 글이 없으면 무반응
   const goToDetailPage = (woundInfoId) => {
-    if(woundInfoId === '0'){
+    if(!woundInfoId || woundInfoId === '0'){
       return;
     }
     navigate(`/medic/knowledge/wounddetails`, {state : {
@@ -156,7 +148,11 @@ export default function WoundAccidentDetailInfopage(){
             이전글
           </div>
           <div className={woundAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(prevNum)}>
-            <span>{prevTitle}</span>
+          {prevTitle != null? (
+                prevTitle
+            ) : (
+              '이전 글이 없습니다.'
+            )}
           </div>
         </div>
         <div className={woundAccidentDetail.preAndNext_row_box}>
@@ -164,7 +160,11 @@ export default function WoundAccidentDetailInfopage(){
             다음글
           </div>
           <div className={woundAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(nextNum)}>
-            <span>{nextTitle}</span>
+          {nextTitle != null? (
+                    nextTitle
+              ) : (
+                '다음 글이 없습니다.'
+              )}
           </div>
         </div>
       </div>

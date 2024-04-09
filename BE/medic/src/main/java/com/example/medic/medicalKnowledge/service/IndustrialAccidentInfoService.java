@@ -97,12 +97,15 @@ public class IndustrialAccidentInfoService {
      */
     public PrevInfoDto findPrevIndustrialAccidentInfo(Long iaid) {
         IndustrialAccidentInfo prevIndustrialAccident = industrialAccidentInfoRepository.findPrevIndustrialAccident(iaid);
-        PrevInfoDto prevIndustrialAccidentInfoDto = PrevInfoDto
-                .builder()
-                .PrevNum(prevIndustrialAccident.getIaId())
-                .PrevTitle(prevIndustrialAccident.getIaName())
-                .build();
-        return prevIndustrialAccidentInfoDto;
+        if(prevIndustrialAccident != null) {
+            PrevInfoDto prevIndustrialAccidentInfoDto = PrevInfoDto
+                    .builder()
+                    .PrevNum(prevIndustrialAccident.getIaId())
+                    .PrevTitle(prevIndustrialAccident.getIaName())
+                    .build();
+            return prevIndustrialAccidentInfoDto;
+        }
+        return null;
     }
 
     /**
@@ -110,11 +113,14 @@ public class IndustrialAccidentInfoService {
      */
     public NextInfoDto findNextIndustrialAccidentInfo(Long iaid) {
         IndustrialAccidentInfo nextIndustrialAccident = industrialAccidentInfoRepository.findNextIndustrialAccident(iaid);
-        NextInfoDto nextIndustrialAccidentInfoDto = NextInfoDto
-                .builder()
-                .NextNum(nextIndustrialAccident.getIaId())
-                .NextTitle(nextIndustrialAccident.getIaName())
-                .build();
-        return nextIndustrialAccidentInfoDto;
+        if(nextIndustrialAccident != null) {
+            NextInfoDto nextIndustrialAccidentInfoDto = NextInfoDto
+                    .builder()
+                    .NextNum(nextIndustrialAccident.getIaId())
+                    .NextTitle(nextIndustrialAccident.getIaName())
+                    .build();
+            return nextIndustrialAccidentInfoDto;
+        }
+        return null;
     }
 }

@@ -99,12 +99,14 @@ public class WoundInfoService {
      */
     public PrevInfoDto findPrevWoundInfo(Long woid) {
         WoundInfo prevWoundInfo = woundInfoRepository.findPrevWound(woid);
-        PrevInfoDto prevWoundInfoDto = PrevInfoDto
-                .builder()
-                .PrevNum(prevWoundInfo.getWoId())
-                .PrevTitle(prevWoundInfo.getWoName())
-                .build();
-        return prevWoundInfoDto;
+        if(prevWoundInfo != null) {
+            PrevInfoDto prevWoundInfoDto = PrevInfoDto
+                    .builder()
+                    .PrevNum(prevWoundInfo.getWoId())
+                    .PrevTitle(prevWoundInfo.getWoName())
+                    .build();
+            return prevWoundInfoDto;
+        } return null;
     }
 
     /**
@@ -112,11 +114,13 @@ public class WoundInfoService {
      */
     public NextInfoDto findNextWoundInfo(Long woid) {
         WoundInfo nextWoundinfo = woundInfoRepository.findNextWound(woid);
-        NextInfoDto nextWoundInfoDto = NextInfoDto
-                .builder()
-                .NextNum(nextWoundinfo.getWoId())
-                .NextTitle(nextWoundinfo.getWoName())
-                .build();
-        return nextWoundInfoDto;
+        if(nextWoundinfo != null) {
+            NextInfoDto nextWoundInfoDto = NextInfoDto
+                    .builder()
+                    .NextNum(nextWoundinfo.getWoId())
+                    .NextTitle(nextWoundinfo.getWoName())
+                    .build();
+            return nextWoundInfoDto;
+        } return null;
     }
 }

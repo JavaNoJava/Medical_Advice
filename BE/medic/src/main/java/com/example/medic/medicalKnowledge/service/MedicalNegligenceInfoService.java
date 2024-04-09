@@ -97,12 +97,14 @@ public class MedicalNegligenceInfoService {
      */
     public PrevInfoDto findPrevMedicalNegligenceInfo(Long mnid) {
         MedicalNegligenceInfo prevMedicalNegligenceInfoDto = medicalNegligenceInfoRepository.findPrevMedicalNegligence(mnid);
-        PrevInfoDto prevMedicalNegligenceInfo = PrevInfoDto
-                .builder()
-                .PrevNum(prevMedicalNegligenceInfoDto.getMnId())
-                .PrevTitle(prevMedicalNegligenceInfoDto.getMnName())
-                .build();
-        return prevMedicalNegligenceInfo;
+        if(prevMedicalNegligenceInfoDto != null) {
+            PrevInfoDto prevMedicalNegligenceInfo = PrevInfoDto
+                    .builder()
+                    .PrevNum(prevMedicalNegligenceInfoDto.getMnId())
+                    .PrevTitle(prevMedicalNegligenceInfoDto.getMnName())
+                    .build();
+            return prevMedicalNegligenceInfo;
+        } return null;
     }
 
     /**
@@ -110,11 +112,13 @@ public class MedicalNegligenceInfoService {
      */
     public NextInfoDto findNextMedicalNegligenceInfo(Long mnid) {
         MedicalNegligenceInfo nextMedicalNegligenceInfoDto = medicalNegligenceInfoRepository.findNextMedicalNegligence(mnid);
-        NextInfoDto nextMedicalNegligenceInfo = NextInfoDto
-                .builder()
-                .NextNum(nextMedicalNegligenceInfoDto.getMnId())
-                .NextTitle(nextMedicalNegligenceInfoDto.getMnName())
-                .build();
-        return nextMedicalNegligenceInfo;
+        if(nextMedicalNegligenceInfoDto != null) {
+            NextInfoDto nextMedicalNegligenceInfo = NextInfoDto
+                    .builder()
+                    .NextNum(nextMedicalNegligenceInfoDto.getMnId())
+                    .NextTitle(nextMedicalNegligenceInfoDto.getMnName())
+                    .build();
+            return nextMedicalNegligenceInfo;
+        } return null;
     }
 }

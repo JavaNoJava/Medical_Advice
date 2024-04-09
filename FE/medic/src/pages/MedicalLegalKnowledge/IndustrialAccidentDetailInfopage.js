@@ -32,7 +32,7 @@ export default function IndustrialAccidentDetailInfopage(){
       setPrevNum(prevData.prevNum); // 이전 글 번호 값
       setPrevTitle(prevData.prevTitle);
 
-      // 본문 게시물 다음글 정보 조회
+      // // 본문 게시물 다음글 정보 조회
       const next = await axios.get(`/industrialAccident/detail/next/${industrialAccidentInfoId}`)
       const nextData = next.data;
       setNextNum(nextData.nextNum);  // 다음 글 번호 값
@@ -43,6 +43,8 @@ export default function IndustrialAccidentDetailInfopage(){
       }else{
         setIsAdmin(false)
       }
+
+      console.log('nextData : ', nextData)
   };
   getIndustrialAccidentInfos(industrialAccidentInfoId);
   }, [industrialAccidentInfoId]);
@@ -59,13 +61,14 @@ export default function IndustrialAccidentDetailInfopage(){
   // 이전 또는 다음 글 이동
   // 이동할 글이 없으면 무반응
   const goToDetailPage = (industrialAccidentInfoId) => {
-    if(industrialAccidentInfoId === '0'){
+    if(!industrialAccidentInfoId || industrialAccidentInfoId === '0') {
       return;
     }
     navigate(`/medic/knowledge/industrialaccidentdetails`, {state : {
       industrialAccidentInfoId : industrialAccidentInfoId
     }});
   };
+  
 
 
   const udpateIndustrialAccident = () => {
@@ -148,7 +151,11 @@ export default function IndustrialAccidentDetailInfopage(){
             이전글
           </div>
           <div className={industrialAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(prevNum)}>
-            <span>{prevTitle}</span>
+          {prevTitle != null? (
+                prevTitle
+            ) : (
+              '이전 글이 없습니다.'
+            )}
           </div>
         </div>
         <div className={industrialAccidentDetail.preAndNext_row_box}>
@@ -156,7 +163,11 @@ export default function IndustrialAccidentDetailInfopage(){
             다음글
           </div>
           <div className={industrialAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(nextNum)}>
-            <span>{nextTitle}</span>
+          {nextTitle != null? (
+                    nextTitle
+              ) : (
+                '다음 글이 없습니다.'
+              )}
           </div>
         </div>
       </div>

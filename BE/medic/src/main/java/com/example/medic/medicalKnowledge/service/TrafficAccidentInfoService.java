@@ -98,12 +98,14 @@ public class TrafficAccidentInfoService {
      */
     public PrevInfoDto findPrevTrafficAccidentInfo(Long woid) {
         TrafficAccidentInfo prevTrafficAccidentInfo = trafficAccidentInfoJpaRepository.findPrevTrafficAccident(woid);
-        PrevInfoDto prevTrafficAccidentInfoDto = PrevInfoDto
-                .builder()
-                .PrevNum(prevTrafficAccidentInfo.getTaId())
-                .PrevTitle(prevTrafficAccidentInfo.getTaName())
-                .build();
-        return prevTrafficAccidentInfoDto;
+        if(prevTrafficAccidentInfo !=null) {
+            PrevInfoDto prevTrafficAccidentInfoDto = PrevInfoDto
+                    .builder()
+                    .PrevNum(prevTrafficAccidentInfo.getTaId())
+                    .PrevTitle(prevTrafficAccidentInfo.getTaName())
+                    .build();
+            return prevTrafficAccidentInfoDto;
+        } return null;
     }
 
     /**
@@ -111,11 +113,13 @@ public class TrafficAccidentInfoService {
      */
     public NextInfoDto findNextTrafficAccidentInfo(Long woid) {
         TrafficAccidentInfo nextTrafficAccidentInfo = trafficAccidentInfoJpaRepository.findNextTrafficAccident(woid);
-        NextInfoDto nextTrafficAccidentInfoDto = NextInfoDto
-                .builder()
-                .NextNum(nextTrafficAccidentInfo.getTaId())
-                .NextTitle(nextTrafficAccidentInfo.getTaName())
-                .build();
-        return nextTrafficAccidentInfoDto;
+        if(nextTrafficAccidentInfo != null) {
+            NextInfoDto nextTrafficAccidentInfoDto = NextInfoDto
+                    .builder()
+                    .NextNum(nextTrafficAccidentInfo.getTaId())
+                    .NextTitle(nextTrafficAccidentInfo.getTaName())
+                    .build();
+            return nextTrafficAccidentInfoDto;
+        } return null;
     }
 }

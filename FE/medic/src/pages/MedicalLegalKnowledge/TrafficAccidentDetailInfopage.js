@@ -59,7 +59,7 @@ export default function TrafficAccidentDetailInfopage(){
   // 이전 또는 다음 글 이동
   // 이동할 글이 없으면 무반응
   const goToDetailPage = (trafficAccidentInfoId) => {
-    if(trafficAccidentInfoId === '0'){
+    if(!trafficAccidentInfoId || trafficAccidentInfoId === '0'){
       return;
     }
     navigate(`/medic/knowledge/trafficaccidentdetails`, {state : {
@@ -147,7 +147,11 @@ export default function TrafficAccidentDetailInfopage(){
             이전글
           </div>
           <div className={trafficAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(prevNum)}>
-            <span>{prevTitle}</span>
+          {prevTitle != null? (
+                prevTitle
+            ) : (
+              '이전 글이 없습니다.'
+            )}
           </div>
         </div>
         <div className={trafficAccidentDetail.preAndNext_row_box}>
@@ -155,7 +159,11 @@ export default function TrafficAccidentDetailInfopage(){
             다음글
           </div>
           <div className={trafficAccidentDetail.preAndNext_input_box} style={{width:'300px'}} onClick={() => goToDetailPage(nextNum)}>
-            <span>{nextTitle}</span>
+          {nextTitle != null? (
+                    nextTitle
+              ) : (
+                '다음 글이 없습니다.'
+              )}
           </div>
         </div>
       </div> 
