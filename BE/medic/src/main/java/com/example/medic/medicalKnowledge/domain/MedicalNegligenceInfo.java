@@ -28,7 +28,7 @@ public class MedicalNegligenceInfo {
     private String mnName;
 
     @NotNull
-    @Column(length = 30)
+    @Column(length = 15)
     private String mnInstitution;
 
     @NotNull

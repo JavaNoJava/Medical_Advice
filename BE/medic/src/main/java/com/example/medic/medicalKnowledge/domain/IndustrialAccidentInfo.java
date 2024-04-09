@@ -26,7 +26,7 @@ public class IndustrialAccidentInfo {
     private String iaName;
 
     @NotNull
-    @Column(length = 30)
+    @Column(length = 15)
     private String iaInstitution;
 
     @NotNull

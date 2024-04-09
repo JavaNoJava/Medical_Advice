@@ -27,7 +27,7 @@ public class WoundInfo {
     private String woName;
 
     @NotNull
-    @Column(length = 30)
+    @Column(length = 15)
     private String woInstitution;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

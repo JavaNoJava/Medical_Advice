@@ -28,7 +28,7 @@ public class TrafficAccidentInfo {
     private String taName;
 
     @NotNull
-    @Column(length = 30)
+    @Column(length = 15)
     private String taInstitution;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
