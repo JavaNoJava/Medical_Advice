@@ -4,10 +4,10 @@ import com.example.medic.manager.domain.Manager;
 import com.example.medic.manager.dto.ManagerInfoDto;
 import com.example.medic.manager.repository.ManagerRepository;
 import com.example.medic.medicalKnowledge.domain.TrafficAccidentInfo;
+import com.example.medic.medicalKnowledge.dto.NextInfoDto;
+import com.example.medic.medicalKnowledge.dto.PrevInfoDto;
 import com.example.medic.medicalKnowledge.dto.TrafficAccidentInfoDto;
 import com.example.medic.medicalKnowledge.repository.TrafficAccidentInfoJpaRepository;
-import com.example.medic.medicalKnowledge.repository.TrafficAccidentInfoJpaRepository.PrevTrafficAccidentInfoDto;
-import com.example.medic.medicalKnowledge.repository.TrafficAccidentInfoJpaRepository.NextTrafficAccidentInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -96,16 +96,26 @@ public class TrafficAccidentInfoService {
     /**
      * 이전 글 찾기
      */
-    public PrevTrafficAccidentInfoDto findPrevTrafficAccidentInfo(Long woid) {
-        PrevTrafficAccidentInfoDto prevTrafficAccidentInfoDto = trafficAccidentInfoJpaRepository.findPrevTrafficAccident(woid);
+    public PrevInfoDto findPrevTrafficAccidentInfo(Long woid) {
+        TrafficAccidentInfo prevTrafficAccidentInfo = trafficAccidentInfoJpaRepository.findPrevTrafficAccident(woid);
+        PrevInfoDto prevTrafficAccidentInfoDto = PrevInfoDto
+                .builder()
+                .PrevNum(prevTrafficAccidentInfo.getTaId())
+                .PrevTitle(prevTrafficAccidentInfo.getTaName())
+                .build();
         return prevTrafficAccidentInfoDto;
     }
 
     /**
      * 다음 글 찾기
      */
-    public NextTrafficAccidentInfoDto findNextTrafficAccidentInfo(Long woid) {
-        NextTrafficAccidentInfoDto nextTrafficAccidentInfoDto = trafficAccidentInfoJpaRepository.findNextTrafficAccident(woid);
+    public NextInfoDto findNextTrafficAccidentInfo(Long woid) {
+        TrafficAccidentInfo nextTrafficAccidentInfo = trafficAccidentInfoJpaRepository.findNextTrafficAccident(woid);
+        NextInfoDto nextTrafficAccidentInfoDto = NextInfoDto
+                .builder()
+                .NextNum(nextTrafficAccidentInfo.getTaId())
+                .NextTitle(nextTrafficAccidentInfo.getTaName())
+                .build();
         return nextTrafficAccidentInfoDto;
     }
 }

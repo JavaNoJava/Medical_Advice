@@ -5,9 +5,9 @@ import com.example.medic.manager.dto.ManagerInfoDto;
 import com.example.medic.manager.repository.ManagerRepository;
 import com.example.medic.medicalKnowledge.domain.IndustrialAccidentInfo;
 import com.example.medic.medicalKnowledge.dto.IndustrialAccidentInfoDto;
+import com.example.medic.medicalKnowledge.dto.NextInfoDto;
+import com.example.medic.medicalKnowledge.dto.PrevInfoDto;
 import com.example.medic.medicalKnowledge.repository.IndustrialAccidentInfoRepository;
-import com.example.medic.medicalKnowledge.repository.IndustrialAccidentInfoRepository.PrevIndustrialAccidentInfoDto;
-import com.example.medic.medicalKnowledge.repository.IndustrialAccidentInfoRepository.NextIndustrialAccidentInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -95,16 +95,26 @@ public class IndustrialAccidentInfoService {
     /**
      * 이전 글 찾기
      */
-    public PrevIndustrialAccidentInfoDto findPrevIndustrialAccidentInfo(Long woid) {
-        PrevIndustrialAccidentInfoDto prevIndustrialAccidentInfoDto = industrialAccidentInfoRepository.findPrevIndustrialAccident(woid);
+    public PrevInfoDto findPrevIndustrialAccidentInfo(Long iaid) {
+        IndustrialAccidentInfo prevIndustrialAccident = industrialAccidentInfoRepository.findPrevIndustrialAccident(iaid);
+        PrevInfoDto prevIndustrialAccidentInfoDto = PrevInfoDto
+                .builder()
+                .PrevNum(prevIndustrialAccident.getIaId())
+                .PrevTitle(prevIndustrialAccident.getIaName())
+                .build();
         return prevIndustrialAccidentInfoDto;
     }
 
     /**
      * 다음 글 찾기
      */
-    public NextIndustrialAccidentInfoDto findNextIndustrialAccidentInfo(Long woid) {
-        NextIndustrialAccidentInfoDto nextIndustrialAccident = industrialAccidentInfoRepository.findNextIndustrialAccident(woid);
-        return nextIndustrialAccident;
+    public NextInfoDto findNextIndustrialAccidentInfo(Long iaid) {
+        IndustrialAccidentInfo nextIndustrialAccident = industrialAccidentInfoRepository.findNextIndustrialAccident(iaid);
+        NextInfoDto nextIndustrialAccidentInfoDto = NextInfoDto
+                .builder()
+                .NextNum(nextIndustrialAccident.getIaId())
+                .NextTitle(nextIndustrialAccident.getIaName())
+                .build();
+        return nextIndustrialAccidentInfoDto;
     }
 }

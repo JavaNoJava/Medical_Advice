@@ -15,10 +15,6 @@ export default function TrafficAccidentDetailInfopage(){
   const [nextNum, setNextNum] = useState('');
   const [prevTitle, setPrevTitle] = useState('');
   const [nextTitle, setNextTitle] = useState('');
-  const [prevWriter, setPrevWriter] = useState('');
-  const [nextWriter, setNextWriter] = useState('');
-  const [prevDate, setPrevDate] = useState('');
-  const [nextDate, setNextDate] = useState('');
   const [trafficAccidentInfoDetail, setTrafficAccidentInfoDetail] = useState([]);
 
   useEffect(() => {
@@ -34,16 +30,12 @@ export default function TrafficAccidentDetailInfopage(){
       const prevData = prev.data;
       setPrevNum(prevData.prevNum); // 이전 글 번호 값
       setPrevTitle(prevData.prevTitle);
-      setPrevWriter(prevData.prevWriter);
-      setPrevDate(prevData.prevDate);
 
       // 본문 게시물 다음글 정보 조회
       const next = await axios.get(`/trafficAccident/detail/next/${trafficAccidentInfoId}`)
       const nextData = next.data;
       setNextNum(nextData.nextNum);  // 다음 글 번호 값
       setNextTitle(nextData.nextTitle);
-      setNextWriter(nextData.nextWriter);
-      setNextDate(nextData.nextDate);
 
       if(cookie.get('uRole') === 'manager'){
         setIsAdmin(true)

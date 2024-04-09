@@ -16,36 +16,14 @@ public interface TrafficAccidentInfoJpaRepository extends JpaRepository<TrafficA
      */
     List<TrafficAccidentInfo> findByTaNameContaining(String keyword);
 
-    @Query(value = "SELECT * FROM (SELECT ta_id, " +
-            "LAG(ta_id, 1, 0) OVER (ORDER BY ta_id) AS prevNum, " +
-            "LAG(ta_name, 1, '이전 글이 없습니다.') OVER (ORDER BY ta_id) AS prevTitle, " +
-            "LAG(ta_institution, 1, '-') OVER (ORDER BY ta_id) AS PrevWriter, " +
-            "LAG(ta_regdate, 1, '-') OVER (ORDER BY ta_id) AS PrevDate " +
-            "FROM traffic_accident_info) presub WHERE presub.ta_id = :taId ORDER BY ta_id",
+    @Query(value = "SELECT * FROM traffic_accident_info WHERE ta_id < :taId ORDER BY ta_id DESC LIMIT 1",
             nativeQuery = true)
-    PrevTrafficAccidentInfoDto findPrevTrafficAccident(@Param("taId") Long iaId);
+    TrafficAccidentInfo findPrevTrafficAccident(@Param("taId") Long iaId);
 
-    @Query(value = "SELECT * FROM (SELECT ta_id, " +
-            "LEAD(ta_id, 1, 0) OVER (ORDER BY ta_id) AS nextNum, " +
-            "LEAD(ta_name, 1, '다음 글이 없습니다.') OVER (ORDER BY ta_id) AS nextTitle, " +
-            "LEAD(ta_institution, 1, '-') OVER (ORDER BY ta_id) AS nextWriter, " +
-            "LEAD(ta_regdate, 1, '-') OVER (ORDER BY ta_id) AS nextDate " +
-            "FROM traffic_accident_info) nextsub WHERE nextsub.ta_id = :taId ORDER BY ta_id",
+    @Query(value = "SELECT * FROM traffic_accident_info WHERE ta_id > :taId ORDER BY ta_id ASC LIMIT 1",
             nativeQuery = true)
-    NextTrafficAccidentInfoDto findNextTrafficAccident(@Param("taId") Long iaId);
+    TrafficAccidentInfo findNextTrafficAccident(@Param("taId") Long iaId);
 
-    interface PrevTrafficAccidentInfoDto {
-        String getPrevNum();
-        String getPrevTitle();
-        String getPrevWriter();
-        String getPrevDate();
-    }
-    interface NextTrafficAccidentInfoDto {
-        String getNextNum();
-        String getNextTitle();
-        String getNextWriter();
-        String getNextDate();
-    }
     @Query("SELECT t.manager from TrafficAccidentInfo t WHERE t.taId = :taId")
     Manager findManagerByTaid(Long taId);
 }

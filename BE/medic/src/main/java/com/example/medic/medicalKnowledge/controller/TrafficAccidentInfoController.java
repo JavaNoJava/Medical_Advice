@@ -2,9 +2,9 @@ package com.example.medic.medicalKnowledge.controller;
 
 import com.example.medic.manager.dto.ManagerInfoDto;
 import com.example.medic.medicalKnowledge.domain.TrafficAccidentInfo;
+import com.example.medic.medicalKnowledge.dto.NextInfoDto;
+import com.example.medic.medicalKnowledge.dto.PrevInfoDto;
 import com.example.medic.medicalKnowledge.dto.TrafficAccidentInfoDto;
-import com.example.medic.medicalKnowledge.repository.TrafficAccidentInfoJpaRepository.PrevTrafficAccidentInfoDto;
-import com.example.medic.medicalKnowledge.repository.TrafficAccidentInfoJpaRepository.NextTrafficAccidentInfoDto;
 import com.example.medic.medicalKnowledge.service.TrafficAccidentInfoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -45,9 +45,9 @@ public class TrafficAccidentInfoController {
 
     //이전 글 조회
     @GetMapping("/trafficAccident/detail/prev/{taid}")
-    public ResponseEntity<PrevTrafficAccidentInfoDto> findPrevTrafficAccidentInfo(@PathVariable Long taid){
+    public ResponseEntity<PrevInfoDto> findPrevTrafficAccidentInfo(@PathVariable Long taid){
         try{
-            PrevTrafficAccidentInfoDto prevTrafficAccidentInfoDto = trafficAccidentInfoService.findPrevTrafficAccidentInfo(taid);
+            PrevInfoDto prevTrafficAccidentInfoDto = trafficAccidentInfoService.findPrevTrafficAccidentInfo(taid);
             return ResponseEntity.ok(prevTrafficAccidentInfoDto);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
@@ -56,9 +56,9 @@ public class TrafficAccidentInfoController {
 
     //다음 글 조회
     @GetMapping("/trafficAccident/detail/next/{taid}")
-    public ResponseEntity<NextTrafficAccidentInfoDto> findNextTrafficAccidentInfo(@PathVariable Long taid){
+    public ResponseEntity<NextInfoDto> findNextTrafficAccidentInfo(@PathVariable Long taid){
         try{
-            NextTrafficAccidentInfoDto nextTrafficAccidentInfoDto = trafficAccidentInfoService.findNextTrafficAccidentInfo(taid);
+            NextInfoDto nextTrafficAccidentInfoDto = trafficAccidentInfoService.findNextTrafficAccidentInfo(taid);
             return ResponseEntity.ok(nextTrafficAccidentInfoDto);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();

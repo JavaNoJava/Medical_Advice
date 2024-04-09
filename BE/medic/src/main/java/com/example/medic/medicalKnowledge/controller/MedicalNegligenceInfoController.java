@@ -3,8 +3,8 @@ package com.example.medic.medicalKnowledge.controller;
 import com.example.medic.manager.dto.ManagerInfoDto;
 import com.example.medic.medicalKnowledge.domain.MedicalNegligenceInfo;
 import com.example.medic.medicalKnowledge.dto.MedicalNegligenceInfoDto;
-import com.example.medic.medicalKnowledge.repository.MedicalNegligenceInfoRepository.NextMedicalNegligenceInfoDto;
-import com.example.medic.medicalKnowledge.repository.MedicalNegligenceInfoRepository.PrevMedicalNegligenceInfoDto;
+import com.example.medic.medicalKnowledge.dto.NextInfoDto;
+import com.example.medic.medicalKnowledge.dto.PrevInfoDto;
 import com.example.medic.medicalKnowledge.service.MedicalNegligenceInfoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -44,9 +44,9 @@ public class MedicalNegligenceInfoController {
 
     //이전 글 조회
     @GetMapping("/medicalNegligence/detail/prev/{mnid}")
-    public ResponseEntity<PrevMedicalNegligenceInfoDto> findPrevMedicalNegligenceInfo(@PathVariable Long mnid){
+    public ResponseEntity<PrevInfoDto> findPrevMedicalNegligenceInfo(@PathVariable Long mnid){
         try{
-            PrevMedicalNegligenceInfoDto prevMedicalNegligenceInfoDto = medicalNegligenceInfoService.findPrevMedicalNegligenceInfo(mnid);
+            PrevInfoDto prevMedicalNegligenceInfoDto = medicalNegligenceInfoService.findPrevMedicalNegligenceInfo(mnid);
             return ResponseEntity.ok(prevMedicalNegligenceInfoDto);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
@@ -55,9 +55,9 @@ public class MedicalNegligenceInfoController {
 
     //다음 글 조회
     @GetMapping("/medicalNegligence/detail/next/{mnid}")
-    public ResponseEntity<NextMedicalNegligenceInfoDto> findNextMedicalNegligenceInfo(@PathVariable Long mnid){
+    public ResponseEntity<NextInfoDto> findNextMedicalNegligenceInfo(@PathVariable Long mnid){
         try{
-            NextMedicalNegligenceInfoDto nextMedicalNegligenceInfoDto = medicalNegligenceInfoService.findNextMedicalNegligenceInfo(mnid);
+            NextInfoDto nextMedicalNegligenceInfoDto = medicalNegligenceInfoService.findNextMedicalNegligenceInfo(mnid);
             return ResponseEntity.ok(nextMedicalNegligenceInfoDto);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();

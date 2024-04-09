@@ -4,10 +4,10 @@ import com.example.medic.manager.domain.Manager;
 import com.example.medic.manager.dto.ManagerInfoDto;
 import com.example.medic.manager.repository.ManagerRepository;
 import com.example.medic.medicalKnowledge.domain.WoundInfo;
+import com.example.medic.medicalKnowledge.dto.NextInfoDto;
+import com.example.medic.medicalKnowledge.dto.PrevInfoDto;
 import com.example.medic.medicalKnowledge.dto.WoundInfoDto;
 import com.example.medic.medicalKnowledge.repository.WoundInfoRepository;
-import com.example.medic.medicalKnowledge.repository.WoundInfoRepository.PrevWoundInfoDto;
-import com.example.medic.medicalKnowledge.repository.WoundInfoRepository.NextWoundInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,16 +97,26 @@ public class WoundInfoService {
     /**
      * 이전 글 찾기
      */
-    public PrevWoundInfoDto findPrevWoundInfo(Long woid) {
-        PrevWoundInfoDto prevWoundInfo = woundInfoRepository.findPrevWound(woid);
-        return prevWoundInfo;
+    public PrevInfoDto findPrevWoundInfo(Long woid) {
+        WoundInfo prevWoundInfo = woundInfoRepository.findPrevWound(woid);
+        PrevInfoDto prevWoundInfoDto = PrevInfoDto
+                .builder()
+                .PrevNum(prevWoundInfo.getWoId())
+                .PrevTitle(prevWoundInfo.getWoName())
+                .build();
+        return prevWoundInfoDto;
     }
 
     /**
      * 다음 글 찾기
      */
-    public NextWoundInfoDto findNextWoundInfo(Long woid) {
-        NextWoundInfoDto nextWoundinfo = woundInfoRepository.findNextWound(woid);
-        return nextWoundinfo;
+    public NextInfoDto findNextWoundInfo(Long woid) {
+        WoundInfo nextWoundinfo = woundInfoRepository.findNextWound(woid);
+        NextInfoDto nextWoundInfoDto = NextInfoDto
+                .builder()
+                .NextNum(nextWoundinfo.getWoId())
+                .NextTitle(nextWoundinfo.getWoName())
+                .build();
+        return nextWoundInfoDto;
     }
 }

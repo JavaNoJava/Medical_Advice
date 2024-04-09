@@ -1,12 +1,10 @@
 package com.example.medic.medicalKnowledge.controller;
 
-import com.example.medic.client.dto.ClientInfoDto;
 import com.example.medic.manager.dto.ManagerInfoDto;
 import com.example.medic.medicalKnowledge.domain.IndustrialAccidentInfo;
 import com.example.medic.medicalKnowledge.dto.IndustrialAccidentInfoDto;
-import com.example.medic.medicalKnowledge.repository.IndustrialAccidentInfoRepository;
-import com.example.medic.medicalKnowledge.repository.IndustrialAccidentInfoRepository.PrevIndustrialAccidentInfoDto;
-import com.example.medic.medicalKnowledge.repository.IndustrialAccidentInfoRepository.NextIndustrialAccidentInfoDto;
+import com.example.medic.medicalKnowledge.dto.NextInfoDto;
+import com.example.medic.medicalKnowledge.dto.PrevInfoDto;
 import com.example.medic.medicalKnowledge.service.IndustrialAccidentInfoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -47,9 +45,9 @@ public class IndustrialAccidentInfoController {
 
     //이전 글 조회
     @GetMapping("/industrialAccident/detail/prev/{iaid}")
-    public ResponseEntity<PrevIndustrialAccidentInfoDto> findPrevIndustrialAccidentInfo(@PathVariable Long iaid){
+    public ResponseEntity<PrevInfoDto> findPrevIndustrialAccidentInfo(@PathVariable Long iaid){
         try{
-            PrevIndustrialAccidentInfoDto prevIndustrialAccidentInfoDto = industrialAccidentInfoService.findPrevIndustrialAccidentInfo(iaid);
+            PrevInfoDto prevIndustrialAccidentInfoDto = industrialAccidentInfoService.findPrevIndustrialAccidentInfo(iaid);
             return ResponseEntity.ok(prevIndustrialAccidentInfoDto);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
@@ -58,9 +56,9 @@ public class IndustrialAccidentInfoController {
 
     //다음 글 조회
     @GetMapping("/industrialAccident/detail/next/{iaid}")
-    public ResponseEntity<NextIndustrialAccidentInfoDto> findNextIndustrialAccidentInfo(@PathVariable Long iaid){
+    public ResponseEntity<NextInfoDto> findNextIndustrialAccidentInfo(@PathVariable Long iaid){
         try{
-            NextIndustrialAccidentInfoDto nextIndustrialAccidentInfo = industrialAccidentInfoService.findNextIndustrialAccidentInfo(iaid);
+            NextInfoDto nextIndustrialAccidentInfo = industrialAccidentInfoService.findNextIndustrialAccidentInfo(iaid);
             return ResponseEntity.ok(nextIndustrialAccidentInfo);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
