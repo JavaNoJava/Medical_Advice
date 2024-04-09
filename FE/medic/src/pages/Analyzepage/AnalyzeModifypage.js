@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import analyzerequest from '../../css/AnalyzeRequestpage.module.css';
+import analyzerequest from '../../css/AnalyzeDetailpage.module.css';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import ImageModal from '../../components/ImageModal';
@@ -285,7 +285,7 @@ const btn_analyze_update = async() => {
         setIsOpenimage(false)
     }
     return(
-        <div className={analyzerequest.anvicerequest_wrap}>
+        <div className={analyzerequest.analyzereequest_wrap}>
             <div className={analyzerequest.iconbox}>
                 <h2 className={analyzerequest.title}>
                     분석의뢰 수정
@@ -424,12 +424,13 @@ const btn_analyze_update = async() => {
                     질문 항목수
                 </div>
                 <div className={analyzerequest.input_box}>
-                    <input
-                        type="text"
-                        name="anQuestionTotal"
-                        value={anQuestionTotal}
-                        onChange={handleQuestionTotalChange}
-                    />
+                    <select value={anQuestionTotal} onChange={handleQuestionTotalChange}>
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                    </select>
                 </div>
             </div>
                 {renderQuestionInputs()}

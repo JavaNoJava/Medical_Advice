@@ -70,7 +70,7 @@ export default function TranslateDetailpage(){
     }
 
     const btn_edit = () => {
-        if (translateDetails.tamDate == null) {
+        if (translateDetails.tamDate == null && translateDetails.trProgressStatus == '번역의뢰중')  {
             navigate(`/medic/translate/translateUpdate/${index}`);
         } else {
             alert("번역의뢰 신청이 전문의에게 배정된 이후로는 수정할 수 없습니다.")

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import advicerequest from '../../css/AdviceRequestpage.module.css';
+import advicerequest from '../../css/AdviceDetailpage.module.css';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import ImageModal from '../../components/ImageModal';
@@ -776,12 +776,13 @@ return(
                     질문 항목수
                 </div>
                 <div className={advicerequest.input_box}>
-                    <input
-                        type="text"
-                        name="adQuestionTotal"
-                        value={adQuestionTotal}
-                        onChange={handleQuestionTotalChange}
-                    />
+                    <select value={adQuestionTotal} onChange={handleQuestionTotalChange}>
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                    </select>
                 </div>
             </div>
                 {renderQuestionInputs()}
