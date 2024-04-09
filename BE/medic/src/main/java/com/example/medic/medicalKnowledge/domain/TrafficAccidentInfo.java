@@ -24,7 +24,7 @@ public class TrafficAccidentInfo {
     private Long taId;
 
     @NotNull
-    @Column(length = 30)
+    @Column(length = 50)
     private String taName;
 
     @NotNull

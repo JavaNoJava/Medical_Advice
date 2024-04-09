@@ -22,7 +22,7 @@ public class IndustrialAccidentInfo {
     private Long iaId;
 
     @NotNull
-    @Column(length = 30)
+    @Column(length = 50)
     private String iaName;
 
     @NotNull

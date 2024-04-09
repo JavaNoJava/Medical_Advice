@@ -24,7 +24,7 @@ public class MedicalNegligenceInfo {
     private Long mnId;
 
     @NotNull
-    @Column(length = 30)
+    @Column(length = 50)
     private String mnName;
 
     @NotNull

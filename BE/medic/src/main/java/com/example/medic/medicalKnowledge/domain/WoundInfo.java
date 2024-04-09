@@ -23,7 +23,7 @@ public class WoundInfo {
     private Long woId;
 
     @NotNull
-    @Column(length = 30)
+    @Column(length = 50)
     private String woName;
 
     @NotNull

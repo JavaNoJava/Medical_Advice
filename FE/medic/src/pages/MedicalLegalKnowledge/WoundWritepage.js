@@ -100,7 +100,7 @@ export default function WoundWritepage() {
         setIsValidTitle(true);
     }
     const valid_title = e => {
-        const titleRegex = /^[a-zA-Z가-힣0-9\s]{1,30}$/;
+        const titleRegex = /^[a-zA-Z가-힣0-9\s!@#$%^&*()\-_=+{}\[\]|;:'",.<>\/?~]{1,50}$/;
         setIsValidTitle(titleRegex.test(e.target.value))
     }
     const input_writer = e => {
