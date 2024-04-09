@@ -62,12 +62,14 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                 if(response.data.trMtl === "empty_file"){
                     return false
                 } else{
+                    setTrMtl(response.data.trMtl)
                     return true
                 }
             })
 
             setIsAnswer(()=>{
                 if(response.data.trAnswer){
+                    setTrAnswer(response.data.trAnswer)
                     return true
                 } else{
                     return false
@@ -125,6 +127,12 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
             return;
         }
         const today = new Date()
+        if(typeof trAnswer == 'string'){
+            translateAnswer.append("dto", new Blob([JSON.stringify({
+                "trAnswer" : trAnswer,
+                "trAnswerDate" : today
+            })], {type : "application/json"}))
+        }
         translateAnswer.append('files', trAnswer)  
         translateAnswer.append("dto", new Blob([JSON.stringify({
             "trAnswerDate" : today
@@ -333,9 +341,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
             
             <div className={assignmenttranslatedetail.complete}>
                 {
-                        isAnswer ? (trProgressStatus ? <></> : 
-                        <button type="button" className={assignmenttranslatedetail.complete_button} onClick={btn_translate_update}>번역의뢰 답변 수정</button>) 
-                        :
+                        isAnswer || 
                         isUpdate ? 
                         <button type="button" className={assignmenttranslatedetail.complete_button} onClick={btn_translate_update}>번역의뢰 답변 수정</button>
                         :

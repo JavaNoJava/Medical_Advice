@@ -51,7 +51,7 @@ export default function AdminWriteQnaAnswer({qaId, answer}) {
         try{
             if(window.confirm('답변을 수정하시겠습니까?')){
               await axios.put(`/qna/modifyAnswer/${qaId}/${answer.qaAnswerId}`, AdminUpdateAnswer)
-              alert('작성되었습니다.')
+              alert('수정되었습니다.')
               window.location.href = window.location.href;
             }
           } catch(err){
