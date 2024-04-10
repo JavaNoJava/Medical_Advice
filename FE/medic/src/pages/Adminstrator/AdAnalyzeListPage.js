@@ -62,7 +62,6 @@ export default function AdAnalyzeListPage() {
 
   const endIndex = Math.min(startIndex + itemsPerPage, allAnalyzeList.length);
   const visibleAdviceList = allAnalyzeList.slice(startIndex, endIndex);
-console.log('sex',visibleAdviceList)
   return (
     <div className={ad.ad_contents}>
       <div className={ad.ad_iconbox}>
