@@ -56,7 +56,7 @@ public class ClientManagementService {
             ManagedClientInfoDto managedClientInfoDto = ManagedClientInfoDto.builder()
                     .uId(client.getUId())
                     .uName(client.getUName())
-                    .uRole(client.getURole())
+                    .uPart(client.getUPart())
                     .uEmail(client.getUEmail())
                     .userTel(client.getUserTel())
                     .countByAdvice(countByAdvice(client))

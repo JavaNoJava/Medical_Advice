@@ -103,7 +103,7 @@ const handlePageChange = (newPage) => {
           const response = await axios.post(`/admin/translate/setConsultative/${trId}`, { cId: selectedCId });
           console.log('저장 응답:', response.data);
           if (response.data === 1) {
-            alert('배정이 완료되었습니다.');
+            alert('배정 성공!');
           } else {
             alert('배정 중 오류 발생.');
           }

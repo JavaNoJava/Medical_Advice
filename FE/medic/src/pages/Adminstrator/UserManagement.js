@@ -104,7 +104,7 @@ export default function UserManagement() {
               {startIndex + index + 1}
               </div>
               <div className={ad.input_box}  style={{width:'120px'}}>{user.uname}</div>
-              <div className={ad.input_box}  style={{width:'130px'}}>{user.urole} </div>
+              <div className={ad.input_box}  style={{width:'130px'}}>{user.upart|| 'general_user'} </div>
               <div className={ad.input_box}  style={{width:'150px'}}>{user.userTel}</div>
               <div className={ad.input_box}>{user.countByAdvice}</div>
               <div className={ad.input_box}>
