@@ -131,7 +131,7 @@ fetchData1();
         const response = await axios.put(`/admin/analyze/updateStatus/${anId}`,info);
         console.log(response)
           if(response.data == 1){
-            alert('변경 성공')
+            alert('변경 성공!')
           }else{
             alert('변경 실패')
           }

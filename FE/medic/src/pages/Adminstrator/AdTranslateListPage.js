@@ -130,7 +130,7 @@ const AdTranslateListPage = () => {
               </div>
               {/* <div className={ad.input_box} style={{borderRight: 'none'}}>{advice.admProgressStatus === null ? '자문의뢰중' : advice.admProgressStatus}</div> */}
               <div className={ad.input_box}>
-              {advice.trProgressStatus || '자문의뢰중'}
+              {advice.trProgressStatus || '번역의뢰중'}
               </div>
               <div className={ad.input_box}> 
                 <span className="your-custom-style">
