@@ -50,6 +50,8 @@ export default function UserManagement() {
         const updatedUserList = userList.filter(user => user.uId !== userId);
         setUserList(updatedUserList);
         alert('사용자가 삭제되었습니다.');
+        const response1 = await axios.get('/admin/manageClient/list');
+        setUserList(response1.data);
       } else {
         alert('사용자 삭제가 취소되었습니다.');
       }
