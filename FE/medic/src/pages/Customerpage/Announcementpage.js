@@ -98,15 +98,15 @@ export default function Announcementpage() {
   const handleDeleteAnnounce = async (amId) => {
     try {
       const confirmed = window.confirm('게시글을 삭제하시겠습니까?');
-      const response = await axios.delete(`/announcement/delete/${amId}`);
-      const resp = await axios.get(`/announcement/list`);
-      const data = resp.data;
-      setAnnouncements(data);
+  
       if (confirmed) {
         alert('게시글이 삭제되었습니다.');
-        window.location.reload();
-      } else {
-        
+        const response = await axios.delete(`/announcement/delete/${amId}`);
+        const resp = await axios.get(`/announcement/list`);
+        const data = resp.data;
+        setAnnouncements(data);
+      }else{
+        alert('취소되었습니다.')
       }
     } catch (error) {
       console.error('게시글 삭제 오류', error);
