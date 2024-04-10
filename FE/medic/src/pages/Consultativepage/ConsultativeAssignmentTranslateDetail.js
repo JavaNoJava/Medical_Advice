@@ -116,12 +116,20 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
 
     const btn_modify_trAnswer = e => {
         if(window.confirm('수정하시겠습니까?')){
+            if(trProgressStatus){
+                alert("회원에게 답변이 전달되면 답변을 수정할 수 없습니다")
+                return
+            }
             setIsAnswer(false)
             setTrAnswer(null)
-            setIsUpdate(true)
+            setIsUpdate(true) 
         }
     }
     const btn_translate_update = async() => {
+        if(trProgressStatus){
+            alert("회원에게 답변이 전달되면 답변을 수정할 수 없습니다")
+            return
+        }
         if (trAnswer === null || typeof trAnswer === 'undefined') {
             alert('입력값을 확인해주세요.');
             return;
@@ -297,15 +305,6 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                     <div className={assignmenttranslatedetail.input_box}>
                         {
                             isAnswer ?
-                            trProgressStatus ? 
-                                <button className={assignmenttranslatedetail.btn_file_download}>
-                                    <a
-                                        href={`http://localhost:8080/assignedTranslate/findFile/${index}`}
-                                    >
-                                        다운로드
-                                    </a>
-                                </button>
-                            :
                             <>
                                 <button className={assignmenttranslatedetail.btn_file_download}>
                                     <a
@@ -316,7 +315,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                                 </button>
                                 <button className={assignmenttranslatedetail.btn_file_cancle} onClick={
                                     btn_modify_trAnswer
-                                } >수정</button>
+                                } >x</button>
                             </>
                             :
                             <>
