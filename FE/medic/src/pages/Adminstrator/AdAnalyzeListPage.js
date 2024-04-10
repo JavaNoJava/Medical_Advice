@@ -111,7 +111,7 @@ console.log('sex',visibleAdviceList)
               <div className={ad.input_box}>{formatDate(analyze.anRegDate)}</div>
               <div className={ad.input_box}>{analyze.adMdDate||"미배정"}</div>
               <div className={ad.input_box}>
-                {analyze.adAnswerDate||"미답변"}
+                {analyze.anAnswerDate||"미답변"}
               </div>
               
               <div className={ad.input_box}>
