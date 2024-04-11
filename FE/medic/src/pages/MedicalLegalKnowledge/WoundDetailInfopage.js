@@ -76,9 +76,16 @@ export default function WoundAccidentDetailInfopage(){
   };
 
   const deleteWound = async(woundInfoId)=> {
-    const response = await axios.post(`/woundInfo/delete/${woundInfoId}`);
-    // 삭제 응답에 따른 이동 여부 판단 로직 필요
-    navigate('/medic/medicalknowledge/woundInfo');
+
+    const confirmed = window.confirm('삭제하시겠습니까?');
+    
+    if (confirmed) {
+      const response = await axios.post(`/woundInfo/delete/${woundInfoId}`);
+      // 삭제 응답에 따른 이동 여부 판단 로직 필요
+      navigate('/medic/medicalknowledge/woundInfo');
+    } else {
+      return
+    }
   };
 
   const btn_wound_list = e => {

@@ -76,12 +76,19 @@ export default function MedicalNegligenceDetailpage(){
       updateMedicalNegligence : true
     }});
   };
-  
-  const deleteMedicalNegligence = async(medicalNegligenceId)=> {
-    const response = await axios.post(`/medicalNegligence/delete/${medicalNegligenceId}`);
-    // 삭제 응답에 따른 이동 여부 판단 로직 필요
-    navigate('/medic/medicalknowledge/medicalNegligence');
-  };
+  const deleteMedicalNegligence = async (medicalNegligenceId) => {
+
+    const confirmed = window.confirm('삭제하시겠습니까?');
+
+    if (confirmed) {
+        // 삭제 요청 보내기
+        const response = axios.post(`/medicalNegligence/delete/${medicalNegligenceId}`);
+        alert("삭제되었습니다.")
+        navigate('/medic/medicalknowledge/medicalNegligence');
+    } else {
+      return
+    }
+  }
  
   const btn_medicmedicalNegligence_list = e => {
     navigate('/medic/medicalknowledge/medicalNegligence');

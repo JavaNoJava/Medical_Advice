@@ -79,9 +79,15 @@ export default function IndustrialAccidentDetailInfopage(){
   };
 
   const deleteIndustrialAccident = async(industrialAccidentInfoId)=> {
-    const response = await axios.post(`/industrialAccident/delete/${industrialAccidentInfoId}`);
-    // 삭제 응답에 따른 이동 여부 판단 로직 필요
-    navigate('/medic/medicalknowledge/industrialAccidentInfo');
+    const confirmed = window.confirm('삭제하시겠습니까?');
+
+    if (confirmed) {
+      const response = await axios.post(`/industrialAccident/delete/${industrialAccidentInfoId}`);
+      // 삭제 응답에 따른 이동 여부 판단 로직 필요
+      navigate('/medic/medicalknowledge/industrialAccidentInfo');
+    } else{
+        return
+    }
   };
 
   const btn_industrialAccident_list = e => {

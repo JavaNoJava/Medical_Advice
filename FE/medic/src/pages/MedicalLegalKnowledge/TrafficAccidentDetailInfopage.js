@@ -75,9 +75,16 @@ export default function TrafficAccidentDetailInfopage(){
   };
 
   const deleteTrafficAccident = async(trafficAccidentInfoId)=> {
-    const response = await axios.post(`/trafficAccident/delete/${trafficAccidentInfoId}`);
-    // 삭제 응답에 따른 이동 여부 판단 로직 필요
-    navigate('/medic/medicalknowledge/trafficAccidentInfo');
+
+    const confirmed = window.confirm('삭제하시겠습니까?');
+
+    if (confirmed) {
+      const response = await axios.post(`/trafficAccident/delete/${trafficAccidentInfoId}`);
+      // 삭제 응답에 따른 이동 여부 판단 로직 필요
+      navigate('/medic/medicalknowledge/trafficAccidentInfo');
+    } else {
+      return
+    }
   };
 
   const btn_trafficAccident_list = e => {
