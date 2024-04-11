@@ -58,32 +58,8 @@ export default function DocManagement() {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = Math.min(doctorList.length, startIndex + itemsPerPage);
 
-  // const renderDoctorList = () => {
-  //   const startIndex = (page - 1) * itemsPerPage;
-  //   const endIndex = Math.min(doctorList.length, startIndex + itemsPerPage);
-
-  //   return doctorList.slice(startIndex, endIndex).map((doctor, index) => (
-  //     <tr key={index}>
-  //       <td className={administrator.doc_td} onClick={() => handleEditDoc(doctor.cid)}>{startIndex + index + 1}</td>
-  //       <td className={administrator.doc_td}>{doctor.cname}</td>
-  //       <td className={administrator.doc_td}>{doctor.crole}</td>
-  //       <td className={administrator.doc_td}>{doctor.ctel}</td>
-  //       <td className={administrator.doc_td}>{doctor.countByAdviceAssignment}</td>
-  //       <td className={administrator.doc_td}>{doctor.countByAnalyzeAssignment}</td>
-  //       <td className={administrator.doc_td}>{doctor.countByTranslateAssignment}</td>
-  //       <td className={administrator.doc_td} onClick={() => handleDeleteDoc(doctor.cid)}>
-  //         <FontAwesomeIcon icon={faTrash} />
-  //       </td>
-  //     </tr>
-  //   ));
-  // }
-
   const pageCount = Math.ceil(doctorList.length / itemsPerPage);
-  // const pageButtons = [...Array(pageCount)].map((_, index) => (
-  //   <button key={index} className={administrator.doc_paginationButton} onClick={() => handlePageChange(index + 1)} disabled={page === index + 1}>
-  //     {index + 1}
-  //   </button>
-  // ));
+
 
   return (
     <div className={ad.ad_contents}>

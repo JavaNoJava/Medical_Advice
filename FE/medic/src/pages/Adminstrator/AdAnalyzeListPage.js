@@ -62,7 +62,6 @@ export default function AdAnalyzeListPage() {
 
   const endIndex = Math.min(startIndex + itemsPerPage, allAnalyzeList.length);
   const visibleAdviceList = allAnalyzeList.slice(startIndex, endIndex);
-console.log('sex',visibleAdviceList)
   return (
     <div className={ad.ad_contents}>
       <div className={ad.ad_iconbox}>
@@ -111,7 +110,7 @@ console.log('sex',visibleAdviceList)
               <div className={ad.input_box}>{formatDate(analyze.anRegDate)}</div>
               <div className={ad.input_box}>{analyze.adMdDate||"미배정"}</div>
               <div className={ad.input_box}>
-                {analyze.adAnswerDate||"미답변"}
+                {analyze.anAnswerDate||"미답변"}
               </div>
               
               <div className={ad.input_box}>

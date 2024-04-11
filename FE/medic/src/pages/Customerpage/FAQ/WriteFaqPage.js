@@ -27,9 +27,14 @@ export default function WriteFaqPage  ()  {
       'faqAnswer' : faqAnswer
     }
     try{
-      console.log(FaqSituationDto)
-      const response = axios.post(`/faq/post/${writer}`, FaqSituationDto)
-      navigate('/medic/customer/FAQ');
+      if (faq_titile.trim() !== '' && faqAnswer.trim() !== '') {
+        alert('작성되었습니다.')
+        const response = axios.post(`/faq/post/${writer}`, FaqSituationDto)
+        navigate('/medic/customer/FAQ');
+      } else {
+        alert('질문과 답변내용을 작성해주세요.')
+      }
+
     } catch(err){
       console.log(err)
     }

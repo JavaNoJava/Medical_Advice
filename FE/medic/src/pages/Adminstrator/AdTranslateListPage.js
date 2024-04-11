@@ -130,7 +130,7 @@ const AdTranslateListPage = () => {
               </div>
               {/* <div className={ad.input_box} style={{borderRight: 'none'}}>{advice.admProgressStatus === null ? '자문의뢰중' : advice.admProgressStatus}</div> */}
               <div className={ad.input_box}>
-              {advice.trProgressStatus || '자문의뢰중'}
+              {advice.trProgressStatus || '번역의뢰중'}
               </div>
               <div className={ad.input_box}> 
                 <span className="your-custom-style">
@@ -143,58 +143,6 @@ const AdTranslateListPage = () => {
           ))}
       </div>
 
-{/* 
-      <table className={ad.ad_table}>
-        <thead>
-          <tr>
-            <th className={ad.ad_th}>NO.</th>
-            <th className={ad.ad_th}>이름</th>
-            <th className={ad.ad_th}>진단명</th>
-            <th className={ad.ad_th}>의뢰신청일</th>
-            <th className={ad.ad_th}>의뢰배정일</th>
-            <th className={ad.ad_th}>의뢰번역일</th>
-            <th className={ad.ad_th}>진행상태</th>
-            <th className={ad.ad_th}>전문의</th>
-            <th className={ad.ad_th}>배정</th>
-          </tr>
-        </thead>
-        <tbody>
-          {quiryList?.map((trans, index) => (
-            <tr key={index}>
-              <td className={ad.ad_td} onClick={() => btn_detail_translate(trans.trId)}>{calculateNo(index)}</td>
-              <td className={ad.ad_td}>{trans.uname}</td>
-              <td className={ad.ad_td}>{trans.trPtDiagnosis}</td>
-              <td className={ad.ad_td}>{formatDate(trans.trRegDate)}</td>
-              <td className={ad.ad_td}>
-              
-                  {formatDate(trans.tamDate)||"미배정"}
-                 
-              </td>
-              <td className={ad.ad_td}>
-               
-                 {trans.trAnswerDate||"미답변"}
-               
-              </td>
-              <td className={ad.ad_td}>
-             {trans.trProgressStatus||"번역의뢰중"}
-              </td>
-              <td className={ad.ad_td}>
-  <span
-  >
-    {trans.cname||'미배정'}
-  </span>
-</td>
-
-<td className={ad.ad_td}>
-<div  onClick={() => btn_set_doctor(trans.trId)}>
-<i class="fa-solid fa-pen-to-square"></i>
-</div>
-</td>
-
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
 
       <div className={ad.pagination}>
         <button className={ad.paginationButton} onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>

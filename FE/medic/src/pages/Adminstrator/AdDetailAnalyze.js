@@ -236,7 +236,7 @@ export default function AdDetailAnalyze(){
                         진단 사항
                     </div>
                     <div className={analyzerequest.input_box} style={{width : '400px', height : 'auto'}} >
-                        <textarea cols="50" rows="5" readOnly value={analyzeDetails.anPtDiacontent}/> 
+                        <textarea cols="50" rows="5" readOnly value={analyzeDetails.anPtDiagContent}/> 
                     </div>
                 </div>
 

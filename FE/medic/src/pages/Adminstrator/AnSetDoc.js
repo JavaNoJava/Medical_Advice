@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ad from '../../css/AdAdviceListPage.module.css';
+import ad from '../../css/AdSetDocPage.module.css';
 import { useNavigate, useParams , useLocation } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
@@ -16,11 +16,11 @@ export default function AnSetDoc() {
   const location = useLocation();
   const [selectedAnalyze, setSelectedAnalyze] = useState([]);
   const {anId} = location.state||{}; 
-  console.log(anId)
+  console.log("gd",selectedAnalyze)
   const navigate = useNavigate();
   const itemsPerPage = 7;
   const [adMdDate,setAdMdDate] = useState(selectedAnalyze.adMdDate||"미배정")
-  const [adProgressStatus , setAdProgressStatus] = useState(selectedAnalyze.admProgressStatus||"")
+  const [anProgressStatus , setAdProgressStatus] = useState(selectedAnalyze.anProgressStatus)
   const [anAnswerDate, setAnAnswerDate] = useState(selectedAnalyze.anAnswerDate||"미답변") 
 
   useEffect(()=> {
@@ -31,7 +31,7 @@ export default function AnSetDoc() {
         const data = response.data
        setSelectedAnalyze(data);
        
-        setAdProgressStatus(response.data.admProgressStatus);
+        setAdProgressStatus(response.data.anProgressStatus);
         setAdMdDate(response.data.adMdDate);
         setAnAnswerDate(response.data.anAnswerDate);
 
@@ -111,10 +111,10 @@ fetchData1();
     if(window.confirm("진행상황을 변경하시겠습니까?")){
         e.preventDefault()
         console.log(adMdDate)
-        console.log(adProgressStatus)
+        console.log(anProgressStatus)
         const info = {
           'adMdDate' : adMdDate,
-          'anProgressStatus' : adProgressStatus
+          'anProgressStatus' : anProgressStatus
         }
         handleUpdateField(info)
     }
@@ -131,7 +131,7 @@ fetchData1();
         const response = await axios.put(`/admin/analyze/updateStatus/${anId}`,info);
         console.log(response)
           if(response.data == 1){
-            alert('변경 성공')
+            alert('변경 성공!')
           }else{
             alert('변경 실패')
           }
@@ -318,7 +318,7 @@ fetchData1();
               </div>
               <div className={ad.input_box} style={{borderRight:'none'}} >
               <select
-                value={adProgressStatus || '분석의뢰중'}
+                value={anProgressStatus}
                 onChange={(e) => input_adProgressStatus(e)}
               >
                 <option value="분석의뢰중">분석의뢰중</option>

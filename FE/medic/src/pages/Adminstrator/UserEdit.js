@@ -9,12 +9,10 @@
 
     const location = useLocation();
     const [userInfo, setUserInfo] = useState([]);
-    //   console.log('userinfo',userInfo);
 
 
     const { useredit: uId } = location.state || {};
 
-    console.log('uid',uId)
     const [uRole, setURole] = useState();   //역할
     const [uPw, setUPw] = useState()      //pw
     const [uName, setUName] = useState() //name
@@ -85,6 +83,7 @@
         //지역주소 제외 전체주소 치환
         setZipcode(data.zonecode);
         setUserRoadAddress(roadAddress);
+        setDetailAddress('')
         fullAddress = fullAddress.replace(localAddress, '');
         }
     }
@@ -103,9 +102,11 @@
         //지역주소 제외 전체주소 치환
         setCpZipcode(data.zonecode);
         setComapanyRoadAddress(roadAddress);
+        setDetailCpAddress("")
         fullAddress = fullAddress.replace(localAddress, '');
         }
     }
+
 
     const fetchUserData = async () => {
         try {
@@ -329,7 +330,7 @@
     }
 
     return (
-        <div className={mypage.mypage_box} style={{marginRight:'150px',marginTop:'50px'}}>
+        <div className={`${mypage.mypage_box} ${userInfo.upart === 'general_user' ? mypage.mypage_box_small_admin : ''}`} style={{marginRight:'150px',marginTop:'50px'}}>
         {/* <div className={mypage.modify_title}>
             <h2>
         
@@ -413,85 +414,87 @@
                         </div>
                     </div>
                 </div>
-                {/* {uPart !== '일반회원' ? */}
-                <div className={mypage.modify_userinfo} style={{marginTop : '60px'}}>
-                    <h4 className={mypage.modify_subtitle}><span className={mypage.modify_subtitleimg}></span>업체 정보</h4>
-                    <div className={mypage.modify_userinfotable}>
-                        <div className={mypage.modify_row}>
-                            <div className={mypage.modify_row_title}>회사명</div>
-                            <div className={mypage.modify_userinfo_content}>
-                                <input type="text" name="cp_name" value={company} onChange={input_cpname} maxLength={20}/>
-                            </div>
-                        </div>
-                        <div className={mypage.modify_row}>
-                            <div className={mypage.modify_row_title}>대표자명</div>
-                            <div className={mypage.modify_userinfo_content}>
-                                <input type="text" name="cp_name" value={ceo} onChange={input_cp_ceo} maxLength={8}/>  
-                            </div>
-                        </div>
-                        <div className={mypage.modify_row}>
-                            <div className={mypage.modify_row_title}>일반전화</div>
-                            <div className={mypage.modify_userinfo_content}>
-                                <input type="text" value={cpTel} onBlur={valid_cptel} onChange={input_cp_tel} maxLength={13}></input>
-                                {
-                                    isValidCpTel ?
-                                    <></>
-                                    :
-                                    <span className={mypage.errmsg}>{errmsg.tel}</span>
-                                }
-                            </div>
-                        </div>
-                        <div className={mypage.modify_row}>
-                            <div className={mypage.modify_row_title}>팩스번호</div>
-                            <div className={mypage.modify_userinfo_content}>
-                                <input type="text" value={cpFx} onBlur={valid_cpfx} onChange={input_cp_fx} maxLength={13}></input>
-                                {
-                                    isValidCpFx ?
-                                    <></>
-                                    :
-                                    <span className={mypage.errmsg}>{errmsg.cpFx}</span>
-                                }
-                            </div>
-                        </div>
-                        <div className={mypage.modify_row}>
-                            <div className={mypage.modify_row_title}>사업자번호(법인)</div>
-                            <div className={mypage.modify_userinfo_content}>
-                                <input type="text" value={cpNum} onBlur={valid_cpnum} onChange={input_cp_num} maxLength={20}></input>
-                                {
-                                    isValidCpNum ?
-                                    <></>
-                                    :
-                                    <span className={mypage.errmsg}>{errmsg.cpNum}</span>
-                                }
-                            </div>
-                        </div>
-                        <div className={mypage.modify_row} style={{alignItems : 'center'}}>
-                            <div className={mypage.modify_row_title} style={{height : '80px'}}>사업장주소</div>
-                            <div className={mypage.address_input_box}>
-                                <div>
-                                    <input type="text" disabled={false} value={cpZipcode} onChange={input_cp_zipcode} style={{width: '80px'}}/>
-                                    <button type="button" className={mypage.btn_findaddress} onClick={handleCClick} >주소찾기</button>
-                                </div>
-                                <div style={{display : "flex"}}>
-                                    <input type="text" disabled={false} value={comapanyroadAddress} onChange={input_cp_zipcode_num} style={{width: '250px'}}/> 
-                                    <input type="text" value={detailCpAddress} onChange={input_cp_details_zipcode} style={ {width:'250px', marginLeft : '10px'}}/>
+                {userInfo.upart !== 'general_user' && (
+                    <div className={mypage.modify_userinfo} style={{marginTop : '60px'}}>
+                        <h4 className={mypage.modify_subtitle}><span className={mypage.modify_subtitleimg}></span>업체 정보</h4>
+                        <div className={mypage.modify_userinfotable}>
+                            <div className={mypage.modify_row}>
+                                <div className={mypage.modify_row_title}>회사명</div>
+                                <div className={mypage.modify_userinfo_content}>
+                                    <input type="text" name="cp_name" value={company} onChange={input_cpname} maxLength={20}/>
                                 </div>
                             </div>
+                            <div className={mypage.modify_row}>
+                                <div className={mypage.modify_row_title}>대표자명</div>
+                                <div className={mypage.modify_userinfo_content}>
+                                    <input type="text" name="cp_name" value={ceo} onChange={input_cp_ceo} maxLength={8}/>  
+                                </div>
+                            </div>
+                            <div className={mypage.modify_row}>
+                                <div className={mypage.modify_row_title}>일반전화</div>
+                                <div className={mypage.modify_userinfo_content}>
+                                    <input type="text" value={cpTel} onBlur={valid_cptel} onChange={input_cp_tel} maxLength={13}></input>
+                                    {
+                                        isValidCpTel ?
+                                        <></>
+                                        :
+                                        <span className={mypage.errmsg}>{errmsg.tel}</span>
+                                    }
+                                </div>
+                            </div>
+                            <div className={mypage.modify_row}>
+                                <div className={mypage.modify_row_title}>팩스번호</div>
+                                <div className={mypage.modify_userinfo_content}>
+                                    <input type="text" value={cpFx} onBlur={valid_cpfx} onChange={input_cp_fx} maxLength={13}></input>
+                                    {
+                                        isValidCpFx ?
+                                        <></>
+                                        :
+                                        <span className={mypage.errmsg}>{errmsg.cpFx}</span>
+                                    }
+                                </div>
+                            </div>
+                            <div className={mypage.modify_row}>
+                                <div className={mypage.modify_row_title}>사업자번호(법인)</div>
+                                <div className={mypage.modify_userinfo_content}>
+                                    <input type="text" value={cpNum} onBlur={valid_cpnum} onChange={input_cp_num} maxLength={20}></input>
+                                    {
+                                        isValidCpNum ?
+                                        <></>
+                                        :
+                                        <span className={mypage.errmsg}>{errmsg.cpNum}</span>
+                                    }
+                                </div>
+                            </div>
+                            <div className={mypage.modify_row} style={{alignItems : 'center'}}>
+                                <div className={mypage.modify_row_title} style={{height : '80px'}}>사업장주소</div>
+                                <div className={mypage.address_input_box}>
+                                    <div>
+                                        <input type="text" disabled={false} value={cpZipcode} onChange={input_cp_zipcode} style={{width: '80px'}}/>
+                                        <button type="button" className={mypage.btn_findaddress} onClick={handleCClick} >주소찾기</button>
+                                    </div>
+                                    <div style={{display : "flex"}}>
+                                        <input type="text" disabled={false} value={comapanyroadAddress} onChange={input_cp_zipcode_num} style={{width: '250px'}}/> 
+                                        <input type="text" value={detailCpAddress} onChange={input_cp_details_zipcode} style={ {width:'250px', marginLeft : '10px'}}/>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                         
+                        </div>
+                    </div>
+                       )}
+                    <></>
+                    {/* } */}
+                    <div className={mypage.complete} style={{marginBottom : '100px'}}>
+                        <div className={mypage.complete_btnBox} >
+                            <button type = "button" onClick={btn_progrm_modify}  className={mypage.btt_complete} >수정</button>
+                            <button type = "button" onClick={btn_user_list} className={mypage.btt_complete} >목록</button>
                         </div>
                     </div>
                 </div>
-                
-                <></>
-                {/* } */}
-                <div className={mypage.complete} style={{marginBottom : '100px'}}>
-                    <div className={mypage.complete_btnBox} >
-                        <button type = "button" onClick={btn_progrm_modify}  className={mypage.btt_complete} >수정</button>
-                        <button type = "button" onClick={btn_user_list} className={mypage.btt_complete} >취소</button>
-                    </div>
-                </div>
+
+
             </div>
-
-
-        </div>
-    );
-    }
+        );
+        }

@@ -1,5 +1,5 @@
 .ad_contents {
-    height: 560px;
+    height: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -191,7 +191,7 @@ font-size: 15px;
 margin-top: 50px; /* Adjust as needed */
 text-align: center;
 margin-right: 0px;
-margin-bottom: 150px;
+margin-bottom: 50px;
 }
 
 .paginationNumber {

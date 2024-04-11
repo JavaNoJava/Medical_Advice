@@ -81,13 +81,16 @@ console.log('ann',announceDetail)
   }
 
   const announce_modify = async(announceInfo) => {
-    console.log(2)
-    const response = await axios.put(`/announcement/modify/${amId}`, announceInfo)
-    console.log(response)
-    if(response.data === 1){
+    if (amName.trim() !== '' && amContent.trim() !== '') {
+      const response = await axios.put(`/announcement/modify/${amId}`, announceInfo)
+      if(response.data === 1){
         alert('정보수정이 완료되었습니다.')
         navigate('/medic/customer/announcement')
     }
+    } else {
+      alert('제목과 내용을 작성해주세요.')
+    }
+    
   }
 
   return (
