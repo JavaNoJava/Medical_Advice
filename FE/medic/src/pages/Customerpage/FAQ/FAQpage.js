@@ -72,6 +72,9 @@ export default function FAQpage() {
         });
         setFaqList(data);
       }
+      else{
+        alert('취소되었습니다.')
+      }
     } catch (error) {
       console.error('게시글 삭제 오류', error);
       alert('게시글 삭제 중 오류가 발생했습니다.');
