@@ -68,11 +68,14 @@ console.log('ann',faqDetail)
   }
 
   const faq_modify = async(faqInfo) => {
-    const response = await axios.put(`/faq/modify/${faqId}`, faqInfo)
-    console.log(response)
-    if(response.data === 1){
-        alert('정보수정이 완료되었습니다.')
+    if (faqQuestion.trim() !== '' && faqAnswer.trim() !== '') {
+      const response = await axios.put(`/faq/modify/${faqId}`, faqInfo)
+      if(response.data === 1){
+        alert('수정되었습니다.')
         navigate('/medic/customer/FAQ')
+    }
+    } else {
+      alert('질문과 답변내용을 작성해주세요.')
     }
   }
 
