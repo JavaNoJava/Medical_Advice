@@ -69,6 +69,7 @@ export default function ModifyMyInfopage(){
         //지역주소 제외 전체주소 치환
         setZipcode(data.zonecode);
         setUserRoadAddress(roadAddress);
+        setDetailAddress('')
         fullAddress = fullAddress.replace(localAddress, '');
         }
     }
@@ -93,6 +94,7 @@ export default function ModifyMyInfopage(){
         //지역주소 제외 전체주소 치환
         setCpZipcode(data.zonecode);
         setComapanyRoadAddress(roadAddress);
+        setDetailCpAddress("")
         fullAddress = fullAddress.replace(localAddress, '');
         }
     }
@@ -172,12 +174,20 @@ export default function ModifyMyInfopage(){
     }, [])
     
     useEffect(()=>{
-        if(uPw && uEmail && userTel && userPhone && userroadAddress && zipcode && detailAddress && company && ceo && cpTel && cpFx && cpNum && comapanyroadAddress && cpZipcode && detailCpAddress && isValidEmail && isValidTel && isValidPhone && isValidCpTel && isValidCpNum && isValidCpFx){
-            setInfoEmpty(true);
-        } else{
-            setInfoEmpty(false)
-        }
-    }, [uPw,  uEmail,  userTel,  userPhone,  zipcodeNum, zipcode, detailAddress,  company,  ceo,  cpTel,  cpFx,  cpNum, cpZipcodeNum, cpZipcode, detailCpAddress, isValidEmail, isValidTel, isValidPhone, isValidCpTel, isValidCpNum, isValidCpFx])
+        if(uPart === "일반회원"){
+            if(uPw && uEmail && userTel && userPhone && userroadAddress && zipcode && detailAddress && isValidEmail && isValidTel && isValidPhone){
+                setInfoEmpty(true);
+            }else{
+                setInfoEmpty(false)
+            }
+        }else{
+            if(uPw && uEmail && userTel && userPhone && userroadAddress && zipcode && detailAddress && company && ceo && cpTel && cpFx && cpNum && comapanyroadAddress && cpZipcode && detailCpAddress && isValidEmail && isValidTel && isValidPhone && isValidCpTel && isValidCpNum && isValidCpFx){
+                setInfoEmpty(true);
+            } else{
+                setInfoEmpty(false)
+            }
+        }    
+    }, [uPw,  uEmail,  userTel,  userPhone,  userroadAddress, zipcode, detailAddress,  company,  ceo,  cpTel,  cpFx,  cpNum, comapanyroadAddress, cpZipcode, detailCpAddress, isValidEmail, isValidTel, isValidPhone, isValidCpTel, isValidCpNum, isValidCpFx])
 
     const changeMyPw = e => {
         navigate('/medic/mypage/modifymyinfo/modifyMyPw', {state:{upw : uPw}})

@@ -50,7 +50,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
             setTrptdiagnosis(response.data.trPtDiagnosis)
             setTrptdiagcontent(response.data.trPtDiagContent)
             setTrEtcValue(response.data.trEtc)
-            if(response.data.trProgressStatus === '결제하기' || response.data.trProgressStatus === '자문완료'){
+            if(response.data.trProgressStatus === '결제하기' || response.data.trProgressStatus === '번역완료'){
                 setTrProgressStatus(true)
             } else{
                 setTrProgressStatus(false)
@@ -62,12 +62,14 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                 if(response.data.trMtl === "empty_file"){
                     return false
                 } else{
+                    setTrMtl(response.data.trMtl)
                     return true
                 }
             })
 
             setIsAnswer(()=>{
                 if(response.data.trAnswer){
+                    setTrAnswer(response.data.trAnswer)
                     return true
                 } else{
                     return false
@@ -114,17 +116,31 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
 
     const btn_modify_trAnswer = e => {
         if(window.confirm('수정하시겠습니까?')){
+            if(trProgressStatus){
+                alert("회원에게 답변이 전달되면 답변을 수정할 수 없습니다")
+                return
+            }
             setIsAnswer(false)
             setTrAnswer(null)
-            setIsUpdate(true)
+            setIsUpdate(true) 
         }
     }
     const btn_translate_update = async() => {
+        if(trProgressStatus){
+            alert("회원에게 답변이 전달되면 답변을 수정할 수 없습니다")
+            return
+        }
         if (trAnswer === null || typeof trAnswer === 'undefined') {
             alert('입력값을 확인해주세요.');
             return;
         }
         const today = new Date()
+        if(typeof trAnswer == 'string'){
+            translateAnswer.append("dto", new Blob([JSON.stringify({
+                "trAnswer" : trAnswer,
+                "trAnswerDate" : today
+            })], {type : "application/json"}))
+        }
         translateAnswer.append('files', trAnswer)  
         translateAnswer.append("dto", new Blob([JSON.stringify({
             "trAnswerDate" : today
@@ -277,7 +293,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                                 </a>
                             </button>
                             :
-                            "해당 파일이 존재하지 않습니다."
+                            "업로드된 파일이 없습니다."
                         }
                         
                     </div>
@@ -289,15 +305,6 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                     <div className={assignmenttranslatedetail.input_box}>
                         {
                             isAnswer ?
-                            trProgressStatus ? 
-                                <button className={assignmenttranslatedetail.btn_file_download}>
-                                    <a
-                                        href={`http://localhost:8080/assignedTranslate/findFile/${index}`}
-                                    >
-                                        다운로드
-                                    </a>
-                                </button>
-                            :
                             <>
                                 <button className={assignmenttranslatedetail.btn_file_download}>
                                     <a
@@ -308,7 +315,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
                                 </button>
                                 <button className={assignmenttranslatedetail.btn_file_cancle} onClick={
                                     btn_modify_trAnswer
-                                } >수정</button>
+                                } >x</button>
                             </>
                             :
                             <>
@@ -333,9 +340,7 @@ export default function ConsultativeTranslateAssignmentDetailpage(){
             
             <div className={assignmenttranslatedetail.complete}>
                 {
-                        isAnswer ? (trProgressStatus ? <></> : 
-                        <button type="button" className={assignmenttranslatedetail.complete_button} onClick={btn_translate_update}>번역의뢰 답변 수정</button>) 
-                        :
+                        isAnswer || 
                         isUpdate ? 
                         <button type="button" className={assignmenttranslatedetail.complete_button} onClick={btn_translate_update}>번역의뢰 답변 수정</button>
                         :

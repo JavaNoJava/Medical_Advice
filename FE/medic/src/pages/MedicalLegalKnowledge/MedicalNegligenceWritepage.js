@@ -100,7 +100,12 @@ export default function MedicalNegligenceWritepage() {
         setIsValidTitle(true);
     }
     const valid_title = e => {
+<<<<<<< HEAD
         const titleRegex = /^[a-zA-Z가-힣0-9\s!@#$%^&*()\-_=+{}\[\]|;:'",.<>\/?~]{1,50}$/;
+=======
+        const titleRegex = /^[a-zA-Z가-힣0-9\s]{1,30}$/;
+        console.log(titleRegex.test(e.target.value))
+>>>>>>> feature-scenarioFix-ABC
         setIsValidTitle(titleRegex.test(e.target.value))
     }
     const input_writer = e => {

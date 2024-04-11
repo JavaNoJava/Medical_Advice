@@ -4,10 +4,8 @@
     justify-content: start;
     align-items: center;
     position: relative;
-    height: auto;
+    height: 76.6vh;
     font-family: "돋움", Dotum, Arial, sans-serif;
-    margin-bottom: 100px;
-    margin-top: 65px;
   }
   .write_titleinput{
     width: 700px;
@@ -58,11 +56,11 @@
   
   .detail_titleinputbox{
     display: flex;
-    justify-content: start;
-    align-items: center;
-    height: 52px;
-    padding-left: 20px;
-    width: 250px;
+  justify-content: start;
+  align-items: center;
+  height: 50px;
+  padding-left: 20px;
+  width: 600px;
   }
   .detail_titleinput{
     width: 700px;

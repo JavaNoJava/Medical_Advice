@@ -131,7 +131,7 @@ const handlePasswordSubmit = async (qaPw) => {
             {visibleQuiryList?.map((quiry, index) => (
                 <div key={index} className={cusinquiry.announce_quirylist_content}>
                 <div className={`${cusinquiry.announce_quirylist_no} ${cusinquiry.announce_list_content}`} onClick={()=>btn_inquiryDetail(quiry.qaId)}>
-                    {quiry.qaId}
+                    {quiryList.length - startIndex - index}
                 </div>
                 <>
                     

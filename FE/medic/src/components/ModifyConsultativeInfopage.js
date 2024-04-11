@@ -141,7 +141,7 @@ export default function ModifyConsultativeInfopage(){
             setCTel(myInfo.ctel);
             setCPhone(myInfo.cphone);
             setHospName(myInfo.hospName);
-            setHospTel(myInfo.hospTel);
+            setHospTel(myInfo.ctel);
             setHospFx(myInfo.hospFx);
             setHospNum(myInfo.hospNum);
             setC_Role(myInfo.crole)

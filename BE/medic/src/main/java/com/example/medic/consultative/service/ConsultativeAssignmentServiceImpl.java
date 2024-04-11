@@ -49,7 +49,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignmentService{
+public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignmentService {
 
     private final Logger logger = LoggerFactory.getLogger(ConsultativeAssignmentServiceImpl.class);
     private final ConsultativeService consultativeService;
@@ -68,11 +68,12 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
     private final TranslationRequestFileRepository translationRequestFileRepository;
     private final TranslationAnswerFileRepository translationAnswerFileRepository;
     private final FileHandler fileHandler;
+
     /**
      * @return 배정 받은 자문 의뢰 목록 조회
      */
     @Override
-    public List<AdviceSituationDto> findAllAssigmentAdvice(ConsultativeDto consultativeDto) throws NoSuchElementException{
+    public List<AdviceSituationDto> findAllAssigmentAdvice(ConsultativeDto consultativeDto) throws NoSuchElementException {
         try {
             if (consultativeDto.getCId() == null) {     // 전문의 ID null 여부 체크
                 throw new NoSuchElementException("해당 전문의를 찾을 수 없습니다.");
@@ -141,9 +142,9 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
     /**
      * @return 신청된 의료 자문 정보 dto 생성
      */
-    public AllAdviceRequestDto createResponseAllAdviceDto (AdviceRequestList findAdviceRequestList, Client requestClient,
-                                                           List<AdviceQuestion> findAdviceQuestionList, AdviceFile findAdviceFile,
-                                                           DiagnosisRecord findDiagnosisRecord, AdviceAssignment findAdviceAssignment) {
+    public AllAdviceRequestDto createResponseAllAdviceDto(AdviceRequestList findAdviceRequestList, Client requestClient,
+                                                          List<AdviceQuestion> findAdviceQuestionList, AdviceFile findAdviceFile,
+                                                          DiagnosisRecord findDiagnosisRecord, AdviceAssignment findAdviceAssignment) {
         List<String> questionContent = new ArrayList<>();
         List<String> answerContent = new ArrayList<>();
         for (AdviceQuestion adviceQuestion : findAdviceQuestionList) {
@@ -241,7 +242,7 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
      */
     @Override
     public AnalyzeResponseDto findAssignmentAnalyzeDetail(ConsultativeDto consultativeDto,
-                                                         Long anId) throws NoSuchElementException {
+                                                          Long anId) throws NoSuchElementException {
         try {
             if (consultativeDto.getCId() == null) {
                 throw new NoSuchElementException();
@@ -405,7 +406,7 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
 
         TranslationAnswerFileRequestDto newtranslationAnswerFileRequestDto = splitTranslationAnswerFile(consultativeDto, multipartFiles);
 
-        try{
+        try {
             TranslationAnswerFile translationAnswerFile = TranslationAnswerFile.builder()
                     .trAnswerId(traId)
                     .trAnswer(newtranslationAnswerFileRequestDto.getTrAnswer())
@@ -415,7 +416,7 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
                     .build();
             translationAnswerFileRepository.save(translationAnswerFile);
             return true;
-        } catch (PersistenceException p){
+        } catch (PersistenceException p) {
             logger.info("분석 의뢰 신청 저장 실패");
             return false;
         }
@@ -426,10 +427,14 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
         TranslationRequestList translationRequestList = translationRequestListRepository.findById(trId).get();
         Long traId = translationAnswerFileRepository.findByFileId(trId);
         TranslationAnswerFile translationAnswerFile = translationAnswerFileRepository.findById(trId).get();
-
-        TranslationAnswerFileRequestDto updatetranslationAnswerFileRequestDto = splitTranslationAnswerFile(consultativeDto, multipartFiles);
-        deleteTranslationFile(updatetranslationAnswerFileRequestDto, translationAnswerFile);
-        try{
+        TranslationAnswerFileRequestDto updatetranslationAnswerFileRequestDto;
+        if (multipartFiles == null) {
+            updatetranslationAnswerFileRequestDto = splitTranslationAnswerFile(translationAnswerFileRequestDto, multipartFiles);
+        } else {
+            updatetranslationAnswerFileRequestDto = splitTranslationAnswerFile(consultativeDto, multipartFiles);
+            deleteTranslationFile(updatetranslationAnswerFileRequestDto, translationAnswerFile);
+        }
+        try {
             translationAnswerFile = TranslationAnswerFile.builder()
                     .trAnswerId(traId)
                     .trAnswer(updatetranslationAnswerFileRequestDto.getTrAnswer())
@@ -439,10 +444,11 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
                     .build();
             translationAnswerFileRepository.save(translationAnswerFile);
             return true;
-        } catch (PersistenceException p){
+        } catch (PersistenceException p) {
             logger.info("분석 의뢰 신청 저장 실패");
             return false;
         }
+
     }
     /**
      * 번역의뢰 답변 파일 dto 변환
@@ -467,6 +473,18 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
                     .build();
         }
         return null;
+    }
+
+    private TranslationAnswerFileRequestDto splitTranslationAnswerFile(TranslationAnswerFileRequestDto translationAnswerFileRequestDto, List<MultipartFile> multipartFiles) throws IOException {
+        try{
+            return TranslationAnswerFileRequestDto.builder()
+                    .trAnswer(translationAnswerFileRequestDto.getTrAnswer())
+                    .build();
+        } catch (NullPointerException e){
+            return TranslationAnswerFileRequestDto.builder()
+                    .trAnswer(translationAnswerFileRequestDto.getTrAnswer())
+                    .build();
+        }
     }
 
     /**

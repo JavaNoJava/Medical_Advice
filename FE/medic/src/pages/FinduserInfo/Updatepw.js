@@ -42,7 +42,7 @@ export default function Updatepw() {
             }
             try{
                 const response = await axios.post('/login/findPw/updatePw', userPw)
-                alert(response.data)
+                alert("재설정 되었습니다.")
                 navigate('/mediclogin')
             } catch(err){
                 console.log(err)
