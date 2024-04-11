@@ -56,11 +56,11 @@
   
   .detail_titleinputbox{
     display: flex;
-    justify-content: start;
-    align-items: center;
-    height: 52px;
-    padding-left: 20px;
-    width: 250px;
+  justify-content: start;
+  align-items: center;
+  height: 50px;
+  padding-left: 20px;
+  width: 600px;
   }
   .detail_titleinput{
     width: 700px;

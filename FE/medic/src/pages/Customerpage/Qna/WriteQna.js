@@ -113,7 +113,7 @@ export default function WriteQna() {
             <div className={writecustomerinquiry.detail_title} >
                 제목
             </div>
-            <div className={writecustomerinquiry.detail_titleinputbox} style={{width:'300px'}}>
+            <div className={writecustomerinquiry.detail_titleinputbox}>
                 <input className={writecustomerinquiry.write_titleinput} value={inputTitle} onChange={input_questiontitle} maxLength={50}/>
             </div>
         </div>
