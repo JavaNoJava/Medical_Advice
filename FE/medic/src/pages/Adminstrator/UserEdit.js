@@ -83,6 +83,7 @@
         //지역주소 제외 전체주소 치환
         setZipcode(data.zonecode);
         setUserRoadAddress(roadAddress);
+        setDetailAddress('')
         fullAddress = fullAddress.replace(localAddress, '');
         }
     }
@@ -101,9 +102,11 @@
         //지역주소 제외 전체주소 치환
         setCpZipcode(data.zonecode);
         setComapanyRoadAddress(roadAddress);
+        setDetailCpAddress("")
         fullAddress = fullAddress.replace(localAddress, '');
         }
     }
+
 
     const fetchUserData = async () => {
         try {
