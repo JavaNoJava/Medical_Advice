@@ -1,0 +1,246 @@
+.ad_contents {
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center; 
+    text-align: center;
+  }
+  .title {
+    margin-bottom: 60px;
+    font-size: 2.5rem;
+    color: #0f3a75;
+  }
+  .ad_table {
+    width: 900px;
+    text-align: center;
+  }
+  
+  .ad_th, .ad_td {
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+  
+  .ad_th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .ad_doc{
+    width: 1px;
+    border: 1px solid #ddd;
+    padding: 1px;
+  }
+  
+  .ad_th:first-child,
+  .adviceList_td:first-child {
+    width: 100px;
+  }
+  
+  .statusCell_select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+  
+  .ad_pagination {
+    margin-top: 10px; /* Adjust as needed */
+  }
+  
+  .ad_paginationButton {
+    font-size: 16px; /* Adjust the font size as needed */
+    margin: 0 5px; /* Adjust the spacing as needed */
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .ad_iconbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    width: 950px;
+  }
+
+  div.ad_complete {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.ad_complete {
+    display: inline-block;
+    font-size: 1.2rem;
+    background-color: #3cb371;
+    height: 50px;
+    width: 180px;
+    border: none;
+    border-radius: 20px;
+}
+
+.contents {
+  height: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center; /* 추가: 화면 가운데 정렬 */
+  text-align: center;
+  font-family: "돋움", Dotum, Arial, sans-serif;
+}
+
+.iconbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  text-align: center;
+  width: 950px;
+}
+
+.write_table{
+  width: 850px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #10b3cc;
+  border-left: none; /* 왼쪽 테두리 없음 */
+  border-right: none; /* 오른쪽 테두리 없음 */
+  /* margin-right: px; */
+}
+
+.title_row_box{
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-collapse: collapse;
+  border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
+}
+
+.data_row_box{
+display: flex;
+align-items: center;
+height: 30px;
+border-collapse: collapse;
+border-bottom: 1px solid #423f3f; /* 하단 테두리 색상 */
+}
+
+.title_box{
+display: flex;
+justify-content: center;
+align-items: center;
+border-right: 1px solid black;
+height: 40px;
+width: 100px;
+background: #f5f5f5;
+align-items: center;
+font-weight: bold;
+font-size: 15px;
+}
+.title_box_no{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+  height: 40px;
+  width: 49px;
+  background: #f5f5f5;
+  align-items: center;
+  font-weight: bold;
+  font-size: 15px;
+
+  }
+  
+
+
+.input_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+  height: 30px;
+  width: 100px;
+  align-items: center;
+}
+
+.input_box_no{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+  height: 30px;
+  width: 49px;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  margin-bottom: 60px;
+  font-size: 2.5rem;
+  color: #0f3a75;
+}
+
+.pagination {
+margin-top: 50px; /* Adjust as needed */
+text-align: center;
+margin-right: 0px;
+margin-bottom: 50px;
+}
+
+.paginationNumber {
+font-size: 1.5rem; /* 필요에 따라 폰트 크기 조정 */
+margin: 0 5px; /* 필요에 따라 간격 조정 */
+background: none;
+border: none;
+cursor: pointer;
+outline: none;
+transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
+}
+
+.paginationButton {
+font-size: 1.2rem; /* 필요에 따라 폰트 크기 조정 */
+margin: 0 5px; /* 필요에 따라 간격 조정 */
+background: none;
+border: none;
+cursor: pointer;
+outline: none;
+transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
+}
+
+.paginationButton:hover {
+color: #10b3cc; /* 호버 시 텍스트 색상 변경 */
+}
+
+div.complete {
+  margin-top: 50px;
+  display: flex;
+  align-items: center; /* 수직 정렬을 위해 사용 */
+  justify-content: center;
+}
+
+.complete_button {
+  display: inline-block;
+  font-size: 1.2rem;
+  background-color: #10b3cc; /* 배경색 설정 */
+  color: #fff; /* 텍스트 색상 설정 */
+  height: 40px;
+  width: 100px;
+  border: 2px solid #10b3cc; /* 테두리 설정 */
+  border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
+  margin: 0 20px;
+  
+  cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
+  transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
+}
+
+.complete_button:hover {
+  background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
+  border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
+}

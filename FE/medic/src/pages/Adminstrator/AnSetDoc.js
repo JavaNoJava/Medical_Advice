@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ad from '../../css/AdAdviceListPage.module.css';
+import ad from '../../css/AdSetDocPage.module.css';
 import { useNavigate, useParams , useLocation } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
