@@ -147,7 +147,7 @@ export default function MedicalNegligencepage(){
           </table>
         </div>
         {isAdmin &&(
-          <div className={MedicalNegligence.complete}>
+          <div className={MedicalNegligence.complete} style={{width : '850px'}}>
             <button type="button" onClick={medicWrite} className={MedicalNegligence.btt_write}>글쓰기</button>
           </div>
         )}
