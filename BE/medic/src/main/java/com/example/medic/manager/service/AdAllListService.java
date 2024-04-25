@@ -8,6 +8,8 @@ import com.example.medic.advice.repository.AdviceRequestListRepository;
 import com.example.medic.client.domain.Client;
 import com.example.medic.consultative.domain.Consultative;
 import com.example.medic.consultative.repository.ConsultativeRepository;
+import com.example.medic.email.domain.EmailMessage;
+import com.example.medic.email.service.EmailService;
 import com.example.medic.manager.dto.AdDetailDto;
 import com.example.medic.manager.dto.AdviceListDto;
 import com.example.medic.manager.dto.DocSetDto;
@@ -28,6 +30,7 @@ public class AdAllListService {
     private final AdviceQuestionRepository adviceQuestionRepository;
     private final ConsultativeRepository consultativeRepository;
     private final AdviceFileRepository adviceFileRepository;
+    private final EmailService emailService;
 
 
     /*
@@ -118,9 +121,38 @@ public class AdAllListService {
         if(adviceAssignment != null){
             adviceAssignment.updateStatus(adviceListDto.getAdmProgressStatus());
             adviceAssignmentRepository.save(adviceAssignment);
+            Client client = adviceAssignment.getAdviceRequestList().getClient();
+
+            // 결제 상태가 "결제하기"로 변경될 때만 이메일 전송
+            if (adviceListDto.getAdmProgressStatus().equals("결제하기")) {
+                String clientEmail = client.getUEmail();
+                if (clientEmail != null) {
+                    sendPaymentEmail(clientEmail);
+                }
+            }
             return true;
         }
 return false;
+    }
+
+    private void sendPaymentEmail(String recipientEmail) {
+        // 이메일 내용 작성
+        String subject = "[의료자문분석시스템] 결제 요청 안내";
+        String message = "<html><head></head><body><div style=\"background-color: #f2f2f2; padding: 20px; font-family: Arial, sans-serif;\">"
+                + "<h2 style=\"color: #333;\">안녕하세요. [의료자문분석시스템] 입니다.</h2>"
+                + "<p>귀하가 요청하신 의뢰건의 답변이 완료되었습니다.</p>"
+                + "<p>답변은 결제를 완료하신 후 열람 가능합니다.</p>"
+                + "<p>감사합니다.</p>"
+                + "</div></body></html>";
+
+
+        // 이메일 전송
+        EmailMessage emailMessage = EmailMessage.builder()
+                .to(recipientEmail)
+                .subject(subject)
+                .message(message)
+                .build();
+        emailService.sendMail(emailMessage);
     }
 
 
@@ -168,11 +200,36 @@ return false;
             adviceAssignment.updateDoc(consultative);
             adviceAssignment.updateAdmDate();
 
+            String consultativeEmail = consultative.getCEmail();
+            if (consultativeEmail != null) {
+                sendPaymentCEmail(consultativeEmail);
+            }
+
             adviceAssignmentRepository.save(adviceAssignment);
             return true;
         }catch (Exception e){
             return false;
         }
+    }
+
+    private void sendPaymentCEmail(String recipientEmail) {
+        // 이메일 내용 작성
+        String subject = "[의료자문분석시스템] 의뢰 배정 안내";
+        String message = "<html><head></head><body><div style=\"background-color: #f2f2f2; padding: 20px; font-family: Arial, sans-serif;\">"
+                + "<h2 style=\"color: #333;\">안녕하세요. [의료자문분석시스템] 입니다.</h2>"
+                + "<p>귀하에게 의뢰가 배정되었습니다.</p>"
+                + "<p>배정된 의뢰를 확인하신 후, 답변 부탁드립니다.</p>"
+                + "<p>감사합니다.</p>"
+                + "</div></body></html>";
+
+
+        // 이메일 전송
+        EmailMessage emailMessage = EmailMessage.builder()
+                .to(recipientEmail)
+                .subject(subject)
+                .message(message)
+                .build();
+        emailService.sendMail(emailMessage);
     }
 
     /*
