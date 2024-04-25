@@ -158,7 +158,7 @@ const generateOptions = (start, end) => {
             <div className={advicerequest.input_box}>
             <input
                 type="text"
-                value={question.adAnswerContent || ''}
+                value={question.adQuestionContent || ''}
                 maxLength={300}
             />
             </div>
