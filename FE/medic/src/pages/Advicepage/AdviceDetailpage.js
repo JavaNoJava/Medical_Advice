@@ -393,7 +393,7 @@ const generateOptions = (start, end) => {
                                     value={adAnswer.length} />
                             </div>
                         </div>
-                        {renderQuestionInputs()}
+                        {renderAnswerInputs()}
                     </div></>
         ) : null}
              <div className={advicerequest.iconbox} style={{height : 'auto'}}>
