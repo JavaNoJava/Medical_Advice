@@ -455,24 +455,26 @@ public class ConsultativeAssignmentServiceImpl implements ConsultativeAssignment
      */
     private TranslationAnswerFileRequestDto splitTranslationAnswerFile(ConsultativeDto consultativeDto, List<MultipartFile> multipartFiles) throws IOException {
         try{
-            if(multipartFiles.size() !=0) {
-                Path projectPath;
-                if (System.getProperty("user.dir").contains("medic")) {
-                    projectPath = Paths.get(System.getProperty("user.dir") + "/src/main/resources/static/file/translationanswer/");
-                } else {
-                    projectPath = Paths.get(System.getProperty("user.dir") + "/medic/src/main/resources/static/file/translationanswer/");
-                }
-                Deque <String> files = fileHandler.parseFile(projectPath, multipartFiles);
-                return TranslationAnswerFileRequestDto.builder()
-                        .trAnswer(files.pollFirst())
-                        .build();
-            }
-        } catch (NullPointerException e){
-            return TranslationAnswerFileRequestDto.builder()
-                    .trAnswer(consultativeDto.getTrAnswer())
-                    .build();
+//            if(multipartFiles.size() !=0) {
+//                Path projectPath;
+//                if (System.getProperty("user.dir").contains("medic")) {
+//                    projectPath = Paths.get(System.getProperty("user.dir") + "/src/main/resources/static/file/translationanswer/");
+//                } else {
+//                    projectPath = Paths.get(System.getProperty("user.dir") + "/medic/src/main/resources/static/file/translationanswer/");
+//                }
+//                Deque <String> files = fileHandler.parseFile(projectPath, multipartFiles);
+//                return TranslationAnswerFileRequestDto.builder()
+//                        .trAnswer(files.pollFirst())
+//                        .build();
+            return null;
+            } catch (Exception e){
+            return null;
         }
-        return null;
+//        } catch (NullPointerException e){
+//            return TranslationAnswerFileRequestDto.builder()
+//                    .trAnswer(consultativeDto.getTrAnswer())
+//                    .build();
+//        }
     }
 
     private TranslationAnswerFileRequestDto splitTranslationAnswerFile(TranslationAnswerFileRequestDto translationAnswerFileRequestDto, List<MultipartFile> multipartFiles) throws IOException {

@@ -98,20 +98,21 @@ public class AnalyzeServiceImpl implements AnalyzeService {
     public AnalyzeRequestFileDto splitRequestToRequestFileDto(AnalyzeRequestDto analyzeRequestDto, List<MultipartFile> multipartFiles) throws IOException {
         try{
             if(multipartFiles.size() !=0) {
-                Path projectPath;
-                if (System.getProperty("user.dir").contains("medic")) {
-                    projectPath = Paths.get(System.getProperty("user.dir") + "/src/main/resources/static/file/analyzerequest/");
-                } else {
-                    projectPath = Paths.get(System.getProperty("user.dir") + "/medic/src/main/resources/static/file/analyzerequest/");
-                }
-                Deque <String> files = fileHandler.parseFile(projectPath, multipartFiles);
-                return AnalyzeRequestFileDto.builder()
-                        .anReqForm(analyzeRequestDto.getAnReqForm().equals("no_empty_file") ? files.pollFirst() : analyzeRequestDto.getAnReqForm())
-                        .anDiagnosis(analyzeRequestDto.getAnDiagnosis().equals("no_empty_file") ? files.pollFirst(): analyzeRequestDto.getAnDiagnosis())
-                        .anRecord(analyzeRequestDto.getAnRecord().equals("no_empty_file") ? files.pollFirst(): analyzeRequestDto.getAnRecord())
-                        .anFilm(analyzeRequestDto.getAnFilm().equals("no_empty_file") ? files.pollFirst() : analyzeRequestDto.getAnFilm())
-                        .anOther(analyzeRequestDto.getAnOther().equals("no_empty_file") ? files.pollFirst() : analyzeRequestDto.getAnOther())
-                        .build();
+//                Path projectPath;
+//                if (System.getProperty("user.dir").contains("medic")) {
+//                    projectPath = Paths.get(System.getProperty("user.dir") + "/src/main/resources/static/file/analyzerequest/");
+//                } else {
+//                    projectPath = Paths.get(System.getProperty("user.dir") + "/medic/src/main/resources/static/file/analyzerequest/");
+//                }
+//                Deque <String> files = fileHandler.parseFile(projectPath, multipartFiles);
+//                return AnalyzeRequestFileDto.builder()
+//                        .anReqForm(analyzeRequestDto.getAnReqForm().equals("no_empty_file") ? files.pollFirst() : analyzeRequestDto.getAnReqForm())
+//                        .anDiagnosis(analyzeRequestDto.getAnDiagnosis().equals("no_empty_file") ? files.pollFirst(): analyzeRequestDto.getAnDiagnosis())
+//                        .anRecord(analyzeRequestDto.getAnRecord().equals("no_empty_file") ? files.pollFirst(): analyzeRequestDto.getAnRecord())
+//                        .anFilm(analyzeRequestDto.getAnFilm().equals("no_empty_file") ? files.pollFirst() : analyzeRequestDto.getAnFilm())
+//                        .anOther(analyzeRequestDto.getAnOther().equals("no_empty_file") ? files.pollFirst() : analyzeRequestDto.getAnOther())
+//                        .build();
+                return null;
             }
         } catch (NullPointerException e) {
             return AnalyzeRequestFileDto.builder()
@@ -328,15 +329,16 @@ public class AnalyzeServiceImpl implements AnalyzeService {
                     projectPath = Paths.get(System.getProperty("user.dir") + "/medic/src/main/resources/static/file/analyzerequest/");
                 }
 
-                Deque <String> files = fileHandler.parseFile(projectPath, multipartFiles);
-
-                return AnalyzeRequestFileDto.builder()
-                        .anReqForm(analyzeUpdateDto.getAnReqForm().equals("no_empty_file") ? files.pollFirst() : analyzeUpdateDto.getAnReqForm())
-                        .anDiagnosis(analyzeUpdateDto.getAnDiagnosis().equals("no_empty_file") ? files.pollFirst(): analyzeUpdateDto.getAnDiagnosis())
-                        .anRecord(analyzeUpdateDto.getAnRecord().equals("no_empty_file") ? files.pollFirst(): analyzeUpdateDto.getAnRecord())
-                        .anFilm(analyzeUpdateDto.getAnFilm().equals("no_empty_file") ? files.pollFirst() : analyzeUpdateDto.getAnFilm())
-                        .anOther(analyzeUpdateDto.getAnOther().equals("no_empty_file") ? files.pollFirst() : analyzeUpdateDto.getAnOther())
-                        .build();
+//                Deque <String> files = fileHandler.parseFile(projectPath, multipartFiles);
+//
+//                return AnalyzeRequestFileDto.builder()
+//                        .anReqForm(analyzeUpdateDto.getAnReqForm().equals("no_empty_file") ? files.pollFirst() : analyzeUpdateDto.getAnReqForm())
+//                        .anDiagnosis(analyzeUpdateDto.getAnDiagnosis().equals("no_empty_file") ? files.pollFirst(): analyzeUpdateDto.getAnDiagnosis())
+//                        .anRecord(analyzeUpdateDto.getAnRecord().equals("no_empty_file") ? files.pollFirst(): analyzeUpdateDto.getAnRecord())
+//                        .anFilm(analyzeUpdateDto.getAnFilm().equals("no_empty_file") ? files.pollFirst() : analyzeUpdateDto.getAnFilm())
+//                        .anOther(analyzeUpdateDto.getAnOther().equals("no_empty_file") ? files.pollFirst() : analyzeUpdateDto.getAnOther())
+//                        .build();
+                return null;
             }
         } catch (NullPointerException e) {
             return AnalyzeRequestFileDto.builder()

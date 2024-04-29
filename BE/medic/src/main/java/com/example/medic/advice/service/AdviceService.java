@@ -81,14 +81,14 @@ public class AdviceService {
     public AdviceFileRequestDto splitRequestToFileDto(AllAdviceRequestDto allAdviceRequestDto, List<MultipartFile> multipartFiles) throws IOException {
         try{
             if (multipartFiles.size() != 0 && multipartFiles.size() > 0) {
-                Path projectPath;
-                if (System.getProperty("user.dir").contains("medic")) {
-                    projectPath = Paths.get(System.getProperty("user.dir") + "/src/main/resources/static/file/advicerequest/");
-                } else {
-                    projectPath = Paths.get(System.getProperty("user.dir") + "/medic/src/main/resources/static/file/advicerequest/");
-                }
-
-                Deque <String> files = fileHandler.parseFile(projectPath, multipartFiles);
+//                Path projectPath;
+//                if (System.getProperty("user.dir").contains("medic")) {
+//                    projectPath = Paths.get(System.getProperty("user.dir") + "/src/main/resources/static/file/advicerequest/");
+//                } else {
+//                    projectPath = Paths.get(System.getProperty("user.dir") + "/medic/src/main/resources/static/file/advicerequest/");
+//                }
+                String dirName = "advice";
+                Deque <String> files = fileHandler.parseFile(dirName, multipartFiles);
 
                 return AdviceFileRequestDto.builder()
                         .adReqForm(allAdviceRequestDto.getAdReqForm().equals("no_empty_file") ? files.pollFirst() : allAdviceRequestDto.getAdReqForm())
@@ -390,14 +390,14 @@ public class AdviceService {
     private AdviceFileRequestDto splitUpdateToFileDto (AdviceUpdateDto adviceUpdateDto, List<MultipartFile> multipartFiles) throws IOException {
         try{
             if (multipartFiles.size() != 0) {
-                Path projectPath;
-                if (System.getProperty("user.dir").contains("medic")) {
-                    projectPath = Paths.get(System.getProperty("user.dir") + "/src/main/resources/static/file/advicerequest/");
-                } else {
-                    projectPath = Paths.get(System.getProperty("user.dir") + "/medic/src/main/resources/static/file/advicerequest/");
-                }
-
-                Deque <String> files = fileHandler.parseFile(projectPath, multipartFiles);
+//                Path projectPath;
+//                if (System.getProperty("user.dir").contains("medic")) {
+//                    projectPath = Paths.get(System.getProperty("user.dir") + "/src/main/resources/static/file/advicerequest/");
+//                } else {
+//                    projectPath = Paths.get(System.getProperty("user.dir") + "/medic/src/main/resources/static/file/advicerequest/");
+//                }
+                String dirName = "advice";
+                Deque <String> files = fileHandler.parseFile(dirName, multipartFiles);
 
                 return AdviceFileRequestDto.builder()
                         .adReqForm(adviceUpdateDto.getAdReqForm().equals("no_empty_file") ? files.pollFirst() : adviceUpdateDto.getAdReqForm())

@@ -17,19 +17,19 @@ public class AdviceFile {
     @NotNull
     private Long fid;
 
-    @Column(length = 100)
+    @Column(length = 300)
     private String adReqForm;
 
-    @Column(length = 100)
+    @Column(length = 300)
     private String adDiagnosis;
 
-    @Column(length = 100)
+    @Column(length = 300)
     private String adRecord;
 
-    @Column(length = 100)
+    @Column(length = 300)
     private String adFilm;
 
-    @Column(length = 100)
+    @Column(length = 300)
     private String adOther;
 
     @ManyToOne
