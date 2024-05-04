@@ -26,6 +26,9 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -211,9 +214,15 @@ public class ConsultativeController {
     public ResponseEntity<?> findTranslationAnswerFile(@PathVariable Long trId){
         try {
             Resource fileResource = consultativeFileService.findTranslationAnswerFile(trId);
+            Path path = Paths.get(fileResource.getFilename());
             if (fileResource != null) {
+                String extension = path.getFileName().toString().split("\\.")[1];
+                String returnFile = "";
+
+                returnFile = URLEncoder.encode("번역자료." + extension, "UTF-8");
+
                 return ResponseEntity.ok()
-                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileResource.getFilename() + "\"")
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + returnFile + "\"")
                         .body(fileResource);
             } else {
                 System.out.println(64);

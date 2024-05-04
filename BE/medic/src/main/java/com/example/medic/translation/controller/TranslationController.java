@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -63,9 +66,15 @@ public class TranslationController {
     public ResponseEntity<?> findTranslationFile(@PathVariable Long trId) {
         try {
             Resource fileResource = translationFileService.findTranslationFile(trId);
+            Path path = Paths.get(fileResource.getFilename());
             if (fileResource != null) {
+                String extension = path.getFileName().toString().split("\\.")[1];
+                String returnFile = "";
+
+                returnFile = URLEncoder.encode("번역요청자료." + extension, "UTF-8");
+
                 return ResponseEntity.ok()
-                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileResource.getFilename() + "\"")
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + returnFile + "\"")
                         .body(fileResource);
             } else {
                 return ResponseEntity.notFound().build();

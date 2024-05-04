@@ -25,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -66,9 +69,30 @@ public class AnalyzeController {
     public ResponseEntity<?> findAnalyzeFile(@PathVariable Long anId, @PathVariable String filename) {
         try {
             Resource fileResource = analyzeFileService.findAnalyzeRequestFile(anId, filename);
+            Path path = Paths.get(fileResource.getFilename());
             if (fileResource != null) {
+                String extension = path.getFileName().toString().split("\\.")[1];
+                String returnFile = "";
+                switch (filename){
+                    case "anReqForm":
+                        returnFile = URLEncoder.encode("분석의뢰신청서." + extension, "UTF-8");
+                        break;
+                    case "anDiagnosis":
+                        returnFile = URLEncoder.encode("진단서." + extension, "UTF-8");
+                        break;
+                    case "anRecord":
+                        returnFile = URLEncoder.encode("의무기록지." + extension, "UTF-8");
+                        break;
+                    case "anFilm":
+                        returnFile = URLEncoder.encode("필름." + extension, "UTF-8");
+                        break;
+                    case "anOther":
+                        returnFile = URLEncoder.encode("기타자료." + extension, "UTF-8");
+                        break;
+                }
+
                 return ResponseEntity.ok()
-                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileResource.getFilename() + "\"")
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + returnFile + "\"")
                         .body(fileResource);
             } else {
                 return ResponseEntity.notFound().build();
