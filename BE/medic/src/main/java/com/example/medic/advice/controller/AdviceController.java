@@ -23,6 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -76,9 +79,30 @@ public class AdviceController {
     public ResponseEntity<?> findAdviceRequestFile(@PathVariable Long adId, @PathVariable String filename) {
         try {
             Resource fileResource = adviceFileService.findAdviceRequestFile(adId, filename);
+            Path path = Paths.get(fileResource.getFilename());
             if (fileResource != null) {
+                String extension = path.getFileName().toString().split("\\.")[1];
+                String returnFile = "";
+                switch (filename){
+                    case "adReqForm":
+                        returnFile = URLEncoder.encode("자문의뢰신청서." + extension, "UTF-8");
+                        break;
+                    case "adDiagnosis":
+                        returnFile = URLEncoder.encode("진단서." + extension, "UTF-8");
+                        break;
+                    case "adRecord":
+                        returnFile = URLEncoder.encode("의무기록지." + extension, "UTF-8");
+                        break;
+                    case "adFilm":
+                        returnFile = URLEncoder.encode("필름." + extension, "UTF-8");
+                        break;
+                    case "adOther":
+                        returnFile = URLEncoder.encode("기타자료." + extension, "UTF-8");
+                        break;
+                }
+
                 return ResponseEntity.ok()
-                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileResource.getFilename() + "\"")
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + returnFile + "\"")
                         .body(fileResource);
             } else {
                 return ResponseEntity.notFound().build();
