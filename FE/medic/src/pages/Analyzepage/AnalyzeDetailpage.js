@@ -298,7 +298,7 @@ export default function AnalyzeDetailpage(){
                         />
                     </div>
                 </div>
-                    {renderQuestionInputs()}
+                    {renderAnswerInputs()}
             </div></>
         ) : null}
              <div className={analyzerequest.iconbox}>
