@@ -1,0 +1,143 @@
+.assignform {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 66vh;
+  position: relative;
+  margin: 0 0 100px 0;
+}
+  
+.industrialAccident_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    width: 850px;
+}
+
+h2{
+    font-size: 24px; 
+}
+  
+.industrialAccident_table {
+    width: 850px;
+    border-collapse: collapse;
+    position: relative; 
+    border-top: 2px solid #10b3cc;
+    text-align: center;
+}
+  
+.industrialAccident_th, .industrialAccident_td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.industrialAccident_th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    font-size: 20px;
+ }
+  
+.industrialAccident_th:first-child,
+.industrialAccident_th:first-child {
+    width: 100px;
+} 
+
+/* 첫 번째 열과 마지막 열에 대한 스타일 */
+.medicalNegligence_th:first-child,
+.medicalNegligence_td:first-child {
+    border-left: none; /* 첫 번째 열의 왼쪽 선 제거 */
+}
+
+.medicalNegligence_th:last-child,
+.medicalNegligence_td:last-child {
+    border-right: none; /* 마지막 열의 오른쪽 선 제거 */
+}
+  
+div.complete {
+    text-align: right;
+    margin-top: 20px;
+    width: 850px;
+}
+  
+.btt_write {
+    display: inline-block;
+    font-size: 0.813rem;
+    background-color: #10b3cc; /* 배경색 설정 */
+    color: #fff; /* 텍스트 색상 설정 */
+    height: 40px;
+    width: 100px;
+    border: 2px solid #10b3cc; /* 테두리 설정 */
+    border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
+    
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
+}
+
+.btt_write:hover {
+    background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
+    border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
+}
+
+.pagination {
+    margin-top: 30px; /* Adjust as needed */
+    text-align: center;
+    margin-bottom: 100px;
+}
+  
+.paginationNumber {
+    font-size: 1.5rem; /* 필요에 따라 폰트 크기 조정 */
+    margin: 0 5px; /* 필요에 따라 간격 조정 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
+}
+  
+.paginationButton {
+    font-size: 1.2rem; /* 필요에 따라 폰트 크기 조정 */
+    margin: 0 5px; /* 필요에 따라 간격 조정 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s ease; /* 호버 시 색상 전환 효과 */
+}
+
+.paginationButton:hover {
+    color: #10b3cc; /* 호버 시 텍스트 색상 변경 */
+}
+.title {
+    margin-bottom: -20px;
+    font-size: 2.5rem;
+    color: #0f3a75;
+}
+
+.search_bar {
+    border: 1px solid #d9d9d9;
+    padding: 20px 230px;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+    margin-top: 80px;
+}
+
+.search_button {
+    display: inline-block;
+    font-size: 1rem;
+    background-color: #10b3cc; /* 배경색 변경 */
+    color: #ffffff; /* 텍스트 색상 변경 */
+    height: 25px; /* 높이 조정 */
+    width: 50px; /* 너비 조정 */
+    border: none; /* 테두리 없앰 */
+    border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
+    margin: 0 20px;
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
+}
+
+.search_button:hover {
+    background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
+    border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
+}

@@ -1,0 +1,37 @@
+.adminMypage_box{
+    width: 700px;
+    height: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.adminMypage_requestcount_box{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.adminMypage_count_wrap{
+    width: 600px;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+.adminMypage_countbox{
+    width: 200px;
+    height: 200px;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.adminMy_count{
+    text-decoration: underline;
+}
+

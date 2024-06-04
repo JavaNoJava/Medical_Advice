@@ -1,0 +1,118 @@
+.main_header{
+    width: 100%;
+    height: 110px;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    margin-top: -8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-family: "돋움", Dotum, sans-serif;
+}
+
+.top_header{
+   width: 100%;
+   border-bottom: 1px solid black;
+   display: flex;
+   justify-content: center;
+   height: 66px;
+}
+.top_header_box{
+    display: flex;
+    justify-content: space-between;
+    width: 980px;
+    height: 66px;
+}
+.mainlogo{
+    background-image : url('../img/LogoImg.png');
+    width : 210px;
+    height : 66px;
+    background-repeat : no-repeat;
+    background-size :210px 45px;
+    background-position: 0 15px;
+    cursor:pointer;
+}
+.user_sign{
+    display: flex;
+    align-items: flex-end;
+    height: 53px;
+}
+.sign_text{
+    background-color: white;
+    border: 1.3px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    font-size: 0.75rem;
+    width: 65px;
+    height: 30px;
+    border-radius: 2px;
+}
+.signup_text{
+    border-left: none;
+}
+.navigator{
+    width: 100%;
+    border-bottom: 1.5px solid;
+    display: flex;
+    justify-content: center;
+}
+.navigator_box{
+    width: 980px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+}
+.menu {
+    display: flex;
+    width: 980px;
+    margin: 0;
+    list-style : none; 
+    padding: 0;
+    justify-content: space-between;
+}
+.menu > li > button {
+    font-size: 1.12rem;
+    border: none;
+    background-color: white;
+    padding-left: 0;
+    cursor: pointer;
+    padding: 0;
+    width: 150px;
+    text-align: center;
+    height: 100%;
+}
+.menu > li{
+    width: 150px;
+    text-align: center;
+}
+/* .menu > li:hover {
+    color: #2a2ac8;
+} */
+.submenu{
+    position: absolute;
+    list-style: none;
+    height: 35px;
+    padding: 0;
+    font-size: 0.94rem;
+    cursor: pointer;
+    visibility: hidden;
+    background-color: #E8E8E8;
+    opacity: 0;
+    transform: translateY(-20px); /* 초기 위치 지정 (예시로 위로 이동) */
+}
+.submenu > li {
+    line-height: 45px;
+}
+
+.menu > li:hover >button{
+    color: #2a2ac8;
+}
+.menu > li:hover .submenu{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); /* 트랜지션 종료 위치 설정 */
+    height: 250px;
+    width: 150px;
+    transition-duration: 0.3s;
+}

@@ -1,0 +1,209 @@
+.join_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "돋움", Dotum, Arial, sans-serif;
+}
+
+.icon {
+    color: #f4a460;
+}
+
+
+div.complete {
+    margin-top: 50px;
+    display: flex;
+    align-items: center; /* 수직 정렬을 위해 사용 */
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.btt_complete {
+    display: inline-block;
+    font-size: 0.8rem;
+    background-color: #10b3cc; /* 배경색 설정 */
+    color: #fff; /* 텍스트 색상 설정 */
+    height: 40px;
+    width: 100px;
+    border: 2px solid #10b3cc; /* 테두리 설정 */
+    border-radius: 5px; /* 테두리의 꼭짓점을 둥글게 만듦 */
+    margin: 0 20px;
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 상태로 표시 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 대한 전환 효과 추가 */
+    opacity: 1; /* 버튼이 비활성화되지 않은 경우에는 투명도를 1로 설정 */
+}
+
+.btt_complete:disabled {
+    background-color: #ccc; /* 비활성화된 상태일 때의 배경색 */
+    border-color: #ccc; /* 비활성화된 상태일 때의 테두리 색상 변경 */
+    cursor: not-allowed; /* 클릭할 수 없는 상태이므로 커서를 변경 */
+}
+
+.btt_complete:hover:enabled {
+    background-color: #0d8aa8; /* 호버 상태일 때의 배경색 */
+    border-color: #0d8aa8; /* 호버 상태일 때의 테두리 색상 변경 */
+}
+
+.iconbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    width: 850px;
+    margin: 0 auto 20px;
+}
+
+.tit {
+    background: url(../img/bullet.png) 0 2px no-repeat;
+    padding-left: 10px;
+    font-size: 25px;
+    color: #1b699b;
+    margin-bottom: 15px;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    color: #0f3a75;
+}
+
+.join_usertable{
+    width: 850px;
+    height: 433px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #10b3cc;
+    border-left: none; /* 왼쪽 테두리 없음 */
+    border-right: none; /* 오른쪽 테두리 없음 */
+    margin-bottom: 40px;
+}
+
+.user_row_box{
+    width: 850px;
+    height: auto;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    display: flex;
+}
+
+.user_title_box{
+    width: 122px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 33px;
+    font-size: 0.813rem;
+    color: #252323;
+    background-color: #F5F5F5;
+    border-right: 1px solid rgba(0,0,0,0.3);
+    font-weight: 600;
+}
+
+.user_input_box{
+    font-size: 0.75rem;
+    color: #555555;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 10px;
+    height: 43px;
+}
+
+.btn_changemypw{
+    font-size: 0.75rem;
+    margin-left: 5px;
+    background-color: #0f3a75;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.user_address_input_box{ 
+    padding: 0 0 0 10px;
+    width: 400px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.user_address_input_box input {
+    height: 27px;
+    padding: 0 5px;
+    border : 1px solid rgba(0,0,0,0.3);
+}
+
+.btn_findaddress{
+    margin: 0 0 0 7px;
+    background-color: #535353;
+    padding: 4.5px 5px;
+    color: white;
+    cursor: pointer;
+    border : none;
+}
+
+.join_companytable{
+    width: 730px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #10b3cc;
+    border-left: none; /* 왼쪽 테두리 없음 */
+    border-right: none; /* 오른쪽 테두리 없음 */
+    margin-right: 130px;
+}
+
+.company_address_input_box{ 
+    padding: 0 0 0 10px;
+    width: 400px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.company_address_input_box input {
+    height: 27px;
+    padding: 0 5px;
+    border : 1px solid rgba(0,0,0,0.3);
+}
+
+.company_row_box{
+    width: 730px;
+    height: auto;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    display: flex;
+}
+
+.company_title_box{
+    width: 122px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 33px;
+    font-size: 0.813rem;
+    color: #252323;
+    background-color: #F5F5F5;
+    border-right: 1px solid rgba(0,0,0,0.3);
+    font-weight: 600;
+}
+
+.company_input_box{
+    font-size: 0.75rem;
+    color: #555555;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 10px;
+    height: 43px;
+}
+
+.errmsg{
+    color: red;
+    font-size: 0.625rem;
+    margin-left: 10px;
+}

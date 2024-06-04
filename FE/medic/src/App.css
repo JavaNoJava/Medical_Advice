@@ -1,0 +1,9 @@
+.App{
+    height: auto;
+    font-family: "돋움", Dotum, sans-serif;
+}
+.App-body{
+    height: auto;
+    padding-top: 110px;
+    width: 100%;
+}

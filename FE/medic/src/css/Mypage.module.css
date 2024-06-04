@@ -1,0 +1,186 @@
+.mypage_box{
+    width: 980px;
+    height: 1025px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 100px;
+ }
+ .mypage_box_small{
+    width: 980px;
+    height: 625px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 100px;
+ }
+ .mypage_box_small_admin{
+    width: 980px;
+    height: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 100px;
+ }
+ /* 나의 현황 css */
+ .mypage_requestcount_box{
+    width: 198px;
+    height: 300px;
+    padding-top: 100px;
+ }
+ .mypage_requestcount_title{
+    font-size : 1.563rem;
+    margin:0;
+    font-weight: bold;
+    color: #444;
+ }
+ .mypage_count_wrap{
+    width: 198px;
+    height: 172px;
+    border-top: 2px solid #0f3a75;
+    margin: 15px 0 56px;
+ }
+ .mypage_countbox{
+    width: 191px;
+    height: 40px;
+    padding: 0 0 0 7px;
+    font-size: 0.938rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    color: #666;
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+ }
+
+ /* 정보수정 css */
+.modify_wrap{
+    width: 730px;
+    height: 900px;
+}
+.modify_wrap_small{
+    height: 625px;
+}
+.modify_title{
+    width: 730px;
+    margin: 0 0 56px;
+    color: #0f3a75;
+    font-size: 2.5rem;
+}
+.modify_subtitle{
+    color: #1B69A8;
+    margin: 0 0 17px 0;
+    font-size: 1.25rem;
+}
+ 
+.Find_userInfoContent_title{
+    color: #1B69A8;
+    margin: 0 0 17px 0;
+    font-size: 1.25rem;
+}
+
+.modify_subtitleimg{
+    background: url("../img/bullet.png") 0 2px no-repeat;
+    padding-left: 10px;
+}
+.modify_userinfo{
+    width: 730px;
+    height: auto;
+}
+.modify_userinfotable{
+    border-top: 2px solid #10b3cc;;
+}
+.modify_row{
+    width: 730px;
+    height: auto;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    display: flex;
+}
+.modify_row_title{
+    width: 122px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 33px;
+    font-size: 0.813rem;
+    color: #252323;
+    background-color: #F5F5F5;
+    border-right: 1px solid rgba(0,0,0,0.3);
+    font-weight: 600;
+}
+.modify_userinfo_content{
+    font-size: 0.75rem;
+    color: #555555;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 10px;
+    height: 43px;
+}
+.btn_changemypw{
+    font-size: 0.75rem;
+    margin-left: 5px;
+    background-color: #10b3cc;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.address_input_box{
+    padding: 0 0 0 10px;
+    width: 400px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+.address_input_box input {
+    height: 27px;
+    padding: 0 5px;
+    border : 1px solid rgba(0,0,0,0.3);
+}
+.btn_findaddress{
+    margin: 0 0 0 7px;
+    background-color: #535353;
+    padding: 4.5px 5px;
+    color: white;
+    cursor: pointer;
+    border : none;
+}
+.complete{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin-top: 50px;
+}
+.complete_btnBox{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+}
+.btt_complete{
+    width: 100px;
+    height: 40px;
+    background-color: #10b3cc;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    border : 1px solid #10b3cc;
+}
+.errmsg{
+    color: red;
+    font-size: 0.625rem;
+    margin-left: 10px;
+}
